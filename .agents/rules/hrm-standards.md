@@ -1,0 +1,9 @@
+- Use TypeScript for all files. No JavaScript files in src/.
+- Use App Router patterns only. No Pages Router.
+- All components must be accessible: aria labels, keyboard navigation, 44px touch targets.
+- Dark theme: background #0a0a0a, surface #111111, primary #6366f1, accent #06b6d4.
+- Never hardcode secrets. Use environment variables only.
+- All Supabase queries must go through server components or API routes.
+- RLS must be enabled on every Supabase table before it enters production.
+- Stripe secret key is server-side only, never in client bundle.
+- Every commit message must begin with the block ID.

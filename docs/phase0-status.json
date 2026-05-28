@@ -1,0 +1,45 @@
+{
+  "phase": "Phase 0 — Preflight",
+  "blocks": [
+    {
+      "id": "P06-B15TEAM-AGENTS",
+      "name": "Toolchain and Personas",
+      "status": "completed",
+      "description": "Install and verify Aider, Goose, GitHub CLI, Stripe CLI, Vercel CLI. Define Gemini personas and record environment.",
+      "completed_at": "2026-05-28T23:23:00Z",
+      "notes": "Aider not installed due to Python 3.13 numpy compilation compatibility; other toolchain components fully operational."
+    },
+    {
+      "id": "P06-B25ORCH-FLOW",
+      "name": "Orchestration & Workflow",
+      "status": "pending",
+      "description": "Write docs/orchestration.md and create recipes folder with plan, implement, review, test YAML files.",
+      "completed_at": null,
+      "notes": null
+    },
+    {
+      "id": "P06-B35ENV-SETUP",
+      "name": "Environment Setup",
+      "status": "pending",
+      "description": "Confirm repo workspace, scaffold Next.js app, configure baseline config files, install shadcn/ui, configure minimal page.",
+      "completed_at": null,
+      "notes": null
+    },
+    {
+      "id": "P06-B45CFG-GIT-SUPA-VERCEL-STRIPE",
+      "name": "Configure Git/Supa/Vercel/Stripe",
+      "status": "pending",
+      "description": "Verify git config, configure Supabase JS client and environment, scaffold Stripe client/server and API, configure Vercel, build payment display section.",
+      "completed_at": null,
+      "notes": null
+    },
+    {
+      "id": "P06-B55RULES-TEST",
+      "name": "Standards and Testing",
+      "status": "pending",
+      "description": "Create docs/standards.md and docs/prompts.md, install Vitest, verify lint and smoke test.",
+      "completed_at": null,
+      "notes": null
+    }
+  ]
+}

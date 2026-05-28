@@ -20,10 +20,10 @@
     {
       "id": "P06-B35ENV-SETUP",
       "name": "Environment Setup",
-      "status": "pending",
+      "status": "completed",
       "description": "Confirm repo workspace, scaffold Next.js app, configure baseline config files, install shadcn/ui, configure minimal page.",
-      "completed_at": null,
-      "notes": null
+      "completed_at": "2026-05-28T23:36:31Z",
+      "notes": "Next.js scaffolded and resolved with Webpack fallback configuration for Turbopack compatibility on Termux ARM64. shadcn initialized successfully."
     },
     {
       "id": "P06-B45CFG-GIT-SUPA-VERCEL-STRIPE",

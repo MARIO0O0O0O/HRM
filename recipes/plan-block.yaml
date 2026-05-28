@@ -1,0 +1,19 @@
+# Recipe for Block Planning
+recipe: plan-block
+parameters:
+  block_id: ""
+  short_description: ""
+  input_files: []
+  expected_outputs: []
+  allowed_tools:
+    - list_dir
+    - view_file
+    - grep_search
+    - read_url_content
+steps:
+  - step: 1
+    action: Read GEMINI.md, hrm-standards.md, and parent dependency files.
+  - step: 2
+    action: Outline implementation strategy and list all exact code changes.
+  - step: 3
+    action: Document the planning draft in docs/planning/<block_id>-plan.md.

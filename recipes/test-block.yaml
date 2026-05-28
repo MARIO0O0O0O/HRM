@@ -1,0 +1,18 @@
+# Recipe for Block Testing
+recipe: test-block
+parameters:
+  block_id: ""
+  short_description: ""
+  input_files: []
+  expected_outputs: []
+  allowed_tools:
+    - run_command
+steps:
+  - step: 1
+    action: Run pnpm lint to verify static analysis matches Next.js defaults.
+  - step: 2
+    action: Run pnpm test to verify all Jest/Vitest unit and smoke tests pass.
+  - step: 3
+    action: Run pnpm build to ensure Vercel preflight compilation succeeds.
+  - step: 4
+    action: Report command output and status.

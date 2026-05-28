@@ -1,0 +1,19 @@
+# Recipe for Block Implementation
+recipe: implement-block
+parameters:
+  block_id: ""
+  short_description: ""
+  input_files: []
+  expected_outputs: []
+  allowed_tools:
+    - write_to_file
+    - replace_file_content
+    - multi_replace_file_content
+    - run_command
+steps:
+  - step: 1
+    action: Scaffold and write complete TypeScript code files as specified in the plan.
+  - step: 2
+    action: Add matching tests to src/__tests__/<block_id>.test.ts.
+  - step: 3
+    action: Ensure no secrets are hardcoded and strict types are maintained.

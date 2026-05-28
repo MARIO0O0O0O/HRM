@@ -1,0 +1,19 @@
+# Recipe for Block Review
+recipe: review-block
+parameters:
+  block_id: ""
+  short_description: ""
+  input_files: []
+  expected_outputs: []
+  allowed_tools:
+    - view_file
+    - grep_search
+steps:
+  - step: 1
+    action: Review the exact code diff against hrm-standards.md.
+  - step: 2
+    action: Check for permissive licenses (MIT/Apache-2.0/BSD) in new dependencies.
+  - step: 3
+    action: Confirm Stripe checkout and secondary copyable payment display formats.
+  - step: 4
+    action: Output PASS or FAIL with explicit suggestions.

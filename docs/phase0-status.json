@@ -12,10 +12,10 @@
     {
       "id": "P06-B25ORCH-FLOW",
       "name": "Orchestration & Workflow",
-      "status": "pending",
+      "status": "completed",
       "description": "Write docs/orchestration.md and create recipes folder with plan, implement, review, test YAML files.",
-      "completed_at": null,
-      "notes": null
+      "completed_at": "2026-05-28T23:23:49Z",
+      "notes": "Dry-run execution for dummy block P00-B00DUMMY-TEST verified successfully."
     },
     {
       "id": "P06-B35ENV-SETUP",

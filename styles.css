@@ -1,16 +1,17 @@
 
 :root {
-  --bg: #0b1020;
-  --panel: #121a31;
-  --panel-2: #f7f9fc;
-  --text: #111827;
+  --bg: #05070a;
+  --panel: rgba(17, 25, 40, 0.75);
+  --panel-2: rgba(10, 15, 25, 0.6);
+  --text: #f3f4f6;
   --white: #ffffff;
-  --muted: #5b6475;
-  --line: #d9e2f0;
-  --brand: #1d4ed8;
-  --brand-dark: #163ea9;
-  --accent: #e7eefc;
-  --shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
+  --muted: #9ca3af;
+  --line: rgba(255, 255, 255, 0.1);
+  --brand: #3b82f6;
+  --brand-dark: #2563eb;
+  --accent: rgba(59, 130, 246, 0.1);
+  --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.125);
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -18,7 +19,11 @@ body {
   margin: 0;
   font-family: 'Inter', system-ui, sans-serif;
   color: var(--text);
-  background: #fff;
+  background-color: var(--bg);
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.15) 0, transparent 50%), 
+    radial-gradient(at 50% 0%, rgba(29, 78, 216, 0.1) 0, transparent 50%),
+    url("https://www.transparenttextures.com/patterns/carbon-fibre.png");
   line-height: 1.6;
 }
 a { color: inherit; text-decoration: none; }
@@ -27,9 +32,10 @@ a { color: inherit; text-decoration: none; }
   position: sticky;
   top: 0;
   z-index: 20;
-  background: rgba(255,255,255,0.92);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(217,226,240,0.8);
+  background: rgba(5, 7, 10, 0.8);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border-bottom: var(--glass-border);
 }
 .nav {
   display: flex;
@@ -40,11 +46,11 @@ a { color: inherit; text-decoration: none; }
 }
 .brand { font-weight: 800; font-size: 1.2rem; color: var(--brand); }
 nav { display: flex; flex-wrap: wrap; gap: 1rem; }
-nav a { color: #334155; font-weight: 500; transition: color 0.2s; }
+nav a { color: var(--muted); font-weight: 500; transition: color 0.2s; }
 nav a:hover { color: var(--brand); }
 .hero {
-  background: linear-gradient(135deg, #eff6ff 0%, #ffffff 55%, #eef2ff 100%);
   padding: 5rem 0 4rem;
+  background: transparent;
 }
 .hero-grid, .split, .pricing-grid, .booking-grid, .contact-grid {
   display: grid;
@@ -61,9 +67,9 @@ nav a:hover { color: var(--brand); }
   margin-bottom: 0.75rem;
 }
 h1, h2, h3 { line-height: 1.15; margin: 0 0 1rem; }
-h1 { font-size: clamp(2.4rem, 5vw, 4.2rem); max-width: 12ch; }
-h2 { font-size: clamp(1.9rem, 3vw, 2.8rem); }
-h3 { font-size: 1.25rem; }
+h1 { font-size: clamp(2.4rem, 5vw, 4.2rem); max-width: 12ch; color: #fff; }
+h2 { font-size: clamp(1.9rem, 3vw, 2.8rem); color: #fff; }
+h3 { font-size: 1.25rem; color: #fff; }
 .hero-copy, .supporting-copy { font-size: 1.08rem; color: var(--muted); max-width: 64ch; }
 .cta-row { display: flex; flex-wrap: wrap; gap: 0.9rem; margin: 1.5rem 0; }
 .btn {
@@ -76,16 +82,23 @@ h3 { font-size: 1.25rem; }
   border: 1px solid transparent;
   transition: 0.2s ease;
 }
-.btn:hover { transform: translateY(-1px); }
+.btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); }
 .btn-primary { background: var(--brand); color: var(--white); }
 .btn-primary:hover { background: var(--brand-dark); }
-.btn-secondary { background: var(--white); border-color: var(--line); }
+.btn-secondary { 
+  background: rgba(255, 255, 255, 0.05); 
+  border: var(--glass-border); 
+  color: #fff;
+}
 .btn-block { width: 100%; }
-.trust-list, .check-list { padding-left: 1.2rem; margin: 1rem 0 0; }
+.trust-list, .check-list { padding-left: 1.2rem; margin: 1rem 0 0; color: var(--muted); }
 .trust-list li, .check-list li { margin-bottom: 0.6rem; }
+
 .hero-card, .card, .info-panel, .price-card, .booking-form, .contact-card {
-  background: var(--white);
-  border: 1px solid var(--line);
+  background: var(--panel);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border: var(--glass-border);
   border-radius: 22px;
   padding: 1.4rem;
   box-shadow: var(--shadow);
@@ -93,11 +106,12 @@ h3 { font-size: 1.25rem; }
 .payment-box {
   margin-top: 1rem;
   background: var(--accent);
+  border: var(--glass-border);
   border-radius: 18px;
   padding: 1rem;
 }
 .section { padding: 4.5rem 0; }
-.alt { background: var(--panel-2); }
+.alt { background: var(--panel-2); border-top: var(--glass-border); border-bottom: var(--glass-border); }
 .cards {
   display: grid;
   gap: 1rem;
@@ -114,32 +128,42 @@ h3 { font-size: 1.25rem; }
 .chips span {
   padding: 0.7rem 1rem;
   border-radius: 999px;
-  background: #fff;
-  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.05);
+  border: var(--glass-border);
   font-weight: 600;
-}
-.price-card {
-  background: linear-gradient(180deg, #0f172a 0%, #172554 100%);
   color: #fff;
 }
-.price { font-size: 3rem; font-weight: 800; line-height: 1; margin-bottom: 0.75rem; }
+.price-card {
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.9) 100%);
+  border: var(--glass-border);
+}
+.price { font-size: 3rem; font-weight: 800; line-height: 1; margin-bottom: 0.75rem; color: #fff; }
 .booking-form label {
   display: block;
   font-weight: 600;
   margin-bottom: 0.85rem;
+  color: var(--muted);
 }
 .booking-form input, .booking-form textarea {
   width: 100%;
   margin-top: 0.35rem;
   padding: 0.85rem 0.95rem;
   border-radius: 14px;
-  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.03);
+  border: var(--glass-border);
+  color: #fff;
   font: inherit;
+}
+.booking-form input:focus, .booking-form textarea:focus {
+  outline: none;
+  border-color: var(--brand);
+  background: rgba(255, 255, 255, 0.05);
 }
 .microcopy { font-size: 0.92rem; color: var(--muted); }
 .site-footer {
   padding: 1.25rem 0 2rem;
-  border-top: 1px solid var(--line);
+  border-top: var(--glass-border);
+  background: rgba(0, 0, 0, 0.3);
 }
 .footer-row {
   display: flex;

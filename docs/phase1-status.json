@@ -1,0 +1,37 @@
+{
+  "phase": "Phase 1 — Foundation Build",
+  "blocks": [
+    {
+      "id": "P16-B14APP-SCAFFOLD",
+      "name": "App Route Structure & Shared Layout",
+      "status": "completed",
+      "description": "Establish core Next.js routes, shared Header and Footer layout shells, dynamic spokes registry pre-rendering.",
+      "completed_at": "2026-05-29T00:04:13Z",
+      "notes": "Scaffolded all 7 routes, header, footer, dynamic spokes. Build verified and typechecked perfectly."
+    },
+    {
+      "id": "P16-B24AUTH-ACCOUNT",
+      "name": "Supabase Auth & Client Accounts",
+      "status": "pending",
+      "description": "Supabase email/password auth, protected client portal and admin routes, profiles table with RLS.",
+      "completed_at": null,
+      "notes": null
+    },
+    {
+      "id": "P16-B34DATA-MODEL",
+      "name": "Supabase Schema & Data Models",
+      "status": "pending",
+      "description": "Core schema migrations for blog_posts, appointments, and ai_interactions with strict RLS policies.",
+      "completed_at": null,
+      "notes": null
+    },
+    {
+      "id": "P16-B44NAV-IA",
+      "name": "Information Architecture & Navigation Components",
+      "status": "pending",
+      "description": "Information architecture mapping, persistent floating Book a Call navigation CTA, breadcrumb components.",
+      "completed_at": null,
+      "notes": null
+    }
+  ]
+}

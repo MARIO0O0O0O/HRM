@@ -1,5 +1,8 @@
 'use client'
 
+// Force dynamic rendering — page uses Supabase and runtime search params
+export const dynamic = 'force-dynamic'
+
 import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'

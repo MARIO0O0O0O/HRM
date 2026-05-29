@@ -1,17 +1,20 @@
 import { NextResponse } from 'next/server'
-import { stripe } from '@/lib/stripe/server'
+import { getStripe } from '@/lib/stripe/server'
 
 export async function POST(req: Request) {
   try {
-    const { priceId } = await req.json()
-
-    if (process.env.STRIPE_SECRET_KEY === 'REPLACE_WITH_SECRET_KEY' || !process.env.STRIPE_SECRET_KEY) {
+    // Return a mock response if Stripe is not configured (preview / staging)
+    const key = process.env.STRIPE_SECRET_KEY
+    if (!key || key === 'REPLACE_WITH_SECRET_KEY') {
       return NextResponse.json({
         url: 'https://checkout.stripe.com/preview/mock_checkout_session',
-        mock: true
+        mock: true,
       })
     }
 
+    const { priceId } = await req.json()
+
+    const stripe = getStripe()
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       line_items: [

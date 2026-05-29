@@ -1,5 +1,8 @@
 'use client'
 
+// Force dynamic rendering — page requires Supabase auth at request time
+export const dynamic = 'force-dynamic'
+
 import { useState, useEffect } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import PaymentOptions from '@/components/payments/PaymentOptions'

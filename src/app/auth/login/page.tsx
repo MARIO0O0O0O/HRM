@@ -1,5 +1,8 @@
 'use client'
 
+// Force dynamic rendering — this page calls Supabase at runtime
+export const dynamic = 'force-dynamic'
+
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
@@ -11,17 +14,15 @@ export default function LoginPage() {
   const [errorMsg, setErrorMsg] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
   const router = useRouter()
-  const supabase = createClient()
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
     setErrorMsg(null)
 
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    })
+    // Instantiate inside handler — safe from prerender
+    const supabase = createClient()
+    const { error } = await supabase.auth.signInWithPassword({ email, password })
 
     if (error) {
       setErrorMsg(error.message)
@@ -36,6 +37,7 @@ export default function LoginPage() {
     setLoading(true)
     setErrorMsg(null)
 
+    const supabase = createClient()
     const { error } = await supabase.auth.signUp({
       email,
       password,

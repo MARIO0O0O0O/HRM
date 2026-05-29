@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { spokesRegistry } from '@/data/spokes'
 import { Button } from '@/components/ui/button'
+import Breadcrumb from '@/components/layout/Breadcrumb'
 
 export default function ServicesPage() {
   const services = Object.values(spokesRegistry)
@@ -8,6 +9,7 @@ export default function ServicesPage() {
   return (
     <div className="flex-grow bg-[#0a0a0a] text-zinc-100 py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
+        <Breadcrumb className="mb-8" />
         <div className="text-center mb-12">
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
             Our HR Solutions

@@ -12,26 +12,26 @@
     {
       "id": "P16-B24AUTH-ACCOUNT",
       "name": "Supabase Auth & Client Accounts",
-      "status": "pending",
+      "status": "completed",
       "description": "Supabase email/password auth, protected client portal and admin routes, profiles table with RLS.",
-      "completed_at": null,
-      "notes": null
+      "completed_at": "2026-05-29T00:10:45Z",
+      "notes": "Fully implemented protected client portal routes, login page with custom styles, middleware protection, database types, and comprehensive tests."
     },
     {
       "id": "P16-B34DATA-MODEL",
       "name": "Supabase Schema & Data Models",
-      "status": "pending",
+      "status": "completed",
       "description": "Core schema migrations for blog_posts, appointments, and ai_interactions with strict RLS policies.",
-      "completed_at": null,
-      "notes": null
+      "completed_at": "2026-05-29T00:10:45Z",
+      "notes": "Wrote 003_profiles.sql and 004_schema.sql defining strict RLS policies. Generated explicit TypeScript type bindings in database.ts."
     },
     {
       "id": "P16-B44NAV-IA",
       "name": "Information Architecture & Navigation Components",
-      "status": "pending",
+      "status": "completed",
       "description": "Information architecture mapping, persistent floating Book a Call navigation CTA, breadcrumb components.",
-      "completed_at": null,
-      "notes": null
+      "completed_at": "2026-05-29T00:10:45Z",
+      "notes": "Mapped Click-Flow in docs/ia.md. Created reusable dynamic Breadcrumb component and persistent floating booking CTA button. Verified with 100% test coverage."
     }
   ]
 }

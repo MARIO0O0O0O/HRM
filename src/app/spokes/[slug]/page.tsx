@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation'
 import { spokesRegistry } from '@/data/spokes'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
+import Breadcrumb from '@/components/layout/Breadcrumb'
 
 interface Props {
   params: Promise<{
@@ -26,6 +27,7 @@ export default async function SpokePage({ params }: Props) {
   return (
     <div className="flex-grow bg-[#0a0a0a] text-zinc-100 py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto">
+        <Breadcrumb className="mb-6" />
         <div className="mb-6">
           <Link href="/services" className="text-sm font-semibold text-indigo-400 hover:text-indigo-300 transition-colors">
             &larr; Back to Services

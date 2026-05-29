@@ -13,7 +13,8 @@ import {
   Sparkles,
   CheckCircle2,
   Layers,
-  MapPin
+  MapPin,
+  Calculator
 } from 'lucide-react'
 
 export default function Home() {
@@ -271,6 +272,13 @@ export default function Home() {
               <p className="text-sm text-zinc-400 leading-relaxed relative">
                 This is practical, owner-friendly HR support for businesses that need real compliance support today.
               </p>
+              <div className="pt-2 relative">
+                <Link href="/paga-calculator">
+                  <Button className="w-full bg-gradient-to-r from-rose-600 to-indigo-600 hover:from-rose-500 hover:to-indigo-500 text-zinc-50 font-bold tracking-wide py-2.5 rounded-lg flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-indigo-600/10">
+                    <Calculator className="h-4.5 w-4.5" /> Run Free PAGA Risk Check <ArrowRight className="h-4 w-4" />
+                  </Button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>

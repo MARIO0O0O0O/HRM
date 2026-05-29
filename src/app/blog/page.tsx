@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import Breadcrumb from '@/components/layout/Breadcrumb'
 import { Calendar, Clock, BookOpen, ChevronRight, Download } from 'lucide-react'
@@ -86,9 +87,9 @@ export default function BlogPage() {
                 </p>
 
                 <div className="pt-2">
-                  <span className="inline-flex items-center gap-1.5 text-xs font-bold text-indigo-400 hover:text-indigo-300 transition-colors cursor-pointer group-hover:underline">
+                  <Link href={`/blog/${post.slug}`} className="inline-flex items-center gap-1.5 text-xs font-bold text-indigo-400 hover:text-indigo-300 transition-colors cursor-pointer group-hover:underline">
                     Read Compliance Brief <ChevronRight className="h-4 w-4" />
-                  </span>
+                  </Link>
                 </div>
               </article>
             ))}

@@ -1,14 +1,40 @@
-import { describe, it, expect, vi } from 'vitest'
+import { describe, it, expect, vi, afterEach } from 'vitest'
 import { render, screen, fireEvent, cleanup } from '@testing-library/react'
 import React from 'react'
 import BookPage from '../app/book/page'
 
 // Mock next/navigation
+const mockGet = vi.fn().mockReturnValue(null)
 vi.mock('next/navigation', () => ({
   usePathname: () => '/book',
+  useSearchParams: () => ({
+    get: mockGet,
+  }),
+}))
+
+// Mock Supabase Client
+const mockGetUser = vi.fn().mockResolvedValue({ data: { user: null } })
+vi.mock('@/lib/supabase/client', () => ({
+  createClient: () => ({
+    auth: {
+      getUser: mockGetUser,
+    },
+    from: () => ({
+      select: () => ({
+        eq: () => ({
+          single: () => Promise.resolve({ data: null }),
+        }),
+      }),
+    }),
+  }),
 }))
 
 describe('Booking Page Component', () => {
+  afterEach(() => {
+    cleanup()
+    vi.clearAllMocks()
+  })
+
   it('renders call values and processes interactive form state changes', () => {
     render(<BookPage />)
 
@@ -30,7 +56,5 @@ describe('Booking Page Component', () => {
     expect(nameInput.value).toBe('Test User')
     expect(businessInput.value).toBe('Test Business')
     expect(emailInput.value).toBe('test@business.com')
-
-    cleanup()
   })
 })

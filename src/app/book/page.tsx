@@ -1,22 +1,90 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, Suspense } from 'react'
+import { useSearchParams } from 'next/navigation'
+import { createClient } from '@/lib/supabase/client'
 import Breadcrumb from '@/components/layout/Breadcrumb'
 import { Button } from '@/components/ui/button'
 import { CheckCircle2, MessageSquare, Mail, User, Briefcase, PhoneCall } from 'lucide-react'
 
-export default function BookPage() {
+function BookPageContent() {
   const [name, setName] = useState('')
   const [businessName, setBusinessName] = useState('')
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
   const [message, setMessage] = useState('')
   const [submitted, setSubmitted] = useState(false)
+  const [clientId, setClientId] = useState<string | null>(null)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const searchParams = useSearchParams()
+
+  // Fetch logged-in user profile details to prefill the form
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const supabase = createClient()
+        const { data: { user } } = await supabase.auth.getUser()
+        if (user) {
+          setClientId(user.id)
+          setEmail(user.email || '')
+          
+          // Retrieve company details from profiles
+          const { data: profile } = await supabase
+            .from('profiles')
+            .select('company_name, contact_email')
+            .eq('id', user.id)
+            .single()
+          
+          if (profile) {
+            if (profile.company_name) setBusinessName(profile.company_name)
+            if (profile.contact_email) setEmail(profile.contact_email)
+          }
+        }
+      } catch (err) {
+        console.error('Failed to retrieve user session details:', err)
+      }
+    }
+    fetchUser()
+  }, [])
+
+  // Prefill messages based on PAGA calculator parameters
+  useEffect(() => {
+    if (!searchParams) return
+    const exposure = searchParams.get('exposure')
+    const hc = searchParams.get('headcount')
+    if (exposure || hc) {
+      let msg = 'Hi Mario, '
+      if (hc) msg += `I have a team of ${hc} shift/hourly employees in California. `
+      if (exposure) {
+        const formatted = new Intl.NumberFormat('en-US', {
+          style: 'currency',
+          currency: 'USD',
+          maximumFractionDigits: 0
+        }).format(parseFloat(exposure))
+        msg += `The BizHR PAGA Exposure Calculator estimated my litigation exposure risk at ${formatted}. `
+      }
+      msg += 'I would like to request a consultation call to review my policies and mitigate this risk.'
+      setMessage(msg)
+    }
+  }, [searchParams])
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     
-    // Prefill consultation email template
+    // 1. Attempt to insert appointment record in Supabase
+    try {
+      const supabase = createClient()
+      await supabase.from('appointments').insert({
+        client_id: clientId,
+        notes: `Business: ${businessName}\nPhone: ${phone}\nMessage: ${message}`,
+        scheduled_at: new Date().toISOString(),
+        status: 'pending'
+      })
+    } catch (err) {
+      console.error('Database insert failed, using fallback email', err)
+    }
+
+    // 2. Prefill consultation email template as robust backup
     const subject = encodeURIComponent('BizHR Consultation Request — ' + businessName)
     const body = encodeURIComponent(
       `Hello Mario,\n\nI would like to request a 30-minute introductory compliance consultation.\n\nName: ${name}\nBusiness: ${businessName}\nPhone: ${phone}\nEmail: ${email}\n\nCompliance Focus / Question:\n${message}\n\nThank you!`
@@ -59,7 +127,7 @@ export default function BookPage() {
             <div className="bg-[#111111]/40 border border-white/5 rounded-2xl p-6 sm:p-8 relative">
               <h2 className="text-xl font-bold text-zinc-100">How the Diagnostic Call Works</h2>
               <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed mt-3">
-                Our initial sessions are geared toward business owners who need immediate answers regarding employee handbooks, meal/rest breaks, frontline manager actions, or SB 553 violence prevention plan requirements.
+                Our initial sessions are geared toward business owners who need immediate answers regarding employee handbooks, meal/rest breaks, frontline manager actions, or SB 553 workplace violence prevention requirements.
               </p>
               <div className="mt-6 flex flex-col gap-3">
                 {benefits.map((benefit, index) => (
@@ -207,5 +275,17 @@ export default function BookPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function BookPage() {
+  return (
+    <Suspense fallback={
+      <div className="flex-grow flex items-center justify-center bg-[#0a0a0a] text-zinc-400 py-16">
+        Loading scheduler...
+      </div>
+    }>
+      <BookPageContent />
+    </Suspense>
   )
 }

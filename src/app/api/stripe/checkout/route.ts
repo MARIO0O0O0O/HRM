@@ -1,10 +1,12 @@
 import { NextResponse } from 'next/server'
-import { getStripe } from '@/lib/stripe/server'
+
+// Route config — always dynamic, never statically prerendered
+export const dynamic = 'force-dynamic'
 
 export async function POST(req: Request) {
   try {
-    // Return a mock response if Stripe is not configured (preview / staging)
     const key = process.env.STRIPE_SECRET_KEY
+    // Return mock if Stripe not configured
     if (!key || key === 'REPLACE_WITH_SECRET_KEY') {
       return NextResponse.json({
         url: 'https://checkout.stripe.com/preview/mock_checkout_session',
@@ -14,15 +16,13 @@ export async function POST(req: Request) {
 
     const { priceId } = await req.json()
 
-    const stripe = getStripe()
+    // Dynamic import — Stripe never loaded at build time
+    const { getStripe } = await import('@/lib/stripe/server')
+    const stripe = await getStripe()
+
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
-      line_items: [
-        {
-          price: priceId,
-          quantity: 1,
-        },
-      ],
+      line_items: [{ price: priceId, quantity: 1 }],
       mode: 'subscription',
       success_url: `${req.headers.get('origin')}/portal?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${req.headers.get('origin')}/pricing`,

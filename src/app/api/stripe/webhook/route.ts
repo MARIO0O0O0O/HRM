@@ -22,10 +22,10 @@
 import { NextResponse } from 'next/server'
 import type { StripeWebhookEvent } from '@/lib/stripe/types'
 
-// Lazy import — only loaded at request time, never at build time
+// Dynamic import — Stripe only loaded at request time, never at build time
 async function getStripeAndSecret() {
   const { getStripe } = await import('@/lib/stripe/server')
-  const stripe = getStripe()
+  const stripe = await getStripe()
   const secret = process.env.STRIPE_WEBHOOK_SECRET
   if (!secret) throw new Error('STRIPE_WEBHOOK_SECRET is not configured')
   return { stripe, secret }

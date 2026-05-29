@@ -49,14 +49,16 @@ export default function Header() {
         {/* Mobile Navigation (Sheet-based) */}
         <div className="flex md:hidden items-center">
           <Sheet>
-            <SheetTrigger asChild>
-              <button
-                className="p-2 -mr-2 text-zinc-400 hover:text-zinc-100 transition-colors focus:outline-none min-h-[44px] min-w-[44px] flex items-center justify-center cursor-pointer"
-                aria-label="Toggle Menu"
-              >
-                <Menu className="h-6 w-6" />
-              </button>
-            </SheetTrigger>
+            <SheetTrigger
+              render={
+                <button
+                  className="p-2 -mr-2 text-zinc-400 hover:text-zinc-100 transition-colors focus:outline-none min-h-[44px] min-w-[44px] flex items-center justify-center cursor-pointer"
+                  aria-label="Toggle Menu"
+                >
+                  <Menu className="h-6 w-6" />
+                </button>
+              }
+            />
             <SheetContent side="right" className="bg-[#0a0a0a] border-l border-white/10 text-zinc-100 p-6 flex flex-col justify-between">
               <div>
                 <div className="mb-8">

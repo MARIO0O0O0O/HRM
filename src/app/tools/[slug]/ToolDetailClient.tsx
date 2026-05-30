@@ -4,6 +4,8 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { CheckCircle2, ChevronDown, ChevronUp, ArrowRight, ArrowLeft } from 'lucide-react'
 import Breadcrumb from '@/components/layout/Breadcrumb'
+import ContributionBanner from '@/components/tools/ContributionBanner'
+import HighTicketUpsell from '@/components/tools/HighTicketUpsell'
 
 interface ToolItem {
   icon: string
@@ -146,6 +148,14 @@ export default function ToolDetailClient({ tool }: { tool: Tool }) {
         </div>
       </section>
 
+      {/* Contribution Banner */}
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <ContributionBanner
+          toolTitle={tool.title}
+          suggestedPrice={tool.price}
+        />
+      </div>
+
       {/* What's Included */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
@@ -211,6 +221,11 @@ export default function ToolDetailClient({ tool }: { tool: Tool }) {
           </div>
         </div>
       </section>
+
+      {/* High Ticket Upsell */}
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
+        <HighTicketUpsell />
+      </div>
 
       {/* Bottom CTA */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 border-t border-white/5">

@@ -23,41 +23,49 @@ export default function Home() {
       title: 'HR Risk Reviews',
       description: 'Focused reviews of wage-and-hour practices, onboarding, employee files, handbook language, and frontline manager habits.',
       icon: ShieldCheck,
+      href: '/spokes/compliance-audit',
     },
     {
       title: 'Handbooks and Policies',
       description: 'Handbook updates, policy cleanup, notices, forms, and practical documentation built for California small-business reality.',
       icon: FileText,
+      href: '/spokes/handbook',
     },
     {
       title: 'Manager Support',
       description: 'Help with employee issues, write-ups, investigations, terminations, onboarding process design, and day-to-day people problems.',
       icon: Users,
+      href: '/spokes/manager-support',
     },
     {
       title: 'Harassment Prevention',
       description: 'Compliance-focused harassment prevention training and policy implementation for California employers and their teams.',
       icon: GraduationCap,
+      href: '/spokes/harassment-prevention',
     },
     {
       title: 'Workplace Violence Prevention',
       description: 'SB 553 compliant workplace violence prevention plans, hazard assessments, and incident response training.',
       icon: Scale,
+      href: '/spokes/workplace-violence',
     },
     {
       title: 'Wage-and-Hour Cleanup',
       description: 'Break, overtime, paystub, scheduling, and classification process review aimed at reducing preventable exposure.',
       icon: DollarSign,
+      href: '/spokes/labor-law',
     },
     {
       title: 'Onboarding Systems',
       description: 'Offer letters, checklists, orientation flow, new-hire packets, and role clarity for growing teams.',
       icon: UserCheck,
+      href: '/spokes/onboarding',
     },
     {
       title: 'Ongoing HR Support',
       description: 'Fractional, project-based, or on-call support for employers who need HR help without hiring full-time HR staff.',
       icon: Layers,
+      href: '/spokes/hr-support',
     },
   ]
 
@@ -190,9 +198,10 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {services.map((item, index) => (
-              <div
+              <Link
                 key={index}
-                className="bg-[#111111] border border-white/5 hover:border-indigo-500/20 rounded-2xl p-6 transition-all duration-300 hover:scale-[1.02] flex flex-col justify-between group"
+                href={item.href}
+                className="bg-[#111111] border border-white/5 hover:border-indigo-500/30 rounded-2xl p-6 transition-all duration-300 hover:scale-[1.02] flex flex-col justify-between group"
               >
                 <div>
                   <div className="h-10 w-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 group-hover:bg-indigo-500/20 transition-all shrink-0">
@@ -205,7 +214,10 @@ export default function Home() {
                     {item.description}
                   </p>
                 </div>
-              </div>
+                <div className="mt-5 flex items-center gap-1.5 text-xs font-semibold text-indigo-400 group-hover:text-indigo-300 transition-colors">
+                  Learn More <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-0.5 transition-transform" />
+                </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -377,6 +389,18 @@ export default function Home() {
               <p className="text-sm text-zinc-400 leading-relaxed">
                 BizHR was founded by Mario Espindola — MPA, 10-year California public sector HR professional, and AI automation specialist. Mario grew up in a family of entrepreneurs and watched labor compliance challenges limit their growth. BizHR exists to give small businesses the HR expertise and AI tools they deserve, at prices that actually work.
               </p>
+              <div className="flex flex-col sm:flex-row gap-3 mt-2">
+                <Link href="/about">
+                  <Button className="bg-indigo-600 hover:bg-indigo-500 text-zinc-50 font-semibold tracking-wide px-6 py-3">
+                    Meet Mario <ArrowRight className="h-4 w-4 ml-1.5" />
+                  </Button>
+                </Link>
+                <Link href="/book">
+                  <Button variant="outline" className="border-white/10 hover:border-white/20 bg-transparent text-zinc-300 hover:text-zinc-100 font-semibold px-6 py-3">
+                    Book a Consultation
+                  </Button>
+                </Link>
+              </div>
             </div>
             
             <div className="lg:col-span-5 bg-[#111111] border border-white/10 rounded-2xl p-6 sm:p-8 flex flex-col gap-6 text-left lg:order-1">

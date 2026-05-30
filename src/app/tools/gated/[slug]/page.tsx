@@ -1,4 +1,3 @@
-import { spokeRegistry } from '@/data/tools'
 import GatedSpokePlaceholder from '@/components/tools/GatedSpokePlaceholder'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'

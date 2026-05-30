@@ -1,4 +1,4 @@
-import type { LucideIcon } from 'lucide-react'
+// src/config/spoke-registry.ts — single source of truth for all mini-apps and service spokes.
 
 export type PaymentProvider = 'honor' | 'stripe' | 'square'
 export type SpokeStatus = 'live' | 'gated' | 'hidden'

@@ -27,6 +27,7 @@ export default function PagaCalculatorPage() {
   const [totalExposure, setTotalExposure] = useState(0)
 
   // Recalculate exposure dynamically whenever parameters change
+  // PAGA math reflects AB 2288 + SB 92 reform (effective June 2024)
   useEffect(() => {
     // Determine total pay periods in a year
     let annualPayPeriods = 26
@@ -34,33 +35,39 @@ export default function PagaCalculatorPage() {
     else if (payFrequency === 'semi-monthly') annualPayPeriods = 24
     else if (payFrequency === 'monthly') annualPayPeriods = 12
 
-    // 1. PAGA Penalty Math:
-    // First pay period violation = $100 per aggrieved employee.
-    // Subsequent pay period violations = $200 per aggrieved employee per pay period.
-    // We calculate violation pay periods based on the maximum frequency of any violation type
+    // ── AB 2288 PAGA Penalty Math (post-June 2024 reform) ──────────────────
+    // Aggrieved employees (personally experienced violation):
+    //   $100/pay period non-willful · $200/pay period repeat/willful
+    //   Cap: $9,000 per aggrieved employee (most violations)
+    // Non-aggrieved employees: $100 total (not per employee) for most violations
+    // Distribution: 35% employees / 65% LWDA (was 25%/75% pre-reform)
+    // Standing: only employees who personally experienced violations can bring claims
+
     const maxFreq = Math.max(breakViolationFreq, paystubViolationFreq, overtimeViolationFreq)
-    const violationsPayPeriods = Math.ceil(annualPayPeriods * (maxFreq / 10))
+    const violationPayPeriods = Math.ceil(annualPayPeriods * (maxFreq / 10))
 
     let pagaPenalties = 0
-    if (violationsPayPeriods > 0) {
-      // First pay period: headcount * $100
-      const initialViolation = headcount * 100
-      // Subsequent pay periods: headcount * $200 * (violationsPayPeriods - 1)
-      const subsequentViolations = headcount * 200 * Math.max(0, violationsPayPeriods - 1)
-      pagaPenalties = initialViolation + subsequentViolations
+    if (violationPayPeriods > 0) {
+      // Per-aggrieved-employee penalty (uncapped pre-reform was unlimited; AB 2288 caps at $9k/employee)
+      const penaltyPerEmployee =
+        100 + // first pay period
+        200 * Math.max(0, violationPayPeriods - 1) // subsequent pay periods at repeat rate
+      const uncappedPenalty = headcount * penaltyPerEmployee
+      // Apply $9,000 per aggrieved employee cap (AB 2288 § 2699(f)(2))
+      const perEmployeeCap = headcount * 9000
+      pagaPenalties = Math.min(uncappedPenalty, perEmployeeCap)
     }
 
-    // 2. Wage & Break Premium Claim Math (assuming average wage of $20/hr):
-    // For meal/rest break violations, employee receives 1 hour of pay per day.
-    // Assuming 5 days a week = 250 working days a year.
-    // Estimated break premium exposure per year per employee
+    // ── Wage & Break Premium Claims ────────────────────────────────────────
+    // Break premium: 1 hour of pay per violation (Labor Code § 226.7)
+    // Assuming CA min wage $17/hr (2025); 250 working days/year
     const annualWorkingDays = 250
     const breakViolationsPerYear = annualWorkingDays * (breakViolationFreq / 10)
-    const breakPremiumPenalties = headcount * breakViolationsPerYear * 20 // $20/hr premium
+    const breakPremiumPenalties = headcount * breakViolationsPerYear * 17 // CA min wage 2025
 
-    // Overtime premium claims (assuming average 1 hour of unpaid overtime per week for affected periods)
+    // Overtime premium claims (1 hr unpaid OT per affected pay period)
     const overtimeViolationsPerYear = annualPayPeriods * (overtimeViolationFreq / 10)
-    const overtimePenalties = headcount * overtimeViolationsPerYear * 30 // 1.5x time = $30/hr
+    const overtimePenalties = headcount * overtimeViolationsPerYear * 25.50 // 1.5x $17/hr
 
     const wageClaims = breakPremiumPenalties + overtimePenalties
 
@@ -98,7 +105,11 @@ export default function PagaCalculatorPage() {
             California PAGA Exposure Calculator
           </h1>
           <p className="text-sm sm:text-base text-zinc-400 mt-4 max-w-xl mx-auto leading-relaxed">
-            The Private Attorneys General Act (PAGA) allows employees to sue for labor code violations with compounding penalties. Calculate your business&apos;s annual exposure risk.
+            The Private Attorneys General Act (PAGA) allows employees to sue for labor code violations with compounding penalties. Calculate your estimated exposure under the{' '}
+            <span className="text-amber-400 font-semibold">AB 2288 reformed penalty structure</span>{' '}(effective June 2024).
+          </p>
+          <p className="text-xs text-zinc-600 mt-2">
+            Updated for AB 2288 + SB 92 · $9,000/employee cap · 35% employee / 65% LWDA split · CA min wage $17/hr (2025)
           </p>
         </div>
 
@@ -263,13 +274,20 @@ export default function PagaCalculatorPage() {
             {/* Advisory / PAGA Notice box */}
             <div className="bg-[#111111]/40 border border-white/5 rounded-2xl p-6 flex flex-col gap-4">
               <h3 className="text-base font-bold text-zinc-100 flex items-center gap-1.5">
-                <AlertTriangle className="h-5 w-5 text-rose-500 shrink-0" /> California PAGA Warning
+                <AlertTriangle className="h-5 w-5 text-rose-500 shrink-0" /> AB 2288 Reform (June 2024)
               </h3>
-              <p className="text-xs text-zinc-500 leading-relaxed">
-                PAGA awards **75% of recovered penalties directly to the state** and **25% to aggrieved employees**, plus attorney fees. A single break oversight can multiply exponentially across your workforce over the 1-year statute of limitations.
-              </p>
-              <p className="text-xs text-zinc-500 leading-relaxed">
-                The consultation fee is fully credited back if you choose to implement BizHR audit mitigations. Securing compliance saves thousands.
+              <ul className="flex flex-col gap-1.5 text-xs text-zinc-500">
+                <li>• <strong className="text-zinc-400">Distribution:</strong> 35% to aggrieved employees / 65% to LWDA (was 25%/75%)</li>
+                <li>• <strong className="text-zinc-400">Cap:</strong> $9,000 per aggrieved employee (most violations)</li>
+                <li>• <strong className="text-zinc-400">Standing:</strong> Only employees who personally experienced violations may bring claims</li>
+                <li>• <strong className="text-zinc-400">Cure provisions:</strong> Expanded early cure rights — act fast to reduce exposure</li>
+                <li>• <strong className="text-zinc-400">Attorney fees:</strong> Still recoverable by plaintiff — settlement pressure remains high</li>
+              </ul>
+              <p className="text-xs text-zinc-600 leading-relaxed border-t border-white/5 pt-3">
+                PAGA penalty calculations are estimates based on disclosed inputs and current statutory rates.
+                Actual exposure depends on violation frequency, cure actions taken, arbitration agreements,
+                and judicial interpretation. Consult a PAGA defense attorney before making settlement or
+                cure decisions. CalHR AI accepts no liability for decisions made based on calculator output.
               </p>
             </div>
           </div>

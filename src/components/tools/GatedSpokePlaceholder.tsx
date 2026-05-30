@@ -1,9 +1,17 @@
 import Link from 'next/link'
 import { Bell, ArrowRight, Clock } from 'lucide-react'
-import type { SpokeConfig } from '@/config/spoke-registry'
+
+interface GatedSpokeProps {
+  slug: string
+  title: string
+  shortTitle: string
+  lawRef: string
+  description: string
+  liveDate?: string
+}
 
 interface GatedSpokePlaceholderProps {
-  spoke: SpokeConfig
+  spoke: GatedSpokeProps
 }
 
 export default function GatedSpokePlaceholder({ spoke }: GatedSpokePlaceholderProps) {

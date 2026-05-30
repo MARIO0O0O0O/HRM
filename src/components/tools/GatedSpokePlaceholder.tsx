@@ -1,4 +1,3 @@
-import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Bell, ArrowRight, Clock } from 'lucide-react'
 import type { SpokeConfig } from '@/config/spoke-registry'

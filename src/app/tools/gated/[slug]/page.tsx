@@ -1,6 +1,5 @@
 import GatedSpokePlaceholder from '@/components/tools/GatedSpokePlaceholder'
 import { notFound } from 'next/navigation'
-import type { Metadata } from 'next'
 
 // Gated slugs that get placeholder pages (SEO equity while building)
 const GATED_SLUGS = ['paga-defense', 'separation-checklist', 'hiring-compliance']
@@ -13,7 +12,7 @@ export async function generateStaticParams() {
   return GATED_SLUGS.map((slug) => ({ slug }))
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: Props) {
   const { slug } = await params
   // Build spoke config inline for gated spokes not in toolsRegistry
   const gatedConfigs: Record<string, { title: string; description: string; lawRef: string }> = {

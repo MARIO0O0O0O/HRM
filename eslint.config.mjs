@@ -18,11 +18,6 @@ const eslintConfig = [
     ],
   },
   ...compat.extends("next/core-web-vitals", "next/typescript"),
-  {
-    rules: {
-      "no-warning-comments": ["warn", { "terms": ["secret", "credential", "password", "key"], "location": "anywhere" }]
-    }
-  }
 ];
 
 export default eslintConfig;

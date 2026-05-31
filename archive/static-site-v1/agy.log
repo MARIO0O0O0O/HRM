@@ -1,0 +1,147 @@
+I0531 21:04:51.776590 24584 server.go:1306] Starting language server process with pid 24584
+I0531 21:04:51.777839 24584 server.go:476] Language server will attempt to listen on host localhost
+I0531 21:04:51.778465 24584 server.go:490] Language server listening on random port at 37539 for HTTPS (gRPC)
+I0531 21:04:51.778638 24584 server.go:497] Language server listening on random port at 35861 for HTTP
+W0531 21:04:51.979899 24584 launchmanager.go:69] Entering local chrome mode! This is WRONG unless you are running tests or in eval mode on Linux.
+E0531 21:04:51.981783 24584 log.go:398] Failed to poll ListExperiments: error getting token source: You are not logged into Antigravity.
+W0531 21:04:51.982250 24584 log_context.go:117] Cache(loadCodeAssistResponse): Singleflight refresh failed: error getting token source: You are not logged into Antigravity.
+W0531 21:04:51.982353 24584 log_context.go:117] Cache(availableModels): Singleflight refresh failed: failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+E0531 21:04:51.982405 24584 log.go:398] Failed to poll FetchAvailableModels: failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+I0531 21:04:51.982979 24584 server.go:2274] Auth succeeded, refreshing features and managers
+E0531 21:04:51.983069 24584 log.go:398] Failed to poll ListExperiments: error getting token source: You are not logged into Antigravity.
+W0531 21:04:51.983310 24584 log_context.go:117] Cache(loadCodeAssistResponse): Singleflight refresh failed: error getting token source: You are not logged into Antigravity.
+W0531 21:04:51.983352 24584 log_context.go:117] Cache(availableModels): Singleflight refresh failed: failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+E0531 21:04:51.983562 24584 log.go:398] Failed to poll FetchAvailableModels: failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+I0531 21:04:51.983859 24584 server.go:2280] State refresh took 0ms
+I0531 21:04:51.991152 24584 server.go:1938] initialized server successfully in 214.231979ms
+W0531 21:04:51.991884 24584 log_context.go:117] Cache(loadCodeAssistResponse): Singleflight refresh failed: error getting token source: You are not logged into Antigravity.
+W0531 21:04:51.991937 24584 log_context.go:117] Cache(userInfo): Singleflight refresh failed: failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+E0531 21:04:51.991965 24584 server.go:609] Failed to get OAuth token: error getting token source from auth provider: You are not logged into Antigravity.
+W0531 21:04:51.991997 24584 client.go:81] failed to set auth token
+I0531 21:04:51.991999 24584 auto_updater.go:207] Last check was less than 15 minutes ago, skipping update
+I0531 21:04:51.992040 24584 common.go:103] Launching CLI mode
+I0531 21:04:51.993386 24584 project.go:157] project: no project found from /storage/emulated/0/Documents/HRM, creating new project
+E0531 21:04:51.994201 24584 common.go:154] project discovery failed, continuing without project: project: symlink /storage/emulated/0/Documents/HRM/.antigravitycli/f35ff069-58fa-4d0f-8fa2-46825d37faab.json → /data/data/com.termux/files/home/.gemini/config/projects/f35ff069-58fa-4d0f-8fa2-46825d37faab.json: symlink /data/data/com.termux/files/home/.gemini/config/projects/f35ff069-58fa-4d0f-8fa2-46825d37faab.json /storage/emulated/0/Documents/HRM/.antigravitycli/f35ff069-58fa-4d0f-8fa2-46825d37faab.json: permission denied
+E0531 21:04:51.994288 24584 common.go:194] Failed to resolve GeminiDir ".gemini": .gemini must be an absolute path: path is not absolute, falling back to default
+I0531 21:04:51.994331 24584 common.go:203] CLI app data directory: /data/data/com.termux/files/home/.gemini/antigravity-cli
+I0531 21:04:51.994396 24584 server.go:207] Creating CLI server backend: product=antigravity workspaceDirs=[] appDataDir=/data/data/com.termux/files/home/.gemini/antigravity-cli cascadeManager=true codeAssist=true
+I0531 21:04:51.994608 24584 manager.go:250] Initializing CLI store manager for workspace /storage/emulated/0/Documents/HRM
+I0531 21:04:51.995095 24584 cli_setting_manager.go:626] Skipping telemetry propagation because user is not logged in
+I0531 21:04:51.995132 24584 cli_setting_manager.go:66] CLI settings initialized: permissions=<nil>, toolPermission=always-proceed
+I0531 21:04:51.995342 24584 manager.go:321] CLI store manager initialized successfully
+I0531 21:04:51.995391 24584 common.go:318] CLI store manager created successfully
+I0531 21:04:51.995464 24584 server.go:2260] GetG1Credits: starting fetch
+W0531 21:04:51.995580 24584 log_context.go:117] Cache(loadCodeAssistResponse): Singleflight refresh failed: error getting token source: You are not logged into Antigravity.
+E0531 21:04:51.995649 24584 credits_manager.go:50] failed to refresh G1 credits: failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+W0531 21:04:51.995668 24584 log_context.go:117] Failed to refresh cache in background: error getting token source: You are not logged into Antigravity.
+I0531 21:04:52.000151 24584 common.go:408] Starting CLI program
+CLI ready for user input (startup took 8.086146ms)
+ERROR: logging before google.Init: I0531 21:04:52.007629      13 terminal_info_manager.go:160] Terminal detection: TERM="xterm-256color" altScreen=true ssh=false
+I0531 21:04:52.008815 24584 gemini_extensions.go:28] Detecting Gemini extensions in /data/data/com.termux/files/home/.gemini/extensions
+I0531 21:04:52.008872 24584 server.go:2260] GetG1Credits: starting fetch
+W0531 21:04:52.009011 24584 log_context.go:117] Cache(loadCodeAssistResponse): Singleflight refresh failed: error getting token source: You are not logged into Antigravity.
+E0531 21:04:52.009065 24584 credits_manager.go:50] failed to refresh G1 credits: failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+W0531 21:04:52.009093 24584 log_context.go:117] Failed to refresh cache in background: error getting token source: You are not logged into Antigravity.
+I0531 21:04:52.009160 24584 gemini_extensions.go:46] Found 2 extensions: [context7 supabase]
+W0531 21:04:52.010106 24584 token_storage.go:113] Failed to load token from keyring, falling back to file: exec: "dbus-launch": executable file not found in $PATH
+I0531 21:04:52.058408 24584 manager.go:551] Full redraw completed (rerenderAll) for conversation  (epoch 0, items 1)
+I0531 21:04:52.227121 24584 auth.go:114] ChainedAuth: authenticated via keyring (effective: keyring)
+I0531 21:04:52.227222 24584 server_oauth.go:212] applyAuthResult: email=marioespindola00@gmail.com, authMethod=consumer, quotaProject=
+I0531 21:04:52.227242 24584 server_oauth.go:217] OAuth: authenticated successfully as marioespindola00@gmail.com
+I0531 21:04:52.227258 24584 server_oauth.go:223] b.codeAssistClient.AuthProvider (0xaa6330c00) is same as b.cliAuth (0xaa6330c00)
+I0531 21:04:52.948383 24584 http_helpers.go:182] URL: https://daily-cloudcode-pa.googleapis.com/v1internal:loadCodeAssist Trace: 0x289ffd6401e41c6e
+I0531 21:04:53.235286 24584 http_helpers.go:182] URL: https://daily-cloudcode-pa.googleapis.com/v1internal:fetchAvailableModels Trace: 0x429386daa007097d
+I0531 21:04:53.243113 24584 model_config_manager.go:157] Propagating selected model override to backend: label="GPT-OSS 120B (Medium)"
+I0531 21:04:53.243632 24584 server.go:2260] GetG1Credits: starting fetch
+I0531 21:04:53.739766 24584 input_loop.go:499] Auth done received, triggering experiment refresh
+I0531 21:04:53.739916 24584 experiment_manager.go:35] Starting experiment refresh after login
+I0531 21:04:53.895837 24584 http_helpers.go:182] URL: https://daily-cloudcode-pa.googleapis.com/v1internal:loadCodeAssist Trace: 0xd50c3bb56fdc58
+I0531 21:04:53.907911 24584 experiment_manager.go:39] Experiments refreshed after login
+I0531 21:04:53.908353 24584 manager.go:941] Reloading system slash commands
+I0531 21:04:54.539760 24584 http_helpers.go:182] URL: https://daily-cloudcode-pa.googleapis.com/v1internal:loadCodeAssist Trace: 0x884dd8ebaabbd224
+I0531 21:04:55.292757 24584 http_helpers.go:182] URL: https://daily-cloudcode-pa.googleapis.com/v1internal:loadCodeAssist Trace: 0x72f93b1ed3d6c66a
+I0531 21:04:55.420382 24584 model_config_manager.go:157] Propagating selected model override to backend: label="GPT-OSS 120B (Medium)"
+I0531 21:04:55.421084 24584 server.go:2260] GetG1Credits: starting fetch
+I0531 21:04:55.421298 24584 model_config_manager.go:157] Propagating selected model override to backend: label="GPT-OSS 120B (Medium)"
+I0531 21:04:55.708279 24584 input_loop.go:499] Auth done received, triggering experiment refresh
+I0531 21:04:55.708579 24584 experiment_manager.go:35] Starting experiment refresh after login
+I0531 21:04:55.793356 24584 experiment_manager.go:39] Experiments refreshed after login
+I0531 21:04:55.793872 24584 manager.go:941] Reloading system slash commands
+I0531 21:04:55.802213 24584 manager.go:945] Slash commands unchanged, skipping update
+I0531 21:04:55.839322 24584 input_loop.go:499] Auth done received, triggering experiment refresh
+I0531 21:04:55.839675 24584 experiment_manager.go:35] Starting experiment refresh after login
+I0531 21:04:55.892396 24584 experiment_manager.go:39] Experiments refreshed after login
+I0531 21:04:55.893771 24584 manager.go:941] Reloading system slash commands
+I0531 21:04:55.906949 24584 manager.go:945] Slash commands unchanged, skipping update
+I0531 21:04:56.004881 24584 http_helpers.go:182] URL: https://daily-cloudcode-pa.googleapis.com/v1internal:loadCodeAssist Trace: 0x9c61b9e105004721
+I0531 21:04:56.008275 24584 server.go:2260] GetG1Credits: starting fetch
+I0531 21:04:56.619860 24584 http_helpers.go:182] URL: https://daily-cloudcode-pa.googleapis.com/v1internal:loadCodeAssist Trace: 0x2578ffa5a33acbca
+I0531 21:04:56.678322 24584 http_helpers.go:182] URL: https://daily-cloudcode-pa.googleapis.com/v1internal:loadCodeAssist Trace: 0xa2613d5d24b7d8a7
+I0531 21:04:56.683936 24584 model_config_manager.go:157] Propagating selected model override to backend: label="GPT-OSS 120B (Medium)"
+I0531 21:04:56.684181 24584 server.go:2260] GetG1Credits: starting fetch
+I0531 21:04:56.938236 24584 input_loop.go:499] Auth done received, triggering experiment refresh
+I0531 21:04:56.938490 24584 experiment_manager.go:35] Starting experiment refresh after login
+I0531 21:04:57.062035 24584 experiment_manager.go:39] Experiments refreshed after login
+I0531 21:04:57.062657 24584 manager.go:941] Reloading system slash commands
+I0531 21:04:57.073875 24584 manager.go:945] Slash commands unchanged, skipping update
+I0531 21:04:57.578633 24584 http_helpers.go:182] URL: https://daily-cloudcode-pa.googleapis.com/v1internal:loadCodeAssist Trace: 0x7cb9dd435a6074b9
+I0531 21:05:01.298318 24584 input_loop.go:34] HandleUserInput called with text: "list files"
+I0531 21:05:01.298495 24584 conversation_manager.go:284] Starting new conversation (agent=false)
+I0531 21:05:01.298533 24584 server.go:726] Creating new cascade trajectory (agentScript=false)
+I0531 21:05:01.299666 24584 server.go:755] Created conversation f1078f7e-c69b-4954-8053-87d66d91216d
+I0531 21:05:01.300078 24584 conversation_manager.go:378] Streaming conversation f1078f7e-c69b-4954-8053-87d66d91216d
+I0531 21:05:01.300344 24584 server.go:774] Starting conversation update stream for f1078f7e-c69b-4954-8053-87d66d91216d
+I0531 21:05:01.300400 24584 conversation_manager.go:321] Forwarding user message to conversation f1078f7e-c69b-4954-8053-87d66d91216d (items=1, media=0)
+I0531 21:05:01.300427 24584 server.go:1083] Sending user message to conversation f1078f7e-c69b-4954-8053-87d66d91216d (items=1, media=0)
+E0531 21:05:01.310690 24584 discovery.go:383] Failed to load JSON config file /data/data/com.termux/files/home/.gemini/config/mcp_config.json: unexpected end of JSON input
+I0531 21:05:01.351320 24584 server.go:2260] GetG1Credits: starting fetch
+I0531 21:05:02.004468 24584 http_helpers.go:182] URL: https://daily-cloudcode-pa.googleapis.com/v1internal:loadCodeAssist Trace: 0x62a750b4dcb2a100
+I0531 21:05:02.452365 24584 log_context.go:117] Encountered retryable api error. retrying in 1s. Error (The model API is currently overloaded and may experience intermittent errors.): RESOURCE_EXHAUSTED (code 429): Resource has been exhausted (e.g. check quota).: RESOURCE_EXHAUSTED (code 429): Resource has been exhausted (e.g. check quota).
+I0531 21:05:02.501988 24584 server.go:2260] GetG1Credits: starting fetch
+I0531 21:05:03.180209 24584 http_helpers.go:182] URL: https://daily-cloudcode-pa.googleapis.com/v1internal:loadCodeAssist Trace: 0x385ebc76c5c2f08d
+E0531 21:05:03.453412 24584 log.go:398] RESOURCE_EXHAUSTED (code 429): Resource has been exhausted (e.g. check quota).: RESOURCE_EXHAUSTED (code 429): Resource has been exhausted (e.g. check quota).
+I0531 21:05:03.500836 24584 server.go:2260] GetG1Credits: starting fetch
+I0531 21:05:04.141929 24584 log_context.go:117] Encountered retryable api error. retrying in 1.656925585s. Error (The model API is currently overloaded and may experience intermittent errors.): RESOURCE_EXHAUSTED (code 429): Resource has been exhausted (e.g. check quota).: RESOURCE_EXHAUSTED (code 429): Resource has been exhausted (e.g. check quota).
+I0531 21:05:04.154487 24584 http_helpers.go:182] URL: https://daily-cloudcode-pa.googleapis.com/v1internal:loadCodeAssist Trace: 0x9538f66d8bab1132
+I0531 21:05:04.155683 24584 server.go:2260] GetG1Credits: starting fetch
+I0531 21:05:04.785188 24584 http_helpers.go:182] URL: https://daily-cloudcode-pa.googleapis.com/v1internal:loadCodeAssist Trace: 0xa5f198cadb031890
+E0531 21:05:05.799997 24584 log.go:398] RESOURCE_EXHAUSTED (code 429): Resource has been exhausted (e.g. check quota).: RESOURCE_EXHAUSTED (code 429): Resource has been exhausted (e.g. check quota).
+I0531 21:05:05.803091 24584 server.go:2260] GetG1Credits: starting fetch
+I0531 21:05:06.539312 24584 http_helpers.go:182] URL: https://daily-cloudcode-pa.googleapis.com/v1internal:loadCodeAssist Trace: 0xfe912132dafcb968
+E0531 21:05:07.028708 24584 log.go:398] agent executor error: model unreachable: RESOURCE_EXHAUSTED (code 429): Resource has been exhausted (e.g. check quota).: RESOURCE_EXHAUSTED (code 429): Resource has been exhausted (e.g. check quota).
+E0531 21:05:07.033529 24584 log.go:398] model unreachable: RESOURCE_EXHAUSTED (code 429): Resource has been exhausted (e.g. check quota).: RESOURCE_EXHAUSTED (code 429): Resource has been exhausted (e.g. check quota).
+I0531 21:05:07.039025 24584 server.go:2260] GetG1Credits: starting fetch
+I0531 21:05:07.703551 24584 http_helpers.go:182] URL: https://daily-cloudcode-pa.googleapis.com/v1internal:loadCodeAssist Trace: 0x7f0c10e74fbef75a
+I0531 21:05:28.130119 24584 input_loop.go:34] HandleUserInput called with text: "list files"
+I0531 21:05:28.130315 24584 conversation_manager.go:321] Forwarding user message to conversation f1078f7e-c69b-4954-8053-87d66d91216d (items=1, media=0)
+I0531 21:05:28.130371 24584 server.go:1083] Sending user message to conversation f1078f7e-c69b-4954-8053-87d66d91216d (items=1, media=0)
+E0531 21:05:28.135620 24584 discovery.go:383] Failed to load JSON config file /data/data/com.termux/files/home/.gemini/config/mcp_config.json: unexpected end of JSON input
+I0531 21:05:28.151108 24584 server.go:2260] GetG1Credits: starting fetch
+I0531 21:05:28.734107 24584 http_helpers.go:182] URL: https://daily-cloudcode-pa.googleapis.com/v1internal:loadCodeAssist Trace: 0x146e426e31bbf38a
+I0531 21:05:28.737985 24584 server.go:2260] GetG1Credits: starting fetch
+I0531 21:05:29.252063 24584 log_context.go:117] Encountered retryable api error. retrying in 1s. Error (The model API is currently overloaded and may experience intermittent errors.): RESOURCE_EXHAUSTED (code 429): Resource has been exhausted (e.g. check quota).: RESOURCE_EXHAUSTED (code 429): Resource has been exhausted (e.g. check quota).
+I0531 21:05:29.348828 24584 http_helpers.go:182] URL: https://daily-cloudcode-pa.googleapis.com/v1internal:loadCodeAssist Trace: 0xad47fdf220cd7e40
+I0531 21:05:29.352095 24584 server.go:2260] GetG1Credits: starting fetch
+I0531 21:05:29.402451 24584 http_helpers.go:182] URL: https://daily-cloudcode-pa.googleapis.com/v1internal:streamGenerateContent?alt=sse Trace: 0xf997befede7979b7
+I0531 21:05:30.060189 24584 http_helpers.go:182] URL: https://daily-cloudcode-pa.googleapis.com/v1internal:loadCodeAssist Trace: 0xd6db656226635d50
+I0531 21:05:30.061421 24584 server.go:2260] GetG1Credits: starting fetch
+E0531 21:05:30.253131 24584 log.go:398] RESOURCE_EXHAUSTED (code 429): Resource has been exhausted (e.g. check quota).: RESOURCE_EXHAUSTED (code 429): Resource has been exhausted (e.g. check quota).
+I0531 21:05:30.878457 24584 http_helpers.go:182] URL: https://daily-cloudcode-pa.googleapis.com/v1internal:loadCodeAssist Trace: 0x73f3b316b43bd91d
+I0531 21:05:30.883709 24584 server.go:2260] GetG1Credits: starting fetch
+I0531 21:05:31.661812 24584 log_context.go:117] Encountered retryable api error. retrying in 1.219812524s. Error (The model API is currently overloaded and may experience intermittent errors.): RESOURCE_EXHAUSTED (code 429): Resource has been exhausted (e.g. check quota).: RESOURCE_EXHAUSTED (code 429): Resource has been exhausted (e.g. check quota).
+I0531 21:05:31.669661 24584 http_helpers.go:182] URL: https://daily-cloudcode-pa.googleapis.com/v1internal:loadCodeAssist Trace: 0xbd4051f3f808da2b
+I0531 21:05:31.701956 24584 server.go:2260] GetG1Credits: starting fetch
+I0531 21:05:32.376892 24584 http_helpers.go:182] URL: https://daily-cloudcode-pa.googleapis.com/v1internal:loadCodeAssist Trace: 0xc324d4b0d70d827c
+E0531 21:05:32.883242 24584 log.go:398] RESOURCE_EXHAUSTED (code 429): Resource has been exhausted (e.g. check quota).: RESOURCE_EXHAUSTED (code 429): Resource has been exhausted (e.g. check quota).
+I0531 21:05:32.900735 24584 server.go:2260] GetG1Credits: starting fetch
+E0531 21:05:33.423184 24584 log.go:398] agent executor error: model unreachable: RESOURCE_EXHAUSTED (code 429): Resource has been exhausted (e.g. check quota).: RESOURCE_EXHAUSTED (code 429): Resource has been exhausted (e.g. check quota).
+E0531 21:05:33.425148 24584 log.go:398] model unreachable: RESOURCE_EXHAUSTED (code 429): Resource has been exhausted (e.g. check quota).: RESOURCE_EXHAUSTED (code 429): Resource has been exhausted (e.g. check quota).
+I0531 21:05:33.565472 24584 http_helpers.go:182] URL: https://daily-cloudcode-pa.googleapis.com/v1internal:loadCodeAssist Trace: 0x7246d8e797b41fdf
+I0531 21:05:33.568574 24584 server.go:2260] GetG1Credits: starting fetch
+I0531 21:05:34.380316 24584 http_helpers.go:182] URL: https://daily-cloudcode-pa.googleapis.com/v1internal:loadCodeAssist Trace: 0xf12e2ed7891e7eee
+I0531 21:10:52.457924 24584 http_helpers.go:182] URL: https://daily-cloudcode-pa.googleapis.com/v1internal:fetchAvailableModels Trace: 0x63d61aab5316f5fa
+I0531 21:10:52.944794 24584 http_helpers.go:182] URL: https://daily-cloudcode-pa.googleapis.com/v1internal:loadCodeAssist Trace: 0x8f254be9d420d0c3
+I0531 21:12:10.685527 24584 common.go:413] CLI program exited, shutting down
+I0531 21:12:10.686149 24584 manager.go:459] CLI store manager shutting down
+I0531 21:12:10.686352 24584 conversation_manager.go:346] Stopping conversation stream
+W0531 21:12:10.686848 24584 logfile.go:69] cleanStaleLogs: failed to read dir /data/data/com.termux/files/home/log: open /data/data/com.termux/files/home/log: no such file or directory

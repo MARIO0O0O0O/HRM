@@ -23,3 +23,8 @@
 
 7. **Vector dimensions**
    - Assumed 1536 dimensions for `VECTOR(1536)` as this aligns with the standard OpenAI `text-embedding-3-small` or `text-embedding-ada-002` models commonly used.
+
+## Configuration & Environment
+
+1. **`node-linker=hoisted` in `.npmrc`**
+   - The warning `npm warn Unknown project config "node-linker"` appears because this configuration is specific to `pnpm`. It is required for Android/Termux environments where symlinks are not supported on the shared storage partition, causing `pnpm install` to fail otherwise. It is retained because it guarantees build compatibility in the Termux environment without negatively affecting Next.js 15.

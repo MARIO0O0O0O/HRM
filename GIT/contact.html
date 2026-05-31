@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact BizHR | Book an HR Consultation</title>
+  <meta name="description" content="Contact BizHR for practical California HR support. Book a $75 initial consultation for handbook cleanup, employee issues, or AI automation." />
+  <link rel="canonical" href="https://bizhr.org/contact.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a href="index.html" class="brand">BizHR</a>
+      <nav>
+        <a href="index.html#services">Services</a>
+        <a href="ai-services.html">AI Services</a>
+        <a href="about.html">About</a>
+        <a href="index.html#booking">Booking</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Contact BizHR</p>
+          <h1>Let's solve your HR challenges.</h1>
+          <p class="hero-copy">Whether you need a quick answer to a compliance question or a full-scale AI automation project, we're here to help California small businesses stay moving.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#booking">Book a Consultation</a>
+            <a class="btn btn-secondary" href="tel:6269996239">Call 626-999-6239</a>
+          </div>
+        </div>
+        <aside class="hero-card">
+          <h2>Direct contact</h2>
+          <p><strong>Phone:</strong> <a href="tel:6269996239">626-999-6239</a></p>
+          <p><strong>Email:</strong> <a href="mailto:mario_espindola@outlook.com">mario_espindola@outlook.com</a></p>
+          <div class="payment-box">
+            <h3>Payment options</h3>
+            <p>Zelle: mario_espindola@outlook.com</p>
+            <p>Venmo: @marioo00</p>
+            <p>Cash App: 10mario01</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="booking">
+      <div class="container booking-grid">
+        <div>
+          <p class="section-tag">Booking</p>
+          <h2>Reserve your 30-minute session</h2>
+          <p class="supporting-copy">The fastest way to get started is to book a focused 30-minute consultation for $75. This fee is applied toward any future BizHR service if you move forward.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="https://cal.com/your-handle/30-min-consult" target="_blank" rel="noopener">Open booking calendar</a>
+          </div>
+          <p class="microcopy">Based in the San Gabriel Valley, available for virtual or in-person consultation across California.</p>
+        </div>
+        <form class="booking-form" onsubmit="return handleBooking(event)">
+          <h3>Send a message</h3>
+          <label>Name<input type="text" name="name" required></label>
+          <label>Business name<input type="text" name="business" required></label>
+          <label>Email<input type="email" name="email" required></label>
+          <label>Phone<input type="tel" name="phone"></label>
+          <label>What do you need help with?
+            <textarea name="message" rows="5" placeholder="Example: handbook cleanup, employee issue, onboarding, paystub questions, break compliance, AI implementation"></textarea>
+          </label>
+          <button class="btn btn-primary btn-block" type="submit">Prepare email request</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <p>© BizHR. Done-for-you HR services for California small businesses.</p>
+      <a href="index.html">Home</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

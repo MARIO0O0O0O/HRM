@@ -40,7 +40,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-lg font-bold text-zinc-200 mb-3">1. Acceptance of Terms</h2>
             <p>
-              By accessing or using hrai.vercel.app (or any associated domain), you agree to be bound by these Terms of Service.
+              By accessing or using bizhr.vercel.app (or any associated domain), you agree to be bound by these Terms of Service.
               If you do not agree, do not use this site. These terms apply to all visitors, users, and clients.
             </p>
           </section>

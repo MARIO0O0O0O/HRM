@@ -22,9 +22,33 @@ export default function PagaCalculatorPage() {
   const [paystubViolationFreq, setPaystubViolationFreq] = useState(2) // out of 10
   const [overtimeViolationFreq, setOvertimeViolationFreq] = useState(1) // out of 10
   
-  const [pagaExposure, setPagaExposure] = useState(0)
-  const [wageClaimExposure, setWageClaimExposure] = useState(0)
-  const [totalExposure, setTotalExposure] = useState(0)
+  const [pagaExposure, setPagaExposure] = useState((() => {
+    const annualPayPeriods = 26
+    const maxFreq = Math.max(3, 2, 1)
+    const violationPayPeriods = Math.ceil(annualPayPeriods * (maxFreq / 10))
+    const penaltyPerEmployee = 100 + 200 * Math.max(0, violationPayPeriods - 1)
+    const uncappedPenalty = 15 * penaltyPerEmployee
+    const perEmployeeCap = 15 * 9000
+    return Math.min(uncappedPenalty, perEmployeeCap)
+  })())
+  const [wageClaimExposure, setWageClaimExposure] = useState((() => {
+    const breakPremium = 15 * (250 * (3 / 10)) * 17
+    const overtimePremium = 15 * (26 * (1 / 10)) * 25.50
+    return breakPremium + overtimePremium
+  })())
+  const [totalExposure, setTotalExposure] = useState((() => {
+    const annualPayPeriods = 26
+    const maxFreq = Math.max(3, 2, 1)
+    const violationPayPeriods = Math.ceil(annualPayPeriods * (maxFreq / 10))
+    const penaltyPerEmployee = 100 + 200 * Math.max(0, violationPayPeriods - 1)
+    const uncappedPenalty = 15 * penaltyPerEmployee
+    const perEmployeeCap = 15 * 9000
+    return Math.min(uncappedPenalty, perEmployeeCap)
+  })() + (() => {
+    const breakPremium = 15 * (250 * (3 / 10)) * 17
+    const overtimePremium = 15 * (26 * (1 / 10)) * 25.50
+    return breakPremium + overtimePremium
+  })())
 
   // Recalculate exposure dynamically whenever parameters change
   // PAGA math reflects AB 2288 + SB 92 reform (effective June 2024)
@@ -287,7 +311,7 @@ export default function PagaCalculatorPage() {
                 PAGA penalty calculations are estimates based on disclosed inputs and current statutory rates.
                 Actual exposure depends on violation frequency, cure actions taken, arbitration agreements,
                 and judicial interpretation. Consult a PAGA defense attorney before making settlement or
-                cure decisions. CalHR AI accepts no liability for decisions made based on calculator output.
+                cure decisions. BizHR / M.E. Consulting accepts no liability for decisions made based on calculator output.
               </p>
             </div>
           </div>

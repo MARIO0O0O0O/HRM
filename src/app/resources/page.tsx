@@ -1,12 +1,12 @@
 import React from "react";
 import Link from "next/link";
 import SearchBar from "@/components/resources/SearchBar";
-import { createClient } from "@/lib/supabase/client";
+import { createClient } from "@/lib/supabase/server";
 
 export const revalidate = 3600;
 
 export default async function ResourcesIndexPage() {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: articles } = await supabase
     .from("content_articles")
     .select("id, title, slug, cover_url, created_at, tags")

@@ -1,17 +1,18 @@
 import { ImageResponse } from "next/og";
-import { createClient } from "@/lib/supabase/client";
+import { createClient } from "@/lib/supabase/server";
 
 export const runtime = "edge";
 export const alt = "BizHR Resources";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export default async function Image({ params }: { params: { slug: string } }) {
-  const supabase = createClient();
+export default async function Image({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const supabase = await createClient();
   const { data: article } = await supabase
     .from("content_articles")
     .select("title, content_categories(name)")
-    .eq("slug", params.slug)
+    .eq("slug", slug)
     .single();
 
   const title = article?.title || "BizHR Resources";

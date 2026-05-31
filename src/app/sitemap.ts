@@ -1,11 +1,11 @@
 import { MetadataRoute } from "next";
-import { createClient } from "@/lib/supabase/client";
+import { createClient } from "@/lib/supabase/server";
 
 export const revalidate = 86400; // 24 hours
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://bizhr.vercel.app";
-  const supabase = createClient();
+  const supabase = await createClient();
 
   const { data: articles } = await supabase
     .from("content_articles")

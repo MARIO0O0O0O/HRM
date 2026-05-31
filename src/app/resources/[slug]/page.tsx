@@ -1,6 +1,6 @@
 import React from "react";
 import { notFound } from "next/navigation";
-import { createClient } from "@/lib/supabase/client";
+import { createClient } from "@/lib/supabase/server";
 import HighTicketUpsell from "@/components/tools/HighTicketUpsell";
 import RelatedArticles from "@/components/resources/RelatedArticles";
 import ScrollCTA from "@/components/resources/ScrollCTA";
@@ -13,7 +13,7 @@ interface ArticlePageProps {
 
 export async function generateMetadata({ params }: ArticlePageProps) {
   const { slug } = await params;
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: article } = await supabase
     .from("content_articles")
     .select("title, slug, created_at")
@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: ArticlePageProps) {
 
 export default async function ArticlePage({ params }: ArticlePageProps) {
   const { slug } = await params;
-  const supabase = createClient();
+  const supabase = await createClient();
 
   const { data: article } = await supabase
     .from("content_articles")

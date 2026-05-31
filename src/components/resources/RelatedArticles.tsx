@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { createClient } from "@/lib/supabase/client";
+import { createClient } from "@/lib/supabase/server";
 
 interface RelatedArticlesProps {
   currentArticleId: string;
@@ -9,7 +9,7 @@ interface RelatedArticlesProps {
 }
 
 export default async function RelatedArticles({ currentArticleId, tags }: RelatedArticlesProps) {
-  const supabase = createClient();
+  const supabase = await createClient();
 
   // Stub: tag-based related articles (pgvector semantic search will replace this in Week 4)
   // For now, we just fetch articles that share at least one tag, excluding the current article.

@@ -110,7 +110,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
             <div className="sticky top-24">
               <h3 className="text-xs font-bold text-zinc-500 uppercase tracking-widest mb-4">Table of Contents</h3>
               <nav className="flex flex-col space-y-3">
-                {toc.map((item: any, i: number) => (
+                {toc.map((item: { id: string; text: string; level: number }, i: number) => (
                   <a 
                     key={i} 
                     href={`#${item.id}`} 

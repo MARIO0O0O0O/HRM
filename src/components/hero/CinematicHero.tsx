@@ -102,7 +102,7 @@ export default function CinematicHero() {
       {/* Cinematic Caption per clip */}
       <div className="absolute bottom-12 left-8 md:left-12 z-10 max-w-sm hidden sm:block">
         <p className="font-playfair italic text-xl md:text-2xl text-white/90 drop-shadow-md transition-opacity duration-500">
-          "{clips[currentClipIndex].caption}"
+          &quot;{clips[currentClipIndex].caption}&quot;
         </p>
       </div>
 

@@ -68,7 +68,7 @@ export default function CompareHubPage() {
         <section className="bg-gradient-to-br from-indigo-900/40 to-cyan-900/20 border border-indigo-500/30 rounded-2xl p-8 md:p-12 text-center">
           <h2 className="text-3xl font-bold mb-4">Stop managing software. Let us handle the compliance.</h2>
           <p className="text-zinc-300 mb-8 max-w-2xl mx-auto text-lg">
-            Software alone won't protect you from a PAGA lawsuit. You need an expert in the loop. We set up your systems and monitor them so you don't have to.
+            Software alone won&apos;t protect you from a PAGA lawsuit. You need an expert in the loop. We set up your systems and monitor them so you don&apos;t have to.
           </p>
           <Link href="/book" className="inline-block bg-indigo-500 hover:bg-indigo-400 text-white font-bold px-8 py-4 rounded-xl transition-colors">
             Book a Free 30-Min Consultation

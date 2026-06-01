@@ -133,7 +133,7 @@ export default function SearchBar() {
           ) : (
             !loading && (
               <div className="px-4 py-6 text-center text-zinc-500 text-sm">
-                No articles found for "{query}"
+                No articles found for &quot;{query}&quot;
               </div>
             )
           )}

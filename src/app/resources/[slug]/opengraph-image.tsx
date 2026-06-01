@@ -16,7 +16,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
     .single();
 
   const title = article?.title || "BizHR Resources";
-  // @ts-ignore
+  // @ts-expect-error: Ignore missing complex type from Supabase join
   const categoryName = article?.content_categories?.name || "Guide";
 
   return new ImageResponse(

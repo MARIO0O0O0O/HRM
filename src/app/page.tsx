@@ -8,12 +8,10 @@ import {
   Scale,
   DollarSign,
   UserCheck,
-  Phone,
   ArrowRight,
   Sparkles,
   CheckCircle2,
   Layers,
-  MapPin,
   Calculator
 } from 'lucide-react'
 import CinematicHero from '@/components/hero/CinematicHero'

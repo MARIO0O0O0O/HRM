@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import CinematicHero from '@/components/hero/CinematicHero'
 import { Button } from '@/components/ui/button'
 import {
   ShieldCheck,
@@ -8,12 +9,10 @@ import {
   Scale,
   DollarSign,
   UserCheck,
-  Phone,
   ArrowRight,
   Sparkles,
   CheckCircle2,
   Layers,
-  MapPin,
   Calculator
 } from 'lucide-react'
 
@@ -94,92 +93,7 @@ export default function Home() {
   return (
     <div className="bg-[#0a0a0a] text-zinc-100 min-h-screen">
       {/* 1. Hero Section */}
-      <section className="relative overflow-hidden pt-24 pb-16 sm:pt-32 sm:pb-24 border-b border-white/5">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.08)_0%,transparent_60%)] pointer-events-none" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-            <div className="lg:col-span-7 flex flex-col gap-6 text-left">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-xs font-semibold text-indigo-400 w-fit">
-                <MapPin className="h-3 w-3" /> California Labor Law Compliance
-              </span>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1] bg-gradient-to-r from-zinc-50 via-zinc-100 to-zinc-400 bg-clip-text text-transparent">
-                Done-for-you HR and AI services for California small businesses.
-              </h1>
-              <p className="text-base sm:text-lg text-zinc-400 max-w-xl leading-relaxed">
-                BizHR helps employers in the San Gabriel Valley clean up HR, wage-and-hour, and compliance gaps — and implement AI tools that give small businesses the output of a large firm.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 mt-2">
-                <Link href="/book">
-                  <Button className="w-full sm:w-auto bg-gradient-to-r from-indigo-600 to-indigo-500 hover:from-indigo-500 hover:to-indigo-400 active:from-indigo-700 text-zinc-50 font-bold tracking-wide py-6 px-8 rounded-xl shadow-xl shadow-indigo-600/20 transition-all cursor-pointer">
-                    Book a $75 Consultation
-                  </Button>
-                </Link>
-                <a href="tel:6269996239" className="w-full sm:w-auto">
-                  <Button variant="outline" className="w-full sm:w-auto border-white/10 hover:border-white/20 bg-zinc-900/50 hover:bg-zinc-800/80 active:bg-zinc-900 text-zinc-300 hover:text-zinc-100 font-semibold tracking-wide py-6 px-8 rounded-xl flex items-center justify-center gap-2 cursor-pointer">
-                    <Phone className="h-4 w-4" /> Call 626-999-6239
-                  </Button>
-                </a>
-              </div>
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4 text-xs font-medium text-zinc-500 border-t border-white/5 pt-6">
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-cyan-400 shrink-0" /> $75 initial consultation — 30 minutes
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-cyan-400 shrink-0" /> Fee credited toward ongoing services
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-cyan-400 shrink-0" /> Practical, California-tailored fixes
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-cyan-400 shrink-0" /> Hands-on implementation & delivery
-                </li>
-              </ul>
-            </div>
-            
-            {/* Quick Access Card */}
-            <div className="lg:col-span-5 relative w-full max-w-md mx-auto">
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-indigo-500 to-cyan-500 rounded-2xl opacity-20 blur-sm pointer-events-none" />
-              <div className="relative bg-[#111111] border border-white/10 rounded-2xl p-6 sm:p-8 flex flex-col gap-6">
-                <div>
-                  <h2 className="text-xl font-extrabold text-zinc-100">Quick Access</h2>
-                  <p className="text-xs text-zinc-500 mt-1">Direct contact and peer-to-peer options</p>
-                </div>
-                <div className="flex flex-col gap-4 text-sm">
-                  <div className="bg-[#161616] border border-white/5 rounded-xl p-4">
-                    <span className="text-xs text-zinc-500 font-semibold uppercase tracking-wider block">Phone & SMS</span>
-                    <a href="tel:6269996239" className="text-base font-bold text-zinc-100 hover:text-indigo-400 transition-colors mt-1 block">
-                      626-999-6239
-                    </a>
-                  </div>
-                  <div className="bg-[#161616] border border-white/5 rounded-xl p-4">
-                    <span className="text-xs text-zinc-500 font-semibold uppercase tracking-wider block">Direct Email</span>
-                    <a href="mailto:mario_espindola@outlook.com" className="text-base font-bold text-zinc-100 hover:text-indigo-400 transition-colors mt-1 block select-all">
-                      mario_espindola@outlook.com
-                    </a>
-                  </div>
-                  <div className="bg-[#161616] border border-white/5 rounded-xl p-4 flex flex-col gap-2">
-                    <span className="text-xs text-zinc-500 font-semibold uppercase tracking-wider block">Peer-to-Peer Handles</span>
-                    <div className="flex flex-col gap-1.5 text-xs font-medium text-zinc-400">
-                      <div className="flex justify-between border-b border-white/5 pb-1">
-                        <span>Zelle</span>
-                        <span className="font-bold text-zinc-200">626-999-6239</span>
-                      </div>
-                      <div className="flex justify-between border-b border-white/5 pb-1">
-                        <span>Venmo</span>
-                        <span className="font-bold text-zinc-200">@marioo00</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span>Cash App</span>
-                        <span className="font-bold text-zinc-200">$10mario01</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <CinematicHero />
 
       {/* 2. Services Grid */}
       <section className="py-20 border-b border-white/5 bg-[#0a0a0a]" id="services">

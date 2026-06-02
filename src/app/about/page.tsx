@@ -54,7 +54,7 @@ export default function AboutPage() {
               Mario Espindola, MPA
             </h1>
             <p className="text-base sm:text-lg text-zinc-300 leading-relaxed max-w-2xl font-medium">
-              &ldquo;I grew up watching family members build businesses while struggling with the labor compliance issues that come with growth. I built BizHR so employers like them have somewhere to turn — practical, affordable, expert HR support.&rdquo;
+              &ldquo;Some kids grew up watching cartoons. I grew up watching my parents build something from nothing. I built BizHR so employers like them have somewhere to turn — practical, affordable, expert HR support.&rdquo;
             </p>
           </div>
           <div className="shrink-0 z-10 relative">
@@ -75,13 +75,16 @@ export default function AboutPage() {
           <div className="md:col-span-8 flex flex-col gap-6">
             <h2 className="text-2xl font-extrabold text-zinc-100 tracking-tight">My Story & Philosophy</h2>
             <p className="text-sm sm:text-base text-zinc-400 leading-relaxed">
-              Growing up in the San Gabriel Valley, California, in a family of hard-working entrepreneurs, I witnessed firsthand the anxiety that labor compliance can cause. Small business owners excel at their crafts and care deeply about their teams, but navigating California&apos;s complex regulatory landscape without dedicated legal resources is a minefield.
+              They started with nothing — literally nothing. From homelessness to a flea market table, and eventually to two storefronts, my parents taught me that entrepreneurship isn&apos;t glamorous; it&apos;s a series of hard decisions made under pressure. I watched them wrestle with real questions: Do we invest in new technology? Do we get compliant with the latest regulations? Or do we put that money into inventory that actually moves? More often than not, they chose what worked — what made money and kept the doors open. That pragmatic, results-driven mindset became the lens through which I see everything.
             </p>
             <p className="text-sm sm:text-base text-zinc-400 leading-relaxed">
-              After earning my Master of Public Administration (MPA) and spending over a decade handling high-stakes HR operations, policy writing, audits, and conflict resolution in the California public sector, I decided to bridge this gap.
+              My curiosity with technology started early. While my parents ran their business, I was the kid who wanted to understand how things worked — not just use them, but understand them. That curiosity never left me.
             </p>
             <p className="text-sm sm:text-base text-zinc-400 leading-relaxed">
-              BizHR was founded to provide practical compliance infrastructure directly to business owners in construction, hospitality, retail, restaurants, salons, and home services. We operate on three fundamental principles: **honesty, speed, and practicality**.
+              I went on to earn a Master&apos;s degree, spent years serving my community in municipal government, and built experience as an independent developer — each chapter deepening my understanding of systems, people, and what it actually takes to keep an operation running. Along the way, I kept coming back to the same problem I watched my parents navigate: small businesses are constantly forced to choose between staying compliant, staying competitive, and staying profitable. Too often, they feel like they can&apos;t afford all three.
+            </p>
+            <p className="text-sm sm:text-base text-zinc-400 leading-relaxed">
+              That&apos;s exactly the gap I&apos;m here to close. I help small businesses stay compliant and high-tech — not with enterprise-level price tags, but with smart, accessible solutions built for the way real business owners operate. I&apos;ve seen the hustle up close my whole life. Now I get to be part of the solution.
             </p>
           </div>
           

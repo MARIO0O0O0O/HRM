@@ -298,10 +298,10 @@ export default function Home() {
                 Expert HR, AI-augmented delivery.
               </h2>
               <blockquote className="border-l-2 border-indigo-500 pl-4 py-1 italic text-zinc-300 text-sm sm:text-base leading-relaxed">
-                &ldquo;I grew up watching family members build businesses while struggling with the labor compliance issues that come with growth. I built BizHR so employers like them have somewhere to turn — practical, affordable, expert HR support.&rdquo;
+                &ldquo;Some kids grew up watching cartoons. I grew up watching my parents build something from nothing. I built BizHR so employers like them have somewhere to turn — practical, affordable, expert HR support.&rdquo;
               </blockquote>
               <p className="text-sm text-zinc-400 leading-relaxed">
-                BizHR was founded by Mario Espindola — MPA, 10-year California public sector HR professional, and AI automation specialist. Mario grew up in a family of entrepreneurs and watched labor compliance challenges limit their growth. BizHR exists to give small businesses the HR expertise and AI tools they deserve, at prices that actually work.
+                BizHR was founded by Mario Espindola — MPA, 10-year California public sector HR professional, and AI automation specialist. Watching his parents navigate the challenges of entrepreneurship inspired Mario to provide small businesses with the HR expertise and AI tools they deserve, at prices that actually work.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 mt-2">
                 <Link href="/about">

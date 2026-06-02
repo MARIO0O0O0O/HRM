@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import Breadcrumb from '@/components/layout/Breadcrumb'
 import {
@@ -43,17 +44,30 @@ export default function AboutPage() {
         <Breadcrumb className="mb-8" />
         
         {/* Hero Banner */}
-        <div className="relative rounded-3xl border border-white/5 bg-[#111111]/40 p-8 sm:p-12 mb-12 overflow-hidden text-left">
+        <div className="relative rounded-3xl border border-white/5 bg-[#111111]/40 p-8 sm:p-12 mb-12 overflow-hidden text-left flex flex-col md:flex-row items-center gap-8">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.05)_0%,transparent_60%)] pointer-events-none" />
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-xs font-semibold text-indigo-400 w-fit mb-6">
-            <MapPin className="h-3 w-3" /> Founder & Principal Consultant
-          </span>
-          <h1 className="text-3xl sm:text-5xl font-black tracking-tight leading-[1.1] bg-gradient-to-r from-zinc-50 via-zinc-100 to-zinc-400 bg-clip-text text-transparent mb-6">
-            Mario Espindola, MPA
-          </h1>
-          <p className="text-base sm:text-lg text-zinc-300 leading-relaxed max-w-2xl font-medium">
-            &ldquo;I grew up watching family members build businesses while struggling with the labor compliance issues that come with growth. I built BizHR so employers like them have somewhere to turn — practical, affordable, expert HR support.&rdquo;
-          </p>
+          <div className="flex-1 z-10">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-xs font-semibold text-indigo-400 w-fit mb-6">
+              <MapPin className="h-3 w-3" /> Founder & Principal Consultant
+            </span>
+            <h1 className="text-3xl sm:text-5xl font-black tracking-tight leading-[1.1] bg-gradient-to-r from-zinc-50 via-zinc-100 to-zinc-400 bg-clip-text text-transparent mb-6">
+              Mario Espindola, MPA
+            </h1>
+            <p className="text-base sm:text-lg text-zinc-300 leading-relaxed max-w-2xl font-medium">
+              &ldquo;I grew up watching family members build businesses while struggling with the labor compliance issues that come with growth. I built BizHR so employers like them have somewhere to turn — practical, affordable, expert HR support.&rdquo;
+            </p>
+          </div>
+          <div className="shrink-0 z-10 relative">
+            <div className="h-48 w-48 sm:h-56 sm:w-56 rounded-full overflow-hidden border-4 border-[#161616] ring-1 ring-white/10 shadow-2xl relative">
+              <Image 
+                src="/images/mario_bio.jpg" 
+                alt="Mario Espindola" 
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
+          </div>
         </div>
 
         {/* Story Section */}

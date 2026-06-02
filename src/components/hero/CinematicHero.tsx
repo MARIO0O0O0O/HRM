@@ -1,71 +1,52 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Calculator, ChevronDown } from "lucide-react";
-
-const clips = [
-  { id: 1, src: "/video/clip1.mp4", caption: "California HR. Done differently." },
-  { id: 2, src: "/video/clip2.mp4", caption: "Protecting your growth." },
-  { id: 3, src: "/video/clip3.mp4", caption: "Navigating complexity with ease." },
-  { id: 4, src: "/video/clip4.mp4", caption: "Compliance, simplified." },
-  { id: 5, src: "/video/clip5.mp4", caption: "Your partner in HR." },
-  { id: 6, src: "/video/clip6.mp4", caption: "Expertise you can trust." },
-  { id: 7, src: "/video/clip7.mp4", caption: "Strategic. Practical. Essential." },
-  { id: 8, src: "/video/clip8.mp4", caption: "Focus on your business." },
-  { id: 9, src: "/video/clip9.mp4", caption: "We handle the compliance." },
-  { id: 10, src: "/video/clip10.mp4", caption: "Future-proof your workforce." },
+const acronyms = [
+  { text: "FMLA", top: "10%", left: "5%", size: "text-6xl", rot: "-rotate-12", delay: "0s" },
+  { text: "CFRA", top: "25%", left: "80%", size: "text-8xl", rot: "rotate-6", delay: "2s" },
+  { text: "ADA", top: "70%", left: "15%", size: "text-5xl", rot: "-rotate-6", delay: "1s" },
+  { text: "FEHA", top: "60%", left: "75%", size: "text-7xl", rot: "rotate-12", delay: "3s" },
+  { text: "SH", top: "40%", left: "50%", size: "text-9xl", rot: "-rotate-3", delay: "0.5s" },
+  { text: "SQL", top: "15%", left: "30%", size: "text-6xl", rot: "rotate-12", delay: "1.5s" },
+  { text: "SUDO", top: "85%", left: "40%", size: "text-8xl", rot: "-rotate-12", delay: "2.5s" },
+  { text: "PAGA", top: "35%", left: "15%", size: "text-5xl", rot: "rotate-6", delay: "0s" },
+  { text: "FLSA", top: "80%", left: "85%", size: "text-6xl", rot: "-rotate-6", delay: "1s" },
+  { text: "LLM", top: "50%", left: "10%", size: "text-7xl", rot: "rotate-3", delay: "2s" },
+  { text: "API", top: "20%", left: "60%", size: "text-5xl", rot: "-rotate-12", delay: "3s" },
+  { text: "OSHA", top: "90%", left: "10%", size: "text-6xl", rot: "rotate-6", delay: "1.5s" },
+  { text: "DLSE", top: "45%", left: "85%", size: "text-5xl", rot: "-rotate-12", delay: "0.5s" },
+  { text: "WARN", top: "5%", left: "50%", size: "text-7xl", rot: "rotate-6", delay: "2s" },
 ];
 
 export default function CinematicHero() {
-  const [currentClipIndex, setCurrentClipIndex] = useState(0);
-  const [videoError, setVideoError] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    if (videoError) return;
-
-    const timer = setInterval(() => {
-      setCurrentClipIndex((prev) => (prev + 1) % clips.length);
-    }, 5000); // Advance every 5 seconds if not relying on video 'ended' event
-    return () => clearInterval(timer);
-  }, [videoError]);
-
-  useEffect(() => {
-    if (videoRef.current && !videoError) {
-      videoRef.current.load();
-      videoRef.current.play().catch(() => {
-        // Autoplay may be blocked or video might not exist
-        setVideoError(true);
-      });
-    }
-  }, [currentClipIndex, videoError]);
-
   return (
     <section className="relative w-full h-screen min-h-[600px] overflow-hidden flex items-center justify-center font-sans">
-      {/* Fallback Background (Always present underneath, visible if video fails or before it loads) */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0a192f] via-[#112240] to-[#233554] pointer-events-none">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(212,175,55,0.15),transparent_50%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(212,175,55,0.05),transparent_50%)]" />
+      {/* Fallback Background (Etched Acronyms) */}
+      <div className="absolute inset-0 bg-[#0a0a0a] pointer-events-none overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(212,175,55,0.05),transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(99,102,241,0.05),transparent_60%)]" />
+        
+        {/* Dynamic Etched Acronyms */}
+        {acronyms.map((item, i) => (
+          <div
+            key={i}
+            className={`absolute ${item.size} ${item.rot} font-black text-white/[0.02] select-none mix-blend-overlay font-mono tracking-tighter`}
+            style={{ 
+              top: item.top, 
+              left: item.left, 
+              animation: `pulse 8s infinite alternate ${item.delay}`,
+              textShadow: '1px 1px 0px rgba(255,255,255,0.02), -1px -1px 0px rgba(0,0,0,0.8)'
+            }}
+          >
+            {item.text}
+          </div>
+        ))}
       </div>
 
-      {/* Video Reel */}
-      {!videoError && (
-        <video
-          ref={videoRef}
-          className="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-screen transition-opacity duration-1000"
-          muted
-          playsInline
-          autoPlay
-          onEnded={() => setCurrentClipIndex((prev) => (prev + 1) % clips.length)}
-          onError={() => setVideoError(true)}
-        >
-          <source src={clips[currentClipIndex].src} type="video/mp4" />
-        </video>
-      )}
-
-      {/* Overlay to darken video for text readability */}
+      {/* Overlay to darken background for text readability */}
       <div className="absolute inset-0 bg-black/40 pointer-events-none" />
 
       {/* Content */}
@@ -97,27 +78,6 @@ export default function CinematicHero() {
             </Button>
           </Link>
         </div>
-      </div>
-
-      {/* Cinematic Caption per clip */}
-      <div className="absolute bottom-12 left-8 md:left-12 z-10 max-w-sm hidden sm:block">
-        <p className="font-playfair italic text-xl md:text-2xl text-white/90 drop-shadow-md transition-opacity duration-500">
-          &quot;{clips[currentClipIndex].caption}&quot;
-        </p>
-      </div>
-
-      {/* Progress Dots */}
-      <div className="absolute bottom-12 right-8 md:right-12 z-10 flex gap-2">
-        {clips.map((_, idx) => (
-          <button
-            key={idx}
-            onClick={() => setCurrentClipIndex(idx)}
-            className={`w-2 h-2 rounded-full transition-all duration-300 ${
-              idx === currentClipIndex ? "bg-[#d4af37] scale-125" : "bg-white/30 hover:bg-white/50"
-            }`}
-            aria-label={`Go to clip ${idx + 1}`}
-          />
-        ))}
       </div>
 
       {/* Scroll Indicator */}

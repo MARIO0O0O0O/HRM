@@ -26,19 +26,20 @@ export default function CinematicHero() {
     <section className="relative w-full h-screen min-h-[600px] overflow-hidden flex items-center justify-center font-sans">
       {/* Fallback Background (Etched Acronyms) */}
       <div className="absolute inset-0 bg-[#0a0a0a] pointer-events-none overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(212,175,55,0.05),transparent_60%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(99,102,241,0.05),transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(212,175,55,0.1),transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(99,102,241,0.1),transparent_60%)]" />
         
         {/* Dynamic Etched Acronyms */}
         {acronyms.map((item, i) => (
           <div
             key={i}
-            className={`absolute ${item.size} ${item.rot} font-black text-white/[0.02] select-none mix-blend-overlay font-mono tracking-tighter`}
+            className={`absolute ${item.size} ${item.rot} font-black text-white/10 select-none font-mono tracking-tighter animate-pulse`}
             style={{ 
               top: item.top, 
               left: item.left, 
-              animation: `pulse 8s infinite alternate ${item.delay}`,
-              textShadow: '1px 1px 0px rgba(255,255,255,0.02), -1px -1px 0px rgba(0,0,0,0.8)'
+              animationDelay: item.delay,
+              animationDuration: '4s',
+              textShadow: '2px 2px 4px rgba(0,0,0,0.8), -1px -1px 1px rgba(255,255,255,0.1)'
             }}
           >
             {item.text}

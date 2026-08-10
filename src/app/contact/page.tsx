@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Breadcrumb from '@/components/layout/Breadcrumb'
 import { Button } from '@/components/ui/button'
 import { Mail, Phone, CheckCircle2, User, MessageSquare } from 'lucide-react'
+import { createClient } from '@/lib/supabase/client'
 
 export default function ContactPage() {
   const [name, setName] = useState('')
@@ -11,9 +12,24 @@ export default function ContactPage() {
   const [message, setMessage] = useState('')
   const [submitted, setSubmitted] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    
+
+    // Save the submission so it's never lost even if the visitor's device
+    // has no configured mail client (mailto: silently does nothing then).
+    // This is best-effort: if it fails, we still fall through to mailto.
+    try {
+      const supabase = createClient()
+      await supabase.from('contact_submissions').insert({
+        name,
+        email,
+        message,
+        source_page: '/contact',
+      })
+    } catch {
+      // Non-blocking -- the mailto fallback below still fires either way.
+    }
+
     // Propose email request
     const subject = encodeURIComponent('M.E. HR Contact Request — ' + name)
     const body = encodeURIComponent(

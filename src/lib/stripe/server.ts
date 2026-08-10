@@ -19,7 +19,7 @@ export async function getStripe(): Promise<import('stripe').default> {
     // Dynamic import — deferred until actual request execution
     const Stripe = (await import('stripe')).default
     _stripe = new Stripe(key, {
-      apiVersion: '2026-05-27.dahlia' as const,
+      apiVersion: '2026-07-29.dahlia' as const,
     })
   }
   return _stripe

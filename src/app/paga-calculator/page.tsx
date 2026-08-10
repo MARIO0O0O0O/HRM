@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Breadcrumb from '@/components/layout/Breadcrumb'
 import { Button } from '@/components/ui/button'
+import { createClient } from '@/lib/supabase/client'
 import {
   Calculator,
   ArrowRight,
@@ -50,6 +51,19 @@ export default function PagaCalculatorPage() {
     const overtimePremium = 15 * (26 * (1 / 10)) * 25.50
     return breakPremium + overtimePremium
   })())
+
+  // Anonymous, non-blocking usage signal -- no identifying info, fire once.
+  // Never gates or delays the tool; failures are silently ignored.
+  useEffect(() => {
+    try {
+      createClient()
+        .from('tool_usage_events')
+        .insert({ tool_slug: 'paga-calculator', event_type: 'view' })
+        .then(() => {})
+    } catch {
+      // ignore -- analytics must never break the tool
+    }
+  }, [])
 
   // Recalculate exposure dynamically whenever parameters change
   // PAGA math reflects AB 2288 + SB 92 reform (effective June 2024)
@@ -324,7 +338,7 @@ export default function PagaCalculatorPage() {
               </p>
               <div className="flex items-start gap-2 text-xs text-zinc-500 pt-1">
                 <Lightbulb className="h-4 w-4 text-amber-400 shrink-0 mt-0.5" />
-                <span>Start with whichever slider above is highest — that's usually the fastest win.</span>
+                <span>Start with whichever slider above is highest — that&apos;s usually the fastest win.</span>
               </div>
             </div>
 

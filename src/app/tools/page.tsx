@@ -1,11 +1,11 @@
 import Link from 'next/link'
 import { toolsList } from '@/data/tools'
-import { ArrowRight, Shield, FileText, AlertTriangle, BookOpen } from 'lucide-react'
+import { ArrowRight, Shield, FileText, AlertTriangle, BookOpen, Calculator, ClipboardCheck, CalendarClock } from 'lucide-react'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Compliance Toolkits — BizHR | California HR Tools for Small Businesses',
-  description: 'California-compliant DIY HR toolkits — WVPP (SB 553), HPP (SB 1343), IIPP (8 CCR § 3203), and Know Your Rights (SB 294). Ready to use, legally defensible.',
+  title: 'Free Compliance Tools & Toolkits — BizHR | California HR for Small Businesses',
+  description: 'Free California compliance tools (PAGA calculator, self-assessment quizzes, deadline tracker) plus DIY toolkits — WVPP (SB 553), HPP (SB 1343), IIPP (8 CCR § 3203), and Know Your Rights (SB 294).',
 }
 
 const accentMap = {
@@ -52,25 +52,79 @@ export default function ToolsPage() {
       <div className="max-w-7xl mx-auto">
 
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20">
+        <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-xs font-bold uppercase tracking-widest text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 px-3.5 py-1.5 rounded-full">
-            California Compliance Toolkits
+            California Compliance Tools
           </span>
           <h1 className="text-4xl sm:text-5xl font-black tracking-tight text-zinc-100 mt-6">
-            DIY toolkits built for{' '}
+            Free tools first,{' '}
             <span className="bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
-              California law
+              toolkits when you&apos;re ready
             </span>
           </h1>
           <p className="text-base sm:text-lg text-zinc-400 mt-4 leading-relaxed">
-            Fillable templates, Cal/OSHA-ready forms, and training facilitator guides — everything a small business needs to meet California compliance requirements without a full HR department.
+            Start with the free calculator, quiz, or deadline tracker below — no signup needed. When you want fillable
+            templates, Cal/OSHA-ready forms, and training facilitator guides, the DIY toolkits are further down.
           </p>
           <p className="mt-3 text-xs text-zinc-600">
             Educational guidance only · Not legal advice · Review with qualified employment counsel before implementation
           </p>
         </div>
 
+        {/* Free Tools -- highest priority per site value hierarchy */}
+        <div className="mb-10">
+          <span className="text-xs font-bold uppercase tracking-widest text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-3.5 py-1.5 rounded-full">
+            Free — No Signup Required
+          </span>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
+          <Link
+            href="/paga-calculator"
+            className="group bg-[#111111] border border-white/10 hover:border-indigo-500/30 rounded-2xl p-6 flex flex-col gap-3 transition-all"
+          >
+            <div className="h-10 w-10 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center">
+              <Calculator className="h-5 w-5" />
+            </div>
+            <h3 className="font-bold text-zinc-100 group-hover:text-white transition-colors">PAGA Exposure Calculator</h3>
+            <p className="text-xs text-zinc-500 leading-relaxed">Estimate your PAGA exposure range under the AB 2288 reformed penalty structure.</p>
+            <span className="text-xs font-semibold text-indigo-400 flex items-center gap-1 mt-auto">
+              Try it <ArrowRight className="h-3 w-3" />
+            </span>
+          </Link>
+          <Link
+            href="/tools/compliance-quiz"
+            className="group bg-[#111111] border border-white/10 hover:border-indigo-500/30 rounded-2xl p-6 flex flex-col gap-3 transition-all"
+          >
+            <div className="h-10 w-10 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center">
+              <ClipboardCheck className="h-5 w-5" />
+            </div>
+            <h3 className="font-bold text-zinc-100 group-hover:text-white transition-colors">Compliance Quick-Check</h3>
+            <p className="text-xs text-zinc-500 leading-relaxed">A short self-assessment for HPP, WVPP, IIPP, or KYR — see where the gaps are.</p>
+            <span className="text-xs font-semibold text-indigo-400 flex items-center gap-1 mt-auto">
+              Try it <ArrowRight className="h-3 w-3" />
+            </span>
+          </Link>
+          <Link
+            href="/tools/deadline-tracker"
+            className="group bg-[#111111] border border-white/10 hover:border-indigo-500/30 rounded-2xl p-6 flex flex-col gap-3 transition-all"
+          >
+            <div className="h-10 w-10 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center">
+              <CalendarClock className="h-5 w-5" />
+            </div>
+            <h3 className="font-bold text-zinc-100 group-hover:text-white transition-colors">Training Deadline Tracker</h3>
+            <p className="text-xs text-zinc-500 leading-relaxed">Enter your dates and headcount to get exact renewal and new-hire deadlines.</p>
+            <span className="text-xs font-semibold text-indigo-400 flex items-center gap-1 mt-auto">
+              Try it <ArrowRight className="h-3 w-3" />
+            </span>
+          </Link>
+        </div>
+
         {/* Toolkit Cards */}
+        <div className="text-center max-w-3xl mx-auto mb-10">
+          <span className="text-xs font-bold uppercase tracking-widest text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 px-3.5 py-1.5 rounded-full">
+            Done-For-You Toolkits
+          </span>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {toolsList.map((tool) => {
             const colors = accentMap[tool.accentColor]

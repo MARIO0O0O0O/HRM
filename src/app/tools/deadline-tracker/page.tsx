@@ -1,10 +1,11 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Breadcrumb from '@/components/layout/Breadcrumb'
 import TrainingCycleCalculator from '@/components/tools/TrainingCycleCalculator'
 import AnnualDeadlineTracker from '@/components/tools/AnnualDeadlineTracker'
 import ProgressChecklist from '@/components/tools/ProgressChecklist'
+import { createClient } from '@/lib/supabase/client'
 import { iippHazardCategories } from '@/data/quiz-content'
 import { CalendarClock, Shield, AlertTriangle, FileText, BookOpen } from 'lucide-react'
 
@@ -19,6 +20,14 @@ const tabs: { key: ProgramKey; label: string; icon: typeof Shield }[] = [
 
 export default function DeadlineTrackerPage() {
   const [active, setActive] = useState<ProgramKey>('hpp')
+
+  useEffect(() => {
+    try {
+      createClient().from('tool_usage_events').insert({ tool_slug: 'deadline-tracker', event_type: 'view' }).then(() => {})
+    } catch {
+      // ignore -- analytics must never break the tool
+    }
+  }, [])
 
   return (
     <div className="flex-grow bg-[#0a0a0a] text-zinc-100 py-16 px-4 sm:px-6 lg:px-8">

@@ -1,9 +1,10 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Breadcrumb from '@/components/layout/Breadcrumb'
 import SelfAssessmentQuiz from '@/components/tools/SelfAssessmentQuiz'
 import KnowledgeQuiz from '@/components/tools/KnowledgeQuiz'
+import { createClient } from '@/lib/supabase/client'
 import { selfAssessmentPrograms, wvppKnowledgeQuiz } from '@/data/quiz-content'
 import { ClipboardCheck, Shield, AlertTriangle, FileText, BookOpen } from 'lucide-react'
 
@@ -18,6 +19,14 @@ const tabs: { key: ProgramKey; label: string; icon: typeof Shield }[] = [
 
 export default function ComplianceQuizPage() {
   const [active, setActive] = useState<ProgramKey>('hpp')
+
+  useEffect(() => {
+    try {
+      createClient().from('tool_usage_events').insert({ tool_slug: 'compliance-quiz', event_type: 'view' }).then(() => {})
+    } catch {
+      // ignore -- analytics must never break the tool
+    }
+  }, [])
 
   return (
     <div className="flex-grow bg-[#0a0a0a] text-zinc-100 py-16 px-4 sm:px-6 lg:px-8">

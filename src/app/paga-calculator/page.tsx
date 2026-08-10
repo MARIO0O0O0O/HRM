@@ -6,13 +6,14 @@ import Breadcrumb from '@/components/layout/Breadcrumb'
 import { Button } from '@/components/ui/button'
 import {
   Calculator,
-  ShieldAlert,
-  AlertTriangle,
   ArrowRight,
   TrendingUp,
   DollarSign,
   Users,
-  Calendar
+  Calendar,
+  Info,
+  CheckCircle2,
+  Lightbulb
 } from 'lucide-react'
 
 export default function PagaCalculatorPage() {
@@ -21,7 +22,7 @@ export default function PagaCalculatorPage() {
   const [breakViolationFreq, setBreakViolationFreq] = useState(3) // out of 10
   const [paystubViolationFreq, setPaystubViolationFreq] = useState(2) // out of 10
   const [overtimeViolationFreq, setOvertimeViolationFreq] = useState(1) // out of 10
-  
+
   const [pagaExposure, setPagaExposure] = useState((() => {
     const annualPayPeriods = 26
     const maxFreq = Math.max(3, 2, 1)
@@ -115,6 +116,17 @@ export default function PagaCalculatorPage() {
     return '12 pay periods / yr'
   }
 
+  const violationPayPeriodsForDisplay = (() => {
+    let annualPayPeriods = 26
+    if (payFrequency === 'weekly') annualPayPeriods = 52
+    else if (payFrequency === 'semi-monthly') annualPayPeriods = 24
+    else if (payFrequency === 'monthly') annualPayPeriods = 12
+    const maxFreq = Math.max(breakViolationFreq, paystubViolationFreq, overtimeViolationFreq)
+    return Math.ceil(annualPayPeriods * (maxFreq / 10))
+  })()
+
+  const capReached = headcount * 9000 <= pagaExposure + 1 && violationPayPeriodsForDisplay > 1
+
   return (
     <div className="flex-grow bg-[#0a0a0a] text-zinc-100 py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto">
@@ -122,15 +134,15 @@ export default function PagaCalculatorPage() {
 
         {/* Header Section */}
         <div className="text-center mb-12">
-          <span className="text-xs font-bold uppercase tracking-widest text-rose-400 bg-rose-500/10 border border-rose-500/20 px-3.5 py-1.5 rounded-full flex items-center gap-1.5 w-fit mx-auto">
-            <ShieldAlert className="h-3.5 w-3.5" /> Compliance Risk Assessment
+          <span className="text-xs font-bold uppercase tracking-widest text-indigo-300 bg-indigo-500/10 border border-indigo-500/20 px-3.5 py-1.5 rounded-full flex items-center gap-1.5 w-fit mx-auto">
+            <Calculator className="h-3.5 w-3.5" /> Free Tool · No Signup Required
           </span>
           <h1 className="text-3xl sm:text-5xl font-black tracking-tight leading-[1.1] bg-gradient-to-r from-zinc-50 via-zinc-100 to-zinc-400 bg-clip-text text-transparent mt-6">
             California PAGA Exposure Calculator
           </h1>
           <p className="text-sm sm:text-base text-zinc-400 mt-4 max-w-xl mx-auto leading-relaxed">
-            The Private Attorneys General Act (PAGA) allows employees to sue for labor code violations with compounding penalties. Calculate your estimated exposure under the{' '}
-            <span className="text-amber-400 font-semibold">AB 2288 reformed penalty structure</span>{' '}(effective June 2024).
+            The Private Attorneys General Act (PAGA) lets employees bring labor code violation claims on behalf of the state, with penalties that compound per pay period. This tool estimates a realistic range under the{' '}
+            <span className="text-amber-400 font-semibold">AB 2288 reformed penalty structure</span>{' '}(effective June 2024) — so you know roughly where you stand and what to fix first.
           </p>
           <p className="text-xs text-zinc-600 mt-2">
             Updated for AB 2288 + SB 92 · $9,000/employee cap · 35% employee / 65% LWDA split · CA min wage $17/hr (2025)
@@ -139,18 +151,18 @@ export default function PagaCalculatorPage() {
 
         {/* Main Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start text-left">
-          
+
           {/* Controls Panel */}
           <div className="lg:col-span-7 bg-[#111111] border border-white/10 rounded-3xl p-6 sm:p-8 flex flex-col gap-6">
             <h2 className="text-lg font-bold text-zinc-100 flex items-center gap-2 border-b border-white/5 pb-4">
-              <Calculator className="h-5 w-5 text-indigo-400" /> Diagnostic Parameters
+              <Calculator className="h-5 w-5 text-indigo-400" /> Tell Us About Your Team
             </h2>
 
             {/* Headcount Input */}
             <div className="flex flex-col gap-2">
               <div className="flex justify-between items-center text-sm font-semibold">
                 <label className="text-zinc-400 flex items-center gap-1.5">
-                  <Users className="h-4 w-4 text-zinc-500" /> Aggrieved Employee Headcount
+                  <Users className="h-4 w-4 text-zinc-500" /> Employee Headcount
                 </label>
                 <span className="text-indigo-400 text-base">{headcount} staff members</span>
               </div>
@@ -162,7 +174,7 @@ export default function PagaCalculatorPage() {
                 onChange={(e) => setHeadcount(parseInt(e.target.value))}
                 className="w-full h-1 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-indigo-500"
               />
-              <span className="text-[10px] text-zinc-500">Includes all shift/hourly and classified W-2 staff over the past year</span>
+              <span className="text-[10px] text-zinc-500">All shift/hourly and classified W-2 staff over the past year</span>
             </div>
 
             {/* Pay Frequency Selection */}
@@ -185,17 +197,20 @@ export default function PagaCalculatorPage() {
                   </button>
                 ))}
               </div>
-              <span className="text-[10px] text-zinc-500">{payPeriodsLabel()} — penalties compound per aggrieved employee per pay period</span>
+              <span className="text-[10px] text-zinc-500">{payPeriodsLabel()} — penalties are calculated per aggrieved employee, per pay period</span>
             </div>
 
             {/* Violation Sliders */}
             <div className="flex flex-col gap-6 pt-4 border-t border-white/5">
-              <h3 className="text-xs font-bold uppercase tracking-wider text-zinc-500">Estimated Labor Code Deviation Rates</h3>
+              <h3 className="text-xs font-bold uppercase tracking-wider text-zinc-500">How Often Do These Happen?</h3>
+              <p className="text-[11px] text-zinc-600 -mt-3">
+                Rough estimates are fine — most owners land these within a pay period or two of accuracy.
+              </p>
 
               {/* 1. Meal / Rest breaks */}
               <div className="flex flex-col gap-2">
                 <div className="flex justify-between items-center text-xs sm:text-sm font-semibold">
-                  <span className="text-zinc-400">Meal & Rest Period Anomalies</span>
+                  <span className="text-zinc-400">Meal &amp; Rest Break Issues</span>
                   <span className="text-indigo-400">{breakViolationFreq} out of 10 pay periods</span>
                 </div>
                 <input
@@ -206,13 +221,13 @@ export default function PagaCalculatorPage() {
                   onChange={(e) => setBreakViolationFreq(parseInt(e.target.value))}
                   className="w-full h-1 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-indigo-500"
                 />
-                <span className="text-[10px] text-zinc-500">Breaks missed, shortened, late (past hour 5), or not documented properly</span>
+                <span className="text-[10px] text-zinc-500">Breaks missed, shortened, taken late (after hour 5), or not documented</span>
               </div>
 
               {/* 2. Inaccurate Paystubs */}
               <div className="flex flex-col gap-2">
                 <div className="flex justify-between items-center text-xs sm:text-sm font-semibold">
-                  <span className="text-zinc-400">Paystub Detail Errors</span>
+                  <span className="text-zinc-400">Paystub Detail Gaps</span>
                   <span className="text-indigo-400">{paystubViolationFreq} out of 10 pay periods</span>
                 </div>
                 <input
@@ -223,7 +238,7 @@ export default function PagaCalculatorPage() {
                   onChange={(e) => setPaystubViolationFreq(parseInt(e.target.value))}
                   className="w-full h-1 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-indigo-500"
                 />
-                <span className="text-[10px] text-zinc-500">Missing itemized rates, clean dates, business names, or overtime breakdowns</span>
+                <span className="text-[10px] text-zinc-500">Missing itemized rates, pay period dates, business name, or overtime breakdown</span>
               </div>
 
               {/* 3. Off the clock work */}
@@ -240,78 +255,97 @@ export default function PagaCalculatorPage() {
                   onChange={(e) => setOvertimeViolationFreq(parseInt(e.target.value))}
                   className="w-full h-1 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-indigo-500"
                 />
-                <span className="text-[10px] text-zinc-500">Pre-shift set up, post-shift closing, or rounding errors leading to unrecorded work</span>
+                <span className="text-[10px] text-zinc-500">Pre-shift setup, post-shift closing, or rounding errors that go unrecorded</span>
               </div>
             </div>
           </div>
 
           {/* Results Summary Box */}
           <div className="lg:col-span-5 flex flex-col gap-6">
-            
+
             {/* Total exposure display */}
             <div className="relative w-full">
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-rose-500 to-indigo-500 rounded-3xl opacity-20 blur-sm pointer-events-none" />
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-indigo-500 to-cyan-500 rounded-3xl opacity-20 blur-sm pointer-events-none" />
               <div className="relative bg-[#111111] border border-white/10 rounded-3xl p-6 sm:p-8 flex flex-col gap-6 text-center">
                 <div>
-                  <span className="text-xs font-bold uppercase tracking-widest text-zinc-500">Total Compliance Risk Exposure</span>
-                  <p className="text-4xl sm:text-5xl font-black text-rose-500 mt-3 tracking-tight">
+                  <span className="text-xs font-bold uppercase tracking-widest text-zinc-500">Estimated PAGA Exposure</span>
+                  <p className="text-4xl sm:text-5xl font-black text-zinc-50 mt-3 tracking-tight">
                     {formattedCurrency(totalExposure)}
                   </p>
-                  <span className="text-[10px] font-bold text-rose-400/80 border border-rose-500/10 bg-rose-500/5 px-2.5 py-1 rounded-md mt-3 inline-block leading-snug">
-                    Litigation & PAGA Penalty Risk
+                  <span className="text-[10px] font-bold text-indigo-300 border border-indigo-500/20 bg-indigo-500/5 px-2.5 py-1 rounded-md mt-3 inline-block leading-snug">
+                    A rough estimate — not a bill or a prediction
                   </span>
                 </div>
 
                 <div className="border-t border-white/5 pt-5 flex flex-col gap-3.5 text-left text-xs sm:text-sm">
                   <div className="flex justify-between border-b border-white/5 pb-2">
                     <span className="text-zinc-400 flex items-center gap-1.5">
-                      <ShieldAlert className="h-4 w-4 text-zinc-600 shrink-0" /> Compounding PAGA Penalties
+                      <TrendingUp className="h-4 w-4 text-zinc-600 shrink-0" /> Statutory PAGA Penalties
                     </span>
                     <span className="font-extrabold text-zinc-200">{formattedCurrency(pagaExposure)}</span>
                   </div>
                   <div className="flex justify-between border-b border-white/5 pb-2">
                     <span className="text-zinc-400 flex items-center gap-1.5">
-                      <DollarSign className="h-4 w-4 text-zinc-600 shrink-0" /> Aggrieved Employee Premium Claims
+                      <DollarSign className="h-4 w-4 text-zinc-600 shrink-0" /> Unpaid Wage &amp; Break Premiums
                     </span>
                     <span className="font-extrabold text-zinc-200">{formattedCurrency(wageClaimExposure)}</span>
                   </div>
-                  <div className="flex justify-between pt-0.5">
-                    <span className="text-zinc-400 flex items-center gap-1.5 font-bold">
-                      <TrendingUp className="h-4 w-4 text-indigo-400 shrink-0" /> BizHR Diagnostic Rating
-                    </span>
-                    <span className="font-black text-rose-400 uppercase">
-                      {totalExposure > 100000 ? 'High Risk' : totalExposure > 25000 ? 'Medium Risk' : 'Low Risk'}
-                    </span>
+
+                  {/* Show Your Work — plain-English formula */}
+                  <div className="bg-[#0a0a0a] border border-white/5 rounded-xl p-3.5 flex gap-2.5">
+                    <Info className="h-4 w-4 text-indigo-400 shrink-0 mt-0.5" />
+                    <p className="text-[11px] text-zinc-500 leading-relaxed">
+                      <strong className="text-zinc-400">Show your work:</strong> {headcount} employees × an estimated {violationPayPeriodsForDisplay} affected pay period{violationPayPeriodsForDisplay === 1 ? '' : 's'} × $100 (first) / $200 (each after) per employee{capReached ? ', capped at $9,000 per employee under AB 2288' : ''} = statutory penalties. Wage premiums are added separately for missed breaks and unpaid overtime.
+                    </p>
                   </div>
                 </div>
 
                 <div className="pt-2">
                   <Link href={`/book?exposure=${totalExposure}&headcount=${headcount}`}>
-                    <Button className="w-full bg-gradient-to-r from-rose-600 to-indigo-600 hover:from-rose-500 hover:to-indigo-500 active:from-rose-700 text-zinc-50 font-bold tracking-wide py-3.5 rounded-xl shadow-xl shadow-rose-600/10 cursor-pointer flex items-center justify-center gap-2">
-                      Lock in $75 Mitigation Consultation <ArrowRight className="h-4.5 w-4.5" />
+                    <Button variant="outline" className="w-full border-indigo-500/30 text-indigo-300 hover:bg-indigo-500/10 font-semibold tracking-wide py-3 rounded-xl cursor-pointer flex items-center justify-center gap-2">
+                      Want a second opinion? Book a $75 call <ArrowRight className="h-4 w-4" />
                     </Button>
                   </Link>
+                  <p className="text-[10px] text-zinc-600 mt-2">Totally optional — the numbers above are yours to keep either way.</p>
                 </div>
+              </div>
+            </div>
+
+            {/* Path to compliance */}
+            <div className="bg-emerald-500/5 border border-emerald-500/15 rounded-2xl p-6 flex flex-col gap-3">
+              <h3 className="text-base font-bold text-zinc-100 flex items-center gap-1.5">
+                <CheckCircle2 className="h-5 w-5 text-emerald-400 shrink-0" /> Your Path to Compliance
+              </h3>
+              <p className="text-xs text-zinc-400 leading-relaxed">
+                Almost everything on this page is fixable — most employers close these gaps with a policy update,
+                a training session, and a paystub template fix. AB 2288 also expanded early{' '}
+                <strong className="text-zinc-300">cure rights</strong>: correcting certain violations quickly,
+                before a claim escalates, can reduce or eliminate the associated penalty.
+              </p>
+              <div className="flex items-start gap-2 text-xs text-zinc-500 pt-1">
+                <Lightbulb className="h-4 w-4 text-amber-400 shrink-0 mt-0.5" />
+                <span>Start with whichever slider above is highest — that's usually the fastest win.</span>
               </div>
             </div>
 
             {/* Advisory / PAGA Notice box */}
             <div className="bg-[#111111]/40 border border-white/5 rounded-2xl p-6 flex flex-col gap-4">
               <h3 className="text-base font-bold text-zinc-100 flex items-center gap-1.5">
-                <AlertTriangle className="h-5 w-5 text-rose-500 shrink-0" /> AB 2288 Reform (June 2024)
+                <Info className="h-5 w-5 text-indigo-400 shrink-0" /> AB 2288 Reform (June 2024) — What Changed
               </h3>
               <ul className="flex flex-col gap-1.5 text-xs text-zinc-500">
                 <li>• <strong className="text-zinc-400">Distribution:</strong> 35% to aggrieved employees / 65% to LWDA (was 25%/75%)</li>
-                <li>• <strong className="text-zinc-400">Cap:</strong> $9,000 per aggrieved employee (most violations)</li>
-                <li>• <strong className="text-zinc-400">Standing:</strong> Only employees who personally experienced violations may bring claims</li>
-                <li>• <strong className="text-zinc-400">Cure provisions:</strong> Expanded early cure rights — act fast to reduce exposure</li>
-                <li>• <strong className="text-zinc-400">Attorney fees:</strong> Still recoverable by plaintiff — settlement pressure remains high</li>
+                <li>• <strong className="text-zinc-400">Cap:</strong> $9,000 per aggrieved employee for most violations</li>
+                <li>• <strong className="text-zinc-400">Standing:</strong> Only employees who personally experienced a violation may bring a claim</li>
+                <li>• <strong className="text-zinc-400">Cure provisions:</strong> Expanded early-cure rights — fixing issues fast can reduce exposure</li>
+                <li>• <strong className="text-zinc-400">Attorney fees:</strong> Still recoverable by a prevailing plaintiff</li>
               </ul>
               <p className="text-xs text-zinc-600 leading-relaxed border-t border-white/5 pt-3">
-                PAGA penalty calculations are estimates based on disclosed inputs and current statutory rates.
-                Actual exposure depends on violation frequency, cure actions taken, arbitration agreements,
-                and judicial interpretation. Consult a PAGA defense attorney before making settlement or
-                cure decisions. BizHR / M.E. Consulting accepts no liability for decisions made based on calculator output.
+                This is an educational estimate based on the numbers you enter and current statutory rates — not
+                a prediction, a legal opinion, or a bill. Actual exposure depends on violation frequency, cure
+                actions taken, arbitration agreements, and judicial interpretation. For a specific situation,
+                talk to a PAGA defense attorney. BizHR / M.E. Consulting accepts no liability for decisions made
+                from calculator output.
               </p>
             </div>
           </div>

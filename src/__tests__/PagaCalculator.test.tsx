@@ -13,17 +13,17 @@ describe('PAGA Calculator Page Component', () => {
 
     // Verify header titles
     expect(screen.getByText('California PAGA Exposure Calculator')).toBeDefined()
-    expect(screen.getByText('Compliance Risk Assessment')).toBeDefined()
+    expect(screen.getByText('Free Tool · No Signup Required')).toBeDefined()
 
     // Verify parameter parameters
-    expect(screen.getByText('Aggrieved Employee Headcount')).toBeDefined()
+    expect(screen.getByText('Employee Headcount')).toBeDefined()
     expect(screen.getByText('Pay Period Frequency')).toBeDefined()
-    expect(screen.getByText('Estimated Labor Code Deviation Rates')).toBeDefined()
+    expect(screen.getByText('How Often Do These Happen?')).toBeDefined()
 
     // Verify results panel
-    expect(screen.getByText('Total Compliance Risk Exposure')).toBeDefined()
-    expect(screen.getByText('Diagnostic Parameters')).toBeDefined()
-    expect(screen.getByRole('button', { name: /Lock in \$75 Mitigation Consultation/ })).toBeDefined()
+    expect(screen.getByText('Estimated PAGA Exposure')).toBeDefined()
+    expect(screen.getByText('Tell Us About Your Team')).toBeDefined()
+    expect(screen.getByRole('button', { name: /Want a second opinion\? Book a \$75 call/ })).toBeDefined()
     
     cleanup()
   })

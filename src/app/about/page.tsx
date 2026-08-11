@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import type { Metadata } from 'next'
 import { Button } from '@/components/ui/button'
 import Breadcrumb from '@/components/layout/Breadcrumb'
 import {
@@ -11,6 +12,11 @@ import {
   CheckCircle2,
   Phone
 } from 'lucide-react'
+
+export const metadata: Metadata = {
+  title: 'About Mario Espindola, MPA — BizHR Founder | California HR Compliance',
+  description: '10+ years of California municipal regulatory experience, now helping small businesses navigate HR compliance without the law-firm price tag.',
+}
 
 export default function AboutPage() {
   const qualifications = [

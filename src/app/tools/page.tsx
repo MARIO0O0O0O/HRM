@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { toolsList } from '@/data/tools'
-import { ArrowRight, Shield, FileText, AlertTriangle, BookOpen, Calculator, ClipboardCheck, CalendarClock } from 'lucide-react'
+import { ArrowRight, Shield, FileText, AlertTriangle, BookOpen, Calculator, ClipboardCheck, CalendarClock, ScaleIcon, Briefcase, ClipboardList } from 'lucide-react'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -113,6 +113,45 @@ export default function ToolsPage() {
             </div>
             <h3 className="font-bold text-zinc-100 group-hover:text-white transition-colors">Training Deadline Tracker</h3>
             <p className="text-xs text-zinc-500 leading-relaxed">Enter your dates and headcount to get exact renewal and new-hire deadlines.</p>
+            <span className="text-xs font-semibold text-indigo-400 flex items-center gap-1 mt-auto">
+              Try it <ArrowRight className="h-3 w-3" />
+            </span>
+          </Link>
+          <Link
+            href="/tools/threshold-checker"
+            className="group bg-[#111111] border border-white/10 hover:border-indigo-500/30 rounded-2xl p-6 flex flex-col gap-3 transition-all"
+          >
+            <div className="h-10 w-10 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center">
+              <ScaleIcon className="h-5 w-5" />
+            </div>
+            <h3 className="font-bold text-zinc-100 group-hover:text-white transition-colors">Employer Threshold Checker</h3>
+            <p className="text-xs text-zinc-500 leading-relaxed">See which CA and federal laws apply to your business based on employee count.</p>
+            <span className="text-xs font-semibold text-indigo-400 flex items-center gap-1 mt-auto">
+              Try it <ArrowRight className="h-3 w-3" />
+            </span>
+          </Link>
+          <Link
+            href="/tools/job-classification"
+            className="group bg-[#111111] border border-white/10 hover:border-indigo-500/30 rounded-2xl p-6 flex flex-col gap-3 transition-all"
+          >
+            <div className="h-10 w-10 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center">
+              <Briefcase className="h-5 w-5" />
+            </div>
+            <h3 className="font-bold text-zinc-100 group-hover:text-white transition-colors">Job Classification Quiz</h3>
+            <p className="text-xs text-zinc-500 leading-relaxed">Exempt, non-exempt, or contractor? Walk through the ABC test and duties test.</p>
+            <span className="text-xs font-semibold text-indigo-400 flex items-center gap-1 mt-auto">
+              Try it <ArrowRight className="h-3 w-3" />
+            </span>
+          </Link>
+          <Link
+            href="/tools/mandatory-postings"
+            className="group bg-[#111111] border border-white/10 hover:border-indigo-500/30 rounded-2xl p-6 flex flex-col gap-3 transition-all"
+          >
+            <div className="h-10 w-10 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center">
+              <ClipboardList className="h-5 w-5" />
+            </div>
+            <h3 className="font-bold text-zinc-100 group-hover:text-white transition-colors">Mandatory Postings Checklist</h3>
+            <p className="text-xs text-zinc-500 leading-relaxed">Filterable list of required federal, CA, and LA local workplace postings.</p>
             <span className="text-xs font-semibold text-indigo-400 flex items-center gap-1 mt-auto">
               Try it <ArrowRight className="h-3 w-3" />
             </span>

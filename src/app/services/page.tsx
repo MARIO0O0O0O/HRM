@@ -1,8 +1,14 @@
 import Link from 'next/link'
+import type { Metadata } from 'next'
 import { spokesRegistry } from '@/data/spokes'
 import { Button } from '@/components/ui/button'
 import Breadcrumb from '@/components/layout/Breadcrumb'
 import { CheckCircle2, ArrowRight, Sparkles, Scale, BookOpen, ShieldAlert, Award } from 'lucide-react'
+
+export const metadata: Metadata = {
+  title: 'Services — California HR Compliance Consulting | BizHR',
+  description: 'Harassment prevention, workplace violence prevention, injury & illness prevention, compliance audits, and ongoing HR support for California small businesses.',
+}
 
 export default function ServicesPage() {
   const services = Object.values(spokesRegistry)

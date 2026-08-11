@@ -1,7 +1,13 @@
 import Link from 'next/link'
+import type { Metadata } from 'next'
 import { Button } from '@/components/ui/button'
 import Breadcrumb from '@/components/layout/Breadcrumb'
 import { Calendar, Clock, BookOpen, ChevronRight, Download } from 'lucide-react'
+
+export const metadata: Metadata = {
+  title: 'HR Compliance Blog — California Employment Law Updates | BizHR',
+  description: 'Practical guides on SB 553, SB 1343, PAGA, meal breaks, and California employment law for small business owners.',
+}
 
 export default function BlogPage() {
   const articles = [

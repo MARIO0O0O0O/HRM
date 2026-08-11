@@ -16,6 +16,16 @@ export async function generateStaticParams() {
   }))
 }
 
+export async function generateMetadata({ params }: Props) {
+  const { slug } = await params
+  const spoke = spokesRegistry[slug]
+  if (!spoke) return { title: 'Not Found — BizHR' }
+  return {
+    title: `${spoke.title} | BizHR`,
+    description: spoke.description,
+  }
+}
+
 export default async function SpokePage({ params }: Props) {
   const { slug } = await params
   const spoke = spokesRegistry[slug]

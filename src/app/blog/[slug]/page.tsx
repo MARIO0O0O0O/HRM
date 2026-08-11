@@ -114,6 +114,16 @@ export async function generateStaticParams() {
   }))
 }
 
+export async function generateMetadata({ params }: Props) {
+  const { slug } = await params
+  const post = blogRegistry[slug]
+  if (!post) return { title: 'Post Not Found — BizHR' }
+  return {
+    title: `${post.title} | BizHR Blog`,
+    description: post.content[0]?.slice(0, 155) ?? post.title,
+  }
+}
+
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params
   const post = blogRegistry[slug]

@@ -30,6 +30,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/tools', priority: 0.9, changeFreq: 'monthly' },
     { path: '/tools/compliance-quiz', priority: 0.9, changeFreq: 'monthly' },
     { path: '/tools/deadline-tracker', priority: 0.9, changeFreq: 'monthly' },
+    { path: '/ai-lab', priority: 0.9, changeFreq: 'monthly' },
     { path: '/services', priority: 0.8, changeFreq: 'monthly' },
     { path: '/pricing', priority: 0.7, changeFreq: 'monthly' },
     { path: '/blog', priority: 0.7, changeFreq: 'weekly' },

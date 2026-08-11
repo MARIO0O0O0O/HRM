@@ -245,46 +245,43 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 6. AI Services Preview Section */}
+      {/* 6. AI Tools Section */}
       <section className="py-20 border-b border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-7 flex flex-col gap-6 text-left">
               <span className="text-xs font-bold uppercase tracking-widest text-indigo-400 bg-indigo-500/10 border border-indigo-500/20 px-3.5 py-1.5 rounded-full w-fit flex items-center gap-1.5">
-                <Sparkles className="h-3.5 w-3.5" /> AI Implementation
+                <Sparkles className="h-3.5 w-3.5" /> AI Tools
               </span>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-zinc-100 tracking-tight">
-                Give your small business the AI edge.
+                Two AI tools I built and use myself.
               </h2>
               <p className="text-sm sm:text-base text-zinc-400 leading-relaxed">
-                BizHR helps California small businesses implement simple, highly effective AI tools that automate HR workflows, hiring, documentation, operations, and administrative tasks. These are the exact same automations that allow BizHR to deliver large-firm caliber consulting at small-business pricing.
+                A Strategic Audit Engine that scores your HR practices across the areas that generate the
+                most PAGA exposure, and a Policy Architect that drafts a California-specific policy from a
+                plain-English description. Both are free to try. Both produce a real draft — never a final
+                answer — that should go to an employment attorney before you rely on it.
               </p>
-              <Link href="/services" className="w-fit">
+              <Link href="/ai-lab" className="w-fit">
                 <Button className="bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 text-zinc-50 font-semibold tracking-wide py-3 px-6 rounded-lg cursor-pointer flex items-center gap-2">
-                  Explore AI Services <ArrowRight className="h-4 w-4" />
+                  Try the AI Tools <ArrowRight className="h-4 w-4" />
                 </Button>
               </Link>
             </div>
             <div className="lg:col-span-5 bg-[#111111] border border-white/10 rounded-2xl p-6 sm:p-8 flex flex-col gap-6 text-left">
-              <h3 className="text-lg font-bold text-zinc-100">What We Automate</h3>
+              <h3 className="text-lg font-bold text-zinc-100">What&apos;s Actually In There</h3>
               <ul className="flex flex-col gap-3 text-xs sm:text-sm">
                 <li className="flex items-center gap-3 text-zinc-400">
-                  <CheckCircle2 className="h-4.5 w-4.5 text-cyan-400 shrink-0" /> HR onboarding & initial documentation
+                  <CheckCircle2 className="h-4.5 w-4.5 text-cyan-400 shrink-0" /> Strategic Audit Engine — describe your current practices, get a scored breakdown by risk area
                 </li>
                 <li className="flex items-center gap-3 text-zinc-400">
-                  <CheckCircle2 className="h-4.5 w-4.5 text-cyan-400 shrink-0" /> Auto-scheduling & time tracking workflows
+                  <CheckCircle2 className="h-4.5 w-4.5 text-cyan-400 shrink-0" /> Policy Architect — draft a CA-specific HR policy from a plain-English request
                 </li>
                 <li className="flex items-center gap-3 text-zinc-400">
-                  <CheckCircle2 className="h-4.5 w-4.5 text-cyan-400 shrink-0" /> AI-assisted hiring & candidate screeners
+                  <CheckCircle2 className="h-4.5 w-4.5 text-cyan-400 shrink-0" /> Every draft is marked clearly as AI-assisted, not attorney-reviewed
                 </li>
                 <li className="flex items-center gap-3 text-zinc-400">
-                  <CheckCircle2 className="h-4.5 w-4.5 text-cyan-400 shrink-0" /> Dynamic policy & custom handbook drafts
-                </li>
-                <li className="flex items-center gap-3 text-zinc-400">
-                  <CheckCircle2 className="h-4.5 w-4.5 text-cyan-400 shrink-0" /> Customer support chatbots & auto-response
-                </li>
-                <li className="flex items-center gap-3 text-zinc-400">
-                  <CheckCircle2 className="h-4.5 w-4.5 text-cyan-400 shrink-0" /> Routine invoicing & reporting automations
+                  <CheckCircle2 className="h-4.5 w-4.5 text-cyan-400 shrink-0" /> No signup required to try either one
                 </li>
               </ul>
             </div>

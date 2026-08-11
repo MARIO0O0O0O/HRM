@@ -1,10 +1,19 @@
 import Link from 'next/link'
+import ToolMarquee from './ToolMarquee'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
     <footer className="w-full border-t border-white/10 bg-[#0a0a0a] text-zinc-500">
+
+      {/* Everything at a glance -- every free tool and service, one place */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-4">
+        <p className="text-xs font-bold uppercase tracking-widest text-zinc-600 mb-4 text-center">
+          Everything On This Site, At a Glance
+        </p>
+        <ToolMarquee />
+      </div>
 
       {/* Main footer row */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex flex-col sm:flex-row justify-between items-start gap-8">

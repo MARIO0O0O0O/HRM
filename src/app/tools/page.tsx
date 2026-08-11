@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { toolsList } from '@/data/tools'
-import { ArrowRight, Shield, FileText, AlertTriangle, BookOpen, Calculator, ClipboardCheck, CalendarClock, ScaleIcon, Briefcase, ClipboardList } from 'lucide-react'
+import { ArrowRight, Shield, FileText, AlertTriangle, BookOpen, Calculator, ClipboardCheck, CalendarClock, ScaleIcon, Briefcase, ClipboardList, Sparkles } from 'lucide-react'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -152,6 +152,19 @@ export default function ToolsPage() {
             </div>
             <h3 className="font-bold text-zinc-100 group-hover:text-white transition-colors">Mandatory Postings Checklist</h3>
             <p className="text-xs text-zinc-500 leading-relaxed">Filterable list of required federal, CA, and LA local workplace postings.</p>
+            <span className="text-xs font-semibold text-indigo-400 flex items-center gap-1 mt-auto">
+              Try it <ArrowRight className="h-3 w-3" />
+            </span>
+          </Link>
+          <Link
+            href="/ai-lab"
+            className="group bg-[#111111] border border-white/10 hover:border-indigo-500/30 rounded-2xl p-6 flex flex-col gap-3 transition-all"
+          >
+            <div className="h-10 w-10 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center">
+              <Sparkles className="h-5 w-5" />
+            </div>
+            <h3 className="font-bold text-zinc-100 group-hover:text-white transition-colors">AI Lab</h3>
+            <p className="text-xs text-zinc-500 leading-relaxed">A compliance self-audit and a policy drafter, both AI-powered, both free.</p>
             <span className="text-xs font-semibold text-indigo-400 flex items-center gap-1 mt-auto">
               Try it <ArrowRight className="h-3 w-3" />
             </span>

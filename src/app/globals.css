@@ -24,3 +24,31 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* ── Tool marquee (footer) ──────────────────────────────────────────── */
+@keyframes marquee-up {
+  from { transform: translateY(0); }
+  to { transform: translateY(-50%); }
+}
+@keyframes marquee-down {
+  from { transform: translateY(-50%); }
+  to { transform: translateY(0); }
+}
+.marquee-col {
+  animation: marquee-up 32s linear infinite;
+}
+.marquee-col-reverse {
+  animation: marquee-down 32s linear infinite;
+}
+.marquee-col:hover,
+.marquee-col:focus-within,
+.marquee-col-reverse:hover,
+.marquee-col-reverse:focus-within {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-col,
+  .marquee-col-reverse {
+    animation: none;
+  }
+}

@@ -66,7 +66,69 @@ export default function CinematicHero() {
         />
       </div>
 
-      {/* 2. Slow Nodes (Data packets) on the grid */}
+      {/* 1.5. LA Skyline Silhouette -- the cinematic backdrop */}
+      <svg
+        className="absolute bottom-0 left-0 w-full h-[45%] z-0 pointer-events-none"
+        viewBox="0 0 1600 400"
+        preserveAspectRatio="xMidYMax slice"
+        aria-hidden="true"
+      >
+        <defs>
+          <linearGradient id="skylineFade" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#020617" stopOpacity="0" />
+            <stop offset="100%" stopColor="#020617" stopOpacity="1" />
+          </linearGradient>
+        </defs>
+        {/* Back layer -- distant, dimmer skyline */}
+        <g fill="#0f1a3d" opacity="0.7">
+          <rect x="40" y="220" width="50" height="180" />
+          <rect x="100" y="180" width="40" height="220" />
+          <rect x="150" y="240" width="55" height="160" />
+          <rect x="900" y="200" width="45" height="200" />
+          <rect x="955" y="230" width="35" height="170" />
+          <rect x="1400" y="210" width="50" height="190" />
+          <rect x="1460" y="250" width="40" height="150" />
+        </g>
+        {/* Front layer -- closer, brighter skyline with a City-Hall-esque tower */}
+        <g fill="#162454">
+          <rect x="200" y="260" width="60" height="140" />
+          <rect x="270" y="200" width="45" height="200" />
+          <rect x="325" y="290" width="70" height="110" />
+          {/* Tower with stepped crown, echoing LA City Hall */}
+          <rect x="410" y="120" width="55" height="280" />
+          <rect x="420" y="90" width="35" height="35" />
+          <rect x="428" y="65" width="19" height="30" />
+          <rect x="480" y="250" width="50" height="150" />
+          <rect x="540" y="210" width="42" height="190" />
+          <rect x="590" y="270" width="65" height="130" />
+          <rect x="670" y="230" width="48" height="170" />
+          <rect x="730" y="180" width="38" height="220" />
+          <rect x="780" y="255" width="58" height="145" />
+          {/* Palm trees, scattered */}
+          <g stroke="#162454" strokeWidth="4" fill="none">
+            <path d="M 150 400 L 150 340" />
+            <path d="M 150 340 Q 130 320 110 325" />
+            <path d="M 150 340 Q 170 320 190 325" />
+            <path d="M 150 340 Q 150 310 140 300" />
+            <path d="M 150 340 Q 150 310 160 300" />
+          </g>
+          <g stroke="#162454" strokeWidth="4" fill="none">
+            <path d="M 1050 400 L 1050 330" />
+            <path d="M 1050 330 Q 1025 310 1000 315" />
+            <path d="M 1050 330 Q 1075 310 1100 315" />
+            <path d="M 1050 330 Q 1050 300 1038 288" />
+            <path d="M 1050 330 Q 1050 300 1062 288" />
+          </g>
+          <rect x="1100" y="240" width="46" height="160" />
+          <rect x="1155" y="290" width="60" height="110" />
+          <rect x="1225" y="200" width="40" height="200" />
+          <rect x="1275" y="260" width="55" height="140" />
+          <rect x="1340" y="230" width="42" height="170" />
+        </g>
+        <rect x="0" y="340" width="1600" height="60" fill="url(#skylineFade)" />
+      </svg>
+
+
       {mounted && (
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none mix-blend-screen">
           {nodes.map((node, i) => (
@@ -110,29 +172,27 @@ export default function CinematicHero() {
         </div>
         
         <h1 className="font-playfair text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white leading-[1.05] tracking-tight drop-shadow-2xl mb-8 max-w-5xl">
-          Traditional HR Meets{' '}
-          <span className="relative whitespace-nowrap">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-cyan-400 to-indigo-400 relative z-10">
-              High-Tech Electric.
-            </span>
-            <span className="absolute inset-0 bg-cyan-400/20 blur-2xl z-0" />
-          </span>
+          BizHR
         </h1>
 
-        <p className="font-sans text-lg sm:text-xl md:text-2xl text-zinc-300 max-w-2xl mb-12 drop-shadow-md font-light leading-relaxed">
-          We bring intricate legal compliance frameworks into the AI era. Modern tools, classic protection.
+        <p className="font-sans text-lg sm:text-xl md:text-2xl text-zinc-300 max-w-2xl mb-4 drop-shadow-md font-light leading-relaxed">
+          California HR compliance, built by someone who&apos;d rather earn your trust than your credit card.
+        </p>
+        <p className="font-sans text-sm sm:text-base text-zinc-400 max-w-xl mb-12 leading-relaxed">
+          Every tool below is free, built by me, and yours to use whether or not you ever hire me for
+          the harder, more personal parts of running a team.
         </p>
 
-        {/* CTAs */}
+        {/* CTAs -- free tools lead, booking is secondary and calm */}
         <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-          <Link href="/book" className="w-full sm:w-auto group">
+          <Link href="/tools" className="w-full sm:w-auto group">
             <Button className="w-full sm:w-auto h-14 bg-gradient-to-r from-cyan-600 to-indigo-600 hover:from-cyan-500 hover:to-indigo-500 text-white font-bold tracking-wide px-8 rounded-none border border-cyan-400/50 shadow-[0_0_30px_-5px_rgba(34,211,238,0.5)] transition-all duration-300 hover:scale-105 font-sans text-base flex items-center gap-2">
-              Book $75 Consultation <ArrowRight className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              <Calculator className="mr-1 h-4 w-4" /> Explore the Free Tools <ArrowRight className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Button>
           </Link>
-          <Link href="/paga-calculator" className="w-full sm:w-auto group">
+          <Link href="/book" className="w-full sm:w-auto group">
             <Button variant="outline" className="w-full sm:w-auto h-14 border-white/20 hover:border-cyan-400/60 bg-[#020617]/50 hover:bg-cyan-950/50 backdrop-blur-md text-cyan-50 font-semibold tracking-wide px-8 rounded-none transition-all duration-300 font-sans text-base">
-              <Calculator className="mr-2 h-4 w-4 text-cyan-400 group-hover:rotate-12 transition-transform" /> Free PAGA Risk Check
+              Book a $75 Consultation
             </Button>
           </Link>
         </div>

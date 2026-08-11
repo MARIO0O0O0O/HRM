@@ -35,14 +35,29 @@ export async function middleware(request: NextRequest) {
   } = await supabase.auth.getUser()
 
   const isProtectedRoute = request.nextUrl.pathname.startsWith('/portal')
+  const isAdminRoute = request.nextUrl.pathname.startsWith('/admin')
 
   if (isProtectedRoute && !user) {
     return NextResponse.redirect(new URL('/auth/login', request.url))
+  }
+
+  if (isAdminRoute) {
+    if (!user) {
+      return NextResponse.redirect(new URL('/auth/login?next=/admin', request.url))
+    }
+    const { data: profile } = await supabase
+      .from('profiles')
+      .select('is_admin')
+      .eq('id', user.id)
+      .single()
+    if (!profile?.is_admin) {
+      return NextResponse.redirect(new URL('/', request.url))
+    }
   }
 
   return response
 }
 
 export const config = {
-  matcher: ['/portal/:path*'],
+  matcher: ['/portal/:path*', '/admin/:path*'],
 }

@@ -10,7 +10,9 @@ import {
   MapPin,
   Heart,
   CheckCircle2,
-  Phone
+  Phone,
+  ExternalLink,
+  Briefcase
 } from 'lucide-react'
 
 export const metadata: Metadata = {
@@ -21,18 +23,18 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   const qualifications = [
     {
-      title: 'Master of Public Administration (MPA)',
-      description: 'Advanced degree focusing on public management, organizational design, governance, and regulatory analysis.',
+      title: 'IPMA-Senior Certified Professional',
+      description: 'Senior-level certification from the International Public Management Association for HR — the credential specific to public-sector HR leadership.',
       icon: GraduationCap,
     },
     {
-      title: '10+ Years Workforce Depth',
-      description: 'Over a decade designing policy, conducting audits, resolving disputes, and managing recruitment in California public sector HR.',
+      title: '$60M HR Budget, 1,500+ Employees',
+      description: 'Seven years at the City of Santa Ana — Management Aide through HR Analyst — overseeing HR operations for a workforce that size before ever starting BizHR.',
       icon: Calendar,
     },
     {
-      title: 'AI Automation Integration',
-      description: 'Certified specialist leveraging LLMs, dynamic automation workflows, and custom checker pipelines to streamline business procedures.',
+      title: 'MPA, Cal State Fullerton',
+      description: 'Master of Public Administration, including the City Management Fellowship — advanced training in governance, organizational design, and regulatory analysis.',
       icon: Sparkles,
     },
   ]
@@ -133,6 +135,33 @@ export default function AboutPage() {
               </li>
             ))}
           </ul>
+        </div>
+
+        {/* Full professional background link */}
+        <div className="bg-[#111111] border border-white/10 rounded-3xl p-8 sm:p-10 mb-16 text-left flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+          <div className="flex gap-4">
+            <div className="h-11 w-11 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 shrink-0">
+              <Briefcase className="h-5 w-5" />
+            </div>
+            <div>
+              <h3 className="text-lg font-bold text-zinc-100 mb-1.5">The Knowledge Behind BizHR</h3>
+              <p className="text-sm text-zinc-400 leading-relaxed max-w-xl">
+                BizHR is built on real municipal HR experience, not a certification course. My full
+                career history, credentials, and background are documented on my professional
+                portfolio — worth a look if you want the complete picture before booking a call.
+              </p>
+            </div>
+          </div>
+          <a
+            href="https://mario000.netlify.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="shrink-0 w-full sm:w-auto"
+          >
+            <Button variant="outline" className="w-full border-cyan-500/20 hover:border-cyan-500/40 bg-cyan-950/20 text-cyan-300 hover:text-cyan-200 font-semibold tracking-wide py-3 px-6 rounded-lg flex items-center justify-center gap-2">
+              View Full Portfolio <ExternalLink className="h-4 w-4" />
+            </Button>
+          </a>
         </div>
 
         {/* CTA block */}

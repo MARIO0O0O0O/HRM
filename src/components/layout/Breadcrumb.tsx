@@ -32,6 +32,7 @@ const segmentLabelMap: Record<string, string> = {
   login: 'Sign In',
   callback: 'Callback',
   spokes: 'Service Offerings',
+  programs: 'Programs',
 }
 
 export default function Breadcrumb({ items: customItems, className }: BreadcrumbProps) {

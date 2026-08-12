@@ -19,6 +19,7 @@ export const marqueeCards: MarqueeCard[] = [
   { label: 'AI Lab: Audit + Policy Drafter', href: '/ai-lab', kind: 'Free Tool' },
 
   // Services / spokes
+  { label: 'HPP Compliance Hub (SB 1343)', href: '/programs/harassment-prevention', kind: 'Service' },
   { label: 'HR Compliance Audit', href: '/spokes/compliance-audit', kind: 'Service' },
   { label: 'Wage-and-Hour Cleanup', href: '/spokes/labor-law', kind: 'Service' },
   { label: 'Handbooks & Policies', href: '/spokes/handbook', kind: 'Service' },

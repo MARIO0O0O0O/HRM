@@ -25,7 +25,11 @@ export default async function TrainingCard() {
     },
     {
       title: 'Interactivity Requirement',
-      detail: 'Training must include a practical, interactive component — a video with no engagement does not satisfy 2 CCR § 11024(a)(2)(F)',
+      detail: 'Training must include a practical, interactive component — and the law is specific about what that means: employees need a real opportunity to ask questions and get answers within a reasonable time. A video with no one to respond does not satisfy 2 CCR § 11024(a)(2)(F).',
+    },
+    {
+      title: 'Why Live, Facilitated Training',
+      detail: 'This is the actual reason self-paced-only training is legally risky: the interactivity requirement effectively calls for a professional who can respond in real time. Live remote sessions satisfy this directly — that\'s the format used here, for both tracks.',
     },
   ]
 
@@ -61,10 +65,12 @@ export default async function TrainingCard() {
         </div>
 
         <div className="bg-[#111111] border border-white/10 rounded-2xl p-6 mb-8">
-          <h3 className="text-sm font-bold text-zinc-200 mb-2">How Our Training Satisfies This</h3>
+          <h3 className="text-sm font-bold text-zinc-200 mb-2">How This Gets Delivered</h3>
           <p className="text-xs text-zinc-500 leading-relaxed">
-            {program.keyDeliverables}. The interactive &quot;Wheel of Knowledge&quot; module handles the
-            interactivity requirement without needing a graded exam.
+            Training here is delivered live, remotely, by a real facilitator — not a pre-recorded module.
+            That directly satisfies the interactivity requirement above, since employees can ask questions
+            and get real answers during the session itself. You&apos;ll also get the written policy,
+            complaint form, and acknowledgment forms that need to accompany the training.
           </p>
         </div>
 

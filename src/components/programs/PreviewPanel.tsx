@@ -22,7 +22,13 @@ interface PreviewPanelProps {
 export default function PreviewPanel({ isOpen, onOpenChange, program }: PreviewPanelProps) {
   if (!program) return null
 
-  const hubHref = `/programs/${program.code === 'HPP' ? 'harassment-prevention' : program.code.toLowerCase()}`
+  const codeMap: Record<string, string> = {
+    HPP: 'harassment-prevention',
+    WVPP: 'workplace-violence-prevention',
+    IIPP: 'injury-illness-prevention',
+    KYR: 'know-your-rights',
+  }
+  const hubHref = `/programs/${codeMap[program.code] || program.code.toLowerCase()}`
 
   return (
     <Sheet open={isOpen} onOpenChange={onOpenChange}>

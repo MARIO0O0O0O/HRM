@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og'
 
 export const runtime = 'edge'
-export const alt = 'BizHR — California HR Compliance'
+export const alt = 'CalBizHR — California HR Compliance'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
@@ -72,7 +72,7 @@ export default async function OpengraphImage() {
             textShadow: '0 0 60px rgba(34,211,238,0.4)',
           }}
         >
-          BizHR
+          CalBizHR
         </div>
 
         <div

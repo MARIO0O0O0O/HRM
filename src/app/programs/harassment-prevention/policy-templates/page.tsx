@@ -1,4 +1,5 @@
 import Breadcrumb from '@/components/layout/Breadcrumb'
+import LegalDisclaimer from '@/components/layout/LegalDisclaimer'
 import ValidationLinks from '@/components/programs/ValidationLinks'
 import { getDocumentsByCategory } from '@/lib/airtable/server'
 import { FileText, ArrowLeft } from 'lucide-react'
@@ -66,6 +67,7 @@ export default async function PolicyTemplatesCard() {
             },
           ]}
         />
+        <LegalDisclaimer />
       </div>
     </div>
   )

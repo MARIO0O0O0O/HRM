@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Breadcrumb from '@/components/layout/Breadcrumb'
+import LegalDisclaimer from '@/components/layout/LegalDisclaimer'
 import { createClient } from '@/lib/supabase/client'
 import { Sparkles, Gauge, FileEdit, ArrowRight, Loader2, AlertTriangle, Download } from 'lucide-react'
 
@@ -256,6 +257,7 @@ export default function AiLabPage() {
           attorney-client relationship. Have any policy or audit result reviewed by a qualified
           California employment attorney before relying on it.
         </p>
+        <LegalDisclaimer />
       </div>
     </div>
   )

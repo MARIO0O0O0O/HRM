@@ -1,4 +1,5 @@
 import Breadcrumb from '@/components/layout/Breadcrumb'
+import LegalDisclaimer from '@/components/layout/LegalDisclaimer'
 import ValidationLinks from '@/components/programs/ValidationLinks'
 import { getProgram } from '@/lib/airtable/server'
 import { GraduationCap, ArrowLeft, CheckCircle2 } from 'lucide-react'
@@ -88,6 +89,7 @@ export default async function TrainingCard() {
             },
           ]}
         />
+        <LegalDisclaimer />
       </div>
     </div>
   )

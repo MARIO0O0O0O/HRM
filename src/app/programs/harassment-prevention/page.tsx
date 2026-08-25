@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Breadcrumb from '@/components/layout/Breadcrumb'
 import ProgramSummaryCard from '@/components/programs/ProgramSummaryCard'
+import LegalDisclaimer from '@/components/layout/LegalDisclaimer'
 import InventoryCard from '@/components/programs/InventoryCard'
 import ValidationLinks from '@/components/programs/ValidationLinks'
 import { getProgram, getDocumentsByCategory } from '@/lib/airtable/server'
@@ -100,6 +101,7 @@ export default async function HarassmentPreventionHub() {
             </Link>
           </div>
         </div>
+        <LegalDisclaimer />
       </div>
     </div>
   )

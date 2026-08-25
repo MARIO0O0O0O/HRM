@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useEffect } from 'react'
 import Breadcrumb from '@/components/layout/Breadcrumb'
+import LegalDisclaimer from '@/components/layout/LegalDisclaimer'
 import { createClient } from '@/lib/supabase/client'
 import { ClipboardList, Printer, ExternalLink } from 'lucide-react'
 
@@ -213,6 +214,7 @@ export default function MandatoryPostingsPage() {
         <div className="max-w-4xl mx-auto mt-10 p-4 rounded-xl border border-amber-500/20 bg-amber-500/5 text-xs text-amber-300/90 print:hidden">
           <strong>Note:</strong> Posting requirements change. Verify current versions with each issuing agency before purchasing or displaying posters.
         </div>
+        <LegalDisclaimer />
       </div>
     </div>
   )

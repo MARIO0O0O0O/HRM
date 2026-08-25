@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import LegalDisclaimer from '@/components/layout/LegalDisclaimer'
 import { toolsList } from '@/data/tools'
 import { ArrowRight, Shield, FileText, AlertTriangle, BookOpen, Calculator, ClipboardCheck, CalendarClock, ScaleIcon, Briefcase, ClipboardList, Sparkles } from 'lucide-react'
 import type { Metadata } from 'next'
@@ -242,6 +243,7 @@ export default function ToolsPage() {
             </span>
           </Link>
         </div>
+        <LegalDisclaimer />
       </div>
     </div>
   )

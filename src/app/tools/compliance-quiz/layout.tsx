@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Compliance Quick-Check — Free Self-Assessment | BizHR',
+  title: 'Compliance Quick-Check — Free Self-Assessment | CalBizHR',
   description: 'A short self-assessment for HPP, WVPP, IIPP, or KYR compliance — see where the gaps are. Free, no signup required.',
 }
 

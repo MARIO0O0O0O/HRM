@@ -5,7 +5,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import FloatingCTA from "@/components/layout/FloatingCTA";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://bizhr.vercel.app";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://calbizhr.com";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -26,24 +26,24 @@ const dmMono = DM_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "BizHR | California HR Compliance for Small Businesses",
-    template: "%s | BizHR",
+    default: "CalBizHR | California HR Compliance for Small Businesses",
+    template: "%s | CalBizHR",
   },
   description:
     "Free California HR compliance tools built by a former municipal HR administrator — try them before you ever pay for the harder, more personal parts of running a team. SB 1343, SB 553, PAGA, and more.",
   openGraph: {
     type: "website",
-    siteName: "BizHR",
-    title: "BizHR | California HR Compliance for Small Businesses",
+    siteName: "CalBizHR",
+    title: "CalBizHR | California HR Compliance for Small Businesses",
     description:
       "Free tools first. HR compliance guidance, harassment & violence prevention training, and AI-assisted policy drafting for Los Angeles-area small businesses.",
     url: SITE_URL,
     locale: "en_US",
-    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "BizHR — California HR Compliance" }],
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "CalBizHR — California HR Compliance" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "BizHR | California HR Compliance for Small Businesses",
+    title: "CalBizHR | California HR Compliance for Small Businesses",
     description: "Free California HR compliance tools — try them before you ever pay for anything else.",
     images: ["/opengraph-image"],
   },
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  name: "BizHR / M.E. Consulting",
+  name: "CalBizHR / M.E. Consulting",
   description:
     "California HR compliance consulting for small businesses — harassment prevention (SB 1343), workplace violence prevention (SB 553), wage-and-hour compliance, and AI-assisted policy drafting.",
   url: SITE_URL,

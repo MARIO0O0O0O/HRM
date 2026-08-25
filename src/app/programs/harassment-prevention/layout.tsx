@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Harassment Prevention Program (SB 1343) — Compliance Hub | BizHR',
+  title: 'Harassment Prevention Program (SB 1343) — Compliance Hub | CalBizHR',
   description: 'Everything California employers need to know about SB 1343 harassment prevention: policy, forms, training requirements, and links to verify every claim against the actual statute.',
 }
 

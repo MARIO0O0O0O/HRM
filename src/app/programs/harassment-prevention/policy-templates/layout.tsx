@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'HPP Policy & Forms — SB 1343 Requirements | BizHR',
+  title: 'HPP Policy & Forms — SB 1343 Requirements | CalBizHR',
   description: 'The complete set of policy and form documents required for SB 1343 harassment prevention compliance.',
 }
 

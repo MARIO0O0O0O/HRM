@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Book a Consultation — BizHR California HR Compliance',
+  title: 'Book a Consultation — CalBizHR California HR Compliance',
   description: 'Book a $75 consultation to get expert guidance on California HR compliance for your business.',
 }
 

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Training Deadline Tracker — Free Tool | BizHR',
+  title: 'Training Deadline Tracker — Free Tool | CalBizHR',
   description: 'Enter your dates and headcount to get exact training renewal and new-hire compliance deadlines for HPP, WVPP, IIPP, and KYR.',
 }
 

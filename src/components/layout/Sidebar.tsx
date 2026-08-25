@@ -37,22 +37,35 @@ const sidebarCategories: SidebarCategory[] = [
       { label: 'Harassment Prevention', href: '/programs/harassment-prevention' },
       { label: 'Workplace Violence Prevention', href: '/programs/workplace-violence-prevention' },
       { label: 'Injury & Illness Prevention', href: '/programs/injury-illness-prevention' },
+      { label: 'Know Your Rights', comingSoon: true },
     ],
   },
   {
     label: 'Wage & Hour',
     icon: DollarSign,
-    items: [{ label: 'Coming Soon', comingSoon: true }],
+    items: [{ label: 'Wage & Hour', comingSoon: true }],
   },
   {
     label: 'Lifecycle Admin',
     icon: UserCheck,
-    items: [{ label: 'Coming Soon', comingSoon: true }],
+    items: [
+      { label: 'Leave Administration', comingSoon: true },
+      { label: 'ADA / Reasonable Accommodation', comingSoon: true },
+      { label: 'Recruitment & Selection', comingSoon: true },
+      { label: 'Onboarding', comingSoon: true },
+      { label: 'Employment', comingSoon: true },
+      { label: 'Termination & Offboarding', comingSoon: true },
+      { label: 'Employee Benefits', comingSoon: true },
+    ],
   },
   {
     label: 'Specialized',
     icon: Sparkles,
-    items: [{ label: 'Coming Soon', comingSoon: true }],
+    items: [
+      { label: 'AI in the Workplace', comingSoon: true },
+      { label: 'HRIS', comingSoon: true },
+      { label: 'Unions & Collective Bargaining', comingSoon: true },
+    ],
   },
 ]
 

@@ -1,7 +1,25 @@
 import Link from 'next/link'
 import Breadcrumb from '@/components/layout/Breadcrumb'
 import LegalDisclaimer from '@/components/layout/LegalDisclaimer'
-import { Shield, AlertTriangle, HardHat, BookOpen, ArrowRight, Clock } from 'lucide-react'
+import {
+  Shield,
+  AlertTriangle,
+  HardHat,
+  BookOpen,
+  DollarSign,
+  Calendar,
+  HeartHandshake,
+  UserPlus,
+  UserCheck,
+  Briefcase,
+  UserX,
+  Gift,
+  Sparkles,
+  Cpu,
+  Users,
+  ArrowRight,
+  Clock,
+} from 'lucide-react'
 
 const programs = [
   {
@@ -9,7 +27,7 @@ const programs = [
     code: 'HPP',
     title: 'Harassment Prevention Program',
     lawRef: 'SB 1343',
-    description: 'Policy, training, and forms required under California\'s mandatory harassment prevention training law.',
+    description: "Policy, training, and forms required under California's mandatory harassment prevention training law.",
     icon: Shield,
     live: true,
   },
@@ -36,8 +54,107 @@ const programs = [
     code: 'KYR',
     title: 'Know Your Rights',
     lawRef: 'SB 294',
-    description: 'Annual standalone notice covering workers\' comp, immigration rights, and emergency contact designation.',
+    description: "Annual standalone notice covering workers' comp, immigration rights, and emergency contact designation.",
     icon: BookOpen,
+    live: false,
+  },
+  {
+    slug: 'wage-and-hour',
+    code: 'WAGE',
+    title: 'Wage & Hour',
+    lawRef: 'Cal. Lab. Code',
+    description: 'Overtime rules, meal & rest break compliance, paystub requirements, and IWC Wage Order rules.',
+    icon: DollarSign,
+    live: false,
+  },
+  {
+    slug: 'leave-administration',
+    code: 'LEAVE',
+    title: 'Leave Administration',
+    lawRef: 'CFRA / FMLA / PDL',
+    description: 'California Family Rights Act, Pregnancy Disability Leave, paid sick leave (SB 616), and bereavement leave.',
+    icon: Calendar,
+    live: false,
+  },
+  {
+    slug: 'ada-accommodation',
+    code: 'ADA',
+    title: 'ADA / Reasonable Accommodation',
+    lawRef: 'FEHA / ADA',
+    description: 'Timely good-faith interactive process, reasonable accommodation documentation, and disability rights.',
+    icon: HeartHandshake,
+    live: false,
+  },
+  {
+    slug: 'recruitment-selection',
+    code: 'RECRUIT',
+    title: 'Recruitment & Selection',
+    lawRef: 'FEHA / Ban the Box',
+    description: 'Compliant job postings, pay transparency (SB 1162), Ban the Box criminal history rules, and applicant privacy.',
+    icon: UserPlus,
+    live: false,
+  },
+  {
+    slug: 'onboarding',
+    code: 'ONBOARD',
+    title: 'Onboarding',
+    lawRef: 'CA New Hire Notices',
+    description: 'Mandatory new-hire packet distribution, Form I-9 verification, wage theft notices, and emergency contacts.',
+    icon: UserCheck,
+    live: false,
+  },
+  {
+    slug: 'employment-practices',
+    code: 'EMP',
+    title: 'Employment Practices',
+    lawRef: 'CA Labor Code',
+    description: 'Employee handbook policies, workplace conduct rules, performance documentation, and manager guidelines.',
+    icon: Briefcase,
+    live: false,
+  },
+  {
+    slug: 'termination-offboarding',
+    code: 'TERM',
+    title: 'Termination & Offboarding',
+    lawRef: 'Lab. Code §§ 201-203',
+    description: 'Immediate final paycheck rules, accrued PTO payout, separation agreements, and COBRA/Cal-COBRA notices.',
+    icon: UserX,
+    live: false,
+  },
+  {
+    slug: 'employee-benefits',
+    code: 'BENEFITS',
+    title: 'Employee Benefits',
+    lawRef: 'CA EDD / CalSavers',
+    description: 'State Disability Insurance (SDI), Paid Family Leave (PFL) integration, and CalSavers mandatory retirement.',
+    icon: Gift,
+    live: false,
+  },
+  {
+    slug: 'ai-in-workplace',
+    code: 'AI-WORK',
+    title: 'AI in the Workplace',
+    lawRef: 'AB 1018 / FEHA ADMT',
+    description: 'Automated decision-making tool disclosure, candidate notice, bias audit rules, and AI workplace guidelines.',
+    icon: Sparkles,
+    live: false,
+  },
+  {
+    slug: 'hris-systems',
+    code: 'HRIS',
+    title: 'HRIS & Tech Systems',
+    lawRef: 'Cal. Consumer Privacy Act',
+    description: 'Employee data privacy (CPRA), digital personnel file retention, and HR tech vendor compliance.',
+    icon: Cpu,
+    live: false,
+  },
+  {
+    slug: 'unions-collective-bargaining',
+    code: 'UNION',
+    title: 'Unions & Collective Bargaining',
+    lawRef: 'ALRA / NLRA',
+    description: 'California labor relations, union organizing rights, union access rules, and collective bargaining compliance.',
+    icon: Users,
     live: false,
   },
 ]
@@ -50,14 +167,13 @@ export default function ProgramsIndexPage() {
 
         <div className="text-center max-w-2xl mx-auto mb-14">
           <span className="text-xs font-bold uppercase tracking-widest text-indigo-300 bg-indigo-500/10 border border-indigo-500/20 px-3.5 py-1.5 rounded-full">
-            Compliance Programs
+            Compliance Programs Catalog
           </span>
           <h1 className="text-3xl sm:text-5xl font-black tracking-tight text-zinc-100 mt-6">
             Every California Compliance Program, Broken Down
           </h1>
           <p className="text-sm sm:text-base text-zinc-400 mt-4 leading-relaxed">
-            Each program below is a hub, not a wall of text — the summary card tells you exactly what&apos;s
-            inside, and every claim links to where you can verify it yourself.
+            Each program below represents a California workforce compliance area. Live programs feature full interactive hub pages; coming-soon spokes outline upcoming compliance toolkits.
           </p>
         </div>
 
@@ -96,7 +212,7 @@ export default function ProgramsIndexPage() {
             ) : (
               <div
                 key={p.slug}
-                className="group bg-[#111111] border border-white/5 opacity-60 rounded-2xl p-6 flex flex-col gap-4"
+                className="group bg-[#111111] border border-white/5 opacity-60 rounded-2xl p-6 flex flex-col gap-4 select-none"
               >
                 {cardContent}
               </div>

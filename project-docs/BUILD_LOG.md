@@ -20,3 +20,4 @@ Format per entry: `[date] Task [number] — [PASS/FAIL] — [one-sentence summar
 2026-08-25 — Task 008 — PASS — Created PreviewPanel component wired to Harassment Prevention in Sidebar; embedded interactive PAGA risk calculator in PAGA Center homepage tile with exact AB 2288/SB 92 statutory language.
 2026-08-25 — Task 009 — PASS — System environment & tools setup verified.
 2026-08-25 — Task 010 — PASS — Rolled out sitewide legal and AI disclaimer component across 13 target tools/programs pages; reviewed /terms and /privacy in full (both complete and current).
+2026-08-25 — Task 011 — PASS — Merged additional permissions.allow entries into Antigravity settings.json; verified valid JSON with jq and model unchanged.

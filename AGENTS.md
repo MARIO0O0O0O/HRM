@@ -32,6 +32,17 @@ rather than guessing.
 7. **Not an LMS.** No self-paced training delivery, no certificate issuance. Training is live,
    founder-delivered, off-platform — the site only explains legal requirements.
 
+## Notify the user when done (Termux:API)
+
+After your report and BUILD_LOG.md entry are committed and pushed, fire a local notification:
+
+```
+termux-notification --title "Task [number] complete" --content "[PASS/FAIL] — [one-line summary]" --id "task-[number]"
+```
+
+Requires the Termux:API app + `pkg install termux-api`. If the command isn't found, skip and note it
+in your report — not a task failure, just a missing courtesy step.
+
 ## Known gotchas
 
 - Stripe `apiVersion` must match what's pinned in `pnpm-lock.yaml`, not a fresh `npm install`.

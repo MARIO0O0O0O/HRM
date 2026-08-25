@@ -40,6 +40,20 @@ report rather than making a judgment call outside the task's stated scope.
 7. **This is not an LMS.** Never build self-paced training delivery, certificate issuance, or content
    implying the site itself trains employees. Training is live, delivered by the founder, off-platform.
 
+## Notify the user when done (Termux:API)
+
+At the very end of your run — after your report and BUILD_LOG.md entry are committed and pushed —
+fire a local notification so the user doesn't have to keep checking manually:
+
+```
+termux-notification --title "Task [number] complete" --content "[PASS/FAIL] — [one-line summary]" --id "task-[number]"
+```
+
+Requires the Termux:API app installed (separate from Termux itself) and `pkg install termux-api` run
+once. If the `termux-notification` command isn't found, skip this step and say so in your report —
+don't treat it as a task failure, it's a courtesy notification, not part of the task's actual
+verification.
+
 ## Known gotchas (each cost real debugging time — don't relitigate)
 
 - Stripe `apiVersion` in `src/lib/stripe/server.ts` must match what's actually pinned in

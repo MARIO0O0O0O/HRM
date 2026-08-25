@@ -21,7 +21,7 @@ export default function Footer() {
         {/* Brand */}
         <div>
           <p className="text-sm font-bold tracking-wider text-zinc-400">
-            BizHR · M.E. Consulting
+            CalBizHR
           </p>
           <p className="text-xs text-zinc-600 mt-1">
             California HR Compliance &amp; AI-Powered HR Consulting
@@ -57,7 +57,7 @@ export default function Footer() {
 
           <p className="text-[11px] text-zinc-700 leading-relaxed">
             <strong className="text-zinc-600">Not a Law Firm.</strong>{' '}
-            BizHR and M.E. Consulting provide HR compliance guidance and policy drafting services.
+            CalBizHR provides HR compliance guidance and policy drafting services.
             Content on this site — including all tools, documents, and calculators — constitutes
             general information only and does not constitute legal advice. No attorney-client
             relationship is formed by use of this site or its tools. For advice specific to your
@@ -80,7 +80,7 @@ export default function Footer() {
 
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-2 border-t border-white/5">
             <p className="text-[10px] text-zinc-800">
-              &copy; {currentYear} M.E. Consulting / BizHR. All rights reserved. California HR Compliance &amp; AI Consulting.
+              &copy; {currentYear} CalBizHR. All rights reserved. California HR Compliance &amp; AI Consulting.
             </p>
             <p className="text-[10px] text-zinc-800">
               Content accurate as of 2026 · Not a substitute for legal counsel

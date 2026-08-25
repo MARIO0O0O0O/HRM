@@ -58,6 +58,13 @@ in your report — not a task failure, just a missing courtesy step.
 - Stripe `apiVersion` must match what's pinned in `pnpm-lock.yaml`, not a fresh `npm install`.
 - RLS policies check `profiles.is_admin`, never a hardcoded email.
 - PAGA caps are 15% (pre-notice) / 30% (post-notice cure) — never "85% cap."
+- **MCP filesystem server via `~/.gemini/config/mcp_config.json` does not work** in this environment —
+  confirmed by real attempted tool invocation (Task 012), not just config presence. Config is valid
+  JSON but the active toolset stays native-only. Don't re-attempt without new information.
+- **Skill discovery precedence, confirmed real**: workspace `.agents/skills/<name>/SKILL.md` (highest)
+  → global `~/.gemini/config/skills/<name>/SKILL.md` → built-in
+  `~/.gemini/antigravity-cli/builtin/skills/<name>/SKILL.md` (lowest). Three project skills already
+  exist at workspace level: `verify-nextjs-build`, `branch-and-report`, `self-check-before-pass`.
 
 ## Where to look first
 

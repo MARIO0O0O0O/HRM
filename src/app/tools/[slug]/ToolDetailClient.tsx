@@ -239,7 +239,7 @@ export default function ToolDetailClient({ tool }: { tool: Tool }) {
           </div>
           <div className="flex flex-col sm:flex-row gap-3 shrink-0">
             <a
-              href={`mailto:mario_espindola@outlook.com?subject=${paymentSubject}&body=${paymentBody}`}
+              href={`mailto:info@mario00.com?subject=${paymentSubject}&body=${paymentBody}`}
               className={`inline-flex items-center gap-2 ${colors.btn} text-white font-bold px-6 py-3 rounded-xl transition-colors`}
             >
               {tool.ctaLabel} <ArrowRight className="h-4 w-4" />

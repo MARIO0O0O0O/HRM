@@ -104,7 +104,7 @@ export default function PrivacyPage() {
             </ul>
             <p className="mt-3">
               To exercise any of these rights, contact us at{' '}
-              <a href="mailto:mario_espindola@outlook.com" className="text-indigo-400 hover:text-indigo-300">mario_espindola@outlook.com</a>.
+              <a href="mailto:info@mario00.com" className="text-indigo-400 hover:text-indigo-300">info@mario00.com</a>.
               We will respond within 45 days as required by CPRA.
             </p>
           </section>

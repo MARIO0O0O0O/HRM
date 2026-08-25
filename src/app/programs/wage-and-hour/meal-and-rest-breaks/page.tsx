@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Breadcrumb from '@/components/layout/Breadcrumb'
 import ValidationLinks from '@/components/programs/ValidationLinks'
 import LegalDisclaimer from '@/components/layout/LegalDisclaimer'
-import { Clock, CheckCircle2, AlertTriangle, ArrowLeft, ArrowRight } from 'lucide-react'
+import { Clock, CheckCircle2, AlertTriangle, ArrowLeft } from 'lucide-react'
 
 export default function MealAndRestBreaksPage() {
   return (

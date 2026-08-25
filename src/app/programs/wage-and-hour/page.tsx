@@ -16,6 +16,8 @@ export default async function WageAndHourHubPage() {
 
   if (!program) return null
 
+  const wageDocs = documents.map((d) => d.name)
+
   const mealRestItems = [
     '30-minute uninterrupted meal break before 5th hour of work',
     'Second 30-minute meal break for shifts over 10 hours',
@@ -80,7 +82,7 @@ export default async function WageAndHourHubPage() {
               icon={Clock}
               title="Meal & Rest Breaks"
               description="Strict timing, duration, premium pay rules, and duty-free break mandates under IWC Wage Orders & Labor Code § 512."
-              items={mealRestItems}
+              items={wageDocs.length > 0 ? wageDocs : mealRestItems}
             />
             <InventoryCard
               href="/programs/wage-and-hour/overtime-misclassification"

@@ -16,7 +16,7 @@ type SidebarLink = {
 }
 
 type SidebarComingSoon = {
-  label: 'Coming Soon'
+  label: string
   comingSoon: true
 }
 

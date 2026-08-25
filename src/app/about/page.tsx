@@ -12,7 +12,8 @@ import {
   CheckCircle2,
   Phone,
   ExternalLink,
-  Briefcase
+  Briefcase,
+  Mail
 } from 'lucide-react'
 
 export const metadata: Metadata = {

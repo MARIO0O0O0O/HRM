@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Breadcrumb from '@/components/layout/Breadcrumb'
 import LegalDisclaimer from '@/components/layout/LegalDisclaimer'
-import { Shield, AlertTriangle, HardHat, BookOpen, ArrowRight, Clock } from 'lucide-react'
+import { Shield, AlertTriangle, HardHat, BookOpen, ArrowRight, Clock, DollarSign } from 'lucide-react'
 
 const programs = [
   {

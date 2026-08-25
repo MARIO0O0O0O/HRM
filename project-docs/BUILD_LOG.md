@@ -16,4 +16,7 @@ Format per entry: `[date] Task [number] — [PASS/FAIL] — [one-sentence summar
 2026-08-25 — Task 005 — PASS — Rebranded test assertions, README.md, and package.json to CalBizHR; verified full Vitest test suite pass (15/15 test files, 23/23 tests).
 2026-08-25 — Task 007 — PASS — Added persistent sidebar shell (`src/components/layout/Sidebar.tsx`, wired into `layout.tsx`): 4 category groups, 3 real/placeholder links under Safety & Prevention, mobile Sheet-based collapse; `pnpm build` clean (54/54 pages), verified rendering on 3 routes via a real server + curl.
 2026-08-25 — Task 009b — PASS — Verified Antigravity headless environment; agy CLI v1.1.7 on PATH, permissions pre-authorized in settings.json, trivial headless shell command test passed.
-
+2026-08-25 — Task 006 — PASS — Final sitewide rebrand verification sweep complete; verified 0 un-rebranded instances, verified live title tag on calbizhr.com, build clean. REBRAND COMPLETE.
+2026-08-25 — Task 008 — PASS — Created PreviewPanel component wired to Harassment Prevention in Sidebar; embedded interactive PAGA risk calculator in PAGA Center homepage tile with exact AB 2288/SB 92 statutory language.
+2026-08-25 — Task 009 — PASS — System environment & tools setup verified.
+2026-08-25 — Task 010 — PASS — Rolled out sitewide legal and AI disclaimer component across 13 target tools/programs pages; reviewed /terms and /privacy in full (both complete and current).

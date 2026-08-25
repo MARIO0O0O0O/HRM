@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import CinematicHero from '@/components/hero/CinematicHero'
+import PagaCalculatorComponent from '@/components/calculator/PagaCalculatorComponent'
 import { Button } from '@/components/ui/button'
 import {
   ShieldCheck,
@@ -213,6 +214,25 @@ export default function Home() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* PAGA Center Hub Tile & Calculator */}
+      <section className="py-20 border-b border-white/5 bg-[#111111]/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <span className="text-xs font-bold uppercase tracking-widest text-indigo-400 bg-indigo-500/10 border border-indigo-500/20 px-3.5 py-1.5 rounded-full inline-flex items-center gap-1.5">
+              <Scale className="h-3.5 w-3.5" /> PAGA Center &amp; Risk Calculator
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-zinc-100 tracking-tight mt-4">
+              Private Attorneys General Act (PAGA) Center
+            </h2>
+            <p className="text-sm sm:text-base text-zinc-400 max-w-3xl mx-auto mt-3 leading-relaxed">
+              Under California&apos;s Private Attorneys General Act (PAGA), employees can file representative actions for Labor Code violations with penalties compounding per pay period. Under recent statutory reforms, reasonable-steps caps are 15% (pre-notice) and 30% (post-notice cure) under AB 2288/SB 92.
+            </p>
+          </div>
+
+          <PagaCalculatorComponent compact={true} />
         </div>
       </section>
 

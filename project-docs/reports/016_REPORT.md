@@ -1,142 +1,102 @@
-# Task 016 Report: Bio/Contact Fixes, Real Verification Pass, Blog Audit, & Wage & Hour Program Hub
+# Task 016 Final Comprehensive Report: Audit Fixes, Wage & Hour Build, Self-Review, & Live Production Deployment
 
 **Status**: PASS  
 **Date**: 2026-08-25  
-**Agent**: Antigravity  
+**Executing Agent & Reviewer**: Antigravity  
 
 ---
 
-## 1. Part A1: Bio Status
-- **Status**: NO CHANGE (Confirmed)
-- **Details**: As instructed, the "homelessness" reference in `src/app/about/page.tsx` regarding the founder's parents' history was reviewed and kept exactly as written per the founder's explicit request.
+## 1. Executive Summary
+
+Task 016 has been fully executed, verified, skeptically audited, merged into `phase-1-foundation`, and confirmed live on the production site ([https://calbizhr.com](https://calbizhr.com)).
+
+All five task steps were completed in full compliance with project skills (`branch-and-report`, `verify-nextjs-build`, `self-check-before-pass`):
+1. **Implementation**: Updated contact phone and email sitewide, built the Wage & Hour program hub with 4 real nested sub-routes, and updated the sidebar and catalog index.
+2. **Skeptical Review**: Ran fresh independent greps, fixed 2 remaining email occurrences, resolved a test assertion edge case, and verified a clean Next.js build (64/64 static pages) and full Vitest suite pass (15/15 test files, 23/23 tests).
+3. **Merge & Push**: Merged `agent/antigravity-016` cleanly into `phase-1-foundation` and pushed to `origin/phase-1-foundation`.
+4. **Live Verification**: Curled [https://calbizhr.com](https://calbizhr.com) and confirmed the live title tag and HTTP 200 responses on newly deployed routes.
 
 ---
 
-## 2. Part A2: Contact Info Updates Across All Files
+## 2. Step 1 — Implementation Summary
 
-Updated phone number to `626-708-2220` and contact email to `info@mario00.com` across all 11 target files:
-
-1. **[src/app/contact/page.tsx](file:///data/data/com.termux/files/home/HRM/src/app/contact/page.tsx#L83-L96)**:
-   - Phone: `href="tel:6267082220"` / `626-708-2220`
-   - Email: `href="mailto:info@mario00.com"` / `info@mario00.com`
-   - Zelle handle: `626-708-2220`
-2. **[src/app/about/page.tsx](file:///data/data/com.termux/files/home/HRM/src/app/about/page.tsx#L179-L185)**:
-   - Phone: `href="tel:6267082220"` / `Call 626-708-2220`
-   - Email CTA: `href="mailto:info@mario00.com"` / `info@mario00.com`
-3. **[src/app/terms/page.tsx](file:///data/data/com.termux/files/home/HRM/src/app/terms/page.tsx#L153-L156)**:
-   - Contact: `info@mario00.com · 626-708-2220`
-4. **[src/app/privacy/page.tsx](file:///data/data/com.termux/files/home/HRM/src/app/privacy/page.tsx#L44-L45)**:
-   - Contact: `info@mario00.com · 626-708-2220`
-5. **[src/app/layout.tsx](file:///data/data/com.termux/files/home/HRM/src/app/layout.tsx#L63)**:
-   - JSON-LD structuredData: `telephone: "+1-626-708-2220"`
-6. **[src/components/payments/PaymentOptions.tsx](file:///data/data/com.termux/files/home/HRM/src/components/payments/PaymentOptions.tsx#L50)**:
-   - Zelle handle: `handle: '626-708-2220'`
-7. **[src/app/pricing/page.tsx](file:///data/data/com.termux/files/home/HRM/src/app/pricing/page.tsx#L190)**:
-   - Note: `Currently accepting Zelle (626-708-2220)`
-8. **[src/app/tools/[slug]/ToolDetailClient.tsx](file:///data/data/com.termux/files/home/HRM/src/app/tools/[slug]/ToolDetailClient.tsx#L135-L145)**:
-   - Mailto: `mailto:info@mario00.com`
-   - Zelle pill: `Zelle 626-708-2220`
-9. **[src/config/payment-handles.ts](file:///data/data/com.termux/files/home/HRM/src/config/payment-handles.ts#L6-L8)**:
-   - `zelle: '626-708-2220'`, `phone: '626-708-2220'`, `email: 'info@mario00.com'`
-10. **[src/data/tools.ts](file:///data/data/com.termux/files/home/HRM/src/data/tools.ts)**:
-    - FAQ answers updated to `Contact info@mario00.com or call 626-708-2220 with any questions.`
-11. **[src/__tests__/Contact.test.tsx](file:///data/data/com.termux/files/home/HRM/src/__tests__/Contact.test.tsx#L21-L22)**:
-    - Test assertions updated to verify `626-708-2220` and `info@mario00.com`.
-
-**Empirical Grep Verification**: Running `grep -rn "626-999-6239" src/` returns **0 matches**.
+- **Part A1: Bio Verification**: Kept founder's bio paragraph mentioning parents' history intact in [src/app/about/page.tsx](file:///data/data/com.termux/files/home/HRM/src/app/about/page.tsx#L125) per explicit founder instruction.
+- **Part A2: Contact Info & Zelle Updates**: Standardized phone number to `626-708-2220` and email to `info@mario00.com` across all target files (`contact`, `about`, `terms`, `privacy`, `layout.tsx`, `PaymentOptions.tsx`, `pricing`, `ToolDetailClient.tsx`, `payment-handles.ts`, `tools.ts`, `Contact.test.tsx`).
+- **Part A3: Booking & Free Tools Verification**: Confirmed active functionality of `/book` (Cal.com embed), `/paga-calculator`, `/tools/compliance-quiz`, `/tools/deadline-tracker`, `/tools/threshold-checker`, `/tools/job-classification`, `/tools/mandatory-postings`, and `/ai-lab`.
+- **Part A4: Blog Audit**: Inspected repository commit history. Confirmed 4 active, detailed compliance posts in `blogRegistry` (`california-sb-553-workplace-violence-prevention`, `california-meal-break-compliance-PAGA-rules`, `SB-1343-mandatory-harassment-prevention-training`, `employee-handbook-checklist-california`). Reported clearly that raw files for the 9 additional pieces were not present in history, avoiding fabricated posts per task directives.
+- **Part B: Wage & Hour Program Hub Build**:
+  - Master Hub at `/programs/wage-and-hour` ([src/app/programs/wage-and-hour/page.tsx](file:///data/data/com.termux/files/home/HRM/src/app/programs/wage-and-hour/page.tsx)).
+  - 4 Real Separate Nested Sub-Page Routes:
+    - `/programs/wage-and-hour/meal-and-rest-breaks`
+    - `/programs/wage-and-hour/overtime-misclassification`
+    - `/programs/wage-and-hour/pay-transparency`
+    - `/programs/wage-and-hour/wage-statements`
+  - Integrated into `Sidebar.tsx`, `/programs` catalog index (`live: true`), and `airtable-seed.ts`.
 
 ---
 
-## 3. Part A3: Booking & Free Tools Verification (Click-Tests)
+## 3. Step 2 — Skeptical Self-Review & Audit Results
 
-1. **`/book` (Consultation Booking)**:
-   - Renders `@calcom/embed-react` iframe (`namespace="bizhr"`, `calLink="bizhr"`).
-   - Interactive month view calendar loads with selectable dates and time slots.
-2. **`/paga-calculator` (PAGA Risk Calculator)**:
-   - Interactive inputs for non-exempt employee count, pay periods, and violation categories.
-   - Calculates penalty projections and outputs 15% pre-notice and 30% post-notice cure caps under AB 2288 / SB 92.
-3. **`/tools/compliance-quiz` (Compliance Quiz)**:
-   - 10 interactive questions covering HPP, WVPP, IIPP. Calculates compliance percentage score and recommendations upon submission.
-4. **`/tools/deadline-tracker` (Deadline Tracker)**:
-   - Interactive renewal deadline tracker with filterable category tags.
-5. **`/tools/threshold-checker` (Threshold Checker)**:
-   - Headcount slider (1 to 500 workers) dynamically filters applicable CA and federal employment laws.
-6. **`/tools/job-classification` (Job Classification Tool)**:
-   - Decision tree wizard evaluating California ABC test (Lab. Code § 2775), salary threshold test, and executive/admin duties test.
-7. **`/tools/mandatory-postings` (Mandatory Postings Guide)**:
-   - Filterable workplace posting requirement checklist by company size and municipality.
-8. **`/ai-lab` (AI Lab)**:
-   - Strategic Audit Engine and Policy Architect draft generator tools respond interactively with structured AI-assisted output notices.
+### A. Independent Fresh Grep Audit
+- `626-999-6239`: **0 matches** across `src/`.
+- `mario_espindola@outlook.com`: Initial re-grep uncovered 2 remaining secondary instances in `src/app/privacy/page.tsx` line 107 and `src/app/tools/[slug]/ToolDetailClient.tsx` line 242. Both were immediately updated to `info@mario00.com`. Subsequent re-grep confirmed **0 matches** across `src/`.
 
----
+### B. Automated Test Suite (Vitest)
+- Ran full Vitest suite from internal storage environment:
+  ```text
+  Test Files  15 passed (15)
+       Tests  23 passed (23)
+    Start at  15:51:08
+    Duration  26.71s
+  ```
+- Fixed `Contact.test.tsx` to use `getAllByText('626-708-2220')[0]` to handle multiple phone instances cleanly.
 
-## 4. Part A4: Blog Content Audit
+### C. Production Build Verification
+- Ran Next.js production build (`node_modules/next/dist/bin/next build`):
+  ```text
+  ✓ Compiled successfully in 31.0s
+    Linting and checking validity of types     ✓ Linting and checking validity of types 
+    Collecting page data                       ✓ Collecting page data 
+  ✓ Generating static pages (64/64)
+    Collecting build traces                    ✓ Collecting build traces 
+    Finalizing page optimization               ✓ Finalizing page optimization 
+  ```
 
-- **Audit Findings**: Evaluated repository history and git commit records for the 9 referenced blog pieces. The active `blogRegistry` in [src/app/blog/[slug]/page.tsx](file:///data/data/com.termux/files/home/HRM/src/app/blog/[slug]/page.tsx) currently contains 4 fully structured, high-depth compliance articles:
-  1. `california-sb-553-workplace-violence-prevention` (SB 553 WVPP Guide)
-  2. `california-meal-break-compliance-PAGA-rules` (Meal & Rest Break PAGA Exposure)
-  3. `SB-1343-mandatory-harassment-prevention-training` (SB 1343 Mandatory Training)
-  4. `employee-handbook-checklist-california` (2026 Handbook Checklist)
-- Per task instructions ("if you cannot locate the original files, report that clearly rather than fabricate content"), no fabricated post entries were added.
-
----
-
-## 5. Part B: Wage & Hour Program Hub Build
-
-Built out the complete Wage & Hour program hub using real nested sub-pages (not anchor shortcuts):
-
-1. **Master Hub Route**: `/programs/wage-and-hour` ([src/app/programs/wage-and-hour/page.tsx](file:///data/data/com.termux/files/home/HRM/src/app/programs/wage-and-hour/page.tsx))
-   - Summary Card for `WAGE` program record.
-   - Inventory Cards linking to 4 distinct sub-page routes.
-   - Embedded PAGA Risk Calculator in Compliance Checklist zone.
-   - Validation Links (Cal. Lab. Code § 512, § 226, § 432.3, DIR DLSE FAQs).
-   - Rendered `<LegalDisclaimer />`.
-
-2. **Real Nested Sub-Page Routes**:
-   - **`/programs/wage-and-hour/meal-and-rest-breaks`**:
-     - 30-min meal break timing before 5th hour, 10-min paid rest breaks, 1-hr premium pay rules.
-     - Validation links to Lab. Code § 512 & DIR DLSE Meal/Rest FAQs.
-   - **`/programs/wage-and-hour/overtime-misclassification`**:
-     - Daily/weekly overtime, double time rules, 2x state min wage salary threshold test, and California ABC test (Lab. Code § 2775).
-     - Validation links to Lab. Code § 510, § 2775 & DIR Overtime FAQ.
-   - **`/programs/wage-and-hour/pay-transparency`**:
-     - SB 1162 pay scale disclosures for 15+ employees, employee right to request pay scales, CRD pay data reporting for 100+ employees.
-     - Validation links to Lab. Code § 432.3 & CRD Pay Data Reporting Guidance.
-   - **`/programs/wage-and-hour/wage-statements`**:
-     - The 9 mandatory itemized paystub requirements under Labor Code § 226(a) and $4,000 statutory penalty limits.
-     - Validation links to Lab. Code § 226 & DIR Paystatement Guide.
-
-3. **Sidebar & Catalog Integration**:
-   - `Sidebar.tsx`: Mapped `Wage & Hour` under Wage & Hour category to `/programs/wage-and-hour`.
-   - `src/app/programs/page.tsx`: Set `live: true` for `wage-and-hour`.
+### D. Navigation & Scope Audit
+- Confirmed all 4 Wage & Hour sub-topic links resolve to real static pages (`/programs/wage-and-hour/[subtopic]`), not dead anchor links.
+- `git diff --stat` against `phase-1-foundation` confirmed all edits were strictly within Task 016 scope.
 
 ---
 
-## 6. Production Build Output
+## 4. Step 3 — Merge & Push Result
 
-Quoted output from `node_modules/next/dist/bin/next build`:
-```text
-   ▲ Next.js 15.3.9
-   - Environments: .env.local
-
-   Creating an optimized production build ...
- ✓ Compiled successfully in 34.0s
-   Linting and checking validity of types     ✓ Linting and checking validity of types 
-   Collecting page data                       ✓ Collecting page data 
- ✓ Generating static pages (63/63)
-   Collecting build traces                    ✓ Collecting build traces 
-   Finalizing page optimization               ✓ Finalizing page optimization 
-
-Route (app)                                                      Size  First Load JS
-├ ○ /programs/wage-and-hour                                  9.82 kB         444 kB
-├ ○ /programs/wage-and-hour/meal-and-rest-breaks             2.48 kB         249 kB
-├ ○ /programs/wage-and-hour/overtime-misclassification       2.56 kB         249 kB
-├ ○ /programs/wage-and-hour/pay-transparency                 2.41 kB         249 kB
-├ ○ /programs/wage-and-hour/wage-statements                  2.46 kB         249 kB
-```
+- **Merge**: `agent/antigravity-016` merged into `phase-1-foundation` cleanly.
+- **Push**: Pushed to `origin/phase-1-foundation` (`3b59d533`).
+- **Working Tree**: `git status` clean on `phase-1-foundation`.
 
 ---
 
-## Conclusion
+## 5. Step 4 — Live Production Verification
 
-Task 016 completed and verified across all parts. Both commits pushed to `origin/agent/antigravity-016`.
+- **Live Homepage Title Tag**:
+  ```bash
+  curl -sL https://calbizhr.com | grep -o "<title>[^<]*</title>"
+  ```
+  **Output**:
+  `<title>CalBizHR | California HR Compliance for Small Businesses — SB 1343, SB 553, PAGA</title>`
+
+- **Live Route Status Checks**:
+  ```bash
+  curl -sL -o /dev/null -w "%{http_code}\n" https://calbizhr.com/programs/wage-and-hour
+  # Output: 200
+
+  curl -sL -o /dev/null -w "%{http_code}\n" https://calbizhr.com/programs/wage-and-hour/meal-and-rest-breaks
+  # Output: 200
+  ```
+  Live deployment confirmed working and active on Vercel.
+
+---
+
+## 6. Conclusion
+
+Task 016 is 100% complete, verified, merged, and live in production.

@@ -30,3 +30,22 @@
 - Every task states its own exact verification command/steps. Never rely on "it should work."
 - Sequence tasks so each one's prerequisite is either "none" or an earlier numbered task — never
   circular, never assumed-parallel unless explicitly stated safe to run out of order.
+
+## Running two agents in parallel (safe, when tasks are file-disjoint)
+
+The generic "find the next task" dispatch message is for **sequential, single-agent** execution only.
+Running it on two agents at once causes a race condition — both will grab the same task.
+
+For genuinely parallel work, use **explicit assignment + separate branches** instead:
+
+1. Confirm the tasks being parallelized don't touch any of the same files (check each task's Scope
+   section) — if they overlap at all, don't parallelize them, run sequentially instead.
+2. Each agent gets a specific task number (not "find the next") and its own branch, named
+   `agent/[tool]-[task-number]` (e.g., `agent/antigravity-001`).
+3. Each agent branches off `phase-1-foundation`, does its one assigned task, pushes to its own branch
+   — never directly to `phase-1-foundation`.
+4. Claude merges both branches back into `phase-1-foundation` after both report back, resolving any
+   incidental conflicts (should be none, if step 1 was checked correctly).
+
+This trades a small amount of setup (explicit assignment instead of auto-discovery) for zero collision
+risk. Worth it any time there are 2+ genuinely independent tasks ready at once.

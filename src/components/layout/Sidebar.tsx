@@ -56,7 +56,7 @@ const sidebarCategories: SidebarCategory[] = [
   },
 ]
 
-function SidebarNav({ onPreviewHpp }: { onPreviewHpp: () => void }) {
+function SidebarNav({ onPreviewProgram }: { onPreviewProgram: (code: string) => void }) {
   const pathname = usePathname()
 
   return (
@@ -85,14 +85,19 @@ function SidebarNav({ onPreviewHpp }: { onPreviewHpp: () => void }) {
               }
 
               const isActive = pathname === item.href
-              const isHpp = item.label === 'Harassment Prevention'
+              const codeMap: Record<string, string> = {
+                '/programs/harassment-prevention': 'HPP',
+                '/programs/workplace-violence-prevention': 'WVPP',
+                '/programs/injury-illness-prevention': 'IIPP',
+              }
+              const programCode = codeMap[item.href]
 
-              if (isHpp) {
+              if (programCode) {
                 return (
                   <li key={item.href}>
                     <button
                       type="button"
-                      onClick={onPreviewHpp}
+                      onClick={() => onPreviewProgram(programCode)}
                       className={cn(
                         'w-full text-left block px-3 py-2 rounded-lg text-sm font-medium transition-colors cursor-pointer',
                         isActive
@@ -133,9 +138,11 @@ export default function Sidebar() {
   const [previewProgram, setPreviewProgram] = useState<ProgramRecord | null>(null)
   const [previewOpen, setPreviewOpen] = useState(false)
 
-  const handlePreviewHpp = () => {
-    setPreviewProgram(programsSeed.HPP)
-    setPreviewOpen(true)
+  const handlePreviewProgram = (code: string) => {
+    if (programsSeed[code]) {
+      setPreviewProgram(programsSeed[code])
+      setPreviewOpen(true)
+    }
   }
 
   return (
@@ -149,7 +156,7 @@ export default function Sidebar() {
       {/* Desktop: persistent column, sticky under the header */}
       <aside className="hidden md:block md:w-64 md:shrink-0 md:border-r md:border-white/5 md:bg-[#0a0a0a]">
         <div className="sticky top-16 h-[calc(100vh-4rem)] overflow-y-auto py-8 px-4">
-          <SidebarNav onPreviewHpp={handlePreviewHpp} />
+          <SidebarNav onPreviewProgram={handlePreviewProgram} />
         </div>
       </aside>
 
@@ -175,7 +182,7 @@ export default function Sidebar() {
                 Browse compliance areas by category
               </SheetDescription>
             </div>
-            <SidebarNav onPreviewHpp={handlePreviewHpp} />
+            <SidebarNav onPreviewProgram={handlePreviewProgram} />
           </SheetContent>
         </Sheet>
       </div>

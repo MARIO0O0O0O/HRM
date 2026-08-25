@@ -20,7 +20,7 @@ const programs = [
     lawRef: 'SB 553',
     description: 'Written plan, hazard assessments, and annual training required for nearly all California employers.',
     icon: AlertTriangle,
-    live: false,
+    live: true,
   },
   {
     slug: 'injury-illness-prevention',
@@ -29,7 +29,7 @@ const programs = [
     lawRef: 'Cal/OSHA',
     description: 'The foundational safety program required for every California employer, regardless of size.',
     icon: HardHat,
-    live: false,
+    live: true,
   },
   {
     slug: 'know-your-rights',

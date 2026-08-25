@@ -3,29 +3,29 @@
 **Sequenced: Part A (quick fixes + verification) first, Part B (Wage & Hour build) second, same
 session, commit separately.**
 
-## Part A1: Remove parents'-homelessness reference from bio
+## Part A1: Bio — no change needed
 
-File: `src/app/about/page.tsx`. Find the paragraph beginning "They started with nothing — literally
-nothing. From homelessness to a flea market table..." — remove this specific sentence/reference while
-preserving the surrounding narrative flow (the paragraph is about the founder's parents running a
-business; keep the entrepreneurship/pragmatism lesson if it still reads coherently without the
-homelessness detail, don't leave an awkward gap — read the full paragraph before editing and rewrite
-the transition naturally rather than just deleting the sentence).
+Confirmed with the founder: the "homelessness" reference in `src/app/about/page.tsx` is about the
+founder's parents' history, correctly identified during review, and the founder wants it kept exactly
+as written. **Do not edit this paragraph.** Skip this part entirely — noted here only so it's not
+mistaken for an oversight.
 
-## Part A2: Update general contact info (NOT the Zelle payment number)
+## Part A2: Update contact info everywhere — including Zelle (correction: same number now)
 
-Replace `626-999-6239` with `626-708-2220`, and add `info@mario00.com` as contact email, in these
-**general contact contexts only**:
+Confirmed with the founder: `626-708-2220` is both the new general contact number *and* the actual
+Zelle number — `626-999-6239` was wrong/outdated in both contexts. Replace `626-999-6239` with
+`626-708-2220` **everywhere it appears**, including payment-specific instances:
 - `src/app/contact/page.tsx`
 - `src/app/about/page.tsx`
 - `src/app/terms/page.tsx`
 - `src/app/privacy/page.tsx`
 - `src/app/layout.tsx` (JSON-LD `telephone` field)
+- `src/components/payments/PaymentOptions.tsx` (Zelle handle)
+- `src/app/pricing/page.tsx` (Zelle mention)
+- `src/app/tools/[slug]/ToolDetailClient.tsx` (Zelle mention)
 
-**Do NOT touch** `src/components/payments/PaymentOptions.tsx`, the Zelle mention in
-`src/app/pricing/page.tsx`, or the Zelle mention in `src/app/tools/[slug]/ToolDetailClient.tsx` —
-those are payment-identifier contexts, confirmed separately with the founder before changing, not part
-of this task.
+Also add `info@mario00.com` as contact email in the general-contact files (contact, about, terms,
+privacy — not the payment-specific files, which don't currently show an email).
 
 ## Part A3: Real verification — booking and free tools (click-test, not build-test)
 
@@ -69,9 +69,8 @@ in-page anchor shortcut — that was a mistake, found during review, don't repea
 ## Verification
 
 1. `pnpm build` clean (real command, fresh install)
-2. Part A: bio paragraph reads naturally, contact info correct in the 5 general-context files only
-   (confirm Zelle instances untouched — quote them), booking/tools click-test results, blog post count
-   before/after
+2. Part A: contact info correct in all 8 files including Zelle instances (quote each), booking/tools
+   click-test results, blog post count before/after
 3. Part B: click-test all 4 nested Wage & Hour sub-pages — confirm real navigation, not dead anchors
    (this is exactly the bug found in Task 013, don't repeat it)
 

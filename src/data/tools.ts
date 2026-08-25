@@ -95,7 +95,7 @@ export const toolsRegistry: Record<string, Tool> = {
       },
       {
         q: 'How do I receive the documents?',
-        a: 'After payment confirmation, we\'ll email your complete toolkit within 1 business day. Contact mario_espindola@outlook.com or call 626-999-6239 with any questions.',
+        a: 'After payment confirmation, we\'ll email your complete toolkit within 1 business day. Contact info@mario00.com or call 626-708-2220 with any questions.',
       },
     ],
     ctaLabel: 'Get the HPP Toolkit — $149',
@@ -158,7 +158,7 @@ export const toolsRegistry: Record<string, Tool> = {
       },
       {
         q: 'How do I receive the documents?',
-        a: 'After payment confirmation, we\'ll email your complete toolkit within 1 business day. Contact mario_espindola@outlook.com or call 626-999-6239 with any questions.',
+        a: 'After payment confirmation, we\'ll email your complete toolkit within 1 business day. Contact info@mario00.com or call 626-708-2220 with any questions.',
       },
     ],
     ctaLabel: 'Get the WVPP Toolkit — $199',
@@ -221,7 +221,7 @@ export const toolsRegistry: Record<string, Tool> = {
       },
       {
         q: 'How do I receive the documents?',
-        a: 'After payment confirmation, we\'ll email your complete toolkit within 1 business day. Contact mario_espindola@outlook.com or call 626-999-6239 with any questions.',
+        a: 'After payment confirmation, we\'ll email your complete toolkit within 1 business day. Contact info@mario00.com or call 626-708-2220 with any questions.',
       },
     ],
     ctaLabel: 'Get the IIPP Toolkit — $199',
@@ -291,7 +291,7 @@ export const toolsRegistry: Record<string, Tool> = {
       },
       {
         q: 'How do I receive the documents?',
-        a: 'After payment confirmation, we\'ll email your complete package within 1 business day. Contact mario_espindola@outlook.com or call 626-999-6239 with any questions.',
+        a: 'After payment confirmation, we\'ll email your complete package within 1 business day. Contact info@mario00.com or call 626-708-2220 with any questions.',
       },
     ],
     ctaLabel: 'Get the KYR Package — $49',

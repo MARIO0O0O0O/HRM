@@ -176,9 +176,14 @@ export default function AboutPage() {
                 Book a Call
               </Button>
             </Link>
-            <a href="tel:6269996239" className="w-full sm:w-auto">
+            <a href="tel:6267082220" className="w-full sm:w-auto">
               <Button variant="outline" className="w-full sm:w-auto border-white/10 hover:border-white/20 bg-zinc-950 text-zinc-300 hover:text-zinc-100 font-semibold tracking-wide py-3 px-6 rounded-lg flex items-center justify-center gap-2">
-                <Phone className="h-4 w-4" /> Call 626-999-6239
+                <Phone className="h-4 w-4" /> Call 626-708-2220
+              </Button>
+            </a>
+            <a href="mailto:info@mario00.com" className="w-full sm:w-auto">
+              <Button variant="outline" className="w-full sm:w-auto border-white/10 hover:border-white/20 bg-zinc-950 text-zinc-300 hover:text-zinc-100 font-semibold tracking-wide py-3 px-6 rounded-lg flex items-center justify-center gap-2">
+                <Mail className="h-4 w-4" /> info@mario00.com
               </Button>
             </a>
           </div>

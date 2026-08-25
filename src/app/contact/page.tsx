@@ -36,12 +36,12 @@ export default function ContactPage() {
       `Hello Mario,\n\nI would like to contact you regarding some compliance questions.\n\nName: ${name}\nEmail: ${email}\n\nMessage:\n${message}\n\nThank you!`
     )
     
-    window.location.href = `mailto:mario_espindola@outlook.com?subject=${subject}&body=${body}`
+    window.location.href = `mailto:info@mario00.com?subject=${subject}&body=${body}`
     setSubmitted(true)
   }
 
   const peerToPeerOptions = [
-    { label: 'Zelle', handle: 'mario_espindola@outlook.com', description: 'Send via your bank app' },
+    { label: 'Zelle', handle: '626-708-2220', description: 'Send via your bank app' },
     { label: 'Venmo', handle: '@marioo00', description: 'Pay via Venmo mobile app' },
     { label: 'Cash App', handle: '10mario01', description: 'Pay via Cash tag' },
   ]
@@ -79,9 +79,9 @@ export default function ContactPage() {
                     <Phone className="h-5 w-5" />
                   </div>
                   <div>
-                    <span className="text-[10px] text-zinc-500 font-semibold uppercase tracking-wider block">Phone & SMS</span>
-                    <a href="tel:6269996239" className="text-sm font-bold text-zinc-200 hover:text-indigo-400 transition-colors mt-0.5 block">
-                      626-999-6239
+                    <span className="text-[10px] text-zinc-500 font-semibold uppercase tracking-wider block">Phone &amp; SMS</span>
+                    <a href="tel:6267082220" className="text-sm font-bold text-zinc-200 hover:text-indigo-400 transition-colors mt-0.5 block">
+                      626-708-2220
                     </a>
                   </div>
                 </div>
@@ -92,8 +92,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <span className="text-[10px] text-zinc-500 font-semibold uppercase tracking-wider block">Email Address</span>
-                    <a href="mailto:mario_espindola@outlook.com" className="text-sm font-bold text-zinc-200 hover:text-indigo-400 transition-colors mt-0.5 block select-all">
-                      mario_espindola@outlook.com
+                    <a href="mailto:info@mario00.com" className="text-sm font-bold text-zinc-200 hover:text-indigo-400 transition-colors mt-0.5 block select-all">
+                      info@mario00.com
                     </a>
                   </div>
                 </div>

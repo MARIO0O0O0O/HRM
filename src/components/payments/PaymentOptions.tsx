@@ -47,7 +47,7 @@ const ALT_PAYMENTS: AltPayment[] = [
     id: 'zelle',
     label: 'Zelle',
     icon: '💜',
-    handle: '626-999-6239',
+    handle: '626-708-2220',
     description: 'Bank-to-bank transfer',
     instruction: 'Use your bank app\'s Zelle feature to send to this number.',
   },

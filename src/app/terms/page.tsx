@@ -150,10 +150,10 @@ export default function TermsPage() {
             <h2 className="text-lg font-bold text-zinc-200 mb-3">9. Contact</h2>
             <p>
               Questions about these terms:{' '}
-              <a href="mailto:mario_espindola@outlook.com" className="text-indigo-400 hover:text-indigo-300">
-                mario_espindola@outlook.com
+              <a href="mailto:info@mario00.com" className="text-indigo-400 hover:text-indigo-300">
+                info@mario00.com
               </a>{' '}
-              · 626-999-6239
+              · 626-708-2220
             </p>
           </section>
 

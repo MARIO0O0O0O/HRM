@@ -60,7 +60,7 @@ const structuredData = {
   description:
     "California HR compliance consulting for small businesses — harassment prevention (SB 1343), workplace violence prevention (SB 553), wage-and-hour compliance, and AI-assisted policy drafting.",
   url: SITE_URL,
-  telephone: "+1-626-999-6239",
+  telephone: "+1-626-708-2220",
   areaServed: {
     "@type": "State",
     name: "California",

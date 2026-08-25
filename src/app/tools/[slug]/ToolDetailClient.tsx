@@ -132,7 +132,7 @@ export default function ToolDetailClient({ tool }: { tool: Tool }) {
               <span className="text-sm text-zinc-500 ml-2">one-time · immediate delivery</span>
             </div>
             <a
-              href={`mailto:mario_espindola@outlook.com?subject=${paymentSubject}&body=${paymentBody}`}
+              href={`mailto:info@mario00.com?subject=${paymentSubject}&body=${paymentBody}`}
               className={`inline-flex items-center gap-2 ${colors.btn} text-white font-bold px-6 py-3 rounded-xl transition-colors shadow-lg`}
             >
               {tool.ctaLabel} <ArrowRight className="h-4 w-4" />
@@ -142,7 +142,7 @@ export default function ToolDetailClient({ tool }: { tool: Tool }) {
           {/* Payment methods */}
           <div className="mt-5 flex flex-wrap gap-3 text-xs text-zinc-600">
             <span>Pay via:</span>
-            <span className="bg-[#111111] border border-white/5 px-2.5 py-1 rounded-lg font-medium text-zinc-400">Zelle 626-999-6239</span>
+            <span className="bg-[#111111] border border-white/5 px-2.5 py-1 rounded-lg font-medium text-zinc-400">Zelle 626-708-2220</span>
             <span className="bg-[#111111] border border-white/5 px-2.5 py-1 rounded-lg font-medium text-zinc-400">Venmo @marioo00</span>
             <span className="bg-[#111111] border border-white/5 px-2.5 py-1 rounded-lg font-medium text-zinc-400">Cash App $10mario01</span>
           </div>

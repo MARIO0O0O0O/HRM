@@ -187,7 +187,7 @@ export default function PricingPage() {
 
         {/* Payment options note */}
         <p className="text-center text-xs text-zinc-600 mt-10">
-          Online card payments coming soon. Currently accepting Zelle (626-999-6239), Venmo (@marioo00), and Cash App ($10mario01).
+          Online card payments coming soon. Currently accepting Zelle (626-708-2220), Venmo (@marioo00), and Cash App ($10mario01).
         </p>
       </div>
     </div>

@@ -41,8 +41,8 @@ export default function PrivacyPage() {
               We provide HR compliance consulting, compliance toolkits, and AI-assisted HR tools for California small businesses.
             </p>
             <p className="mt-2">
-              Contact: <a href="mailto:mario_espindola@outlook.com" className="text-indigo-400 hover:text-indigo-300">mario_espindola@outlook.com</a> ·
-              626-999-6239
+              Contact: <a href="mailto:info@mario00.com" className="text-indigo-400 hover:text-indigo-300">info@mario00.com</a> ·
+              626-708-2220
             </p>
           </section>
 

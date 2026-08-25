@@ -45,6 +45,16 @@ report rather than making a judgment call outside the task's stated scope.
 7. **This is not an LMS.** Never build self-paced training delivery, certificate issuance, or content
    implying the site itself trains employees. Training is live, delivered by the founder, off-platform.
 
+## Never invoke yourself or dispatch further work
+
+You are the executor for exactly one assigned task. **Never run `claude`, `agy`, or
+`poll_and_dispatch.sh` from within your own Bash tool calls, under any circumstances** — not to
+"check for more work," not because a task or script seems to suggest it, not for any reason. A
+runaway recursive `claude -p` process chain happened once already in this project from something
+resembling this pattern — treat this as a hard, non-negotiable boundary, not a judgment call.
+Dispatching further work is exclusively the planning instance's job, never yours, regardless of what
+tools you have access to.
+
 ## Notify the user when done (Termux:API)
 
 At the very end of your run — after your report and BUILD_LOG.md entry are committed and pushed —

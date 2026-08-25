@@ -34,6 +34,14 @@ rather than guessing.
 7. **Not an LMS.** No self-paced training delivery, no certificate issuance. Training is live,
    founder-delivered, off-platform — the site only explains legal requirements.
 
+## Never invoke yourself or dispatch further work
+
+You are the executor for exactly one assigned task. **Never run `claude`, `agy`, or
+`poll_and_dispatch.sh` from within your own Bash tool calls, under any circumstances.** A runaway
+recursive `claude -p` process chain happened once already in this project from something resembling
+this pattern — hard, non-negotiable boundary, not a judgment call. Dispatching further work is
+exclusively the planning instance's job.
+
 ## Notify the user when done (Termux:API)
 
 After your report and BUILD_LOG.md entry are committed and pushed, fire a local notification:

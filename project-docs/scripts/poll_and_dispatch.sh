@@ -30,6 +30,20 @@
 
 set -euo pipefail
 
+# Hard safety net: refuse to run if a dispatch is already in progress -- prevents overlapping or
+# nested invocations regardless of how this script got triggered (cron overlap, accidental manual
+# re-run, or being invoked from within an agent's own Bash tool by mistake). A runaway recursive
+# claude -p process chain happened once already in this project; this lock exists specifically to
+# make that structurally harder to repeat, not just to rely on the "never invoke yourself" rule
+# holding in every case.
+LOCK_FILE="/tmp/calbizhr_dispatch.lock"
+if [ -f "$LOCK_FILE" ]; then
+  echo "Lock file exists ($LOCK_FILE) -- a dispatch is already in progress or didn't clean up. Refusing to run. Delete it manually if you're sure nothing is actually running."
+  exit 1
+fi
+trap 'rm -f "$LOCK_FILE"' EXIT
+echo $$ > "$LOCK_FILE"
+
 REPO_DIR="${REPO_DIR:-$HOME/HRM}"
 BRANCH="phase-1-foundation"
 

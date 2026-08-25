@@ -11,7 +11,6 @@ import {
   SheetFooter,
   SheetClose,
 } from '@/components/ui/sheet'
-import { Button } from '@/components/ui/button'
 import { type ProgramRecord } from '@/data/airtable-seed'
 
 interface PreviewPanelProps {

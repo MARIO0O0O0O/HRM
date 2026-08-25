@@ -17,7 +17,9 @@ rather than guessing.
 1. **Branch, don't push directly.** Create `agent/antigravity-[task-number]` off `phase-1-foundation`,
    work there, push there. Never push to `phase-1-foundation` directly.
 2. **pnpm, not npm.** `pnpm-lock.yaml` is the only tracked lockfile. Verify with
-   `pnpm install --frozen-lockfile && pnpm build` — exactly this, not `npm run build`. **Known issue:**
+   `pnpm install --frozen-lockfile && pnpm build` — exactly this, not `npm run build`. **Run this even
+   if a task only mentions the test suite** — `pnpm build` lints too, catching things `vitest run`
+   alone misses (like an unused import left after editing a test). **Known issue:**
    in a shared-checkout setup this can fail with `ERR_PNPM_UNSAFE_MODULES_DIR`. If so, don't touch the
    shared `node_modules` — fall back to `node_modules/.bin/next build` directly and note the fallback
    in your report.

@@ -18,6 +18,11 @@ report rather than making a judgment call outside the task's stated scope.
    instance) merges branches after reviewing reports.
 2. **pnpm, not npm.** `pnpm-lock.yaml` is the only tracked lockfile. Always
    `pnpm install --frozen-lockfile && pnpm build` to verify — this exact sequence, not `npm run build`.
+   **This applies even to tasks that only touch test files, docs, or config** — `pnpm build` runs
+   linting, which catches issues (like an unused import left behind after editing a test) that
+   `vitest run` alone won't catch. A task whose own instructions only mention running the test suite
+   still needs `pnpm build` run too, regardless — don't skip it because the task file didn't
+   explicitly say so.
    **Known environment issue:** in a shared-checkout Termux setup (multiple agent worktrees pointing at
    one `node_modules`), `pnpm install` can fail with `ERR_PNPM_UNSAFE_MODULES_DIR` because pnpm refuses
    to manage a `node_modules` outside the project root. If you hit this specific error: do not attempt

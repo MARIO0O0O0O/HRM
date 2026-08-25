@@ -49,3 +49,25 @@ For genuinely parallel work, use **explicit assignment + separate branches** ins
 
 This trades a small amount of setup (explicit assignment instead of auto-discovery) for zero collision
 risk. Worth it any time there are 2+ genuinely independent tasks ready at once.
+
+## Automated polling/dispatch (optional, reduces manual copy-paste further)
+
+`project-docs/scripts/poll_and_dispatch.sh` — run on your device (Termux) to automatically check for
+new tasks and dispatch them, instead of manually pasting a message every round.
+
+**What it actually does:** Claude Code gets fully auto-dispatched (real headless mode, `claude -p`,
+confirmed to exist). Antigravity does not have a confirmed equivalent — the script fires you a Termux
+notification instead, and you still paste the dispatch message into it manually. If Antigravity turns
+out to have its own headless/scriptable mode, tell Claude and this script gets extended to cover it
+too — don't assume it's covered until then.
+
+**Setup (one time):**
+```
+pkg install termux-api git
+# also install the Termux:API app itself (F-Droid or Play Store, same developer as Termux)
+```
+Then either add it to cron (`crontab -e`, e.g. `*/10 * * * * bash ~/HRM/project-docs/scripts/poll_and_dispatch.sh`)
+or run it in a simple loop in a spare Termux session.
+
+This does not replace the review/merge step — Claude still needs to review each report and merge
+branches. It only removes the manual "paste the dispatch message" step for Claude Code specifically.

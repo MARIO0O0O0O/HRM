@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Playfair_Display, DM_Sans, DM_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
+import Sidebar from "@/components/layout/Sidebar";
 import Footer from "@/components/layout/Footer";
 import FloatingCTA from "@/components/layout/FloatingCTA";
 
@@ -93,7 +94,10 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
         <Header />
-        <main className="flex-grow flex flex-col">{children}</main>
+        <div className="flex-grow flex flex-col md:flex-row">
+          <Sidebar />
+          <main className="flex-grow flex flex-col min-w-0">{children}</main>
+        </div>
         <Footer />
         <FloatingCTA />
       </body>

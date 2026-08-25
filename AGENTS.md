@@ -17,7 +17,10 @@ rather than guessing.
 1. **Branch, don't push directly.** Create `agent/antigravity-[task-number]` off `phase-1-foundation`,
    work there, push there. Never push to `phase-1-foundation` directly.
 2. **pnpm, not npm.** `pnpm-lock.yaml` is the only tracked lockfile. Verify with
-   `pnpm install --frozen-lockfile && pnpm build` — exactly this, not `npm run build`.
+   `pnpm install --frozen-lockfile && pnpm build` — exactly this, not `npm run build`. **Known issue:**
+   in a shared-checkout setup this can fail with `ERR_PNPM_UNSAFE_MODULES_DIR`. If so, don't touch the
+   shared `node_modules` — fall back to `node_modules/.bin/next build` directly and note the fallback
+   in your report.
 3. **Verify with the task's own instructions.** Every task file has its own exact verification
    command. Run it yourself before writing your report.
 4. **Report format.** Write `project-docs/reports/[task-number]_REPORT.md` per the task's spec.

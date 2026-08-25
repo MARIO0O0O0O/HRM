@@ -31,11 +31,16 @@ any `page.tsx` files (separate tasks).
 
 ## Verification
 
+**Note:** "CalBizHR" contains "BizHR" as a substring — a plain `grep "BizHR"` will always match every
+correctly-rebranded line too, so it can't prove completeness on its own (a prior task caught this).
+Use this instead:
+
 ```
-grep -rn "BizHR\|M\.E\. HR" src/app --include="layout.tsx"
+grep -rnP '(?<!Cal)BizHR' src/app --include="layout.tsx"
+grep -rn "M\.E\. HR" src/app --include="layout.tsx"
 ```
 
-Expected: nothing.
+Expected: both empty.
 
 ## Report format
 

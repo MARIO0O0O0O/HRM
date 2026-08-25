@@ -18,6 +18,14 @@ report rather than making a judgment call outside the task's stated scope.
    instance) merges branches after reviewing reports.
 2. **pnpm, not npm.** `pnpm-lock.yaml` is the only tracked lockfile. Always
    `pnpm install --frozen-lockfile && pnpm build` to verify — this exact sequence, not `npm run build`.
+   **Known environment issue:** in a shared-checkout Termux setup (multiple agent worktrees pointing at
+   one `node_modules`), `pnpm install` can fail with `ERR_PNPM_UNSAFE_MODULES_DIR` because pnpm refuses
+   to manage a `node_modules` outside the project root. If you hit this specific error: do not attempt
+   to relink or modify the shared directory (it's shared state other agents may depend on). Fall back
+   to `node_modules/.bin/next build` directly (skips pnpm's install-check, still runs the real Next.js
+   build) and note in your report that you used the fallback and why. This is a known, accepted
+   workaround for this specific error only — don't reach for it to skip verification for any other
+   reason.
 3. **Verify with the task's own instructions.** Every task file specifies its own exact verification
    command/steps. Run them yourself before writing your report — don't report "done" on an assumption.
 4. **Report format.** Write `project-docs/reports/[task-number]_REPORT.md` in the format the task

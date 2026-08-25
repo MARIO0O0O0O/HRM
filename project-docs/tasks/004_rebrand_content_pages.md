@@ -26,11 +26,14 @@ name string itself, do not alter any other wording, structure, or legal language
 
 ## Verification
 
+**Note:** "CalBizHR" contains "BizHR" as a substring — a plain `grep "BizHR"` matches every
+correctly-rebranded line too and can't prove completeness alone (a prior task caught this). Use:
+
 ```
-grep -rln "BizHR\|M\.E\. HR" src/app --include="*.tsx" --include="*.ts" | grep -v "page.tsx$\|route.ts$" 
-grep -rn "BizHR\|M\.E\. HR" src/app/about/page.tsx src/app/services/page.tsx "src/app/spokes/[slug]/page.tsx" src/app/blog/page.tsx "src/app/blog/[slug]/page.tsx" src/app/contact/page.tsx src/app/terms/page.tsx src/app/privacy/page.tsx src/app/pricing/page.tsx src/app/paga-calculator/page.tsx src/app/tools/page.tsx "src/app/tools/[slug]/page.tsx" "src/app/tools/gated/[slug]/page.tsx" "src/app/tools/[slug]/ToolDetailClient.tsx" src/app/api/ai/policy/route.ts src/app/api/ai/audit/route.ts
+grep -rnP '(?<!Cal)BizHR' src/app/about/page.tsx src/app/services/page.tsx "src/app/spokes/[slug]/page.tsx" src/app/blog/page.tsx "src/app/blog/[slug]/page.tsx" src/app/contact/page.tsx src/app/terms/page.tsx src/app/privacy/page.tsx src/app/pricing/page.tsx src/app/paga-calculator/page.tsx src/app/tools/page.tsx "src/app/tools/[slug]/page.tsx" "src/app/tools/gated/[slug]/page.tsx" "src/app/tools/[slug]/ToolDetailClient.tsx" src/app/api/ai/policy/route.ts src/app/api/ai/audit/route.ts
+grep -rn "M\.E\. HR" src/app/about/page.tsx src/app/services/page.tsx "src/app/spokes/[slug]/page.tsx" src/app/blog/page.tsx "src/app/blog/[slug]/page.tsx" src/app/contact/page.tsx src/app/terms/page.tsx src/app/privacy/page.tsx src/app/pricing/page.tsx src/app/paga-calculator/page.tsx src/app/tools/page.tsx "src/app/tools/[slug]/page.tsx" "src/app/tools/gated/[slug]/page.tsx" "src/app/tools/[slug]/ToolDetailClient.tsx" src/app/api/ai/policy/route.ts src/app/api/ai/audit/route.ts
 ```
-Expected: nothing.
+Expected: both empty.
 
 ## Report format
 

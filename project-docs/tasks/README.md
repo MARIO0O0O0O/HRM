@@ -55,11 +55,18 @@ risk. Worth it any time there are 2+ genuinely independent tasks ready at once.
 `project-docs/scripts/poll_and_dispatch.sh` — run on your device (Termux) to automatically check for
 new tasks and dispatch them, instead of manually pasting a message every round.
 
-**What it actually does:** Claude Code gets fully auto-dispatched (real headless mode, `claude -p`,
-confirmed to exist). Antigravity does not have a confirmed equivalent — the script fires you a Termux
-notification instead, and you still paste the dispatch message into it manually. If Antigravity turns
-out to have its own headless/scriptable mode, tell Claude and this script gets extended to cover it
-too — don't assume it's covered until then.
+**What it actually does:** Both Claude Code and Antigravity CLI get fully auto-dispatched — both have
+confirmed headless/non-interactive modes (`claude -p` and `agy -p` respectively). The script assigns
+the next two undispatched tasks, one to each tool. **This assumes Claude has already confirmed those
+two specific tasks are file-disjoint and safe to run in parallel** — the script itself can't verify
+that, it just picks the next two in sequence. Only run it when told a given pair is confirmed safe.
+
+**One-time setup requirement for Antigravity specifically:** its headless mode soft-denies shell
+commands (git, pnpm, etc.) by default — the run exits 0 looking successful while silently doing
+nothing, easy to miss. Pre-authorize in `~/.gemini/antigravity-cli/settings.json`:
+```
+{ "permissions": { "allow": ["command(git)", "command(pnpm)", "command(node)"] } }
+```
 
 **Setup (one time):**
 ```

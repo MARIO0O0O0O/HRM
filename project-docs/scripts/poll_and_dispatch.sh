@@ -1,15 +1,29 @@
 #!/data/data/com.termux/files/usr/bin/bash
 # CalBizHR task poller/dispatcher for Termux.
 #
-# Checks project-docs/tasks/ for the lowest-numbered task with no matching
-# report and no branch already in progress. If found:
-#   - Claude Code: auto-dispatched headlessly (claude -p), fully unattended
-#   - Antigravity: NOT auto-dispatched (no confirmed headless CLI mode) --
-#     fires a Termux notification instead so you know to paste manually
+# Checks project-docs/tasks/ for undispatched tasks (no matching report yet).
+# Both Claude Code and Antigravity CLI have confirmed headless modes, so both
+# get auto-dispatched -- no manual paste needed for either, as long as setup
+# below is done first.
+#
+# IMPORTANT ASSUMPTION: this script assigns the next TWO undispatched task
+# numbers to the two tools, on the assumption that Claude (the planning
+# instance) has already confirmed those two specific tasks are file-disjoint
+# and safe to run in parallel. It does NOT verify this itself -- it can't
+# reason about task content. Only run this when Claude has explicitly said
+# a given pair is safe. Running it blindly risks both tools colliding on the
+# same files.
 #
 # Setup (run once):
 #   pkg install termux-api git
 #   (install the Termux:API companion app from F-Droid/Play Store)
+#   Claude Code: already confirmed working via `claude` command
+#   Antigravity CLI: confirm `agy` is on PATH (installer default:
+#     ~/.local/bin/agy). Then pre-authorize the commands it needs, since
+#     headless mode soft-denies shell commands by default (fails silently,
+#     exits 0, does nothing -- easy to miss). Add to
+#     ~/.gemini/antigravity-cli/settings.json:
+#     { "permissions": { "allow": ["command(git)", "command(pnpm)", "command(node)"] } }
 #   crontab -e   # add: */10 * * * * bash /path/to/this/script.sh
 # Or run it directly in a loop if you don't have cron set up:
 #   while true; do bash poll_and_dispatch.sh; sleep 600; done
@@ -24,41 +38,54 @@ git fetch origin -q
 git checkout -q "$BRANCH"
 git pull -q origin "$BRANCH"
 
-# Find the lowest-numbered task with no matching report
-NEXT_TASK=""
+# Find up to 2 undispatched tasks, lowest-numbered first
+UNDISPATCHED=()
 for f in project-docs/tasks/[0-9]*.md; do
   num=$(basename "$f" | grep -oP '^\d+')
   report="project-docs/reports/${num}_REPORT.md"
   if [ ! -f "$report" ]; then
-    NEXT_TASK="$num"
-    break
+    UNDISPATCHED+=("$num")
   fi
+  [ "${#UNDISPATCHED[@]}" -ge 2 ] && break
 done
 
-if [ -z "$NEXT_TASK" ]; then
+if [ "${#UNDISPATCHED[@]}" -eq 0 ]; then
   echo "No undispatched tasks found. Nothing to do."
   exit 0
 fi
 
-TASK_FILE="project-docs/tasks/${NEXT_TASK}_"*.md
-SUMMARY="New task ${NEXT_TASK} available: $(basename $TASK_FILE)"
+notify() {
+  if command -v termux-notification >/dev/null 2>&1; then
+    termux-notification --title "CalBizHR: Task $1" --content "$2" --id "poll-$1"
+  fi
+}
 
-# Always notify, regardless of whether Claude Code auto-dispatch succeeds --
-# this is the fallback that always works.
-if command -v termux-notification >/dev/null 2>&1; then
-  termux-notification --title "CalBizHR: Task ${NEXT_TASK}" --content "$SUMMARY" --id "poll-${NEXT_TASK}"
-fi
+dispatch_prompt() {
+  local num="$1" tool="$2"
+  local task_file
+  task_file=$(ls project-docs/tasks/${num}_*.md)
+  local branch="agent/${tool}-${num}"
+  echo "Pull the latest from the phase-1-foundation branch of this repo. Create a new branch called ${branch} off it. Read $(basename "$task_file") in project-docs/tasks/ completely and execute exactly what it specifies. Run its verification steps yourself. Write your report to project-docs/reports/${num}_REPORT.md. Commit everything to ${branch} and push that branch -- do NOT push to phase-1-foundation directly. If anything is ambiguous or requires a decision outside your authority, stop and note it in the report instead of guessing."
+}
 
-# Attempt Claude Code headless auto-dispatch
+# First undispatched task -> Claude Code
+NUM1="${UNDISPATCHED[0]}"
+notify "$NUM1" "Auto-dispatching to Claude Code"
 if command -v claude >/dev/null 2>&1; then
-  BRANCH_NAME="agent/claude-code-${NEXT_TASK}"
-  DISPATCH_PROMPT="Pull the latest from the phase-1-foundation branch of this repo. Create a new branch called ${BRANCH_NAME} off it. Read $(basename $TASK_FILE) in project-docs/tasks/ completely and execute exactly what it specifies. Run its verification steps yourself. Write your report to project-docs/reports/${NEXT_TASK}_REPORT.md. Commit everything to ${BRANCH_NAME} and push that branch -- do NOT push to phase-1-foundation directly. If anything is ambiguous or requires a decision outside your authority, stop and note it in the report instead of guessing."
-
-  echo "Auto-dispatching Task ${NEXT_TASK} to Claude Code (headless)..."
-  claude -p "$DISPATCH_PROMPT" --allowedTools "Read,Edit,Bash,Write" --permission-mode acceptEdits || \
-    echo "Claude Code headless dispatch failed -- check manually."
+  claude -p "$(dispatch_prompt "$NUM1" "claude-code")" --allowedTools "Read,Edit,Bash,Write" --permission-mode acceptEdits \
+    || echo "Claude Code headless dispatch failed for task ${NUM1} -- check manually."
 else
-  echo "claude CLI not found -- Task ${NEXT_TASK} needs manual dispatch to both tools."
+  echo "claude CLI not found -- task ${NUM1} needs manual dispatch."
 fi
 
-echo "Antigravity: no confirmed headless mode -- dispatch Task ${NEXT_TASK} manually."
+# Second undispatched task (if any) -> Antigravity
+if [ "${#UNDISPATCHED[@]}" -ge 2 ]; then
+  NUM2="${UNDISPATCHED[1]}"
+  notify "$NUM2" "Auto-dispatching to Antigravity"
+  if command -v agy >/dev/null 2>&1; then
+    agy -p "$(dispatch_prompt "$NUM2" "antigravity")" \
+      || echo "Antigravity headless dispatch failed for task ${NUM2} -- check manually (also check settings.json permissions.allow if it exited 0 but did nothing)."
+  else
+    echo "agy CLI not found -- task ${NUM2} needs manual dispatch."
+  fi
+fi

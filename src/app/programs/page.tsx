@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Breadcrumb from '@/components/layout/Breadcrumb'
+import LegalDisclaimer from '@/components/layout/LegalDisclaimer'
 import { Shield, AlertTriangle, HardHat, BookOpen, ArrowRight, Clock } from 'lucide-react'
 
 const programs = [
@@ -102,6 +103,7 @@ export default function ProgramsIndexPage() {
             )
           })}
         </div>
+        <LegalDisclaimer />
       </div>
     </div>
   )

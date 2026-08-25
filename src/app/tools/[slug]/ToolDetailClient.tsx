@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import LegalDisclaimer from '@/components/layout/LegalDisclaimer'
 import { CheckCircle2, ChevronDown, ChevronUp, ArrowRight, ArrowLeft } from 'lucide-react'
 import Breadcrumb from '@/components/layout/Breadcrumb'
 import ContributionBanner from '@/components/tools/ContributionBanner'
@@ -256,6 +257,7 @@ export default function ToolDetailClient({ tool }: { tool: Tool }) {
           Educational and compliance guidance only — not legal advice. CalBizHR is an HR consultancy, not a law firm.
           Templates should be reviewed by qualified employment counsel prior to implementation.
         </p>
+        <LegalDisclaimer />
       </section>
     </div>
   )

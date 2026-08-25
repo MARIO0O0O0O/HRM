@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Breadcrumb from '@/components/layout/Breadcrumb'
+import LegalDisclaimer from '@/components/layout/LegalDisclaimer'
 import { createClient } from '@/lib/supabase/client'
 import { Briefcase, ArrowLeft, RotateCcw } from 'lucide-react'
 
@@ -321,6 +322,7 @@ export default function JobClassificationPage() {
         )}
 
         <Disclaimer />
+        <LegalDisclaimer />
       </div>
     </div>
   )

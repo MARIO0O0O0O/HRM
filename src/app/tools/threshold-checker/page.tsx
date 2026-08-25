@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Breadcrumb from '@/components/layout/Breadcrumb'
+import LegalDisclaimer from '@/components/layout/LegalDisclaimer'
 import { createClient } from '@/lib/supabase/client'
 import { Users, Printer, ScaleIcon } from 'lucide-react'
 
@@ -195,6 +196,7 @@ export default function ThresholdCheckerPage() {
           <p className="text-xs text-zinc-600 italic border-t border-white/5 pt-5">
             This tool is for general informational purposes only and does not constitute legal advice. Employee count thresholds may have additional conditions (hours worked, location, industry) not captured here. Consult qualified legal counsel before making compliance decisions.
           </p>
+          <LegalDisclaimer />
         </div>
       </div>
     </div>

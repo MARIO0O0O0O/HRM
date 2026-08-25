@@ -185,16 +185,27 @@ export default function CinematicHero() {
 
         {/* CTAs -- free tools lead, booking is secondary and calm */}
         <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-          <Link href="/tools" className="w-full sm:w-auto group">
-            <Button className="w-full sm:w-auto h-14 bg-gradient-to-r from-cyan-600 to-indigo-600 hover:from-cyan-500 hover:to-indigo-500 text-white font-bold tracking-wide px-8 rounded-none border border-cyan-400/50 shadow-[0_0_30px_-5px_rgba(34,211,238,0.5)] transition-all duration-300 hover:scale-105 font-sans text-base flex items-center gap-2">
-              <Calculator className="mr-1 h-4 w-4" /> Explore the Free Tools <ArrowRight className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-            </Button>
-          </Link>
-          <Link href="/book" className="w-full sm:w-auto group">
-            <Button variant="outline" className="w-full sm:w-auto h-14 border-white/20 hover:border-cyan-400/60 bg-[#020617]/50 hover:bg-cyan-950/50 backdrop-blur-md text-cyan-50 font-semibold tracking-wide px-8 rounded-none transition-all duration-300 font-sans text-base">
-              Book a $75 Consultation
-            </Button>
-          </Link>
+          <Button
+            render={
+              <Link
+                href="/tools"
+                className="w-full sm:w-auto h-14 bg-gradient-to-r from-cyan-600 to-indigo-600 hover:from-cyan-500 hover:to-indigo-500 text-white font-bold tracking-wide px-8 rounded-none border border-cyan-400/50 shadow-[0_0_30px_-5px_rgba(34,211,238,0.5)] transition-all duration-300 hover:scale-105 font-sans text-base flex items-center justify-center gap-2 group"
+              />
+            }
+          >
+            <Calculator className="mr-1 h-4 w-4" /> Explore the Free Tools <ArrowRight className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+          </Button>
+          <Button
+            variant="outline"
+            render={
+              <Link
+                href="/book"
+                className="w-full sm:w-auto h-14 border-white/20 hover:border-cyan-400/60 bg-[#020617]/50 hover:bg-cyan-950/50 backdrop-blur-md text-cyan-50 font-semibold tracking-wide px-8 rounded-none transition-all duration-300 font-sans text-base flex items-center justify-center gap-2"
+              />
+            }
+          >
+            Book a $75 Consultation
+          </Button>
         </div>
       </div>
 

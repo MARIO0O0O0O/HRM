@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Breadcrumb from '@/components/layout/Breadcrumb'
+import LegalDisclaimer from '@/components/layout/LegalDisclaimer'
 import TrainingCycleCalculator from '@/components/tools/TrainingCycleCalculator'
 import AnnualDeadlineTracker from '@/components/tools/AnnualDeadlineTracker'
 import ProgressChecklist from '@/components/tools/ProgressChecklist'
@@ -107,6 +108,7 @@ export default function DeadlineTrackerPage() {
           legal advice. For a specific situation, talk to a qualified employment attorney or{' '}
           <a href="/book" className="text-indigo-400 hover:text-indigo-300">book a consultation</a>.
         </p>
+        <LegalDisclaimer />
       </div>
     </div>
   )

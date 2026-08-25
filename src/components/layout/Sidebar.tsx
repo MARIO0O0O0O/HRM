@@ -1,10 +1,13 @@
 'use client'
 
+import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { PanelLeft, ShieldCheck, DollarSign, UserCheck, Sparkles, Clock } from 'lucide-react'
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from '@/components/ui/sheet'
 import { cn } from '@/lib/utils'
+import PreviewPanel from '@/components/programs/PreviewPanel'
+import { programsSeed, type ProgramRecord } from '@/data/airtable-seed'
 
 type SidebarLink = {
   label: string
@@ -53,7 +56,7 @@ const sidebarCategories: SidebarCategory[] = [
   },
 ]
 
-function SidebarNav() {
+function SidebarNav({ onPreviewHpp }: { onPreviewHpp: () => void }) {
   const pathname = usePathname()
 
   return (
@@ -82,6 +85,26 @@ function SidebarNav() {
               }
 
               const isActive = pathname === item.href
+              const isHpp = item.label === 'Harassment Prevention'
+
+              if (isHpp) {
+                return (
+                  <li key={item.href}>
+                    <button
+                      type="button"
+                      onClick={onPreviewHpp}
+                      className={cn(
+                        'w-full text-left block px-3 py-2 rounded-lg text-sm font-medium transition-colors cursor-pointer',
+                        isActive
+                          ? 'bg-indigo-500/10 text-indigo-400'
+                          : 'text-zinc-400 hover:text-zinc-100 hover:bg-white/5'
+                      )}
+                    >
+                      {item.label}
+                    </button>
+                  </li>
+                )
+              }
 
               return (
                 <li key={item.href}>
@@ -107,12 +130,26 @@ function SidebarNav() {
 }
 
 export default function Sidebar() {
+  const [previewProgram, setPreviewProgram] = useState<ProgramRecord | null>(null)
+  const [previewOpen, setPreviewOpen] = useState(false)
+
+  const handlePreviewHpp = () => {
+    setPreviewProgram(programsSeed.HPP)
+    setPreviewOpen(true)
+  }
+
   return (
     <>
+      <PreviewPanel
+        isOpen={previewOpen}
+        onOpenChange={setPreviewOpen}
+        program={previewProgram}
+      />
+
       {/* Desktop: persistent column, sticky under the header */}
       <aside className="hidden md:block md:w-64 md:shrink-0 md:border-r md:border-white/5 md:bg-[#0a0a0a]">
         <div className="sticky top-16 h-[calc(100vh-4rem)] overflow-y-auto py-8 px-4">
-          <SidebarNav />
+          <SidebarNav onPreviewHpp={handlePreviewHpp} />
         </div>
       </aside>
 
@@ -138,7 +175,7 @@ export default function Sidebar() {
                 Browse compliance areas by category
               </SheetDescription>
             </div>
-            <SidebarNav />
+            <SidebarNav onPreviewHpp={handlePreviewHpp} />
           </SheetContent>
         </Sheet>
       </div>

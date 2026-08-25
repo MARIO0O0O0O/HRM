@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Breadcrumb from '@/components/layout/Breadcrumb'
+import LegalDisclaimer from '@/components/layout/LegalDisclaimer'
 import SelfAssessmentQuiz from '@/components/tools/SelfAssessmentQuiz'
 import KnowledgeQuiz from '@/components/tools/KnowledgeQuiz'
 import { createClient } from '@/lib/supabase/client'
@@ -79,6 +80,7 @@ export default function ComplianceQuizPage() {
           legal advice. For a specific situation, talk to a qualified employment attorney or{' '}
           <a href="/book" className="text-indigo-400 hover:text-indigo-300">book a consultation</a>.
         </p>
+        <LegalDisclaimer />
       </div>
     </div>
   )

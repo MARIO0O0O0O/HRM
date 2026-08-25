@@ -18,7 +18,7 @@ describe('Contact Page Component', () => {
     expect(screen.getByText('Billing & Peer-to-Peer Payments')).toBeDefined()
 
     // Check contact data (using substring matching which is highly robust in testing-library)
-    expect(screen.getByText('626-708-2220')).toBeDefined()
+    expect(screen.getAllByText('626-708-2220')[0]).toBeDefined()
     expect(screen.getAllByText('info@mario00.com', { exact: false })[0]).toBeDefined()
 
     // Query form inputs

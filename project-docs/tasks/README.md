@@ -1,0 +1,32 @@
+# How This Works
+
+1. **Claude** writes task files here (`project-docs/tasks/NNN_description.md`), commits and pushes
+   them to the repo directly — no manual file handoff through Downloads.
+2. **You** paste one short, reusable dispatch message (below) into Antigravity or Claude Code. Same
+   message every time — the executing agent figures out which task is next by looking at the repo.
+3. **The executing agent** pulls the repo, finds the lowest-numbered task with no matching report yet,
+   reads it, executes it, verifies per the task's own instructions, writes its report to
+   `project-docs/reports/NNN_REPORT.md`, appends one line to `BUILD_LOG.md`, commits and pushes
+   everything together.
+4. **Claude** (next session) pulls the repo and reads the report directly — no relay needed.
+
+## The dispatch message (reusable, paste as-is every time)
+
+> Pull the latest from the `phase-1-foundation` branch of this repo. Look in `project-docs/tasks/` for
+> the lowest-numbered task file that does NOT yet have a matching report in `project-docs/reports/`
+> (e.g., if `001_REPORT.md` exists but `002_REPORT.md` doesn't, do task 002). Read that task file
+> completely. Execute exactly what it specifies — nothing more, nothing outside its stated scope. Run
+> its verification steps yourself before writing anything. Write your report to
+> `project-docs/reports/[same-number]_REPORT.md` in the format the task file specifies. Append one
+> line to `project-docs/BUILD_LOG.md`. Commit your code changes and both new files together, with a
+> clear commit message, and push. If anything in the task is ambiguous, conflicts with what you find
+> in the actual code, or requires a decision outside your authority, stop and write that in your
+> report instead of guessing.
+
+## Task design rules (for Claude, writing future tasks)
+
+- One task = one narrow, mechanically verifiable outcome. If "done" can't be checked with a specific
+  command or a specific quoted result, the task is too vague — narrow it further.
+- Every task states its own exact verification command/steps. Never rely on "it should work."
+- Sequence tasks so each one's prerequisite is either "none" or an earlier numbered task — never
+  circular, never assumed-parallel unless explicitly stated safe to run out of order.

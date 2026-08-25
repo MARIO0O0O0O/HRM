@@ -42,17 +42,29 @@ const sidebarCategories: SidebarCategory[] = [
   {
     label: 'Wage & Hour',
     icon: DollarSign,
-    items: [{ label: 'Coming Soon', comingSoon: true }],
+    items: [{ label: 'Wage & Hour', href: '/programs/wage-and-hour' }],
   },
   {
     label: 'Lifecycle Admin',
     icon: UserCheck,
-    items: [{ label: 'Coming Soon', comingSoon: true }],
+    items: [
+      { label: 'Leave Administration', comingSoon: true },
+      { label: 'ADA / Reasonable Accommodation', comingSoon: true },
+      { label: 'Recruitment & Selection', comingSoon: true },
+      { label: 'Onboarding', comingSoon: true },
+      { label: 'Employment', comingSoon: true },
+      { label: 'Termination & Offboarding', comingSoon: true },
+      { label: 'Employee Benefits', comingSoon: true },
+    ],
   },
   {
     label: 'Specialized',
     icon: Sparkles,
-    items: [{ label: 'Coming Soon', comingSoon: true }],
+    items: [
+      { label: 'AI in the Workplace', comingSoon: true },
+      { label: 'HRIS', comingSoon: true },
+      { label: 'Unions & Collective Bargaining', comingSoon: true },
+    ],
   },
 ]
 
@@ -89,6 +101,7 @@ function SidebarNav({ onPreviewProgram }: { onPreviewProgram: (code: string) => 
                 '/programs/harassment-prevention': 'HPP',
                 '/programs/workplace-violence-prevention': 'WVPP',
                 '/programs/injury-illness-prevention': 'IIPP',
+                '/programs/wage-and-hour': 'WAGE',
               }
               const programCode = codeMap[item.href]
 

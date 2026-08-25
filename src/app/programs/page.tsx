@@ -32,6 +32,15 @@ const programs = [
     live: true,
   },
   {
+    slug: 'wage-and-hour',
+    code: 'WAGE',
+    title: 'Wage & Hour',
+    lawRef: 'Cal. Lab. Code',
+    description: 'Overtime rules, meal & rest break compliance, paystub requirements, and IWC Wage Order rules.',
+    icon: DollarSign,
+    live: true,
+  },
+  {
     slug: 'know-your-rights',
     code: 'KYR',
     title: 'Know Your Rights',

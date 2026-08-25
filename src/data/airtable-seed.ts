@@ -92,6 +92,23 @@ export const programsSeed: Record<string, ProgramRecord> = {
       'SB 294 standalone notice template, emergency contact opt-in form, distribution/receipt log, 3-year retention system',
     notes: 'Highest urgency deadline of the four programs — annual Feb 1 notice requirement.',
   },
+  WAGE: {
+    code: 'WAGE',
+    name: 'Wage & Hour Compliance Program',
+    governingLaw: 'California Labor Code & IWC Wage Orders',
+    primaryStatute: 'Cal. Lab. Code §§ 200-558, IWC Orders 1-17',
+    effectiveDate: 'Ongoing',
+    description:
+      'Comprehensive California wage-and-hour compliance: meal & rest break timing, overtime calculation, employee classification, pay transparency (SB 1162), and itemized wage statements (Labor Code § 226).',
+    appliesTo: 'All CA employers',
+    trainingRequired: false,
+    supervisoryHours: null,
+    nonSupervisoryHours: null,
+    recurrence: 'Ongoing / Daily Operations',
+    keyDeliverables:
+      'Meal & Rest Break Policy & Premium Log, ABC Exempt Classification Checklist, Pay Transparency Job Posting Template, Labor Code § 226 Paystub Audit Checklist',
+    notes: 'Primary source of California class actions and PAGA representative claims.',
+  },
 }
 
 export interface DocumentRecord {
@@ -124,4 +141,9 @@ export const documentsSeed: DocumentRecord[] = [
   { name: 'Code of Safe Work Practices', category: 'IIPP', mpaVerified: false },
   { name: 'Cal/OSHA Form 300 / 300A Log Guide', category: 'IIPP', mpaVerified: true },
   { name: 'Heat Illness Prevention Plan (Title 8 CCR § 3395)', category: 'IIPP', mpaVerified: true },
+  { name: 'Meal & Rest Period Policy & Attestation Form', category: 'WAGE', mpaVerified: true },
+  { name: 'Overtime & Double Time Calculation Worksheet', category: 'WAGE', mpaVerified: true },
+  { name: 'Exempt vs. Non-Exempt ABC Classification Checklist', category: 'WAGE', mpaVerified: true },
+  { name: 'SB 1162 Pay Scale Disclosure Template for Job Postings', category: 'WAGE', mpaVerified: true },
+  { name: 'Labor Code § 226 Compliant Itemized Wage Statement Audit Guide', category: 'WAGE', mpaVerified: true },
 ]

@@ -23,3 +23,5 @@ Format per entry: `[date] Task [number] — [PASS/FAIL] — [one-sentence summar
 2026-08-25 — Task 011 — PASS — Merged additional permissions.allow entries into Antigravity settings.json; verified valid JSON with jq and model unchanged.
 2026-08-25 — Task 012 — PARTIAL — Configured MCP filesystem server (runtime invocation FAIL), established skill discovery precedence, authored 3 skills, and demonstrated skill invocation (PASS).
 2026-08-25 — Task 013 — PASS — Built Workplace Violence Prevention (SB 553) and Injury & Illness Prevention (Cal/OSHA IIPP + Heat Illness) program hubs with PreviewPanels, sidebar links, free tools, and validation links.
+2026-08-25 — Task 015 — PASS — Completed hub with AI Automation Compliance education tile; added spoke plumbing for all 15 program spokes across Sidebar and /programs index.
+2026-08-25 — Task 016 — PASS — Updated contact phone (626-708-2220) and email (info@mario00.com) across all 11 files including Zelle; built Wage & Hour program hub with 4 real nested sub-pages.

@@ -265,45 +265,85 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 6. AI Tools Section */}
-      <section className="py-20 border-b border-white/5">
+      {/* 6. AI Automation Compliance Education Tile */}
+      <section className="py-20 border-b border-white/5 bg-[#111111]/40" id="ai-compliance">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-7 flex flex-col gap-6 text-left">
-              <span className="text-xs font-bold uppercase tracking-widest text-indigo-400 bg-indigo-500/10 border border-indigo-500/20 px-3.5 py-1.5 rounded-full w-fit flex items-center gap-1.5">
-                <Sparkles className="h-3.5 w-3.5" /> AI Tools
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-zinc-100 tracking-tight">
-                Two AI tools I built and use myself.
-              </h2>
-              <p className="text-sm sm:text-base text-zinc-400 leading-relaxed">
-                A Strategic Audit Engine that scores your HR practices across the areas that generate the
-                most PAGA exposure, and a Policy Architect that drafts a California-specific policy from a
-                plain-English description. Both are free to try. Both produce a real draft — never a final
-                answer — that should go to an employment attorney before you rely on it.
-              </p>
-              <Link href="/ai-lab" className="w-fit">
-                <Button className="bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 text-zinc-50 font-semibold tracking-wide py-3 px-6 rounded-lg cursor-pointer flex items-center gap-2">
-                  Try the AI Tools <ArrowRight className="h-4 w-4" />
+          <div className="text-center mb-12">
+            <span className="text-xs font-bold uppercase tracking-widest text-indigo-400 bg-indigo-500/10 border border-indigo-500/20 px-3.5 py-1.5 rounded-full inline-flex items-center gap-1.5">
+              <Sparkles className="h-3.5 w-3.5" /> AI Regulation &amp; Workplace Compliance
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-zinc-100 tracking-tight mt-4">
+              AI Automation Compliance Hub
+            </h2>
+            <p className="text-sm sm:text-base text-zinc-400 max-w-3xl mx-auto mt-3 leading-relaxed">
+              California is actively establishing strict regulatory boundaries for AI tools used in recruitment, hiring, performance evaluation, and workplace monitoring.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+            {/* Regulatory Breakdown Card */}
+            <div className="lg:col-span-7 bg-[#111111] border border-white/10 rounded-2xl p-6 sm:p-8 flex flex-col justify-between">
+              <div>
+                <h3 className="text-xl font-bold text-zinc-100 mb-3">
+                  California AI Employment Directives: &ldquo;No Robo Bosses&rdquo; &amp; AB 1018
+                </h3>
+                <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed mb-4">
+                  California law is rapidly shifting from voluntary AI guidelines to mandatory disclosure, bias audits, and human oversight. Employers using automated decision-making tools (ADMTs) face new statutory obligations:
+                </p>
+                <ul className="space-y-3 text-xs sm:text-sm text-zinc-300">
+                  <li className="flex items-start gap-2.5">
+                    <CheckCircle2 className="h-4.5 w-4.5 text-indigo-400 shrink-0 mt-0.5" />
+                    <span><strong>Advance Disclosure &amp; Notice:</strong> Mandates notifying job candidates and employees prior to using AI software for resume screening, interview scoring, or performance metrics.</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <CheckCircle2 className="h-4.5 w-4.5 text-indigo-400 shrink-0 mt-0.5" />
+                    <span><strong>Bias Audit Requirements:</strong> Prohibits automated screening tools that disparately impact protected classes under FEHA, requiring independent annual bias audits.</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <CheckCircle2 className="h-4.5 w-4.5 text-indigo-400 shrink-0 mt-0.5" />
+                    <span><strong>Human Oversight &amp; Opt-Out Rights:</strong> Prohibits fully automated termination or disciplinary actions without human review, guaranteeing worker rights to request manual reconsideration.</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
+                <span className="text-xs text-zinc-500">Governing Standards: AB 1018, FEHA Council ADMT Rules</span>
+                <Link
+                  href="/spokes/labor-law"
+                  className="text-xs font-semibold text-indigo-400 hover:text-indigo-300 flex items-center gap-1"
+                >
+                  Read Labor Code Directives <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
+              </div>
+            </div>
+
+            {/* AI Lab Integration Card */}
+            <div className="lg:col-span-5 bg-gradient-to-br from-indigo-950/30 to-zinc-900/80 border border-indigo-500/20 rounded-2xl p-6 sm:p-8 flex flex-col justify-between">
+              <div>
+                <span className="text-[10px] font-bold uppercase tracking-wider text-indigo-400 bg-indigo-500/10 px-2.5 py-1 rounded-full">
+                  Interactive AI Lab
+                </span>
+                <h3 className="text-lg font-bold text-zinc-100 mt-3 mb-2">
+                  See AI Compliance in Action
+                </h3>
+                <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed mb-4">
+                  Experience how CalBizHR leverages AI tools with strict human-in-the-loop oversight to audit PAGA exposure and draft California-compliant HR policies.
+                </p>
+                <div className="space-y-2 text-xs text-zinc-300 bg-black/40 p-3.5 rounded-xl border border-white/5 mb-4">
+                  <div className="flex items-center gap-2 font-medium text-indigo-300">
+                    <Sparkles className="h-3.5 w-3.5" /> Strategic Audit Engine &amp; Policy Architect
+                  </div>
+                  <p className="text-zinc-400 leading-normal">
+                    Generates initial risk scores &amp; policy drafts — every output is marked as AI-assisted and structured for human professional review.
+                  </p>
+                </div>
+              </div>
+
+              <Link href="/ai-lab" className="w-full">
+                <Button className="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-2.5 rounded-xl flex items-center justify-center gap-2 shadow-md shadow-indigo-600/20">
+                  Try AI Lab Tools <ArrowRight className="h-4 w-4" />
                 </Button>
               </Link>
-            </div>
-            <div className="lg:col-span-5 bg-[#111111] border border-white/10 rounded-2xl p-6 sm:p-8 flex flex-col gap-6 text-left">
-              <h3 className="text-lg font-bold text-zinc-100">What&apos;s Actually In There</h3>
-              <ul className="flex flex-col gap-3 text-xs sm:text-sm">
-                <li className="flex items-center gap-3 text-zinc-400">
-                  <CheckCircle2 className="h-4.5 w-4.5 text-cyan-400 shrink-0" /> Strategic Audit Engine — describe your current practices, get a scored breakdown by risk area
-                </li>
-                <li className="flex items-center gap-3 text-zinc-400">
-                  <CheckCircle2 className="h-4.5 w-4.5 text-cyan-400 shrink-0" /> Policy Architect — draft a CA-specific HR policy from a plain-English request
-                </li>
-                <li className="flex items-center gap-3 text-zinc-400">
-                  <CheckCircle2 className="h-4.5 w-4.5 text-cyan-400 shrink-0" /> Every draft is marked clearly as AI-assisted, not attorney-reviewed
-                </li>
-                <li className="flex items-center gap-3 text-zinc-400">
-                  <CheckCircle2 className="h-4.5 w-4.5 text-cyan-400 shrink-0" /> No signup required to try either one
-                </li>
-              </ul>
             </div>
           </div>
         </div>

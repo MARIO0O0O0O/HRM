@@ -16,7 +16,7 @@ import {
 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'About Mario Espindola, MPA — BizHR Founder | California HR Compliance',
+  title: 'About Mario Espindola, MPA — CalBizHR Founder | California HR Compliance',
   description: '10+ years of California municipal regulatory experience, now helping small businesses navigate HR compliance without the law-firm price tag.',
 }
 
@@ -29,7 +29,7 @@ export default function AboutPage() {
     },
     {
       title: '$60M HR Budget, 1,500+ Employees',
-      description: 'Seven years at the City of Santa Ana — Management Aide through HR Analyst — overseeing HR operations for a workforce that size before ever starting BizHR.',
+      description: 'Seven years at the City of Santa Ana — Management Aide through HR Analyst — overseeing HR operations for a workforce that size before ever starting CalBizHR.',
       icon: Calendar,
     },
     {
@@ -62,7 +62,7 @@ export default function AboutPage() {
               Mario Espindola, MPA
             </h1>
             <p className="text-base sm:text-lg text-zinc-300 leading-relaxed max-w-2xl font-medium">
-              &ldquo;Some kids grew up watching cartoons. I grew up watching my parents build something from nothing. I built BizHR so employers like them have somewhere to turn — practical, affordable, expert HR support.&rdquo;
+              &ldquo;Some kids grew up watching cartoons. I grew up watching my parents build something from nothing. I built CalBizHR so employers like them have somewhere to turn — practical, affordable, expert HR support.&rdquo;
             </p>
           </div>
           <div className="shrink-0 z-10 relative">
@@ -144,9 +144,9 @@ export default function AboutPage() {
               <Briefcase className="h-5 w-5" />
             </div>
             <div>
-              <h3 className="text-lg font-bold text-zinc-100 mb-1.5">The Knowledge Behind BizHR</h3>
+              <h3 className="text-lg font-bold text-zinc-100 mb-1.5">The Knowledge Behind CalBizHR</h3>
               <p className="text-sm text-zinc-400 leading-relaxed max-w-xl">
-                BizHR is built on real municipal HR experience, not a certification course. My full
+                CalBizHR is built on real municipal HR experience, not a certification course. My full
                 career history, credentials, and background are documented on my professional
                 portfolio — worth a look if you want the complete picture before booking a call.
               </p>

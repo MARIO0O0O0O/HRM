@@ -6,7 +6,7 @@ import Breadcrumb from '@/components/layout/Breadcrumb'
 import { CheckCircle2, ArrowRight, Sparkles, Scale, BookOpen, ShieldAlert, Award } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Services — California HR Compliance Consulting | BizHR',
+  title: 'Services — California HR Compliance Consulting | CalBizHR',
   description: 'Harassment prevention, workplace violence prevention, injury & illness prevention, compliance audits, and ongoing HR support for California small businesses.',
 }
 
@@ -42,7 +42,7 @@ export default function ServicesPage() {
             Comprehensive Compliance
           </span>
           <h1 className="text-3xl sm:text-5xl font-black tracking-tight leading-[1.1] bg-gradient-to-r from-zinc-50 via-zinc-100 to-zinc-400 bg-clip-text text-transparent mt-6">
-            M.E. HR Solutions Catalog
+            CalBizHR Solutions Catalog
           </h1>
           <p className="text-sm sm:text-base text-zinc-400 mt-4 max-w-xl mx-auto leading-relaxed">
             Done-for-you, highly practical operations-level support built specifically for California small business owners who run shift and hourly workforce teams.

@@ -358,7 +358,7 @@ export default function PagaCalculatorPage() {
                 This is an educational estimate based on the numbers you enter and current statutory rates — not
                 a prediction, a legal opinion, or a bill. Actual exposure depends on violation frequency, cure
                 actions taken, arbitration agreements, and judicial interpretation. For a specific situation,
-                talk to a PAGA defense attorney. BizHR / M.E. Consulting accepts no liability for decisions made
+                talk to a PAGA defense attorney. CalBizHR / M.E. Consulting accepts no liability for decisions made
                 from calculator output.
               </p>
             </div>

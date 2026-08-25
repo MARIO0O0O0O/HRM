@@ -31,7 +31,7 @@ export default function ContactPage() {
     }
 
     // Propose email request
-    const subject = encodeURIComponent('M.E. HR Contact Request — ' + name)
+    const subject = encodeURIComponent('CalBizHR Contact Request — ' + name)
     const body = encodeURIComponent(
       `Hello Mario,\n\nI would like to contact you regarding some compliance questions.\n\nName: ${name}\nEmail: ${email}\n\nMessage:\n${message}\n\nThank you!`
     )
@@ -57,7 +57,7 @@ export default function ContactPage() {
             Direct Outreach
           </span>
           <h1 className="text-3xl sm:text-5xl font-black tracking-tight leading-[1.1] bg-gradient-to-r from-zinc-50 via-zinc-100 to-zinc-400 bg-clip-text text-transparent mt-6">
-            Get in Touch with BizHR
+            Get in Touch with CalBizHR
           </h1>
           <p className="text-sm sm:text-base text-zinc-400 mt-4 max-w-xl mx-auto leading-relaxed">
             Have questions about California compliance or SB 553 violence prevention plans? Reach out directly to secure prompt, professional guidance.

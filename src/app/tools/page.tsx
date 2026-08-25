@@ -4,7 +4,7 @@ import { ArrowRight, Shield, FileText, AlertTriangle, BookOpen, Calculator, Clip
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Free Compliance Tools & Toolkits — BizHR | California HR for Small Businesses',
+  title: 'Free Compliance Tools & Toolkits — CalBizHR | California HR for Small Businesses',
   description: 'Free California compliance tools (PAGA calculator, self-assessment quizzes, deadline tracker) plus DIY toolkits — WVPP (SB 553), HPP (SB 1343), IIPP (8 CCR § 3203), and Know Your Rights (SB 294).',
 }
 

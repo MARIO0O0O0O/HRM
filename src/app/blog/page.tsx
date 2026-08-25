@@ -5,7 +5,7 @@ import Breadcrumb from '@/components/layout/Breadcrumb'
 import { Calendar, Clock, BookOpen, ChevronRight, Download } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'HR Compliance Blog — California Employment Law Updates | BizHR',
+  title: 'HR Compliance Blog — California Employment Law Updates | CalBizHR',
   description: 'Practical guides on SB 553, SB 1343, PAGA, meal breaks, and California employment law for small business owners.',
 }
 
@@ -121,7 +121,7 @@ export default function BlogPage() {
             <div className="bg-[#111111]/40 border border-white/5 rounded-2xl p-6">
               <h3 className="text-base font-bold text-zinc-100">Legal Disclaimer</h3>
               <p className="text-xs text-zinc-500 leading-relaxed mt-2.5">
-                The insights and articles provided in this section are intended strictly for educational and general compliance-awareness purposes. They do not constitute formal legal advice. For detailed actionable counsel, please book a direct consultation with M.E. HR Solutions.
+                The insights and articles provided in this section are intended strictly for educational and general compliance-awareness purposes. They do not constitute formal legal advice. For detailed actionable counsel, please book a direct consultation with CalBizHR.
               </p>
             </div>
           </div>

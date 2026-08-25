@@ -15,3 +15,4 @@ Format per entry: `[date] Task [number] — [PASS/FAIL] — [one-sentence summar
 2026-08-25 — Task 004 — PASS — Rebranded remaining content pages/routes (13 page.tsx files, 1 client component, 2 API system prompts) from "BizHR"/"M.E. HR" to "CalBizHR"; `pnpm build` clean (54/54 pages).
 2026-08-25 — Task 005 — PASS — Rebranded test assertions, README.md, and package.json to CalBizHR; verified full Vitest test suite pass (15/15 test files, 23/23 tests).
 2026-08-25 — Task 007 — PASS — Added persistent sidebar shell (`src/components/layout/Sidebar.tsx`, wired into `layout.tsx`): 4 category groups, 3 real/placeholder links under Safety & Prevention, mobile Sheet-based collapse; `pnpm build` clean (54/54 pages), verified rendering on 3 routes via a real server + curl.
+2026-08-25 — Task 009a — PASS — Verified Claude Code CLI environment, pnpm availability (v11.23.0), and ran trivial headless execution test.

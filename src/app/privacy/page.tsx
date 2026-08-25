@@ -3,8 +3,8 @@ import Link from 'next/link'
 import { Shield, ArrowRight } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy — BizHR | California HR Compliance',
-  description: 'BizHR privacy policy — how we collect, use, and protect your data in compliance with the California Privacy Rights Act (CPRA/CCPA).',
+  title: 'Privacy Policy — CalBizHR | California HR Compliance',
+  description: 'CalBizHR privacy policy — how we collect, use, and protect your data in compliance with the California Privacy Rights Act (CPRA/CCPA).',
 }
 
 export default function PrivacyPage() {
@@ -28,7 +28,7 @@ export default function PrivacyPage() {
 
           <div className="bg-[#111111] border border-indigo-500/20 rounded-2xl p-5 text-sm">
             <p className="text-zinc-300">
-              <strong className="text-zinc-100">CPRA/CCPA Notice:</strong> This site is operated by M.E. Consulting (BizHR), a California business.
+              <strong className="text-zinc-100">CPRA/CCPA Notice:</strong> This site is operated by M.E. Consulting (CalBizHR), a California business.
               California residents have specific rights under the California Privacy Rights Act (CPRA) and the California Consumer Privacy Act (CCPA),
               including the right to know, delete, correct, and opt out of sale of personal information.
             </p>
@@ -37,7 +37,7 @@ export default function PrivacyPage() {
           <section>
             <h2 className="text-lg font-bold text-zinc-200 mb-3">1. Who We Are</h2>
             <p>
-              BizHR is operated by M.E. Consulting, owned by Mario Espindola MPA, located in Los Angeles / San Gabriel Valley, California.
+              CalBizHR is operated by M.E. Consulting, owned by Mario Espindola MPA, located in Los Angeles / San Gabriel Valley, California.
               We provide HR compliance consulting, compliance toolkits, and AI-assisted HR tools for California small businesses.
             </p>
             <p className="mt-2">

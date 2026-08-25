@@ -253,7 +253,7 @@ export default function ToolDetailClient({ tool }: { tool: Tool }) {
         </div>
 
         <p className="text-center text-xs text-zinc-700 mt-8 max-w-2xl mx-auto">
-          Educational and compliance guidance only — not legal advice. BizHR is an HR consultancy, not a law firm.
+          Educational and compliance guidance only — not legal advice. CalBizHR is an HR consultancy, not a law firm.
           Templates should be reviewed by qualified employment counsel prior to implementation.
         </p>
       </section>

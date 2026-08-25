@@ -3,8 +3,8 @@ import Link from 'next/link'
 import { FileText, ArrowRight } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Terms of Service — BizHR | California HR Compliance',
-  description: 'BizHR terms of service — not a law firm, general information only, no attorney-client relationship. California HR compliance consulting and AI-assisted tools.',
+  title: 'Terms of Service — CalBizHR | California HR Compliance',
+  description: 'CalBizHR terms of service — not a law firm, general information only, no attorney-client relationship. California HR compliance consulting and AI-assisted tools.',
 }
 
 export default function TermsPage() {
@@ -28,7 +28,7 @@ export default function TermsPage() {
         <div className="bg-[#111111] border border-rose-500/20 rounded-2xl p-5 text-sm mb-8">
           <p className="text-zinc-300">
             <strong className="text-rose-400">Not a Law Firm.</strong>{' '}
-            BizHR and M.E. Consulting are not a law firm and do not provide legal advice.
+            CalBizHR and M.E. Consulting are not a law firm and do not provide legal advice.
             All content, tools, calculators, and documents on this site constitute general HR compliance information only.
             No attorney-client relationship is created by use of this site or its tools.
             For legal advice specific to your situation, consult a licensed California employment attorney.
@@ -47,7 +47,7 @@ export default function TermsPage() {
 
           <section>
             <h2 className="text-lg font-bold text-zinc-200 mb-3">2. Nature of Services</h2>
-            <p>BizHR (M.E. Consulting) provides:</p>
+            <p>CalBizHR (M.E. Consulting) provides:</p>
             <ul className="space-y-2 list-disc list-inside mt-2">
               <li>HR compliance consulting services (advisory, not legal representation)</li>
               <li>Compliance document templates and toolkits for California employers</li>

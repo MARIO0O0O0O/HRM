@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { callClaude } from '@/lib/claude/server'
 
-const SYSTEM_PROMPT = `You are a California HR policy drafter working for BizHR. A small business
+const SYSTEM_PROMPT = `You are a California HR policy drafter working for CalBizHR. A small business
 owner will describe, in plain English, a workplace policy they need. Draft a clear, professional,
 California-compliant policy document.
 

@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const tool = toolsRegistry[slug]
   if (!tool) return {}
   return {
-    title: `${tool.title} | BizHR`,
+    title: `${tool.title} | CalBizHR`,
     description: tool.description,
   }
 }

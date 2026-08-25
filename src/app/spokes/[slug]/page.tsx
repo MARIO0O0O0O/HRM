@@ -19,9 +19,9 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params
   const spoke = spokesRegistry[slug]
-  if (!spoke) return { title: 'Not Found — BizHR' }
+  if (!spoke) return { title: 'Not Found — CalBizHR' }
   return {
-    title: `${spoke.title} | BizHR`,
+    title: `${spoke.title} | CalBizHR`,
     description: spoke.description,
   }
 }

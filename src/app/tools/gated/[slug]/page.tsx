@@ -52,7 +52,7 @@ export async function generateMetadata({ params }: Props) {
   const spoke = gatedSpokes[slug]
   if (!spoke) return {}
   return {
-    title: `${spoke.title} | BizHR`,
+    title: `${spoke.title} | CalBizHR`,
     description: spoke.description,
   }
 }

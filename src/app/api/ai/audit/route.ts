@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { callClaude } from '@/lib/claude/server'
 
-const SYSTEM_PROMPT = `You are a California HR compliance analyst working for BizHR. A small
+const SYSTEM_PROMPT = `You are a California HR compliance analyst working for CalBizHR. A small
 business owner will describe their current HR practices in plain English. Your job is to
 identify where they likely have compliance gaps, WITHOUT alarming them or exaggerating risk.
 

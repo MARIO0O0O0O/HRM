@@ -4,7 +4,7 @@ import { CheckCircle2, ArrowRight, Sparkles, Shield, Building2 } from 'lucide-re
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Pricing — BizHR | California HR Compliance for Small Businesses',
+  title: 'Pricing — CalBizHR | California HR Compliance for Small Businesses',
   description: 'Simple, transparent pricing for California HR compliance. Starter from $99/mo. No hidden fees. Cancel anytime.',
 }
 

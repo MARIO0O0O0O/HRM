@@ -12,9 +12,9 @@ describe('About Page Component', () => {
     expect(screen.getByText('My Story & Philosophy')).toBeDefined()
     
     // Check credentials cards
-    expect(screen.getByText('Master of Public Administration (MPA)')).toBeDefined()
-    expect(screen.getByText('10+ Years Workforce Depth')).toBeDefined()
-    expect(screen.getByText('AI Automation Integration')).toBeDefined()
+    expect(screen.getByText('MPA, Cal State Fullerton')).toBeDefined()
+    expect(screen.getByText('IPMA-Senior Certified Professional')).toBeDefined()
+    expect(screen.getByText('$60M HR Budget, 1,500+ Employees')).toBeDefined()
     
     cleanup()
   })

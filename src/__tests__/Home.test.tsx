@@ -7,18 +7,18 @@ describe('Homepage Component', () => {
   it('renders primary hero headline and main marketing content', () => {
     render(<Home />)
     
-    // Check main headline
-    const headline = screen.getByText('Done-for-you HR and AI services for California small businesses.')
+    // Check main title in hero
+    const headline = screen.getByText('CalBizHR')
     expect(headline).toBeDefined()
 
     // Check key CTA buttons
     const ctaButton = screen.getByText('Book a $75 Consultation')
     expect(ctaButton).toBeDefined()
 
-    // Check section heading
+    // Check section headings
     expect(screen.getByText('Done-for-you California HR Services')).toBeDefined()
-    expect(screen.getByText('Where California Small Businesses Get into Trouble')).toBeDefined()
-    expect(screen.getByText('About the Founder')).toBeDefined()
+    expect(screen.getByText('What CalBizHR Does About It')).toBeDefined()
+    expect(screen.getByText('Why Mario & CalBizHR')).toBeDefined()
     
     cleanup()
   })

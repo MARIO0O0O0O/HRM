@@ -13,13 +13,13 @@ describe('Services Page Component', () => {
     render(<ServicesPage />)
 
     // Verify page header titles
-    expect(screen.getByText('M.E. HR Solutions Catalog')).toBeDefined()
+    expect(screen.getByText('CalBizHR Solutions Catalog')).toBeDefined()
     expect(screen.getByText('Comprehensive Compliance')).toBeDefined()
 
     // Verify some catalog items are visible
     expect(screen.getByText('HR Compliance Audit')).toBeDefined()
-    expect(screen.getByText('California Labor Law Compliance')).toBeDefined()
-    expect(screen.getByText('Employee Handbook Development')).toBeDefined()
+    expect(screen.getByText('Wage-and-Hour Cleanup')).toBeDefined()
+    expect(screen.getByText('Handbooks & Policies')).toBeDefined()
     expect(screen.getByText('AI-Powered HR Consulting', { exact: false })).toBeDefined()
     
     cleanup()

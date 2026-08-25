@@ -172,7 +172,7 @@ export default function CinematicHero() {
         </div>
         
         <h1 className="font-playfair text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white leading-[1.05] tracking-tight drop-shadow-2xl mb-8 max-w-5xl">
-          BizHR
+          CalBizHR
         </h1>
 
         <p className="font-sans text-lg sm:text-xl md:text-2xl text-zinc-300 max-w-2xl mb-4 drop-shadow-md font-light leading-relaxed">

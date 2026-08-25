@@ -24,7 +24,7 @@ export default function Header() {
         {/* Logo Wordmark */}
         <Link href="/" className="flex items-center gap-2">
           <span className="text-xl font-black tracking-wider bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
-            M.E. HR
+            CalBizHR
           </span>
         </Link>
 
@@ -67,7 +67,7 @@ export default function Header() {
               <div>
                 <div className="mb-8">
                   <SheetTitle className="text-xl font-black tracking-wider bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent text-left">
-                    M.E. HR Solutions
+                    CalBizHR
                   </SheetTitle>
                   <SheetDescription className="text-xs text-zinc-500 text-left mt-1">
                     California Labor Law Compliance & HR Consulting

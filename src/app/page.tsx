@@ -18,7 +18,7 @@ import {
 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'BizHR | California HR Compliance for Small Businesses — SB 1343, SB 553, PAGA',
+  title: 'CalBizHR | California HR Compliance for Small Businesses — SB 1343, SB 553, PAGA',
   description: 'Free California HR compliance tools (PAGA calculator, compliance quiz, deadline tracker) plus DIY toolkits and live training for harassment prevention (SB 1343), workplace violence prevention (SB 553), and more. Built for LA-area small businesses.',
 }
 
@@ -165,7 +165,7 @@ export default function Home() {
             ))}
           </div>
           <p className="text-center text-xs sm:text-sm text-zinc-500 mt-10 max-w-xl mx-auto leading-relaxed">
-            If you run a California business with shift work, hourly staff, manager-made schedules, or contractor questions, BizHR is built to step in quickly and do the work with you.
+            If you run a California business with shift work, hourly staff, manager-made schedules, or contractor questions, CalBizHR is built to step in quickly and do the work with you.
           </p>
         </div>
       </section>
@@ -197,7 +197,7 @@ export default function Home() {
               <div className="absolute top-4 right-4 text-indigo-500/15">
                 <Scale className="h-24 w-24" />
               </div>
-              <h3 className="text-xl font-bold text-zinc-100 relative">What BizHR Does About It</h3>
+              <h3 className="text-xl font-bold text-zinc-100 relative">What CalBizHR Does About It</h3>
               <p className="text-sm text-zinc-400 leading-relaxed relative">
                 We identify the highest-friction HR and compliance gaps in your current workforce framework, prioritize what matters most, and help implement functional fixes without over-engineering your operations.
               </p>
@@ -229,7 +229,7 @@ export default function Home() {
                 $75 Introductory 30-Minute Consultation
               </h2>
               <p className="text-sm sm:text-base text-zinc-400 leading-relaxed">
-                Let&apos;s review your current HR issue, wage-and-hour question, or policy draft. The entire $75 fee is credited back toward any signature service or ongoing package if you choose to continue working with BizHR.
+                Let&apos;s review your current HR issue, wage-and-hour question, or policy draft. The entire $75 fee is credited back toward any signature service or ongoing package if you choose to continue working with CalBizHR.
               </p>
             </div>
             <div className="md:col-span-4 bg-[#161616] border border-white/5 rounded-xl p-6 sm:p-8 flex flex-col gap-4 items-center justify-center text-center">
@@ -301,10 +301,10 @@ export default function Home() {
                 Expert HR, AI-augmented delivery.
               </h2>
               <blockquote className="border-l-2 border-indigo-500 pl-4 py-1 italic text-zinc-300 text-sm sm:text-base leading-relaxed">
-                &ldquo;Some kids grew up watching cartoons. I grew up watching my parents build something from nothing. I built BizHR so employers like them have somewhere to turn — practical, affordable, expert HR support.&rdquo;
+                &ldquo;Some kids grew up watching cartoons. I grew up watching my parents build something from nothing. I built CalBizHR so employers like them have somewhere to turn — practical, affordable, expert HR support.&rdquo;
               </blockquote>
               <p className="text-sm text-zinc-400 leading-relaxed">
-                BizHR was founded by Mario Espindola — MPA, 10-year California public sector HR professional, and AI automation specialist. Watching his parents navigate the challenges of entrepreneurship inspired Mario to provide small businesses with the HR expertise and AI tools they deserve, at prices that actually work.
+                CalBizHR was founded by Mario Espindola — MPA, 10-year California public sector HR professional, and AI automation specialist. Watching his parents navigate the challenges of entrepreneurship inspired Mario to provide small businesses with the HR expertise and AI tools they deserve, at prices that actually work.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 mt-2">
                 <Link href="/about">
@@ -321,7 +321,7 @@ export default function Home() {
             </div>
             
             <div className="lg:col-span-5 bg-[#111111] border border-white/10 rounded-2xl p-6 sm:p-8 flex flex-col gap-6 text-left lg:order-1">
-              <h3 className="text-lg font-bold text-zinc-100">Why Mario & BizHR</h3>
+              <h3 className="text-lg font-bold text-zinc-100">Why Mario & CalBizHR</h3>
               <ul className="flex flex-col gap-3.5 text-xs sm:text-sm">
                 <li className="flex items-start gap-3 text-zinc-400">
                   <CheckCircle2 className="h-4.5 w-4.5 text-indigo-400 shrink-0 mt-0.5" />

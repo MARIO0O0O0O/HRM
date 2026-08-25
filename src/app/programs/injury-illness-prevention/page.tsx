@@ -89,7 +89,7 @@ export default async function InjuryIllnessPreventionHub() {
               icon={FileText}
               title="The 8 Required IIPP Elements"
               description="Cal/OSHA mandates 8 specific elements in every written IIPP document under Title 8 CCR § 3203(a)."
-              items={elementsList}
+              items={iippDocs.length > 0 ? iippDocs : elementsList}
             />
             <InventoryCard
               href="#hazard-log"

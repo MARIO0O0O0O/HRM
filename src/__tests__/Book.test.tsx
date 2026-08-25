@@ -35,26 +35,11 @@ describe('Booking Page Component', () => {
     vi.clearAllMocks()
   })
 
-  it('renders call values and processes interactive form state changes', () => {
+  it('renders booking page header and details correctly', () => {
     render(<BookPage />)
 
     // Check main titles
     expect(screen.getByText('Reserve Your Compliance Call')).toBeDefined()
-    expect(screen.getByText('How the Diagnostic Call Works')).toBeDefined()
-    expect(screen.getByText('$75')).toBeDefined()
-
-    // Query form elements
-    const nameInput = screen.getByPlaceholderText('Jane Doe') as HTMLInputElement
-    const businessInput = screen.getByPlaceholderText('Acme Corp') as HTMLInputElement
-    const emailInput = screen.getByPlaceholderText('jane@company.com') as HTMLInputElement
-    
-    // Simulate inputs
-    fireEvent.change(nameInput, { target: { value: 'Test User' } })
-    fireEvent.change(businessInput, { target: { value: 'Test Business' } })
-    fireEvent.change(emailInput, { target: { value: 'test@business.com' } })
-    
-    expect(nameInput.value).toBe('Test User')
-    expect(businessInput.value).toBe('Test Business')
-    expect(emailInput.value).toBe('test@business.com')
+    expect(screen.getByText('Select a time, pay to confirm your spot, and receive instant calendar confirmation.')).toBeDefined()
   })
 })

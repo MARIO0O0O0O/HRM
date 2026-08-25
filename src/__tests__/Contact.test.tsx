@@ -13,7 +13,7 @@ describe('Contact Page Component', () => {
     render(<ContactPage />)
 
     // Check headings
-    expect(screen.getByText('Get in Touch with BizHR')).toBeDefined()
+    expect(screen.getByText('Get in Touch with CalBizHR')).toBeDefined()
     expect(screen.getByText('Contact Information')).toBeDefined()
     expect(screen.getByText('Billing & Peer-to-Peer Payments')).toBeDefined()
 

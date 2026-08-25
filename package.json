@@ -2,7 +2,7 @@
   "name": "hrm",
   "version": "0.1.0",
   "private": true,
-  "description": "BizHR — California HR compliance site for small businesses. Free tools first, paid services second.",
+  "description": "CalBizHR — California HR compliance site for small businesses. Free tools first, paid services second.",
   "engines": {
     "node": ">=20.0.0"
   },

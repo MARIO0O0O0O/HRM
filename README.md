@@ -1,9 +1,9 @@
-# BizHR
+# CalBizHR
 
 California HR compliance for small businesses — free tools first, paid services second. Built and
-maintained for Mario Espindola (MPA) / M.E. Consulting.
+maintained for Mario Espindola (MPA) / CalBizHR.
 
-**Live site:** [bizhr.vercel.app](https://bizhr.vercel.app)
+**Live site:** [calbizhr.com](https://calbizhr.com)
 
 ## Philosophy
 
@@ -114,7 +114,7 @@ NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=
 STRIPE_WEBHOOK_SECRET=
 NEXT_PUBLIC_STRIPE_ENABLED=
 
-# Optional — canonical site URL for sitemap/OG tags, defaults to https://bizhr.vercel.app
+# Optional — canonical site URL for sitemap/OG tags, defaults to https://calbizhr.com
 NEXT_PUBLIC_SITE_URL=
 ```
 
@@ -132,7 +132,7 @@ if you mix them, which has caused real deploy failures before.
 ## Deployment
 
 Git-connected to Vercel — every push to `phase-1-foundation` auto-deploys to production
-(`bizhr.vercel.app`). No manual `vercel deploy` step needed or wanted; the project previously lost
+(`calbizhr.com`). No manual `vercel deploy` step needed or wanted; the project previously lost
 Vercel dashboard access when the original account's login recovery failed, and manual CLI deploys were
 part of why nobody noticed for a while. Git-based auto-deploy is the durable fix — don't reintroduce a
 manual deploy workflow.

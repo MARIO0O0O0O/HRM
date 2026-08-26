@@ -97,15 +97,19 @@ Sized for long, autonomous single-session execution — not fragmented into many
 
 ## 5. CURRENT STATUS
 
-**Phase 1: ✅ COMPLETE — merged, verified live 2026-08-26.**
-Brand system (Navy/Gold + Playfair/Source Sans/JetBrains Mono), persistent global shell, 3 real-Link
-drawer cards, 3 Level-2 placeholder routes. TASK-014.
+**Phase 1: ✅ COMPLETE — merged, verified live 2026-08-26.** TASK-014.
 
-**Phase 2: IN PROGRESS (started 2026-08-26)**
-Task committed: `project-docs/tasks/TASK-017-phase2-level2-hubs.md`. Builds out the 3 Level-2 pages
-with real category-overview content + tools links, and creates 9 Level-3 placeholder routes.
+**Phase 2: ✅ COMPLETE — merged, verified live 2026-08-26.** TASK-017.
+3 Level-2 hub pages + 9 Level-3 placeholders. **Open item:** LC §226.7 / §512 citations on the
+Wage & Hour page need Mario's MPA-level sign-off — added by the agent to fill a citation gap I left
+in the task spec; appear accurate but unverified by a domain authority.
 
-**Phases 3–5:** Not started.
+**Phase 3: IN PROGRESS (started 2026-08-26)**
+Task committed: `project-docs/tasks/TASK-018-phase3-level3-programs.md`. Migrates real content from
+`/programs/*` into the 9 Level-3 placeholder pages per the migration map (Section 3), builds fresh
+content for the 3 Lifecycle Admin programs (no existing source).
+
+**Phases 4–5:** Not started.
 
 **Housekeeping note (not blocking):** this repo has two parallel task-numbering conventions —
 `0XX_descriptive_name.md` (pre-existing, covers hub tile content / bio / contact / payment fixes,

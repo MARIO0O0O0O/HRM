@@ -189,6 +189,39 @@ export const wvppKnowledgeQuiz: MCQuestion[] = [
   },
 ]
 
+export const pagaKnowledgeQuiz: MCQuestion[] = [
+  {
+    q: 'Under the AB 2288 and SB 92 PAGA reforms, how are statutory civil penalties distributed?',
+    options: ['25% Employees / 75% LWDA', '35% Employees / 65% LWDA', '50% Employees / 50% LWDA', '100% to Aggrieved Employees'],
+    correct: 1,
+    explanation: 'AB 2288 increased the employee share of PAGA penalties from 25% to 35%, with 65% going to the state Labor and Workforce Development Agency (LWDA).',
+  },
+  {
+    q: 'What is the statutory cap on PAGA penalties for employers who take proactive reasonable compliance steps prior to receiving a notice?',
+    options: ['Reasonable-steps cap of 15%', 'Reasonable-steps cap of 30%', 'Cap of 50%', 'No cap available'],
+    correct: 0,
+    explanation: 'Under AB 2288 / SB 92, reasonable-steps caps are 15% (pre-notice reasonable steps) and 30% (post-notice cure) of maximum statutory penalties.',
+  },
+  {
+    q: 'What is the statutory cure window for employers upon receiving a PAGA notice for technical wage statement errors?',
+    options: ['14 days', '30 days', '60 days', '90 days'],
+    correct: 2,
+    explanation: 'Employers have a 60-day statutory cure window following receipt of a PAGA notice to correct qualifying wage statement itemization errors under Labor Code § 226.',
+  },
+  {
+    q: 'What standing requirement was established by the AB 2288 PAGA reform legislation?',
+    options: ['Any representative can sue', 'Plaintiff must have personally experienced the alleged violation within 1 year', 'Unions only', 'LWDA must approve every lawsuit'],
+    correct: 1,
+    explanation: 'AB 2288 restored strict standing rules: a representative plaintiff must have personally suffered the specific Labor Code violation alleged within the 1-year statute of limitations.',
+  },
+  {
+    q: 'What is the maximum per-employee statutory penalty cap for most violations under AB 2288?',
+    options: ['$1,000 per employee', '$5,000 per employee', '$9,000 per employee', '$25,000 per employee'],
+    correct: 2,
+    explanation: 'AB 2288 established a $9,000 per-employee cap for most PAGA violations, preventing runaway compounding penalties for technical errors.',
+  },
+]
+
 export type HazardCategory = {
   category: string
   icon: string

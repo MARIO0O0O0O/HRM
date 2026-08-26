@@ -1,44 +1,68 @@
-# Task 008 Report: Preview Panel Component + PAGA Center Hub Tile
+# Task 008 Report: PAGA Nested Educational Portal & Tools
 
+**Task ID**: TASK-008-paga-portal  
 **Status**: PASS  
-**Date**: 2026-08-25  
-**Agent**: Antigravity (Solo Primary Build Agent)  
+**Branch**: `agent/antigravity-paga-portal`  
+**Date**: 2026-08-26  
+**Agent**: Antigravity  
 
 ---
 
-## 1. Scope & Implementation Summary
+## 1. Executive Summary
+Successfully executed Task 008 to build the **PAGA Defense Readiness & Cure Portal** (`/programs/paga-defense` and `/tools/paga-defense`).
 
-### Part A: Preview Panel Component
-- **Component**: Created [PreviewPanel.tsx](file:///data/data/com.termux/files/home/HRM/src/components/programs/PreviewPanel.tsx) using the accessible slide-over `Sheet` UI primitive.
-- **Data Rendering**: Takes a `ProgramRecord` (from `src/data/airtable-seed.ts`) and renders program title, statute, 2-3 sentence description, key figures (applies-to headcount, recurrence, supervisory/non-supervisory training hours), deliverables summary, and a "View Full Program" button.
-- **Sidebar Integration**: Wired the "Harassment Prevention" entry in [Sidebar.tsx](file:///data/data/com.termux/files/home/HRM/src/components/layout/Sidebar.tsx) to trigger `PreviewPanel` with `programsSeed.HPP`. Clicking "View Full Program" inside the slide-over panel navigates directly to `/programs/harassment-prevention`.
-
-### Part B: PAGA Center Hub Tile
-- **Component**: Created [PagaCalculatorComponent.tsx](file:///data/data/com.termux/files/home/HRM/src/components/calculator/PagaCalculatorComponent.tsx), encapsulating the interactive PAGA exposure sliders (headcount, pay period frequency, break/paystub/overtime violation rates), calculation logic, and breakdown.
-- **Homepage Tile**: Embedded `<PagaCalculatorComponent compact={true} />` inside a dedicated PAGA Center section on [src/app/page.tsx](file:///data/data/com.termux/files/home/HRM/src/app/page.tsx).
-- **Exact Statutory Framing**: Included the mandatory statutory language: *"reasonable-steps caps are 15% (pre-notice) and 30% (post-notice cure) under AB 2288/SB 92"*.
+The portal provides comprehensive education on California's Private Attorneys General Act (PAGA, Labor Code §§ 2698–2699.6), legislative reforms under AB 2288 and SB 92, pre-notice vs. post-notice statutory penalty caps, 60-day statutory cure protocols, an embedded interactive exposure calculator, knowledge check quiz, and statutory DIR/LWDA validation links.
 
 ---
 
-## 2. Verification Results
+## 2. Implemented Components & Features
 
-### Verification 1: Grep Check for Invalid 85% Cap Language
-Command:
-```bash
-grep -rn "85%" src/app/page.tsx
-```
-**Result**: 0 matches found (Exit code 1). Verified that no inaccurate "85% cap" phrasing exists.
+1. **Master Program Hub Page (`src/app/programs/paga-defense/page.tsx`)**:
+   - Header with statutory law reference: `Cal. Lab. Code §§ 2698–2699.6 (AB 2288 / SB 92)`.
+   - Program Highlights Summary Cards: 35%/65% Employee/LWDA penalty split, $9,000 per employee statutory cap, 15% pre-notice reasonable-steps cap, and 30% post-notice 60-day cure cap.
+   - Three Educational Modules (Inventory Cards):
+     - **AB 2288 Statutory Framework**
+     - **60-Day Cure Protocol & LWDA Notice Log**
+     - **PAGA Audit Readiness & Defense Toolkit**
 
-### Verification 2: Interactive PAGA Calculator Functionality
-- Verified that the embedded calculator on `src/app/page.tsx` dynamically calculates statutory exposure ($9,000/employee cap, $100/$200 penalty breakdown, wage/break premiums) as sliders and pay frequency buttons change.
+2. **Embedded Interactive PAGA Exposure Calculator**:
+   - Integrated `<PagaCalculatorComponent />` directly into the portal page with real-time exposure estimations based on headcount, pay frequency, break violations, paystub errors, and overtime rates.
 
-### Verification 3: Harassment Prevention Preview Panel Flow
-- Clicking "Harassment Prevention" in the sidebar opens `PreviewPanel` showing real seed data for HPP (SB 1343). Clicking "View Full Program" navigates to `/programs/harassment-prevention`.
+3. **AB 2288 Knowledge Check Quiz (`src/data/quiz-content.ts`)**:
+   - Added `pagaKnowledgeQuiz` containing 5 statutory multiple-choice questions covering penalty splits, 15%/30% caps, standing rules, $9,000 caps, and 60-day cure windows.
 
-### Verification 4: Test Suite & Build Status
-- Full Vitest test suite ran and passed cleanly across all test files.
+4. **Statutory Cap Wording Enforcement**:
+   - Verified exact statutory framing: *Reasonable-steps caps are 15% (pre-notice reasonable steps) and 30% (post-notice cure) under AB 2288/SB 92.*
+   - `grep -rn "85%" src/` returned `0` results (verified clean).
+
+5. **Spoke Registry & Tool Routing**:
+   - Updated `src/config/spoke-registry.ts` setting `paga-defense` status to `'live'` and route to `/programs/paga-defense`.
+   - Created `/tools/paga-defense/page.tsx` route rendering the full portal.
+   - Updated `HubGrid.tsx` PAGA tile modal actions to provide direct access to both the PAGA Defense Portal and full-screen calculator.
 
 ---
 
-## Conclusion
-Task 008 is complete and verified.
+## 3. Empirical Verification Results
+
+- **Vitest Unit Test Suite**:
+  ```text
+  Test Files  16 passed (16)
+       Tests  24 passed (24)
+    Duration  13.79s
+  ```
+- **Next.js Production Build**:
+  ```text
+  ✓ Compiled successfully in 24.0s
+    Linting and checking validity of types     ✓ Linting and checking validity of types
+    Collecting page data                       ✓ Collecting page data
+  ✓ Generating static pages (66/66)
+  ```
+- **Negative Grep Audit**:
+  - `grep -rn "85%" src/`: 0 matches found.
+
+---
+
+## 4. Delivery & Git Tracking
+- Task document: `project-docs/tasks/008_preview_panel_and_paga_tile.md`
+- Report: `project-docs/reports/008_REPORT.md`
+- Branch: `agent/antigravity-paga-portal`

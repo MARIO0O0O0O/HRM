@@ -211,10 +211,9 @@ export const spokeRegistry: Record<string, SpokeConfig> = {
     accentColor: 'amber',
   },
 
-  // ── GATED SPOKES (SEO placeholder, not yet built) ──────────────────────────
   'paga-defense': {
     slug: 'paga-defense',
-    route: '/tools/paga-defense',
+    route: '/programs/paga-defense',
     title: 'PAGA Defense Readiness Assessment',
     shortTitle: 'PAGA Defense',
     description: 'California PAGA defense readiness assessment — evaluate your exposure under AB 2288 reformed penalty structure, cure provision eligibility, and documentation quality before a claim is filed.',
@@ -224,8 +223,7 @@ export const spokeRegistry: Record<string, SpokeConfig> = {
     suggestedPrice: 99,
     monetized: true,
     paymentProvider: 'honor',
-    status: 'gated',
-    liveDate: '2026-07-01',
+    status: 'live',
     accentColor: 'amber',
   },
   'separation-checklist': {

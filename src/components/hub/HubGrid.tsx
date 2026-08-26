@@ -130,7 +130,7 @@ export default function HubGrid() {
   // PAGA Math
   const initialPenaltyRate = 100 // $100 per initial violation
   const maxExposure = employees * payPeriods * violationsPerPeriod * initialPenaltyRate
-  const reformedExposureAB2288 = Math.round(maxExposure * 0.15) // AB 2288 85% reduction for cured/proactive compliance
+  const reformedExposureAB2288 = Math.round(maxExposure * 0.15) // AB 2288 15% statutory reasonable-steps cap
 
   return (
     <div className="h-[100dvh] max-h-[100dvh] w-full flex flex-col bg-[#0a0a0a] text-zinc-100 overflow-hidden select-none">
@@ -221,7 +221,7 @@ export default function HubGrid() {
             <div className="space-y-6">
               <div className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-4 text-xs text-amber-200 leading-relaxed">
                 <strong className="font-bold block text-amber-300 text-sm mb-1">AB 2288 PAGA Reform Active</strong>
-                Labor Code § 2698 statutory penalties cap civil exposure by up to 85% for California employers who cure technical paystub/break violations within 60 days.
+                Under AB 2288/SB 92, reasonable-steps caps are 15% (pre-notice reasonable steps) and 30% (post-notice cure) for California employers who maintain proactive compliance or cure technical paystub/break violations.
               </div>
 
               {/* Interactive Calculator */}
@@ -298,12 +298,18 @@ export default function HubGrid() {
                 </ul>
               </div>
 
-              <div className="pt-2 flex justify-end">
+              <div className="pt-2 flex flex-wrap gap-2 justify-end">
+                <Link
+                  href="/programs/paga-defense"
+                  className="inline-flex items-center gap-2 bg-zinc-800 text-zinc-200 border border-white/10 font-bold px-4 py-2 rounded-lg text-xs hover:bg-zinc-700 transition-colors"
+                >
+                  Explore PAGA Defense Portal <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
                 <Link
                   href="/paga-calculator"
                   className="inline-flex items-center gap-2 bg-amber-500 text-zinc-950 font-bold px-4 py-2 rounded-lg text-xs hover:bg-amber-400 transition-colors"
                 >
-                  Full PAGA Defense Calculator <ArrowRight className="h-3.5 w-3.5" />
+                  Full PAGA Exposure Calculator <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
               </div>
             </div>

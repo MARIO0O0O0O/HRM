@@ -118,6 +118,10 @@ fixed title tags & marquee duplication bugs, trimmed top nav to 7 items. 20/20 t
 Task committed: `project-docs/tasks/TASK-021-phase5-polish.md`. Final phase — readability fixes,
 imagery where feasible, full click-through QA across all 12 pages. No content/citation changes.
 
+**New scope (not in original 5-phase plan):** `project-docs/tasks/TASK-022-banner-carousel.md` —
+homepage banner carousel between header and hub tiles (10 placeholder ads, 5-sec auto-advance, dot
+pagination), hub tiles resized shorter to preserve zero-scroll. Can run parallel to or after Phase 5.
+
 **Housekeeping note (not blocking):** this repo has two parallel task-numbering conventions —
 `0XX_descriptive_name.md` (pre-existing, covers hub tile content / bio / contact / payment fixes,
 unrelated to this rebuild) and `TASK-0XX-descriptive-name.md` (this rebuild's convention, used since

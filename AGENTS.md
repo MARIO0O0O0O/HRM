@@ -25,6 +25,10 @@ reinterpreted during "formalization" and picked up unrelated scope from neighbor
 architecture, the phase roadmap, and current build status. If anything in a task file seems to
 conflict with it, `SOURCE_OF_TRUTH.md` wins — stop and flag the conflict rather than guessing which
 is right. This file is written to be usable by any planning agent (Claude or Gemini), not just one.
+**Status updates to this file are the planning instance's job, not yours** — you can note phase
+progress in your own completion report, but don't write "COMPLETE" or "merged" into SOURCE_OF_TRUTH.md
+yourself. Your branch isn't merged until the planning instance reviews and merges it — don't state
+that as done in a shared doc before it's actually true.
 
 ## Standing rules (every task, every time)
 

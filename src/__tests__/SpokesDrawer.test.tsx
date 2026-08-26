@@ -7,35 +7,37 @@ describe('SPOKES Drawer Global Shell Component', () => {
     cleanup()
   })
 
-  it('renders closed state slim vertical tab pinned with label SPOKES ❯', () => {
+  it('renders closed state 3 stacked titled notches pinned to screen edge', () => {
     render(<Sidebar />)
 
-    // Check closed edge tab trigger
-    expect(screen.getAllByText('SPOKES ❯')[0]).toBeDefined()
+    // Check 3 stacked trigger notches
+    expect(screen.getAllByText('Safety & Prevention')[0]).toBeDefined()
+    expect(screen.getAllByText('Wage & Hour')[0]).toBeDefined()
+    expect(screen.getAllByText('Lifecycle Admin')[0]).toBeDefined()
   })
 
-  it('opens drawer on click and renders exactly 3 category cards as real navigable Links', () => {
+  it('opens drawer on notch click and renders 3 ornate wooden category boxes as real navigable Links', () => {
     render(<Sidebar />)
 
-    // Open drawer
-    const trigger = screen.getAllByText('SPOKES ❯')[0]
+    // Open drawer via notch click
+    const trigger = screen.getAllByText('Safety & Prevention')[0]
     fireEvent.click(trigger)
 
-    // Check header
-    expect(screen.getByText('Compliance Spokes Directory')).toBeDefined()
+    // Check cabinet header
+    expect(screen.getByText('Compliance Spokes Cabinet')).toBeDefined()
 
     // Check Card 1: Safety & Prevention link
-    const card1 = screen.getByText('Safety & Prevention').closest('a')
+    const card1 = screen.getAllByText('Safety & Prevention')[1].closest('a')
     expect(card1).not.toBeNull()
     expect(card1?.getAttribute('href')).toBe('/spokes/safety-prevention')
 
     // Check Card 2: Wage & Hour link
-    const card2 = screen.getByText('Wage & Hour').closest('a')
+    const card2 = screen.getAllByText('Wage & Hour')[1].closest('a')
     expect(card2).not.toBeNull()
     expect(card2?.getAttribute('href')).toBe('/spokes/wage-hour')
 
     // Check Card 3: Lifecycle Admin link
-    const card3 = screen.getByText('Lifecycle Admin').closest('a')
+    const card3 = screen.getAllByText('Lifecycle Admin')[1].closest('a')
     expect(card3).not.toBeNull()
     expect(card3?.getAttribute('href')).toBe('/spokes/lifecycle-admin')
   })

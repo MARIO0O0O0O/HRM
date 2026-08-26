@@ -52,4 +52,5 @@ Format per entry: `[date] Task [number] — [PASS/FAIL] — [one-sentence summar
   Antigravity to execute directly from the repo — no chat-paste step this time.
 
 2026-08-26 — TASK-014-phase1-foundation — PASS — Rebuilt global shell and brand system (Navy #1A2D4D + Gold #B5933C, Playfair Display/Source Sans 3/JetBrains Mono typography); implemented persistent SPOKES drawer pinned edge tab with 3 category cards as real navigable Links; created 3 placeholder hub routes (/spokes/safety-prevention, /spokes/wage-hour, /spokes/lifecycle-admin); 19/19 test files passed (34/34 tests) and 69/69 static pages compiled clean.
+2026-08-26 — TASK-017-phase2-level2-hubs — PASS — Built Level-2 Category Hub pages (/spokes/safety-prevention, /spokes/wage-hour, /spokes/lifecycle-admin) with statutory legal overviews, tools sections, 3 nested program cards (real Links), and Back/Home navigation; created 9 Level-3 placeholder routes; 20/20 test files passed (38/38 tests) and 78/78 static pages compiled clean.
 

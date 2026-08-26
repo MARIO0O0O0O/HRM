@@ -50,8 +50,7 @@ export default function ToolMarquee() {
       {columns.map((col, colIdx) => (
         <div key={colIdx} className="overflow-hidden">
           <div className={colIdx === 1 ? 'marquee-col-reverse' : 'marquee-col'}>
-            {/* Render the column twice back-to-back for a seamless loop */}
-            {[...col, ...col].map((card, i) => (
+            {col.map((card, i) => (
               <Card key={`${card.href}-${i}`} card={card} />
             ))}
           </div>

@@ -52,13 +52,13 @@ export const spokes3TierData: SpokeCategory[] = [
     areas: [
       {
         id: 'sb553-wvpp',
-        title: 'SB 553 Workplace Violence',
+        title: 'Workplace Violence (SB 553 / LC §6401.9)',
         lawRef: 'Labor Code § 6401.9',
         badge: 'Cal/OSHA Mandatory',
         subjects: [
           {
             id: 'wvpp-written-plan',
-            title: 'Written WVPP',
+            title: 'Written WVPP Plan',
             type: 'subject',
             lawRef: 'Labor Code § 6401.9(c)',
             description: 'Custom site-specific written plan covering hazard assessments, emergency protocols, and anti-retaliation rules.',
@@ -75,24 +75,24 @@ export const spokes3TierData: SpokeCategory[] = [
         ],
         service: {
           id: 'wvpp-training-service',
-          title: 'Training Implementation',
+          title: 'Training Implementation & WVPP Toolkit ($199)',
           type: 'service',
           lawRef: 'Labor Code § 6401.9(e)',
-          description: 'Interactive employee and manager annual training implementation with completion tracking logs.',
+          description: 'Interactive employee and manager annual training implementation with completion tracking logs and turnkey $199 toolkit.',
           content: 'Annual interactive training tailored to workplace hazards. Covers plan access, threat identification, emergency responses, incident reporting, and non-retaliation rules.',
-          actionLabel: 'Explore WVPP Toolkit',
+          actionLabel: 'Get WVPP Toolkit ($199)',
           actionHref: '/tools/wvpp'
         }
       },
       {
         id: 'sb1343-hpp',
-        title: 'SB 1343 Harassment Prevention',
+        title: 'Harassment Prevention (SB 1343)',
         lawRef: 'Gov. Code § 12950.1',
         badge: 'FEHA Mandatory',
         subjects: [
           {
             id: 'hpp-timelines',
-            title: 'Timelines',
+            title: 'Mandatory Training Timelines',
             type: 'subject',
             lawRef: 'Gov. Code § 12950.1(a)',
             description: 'Statutory 6-month new hire training windows and 2-year mandatory retraining cycles.',
@@ -109,24 +109,24 @@ export const spokes3TierData: SpokeCategory[] = [
         ],
         service: {
           id: 'hpp-diy-toolkit',
-          title: 'HPP DIY Toolkit',
+          title: 'HPP DIY Toolkit ($149) & Policy Overhaul',
           type: 'service',
           lawRef: 'Gov. Code § 12950.1',
           description: 'Turnkey HPP policy template, DFEH-compliant forms, and training facilitator guides.',
           content: 'Complete SB 1343 compliance package including written policy, complaint forms, investigation logs, and training completion rosters.',
-          actionLabel: 'Get HPP Toolkit',
+          actionLabel: 'Get HPP Toolkit ($149)',
           actionHref: '/tools/hpp'
         }
       },
       {
         id: 'iipp-sec3203',
-        title: 'Cal/OSHA IIPP Title 8 §3203',
+        title: 'Cal/OSHA IIPP (8 CCR §3203)',
         lawRef: '8 CCR § 3203',
         badge: 'Core Safety',
         subjects: [
           {
             id: 'iipp-core-mandates',
-            title: 'Core Mandates',
+            title: 'Core Safety Mandates',
             type: 'subject',
             lawRef: '8 CCR § 3203(a)',
             description: 'The 8 mandatory elements required in every California employer safety plan.',
@@ -134,7 +134,7 @@ export const spokes3TierData: SpokeCategory[] = [
           },
           {
             id: 'iipp-heat-illness',
-            title: 'Heat Illness',
+            title: 'Heat Illness Rules',
             type: 'subject',
             lawRef: '8 CCR § 3395',
             description: 'Outdoor and indoor heat illness prevention plan requirements, shade, water, and rest breaks.',
@@ -143,12 +143,12 @@ export const spokes3TierData: SpokeCategory[] = [
         ],
         service: {
           id: 'iipp-9section-toolkit',
-          title: '9-Section Toolkit',
+          title: '9-Section IIPP Toolkit ($199)',
           type: 'service',
           lawRef: '8 CCR § 3203',
           description: 'Comprehensive written IIPP, safety inspection checklists, and Cal/OSHA log templates.',
           content: 'Turnkey IIPP binder with 9 core sections, safety committee templates, hazard audit forms, and Cal/OSHA 300 log instructions.',
-          actionLabel: 'Get IIPP Toolkit',
+          actionLabel: 'Get IIPP Toolkit ($199)',
           actionHref: '/tools/iipp'
         }
       }
@@ -161,13 +161,13 @@ export const spokes3TierData: SpokeCategory[] = [
     areas: [
       {
         id: 'paystubs-lc226',
-        title: 'Paystubs & Wage Statements LC §226',
+        title: 'Paystubs & Wage Statements (LC §226)',
         lawRef: 'Labor Code § 226',
         badge: 'High Exposure',
         subjects: [
           {
             id: 'paystubs-9-itemizations',
-            title: '9 Itemizations',
+            title: '9 Mandatory Itemizations',
             type: 'subject',
             lawRef: 'Labor Code § 226(a)',
             description: 'The 9 statutory requirements on every California wage statement to avoid $100/pay period penalties.',
@@ -175,7 +175,7 @@ export const spokes3TierData: SpokeCategory[] = [
           },
           {
             id: 'paystubs-60day-cure',
-            title: '60-Day Cure',
+            title: '60-Day PAGA Cure',
             type: 'subject',
             lawRef: 'Labor Code § 2699(d) (AB 2288)',
             description: 'Reformed AB 2288 PAGA cure provisions allowing employers 60 days to fix paystub errors.',
@@ -184,7 +184,7 @@ export const spokes3TierData: SpokeCategory[] = [
         ],
         service: {
           id: 'payroll-exposure-audit',
-          title: 'Payroll Exposure Audit',
+          title: 'Payroll Exposure Audit & Correction',
           type: 'service',
           lawRef: 'Labor Code § 226 / PAGA',
           description: 'Deep-dive audit of payroll software outputs, paystub formatting, and rate calculations.',
@@ -201,7 +201,7 @@ export const spokes3TierData: SpokeCategory[] = [
         subjects: [
           {
             id: 'meal-rest-scheduling',
-            title: 'Scheduling Rules',
+            title: 'Break Scheduling Rules',
             type: 'subject',
             lawRef: 'Labor Code § 512(a)',
             description: '30-minute uninterrupted meal break before 5th hour and 10-minute rest breaks per 4 hours.',
@@ -209,7 +209,7 @@ export const spokes3TierData: SpokeCategory[] = [
           },
           {
             id: 'meal-rest-premium-pay',
-            title: 'Premium Pay',
+            title: 'Premium Pay Exposure',
             type: 'subject',
             lawRef: 'Labor Code § 226.7',
             description: '1 additional hour of pay at regular rate for each missed or non-compliant break.',
@@ -218,7 +218,7 @@ export const spokes3TierData: SpokeCategory[] = [
         ],
         service: {
           id: 'workflow-system-design',
-          title: 'Workflow System Design',
+          title: 'Break Workflow System Design',
           type: 'service',
           lawRef: 'Labor Code § 226.7 / § 512',
           description: 'Break attestation logging, automated timecard alerts, and scheduling workflows.',
@@ -236,13 +236,13 @@ export const spokes3TierData: SpokeCategory[] = [
     areas: [
       {
         id: 'onboarding-lc28105',
-        title: 'Onboarding & Wage Notices LC §2810.5',
+        title: 'Onboarding & Wage Notices (LC §2810.5)',
         lawRef: 'Labor Code § 2810.5 / SB 294',
         badge: 'New Hire Required',
         subjects: [
           {
             id: 'onboarding-wage-theft-notice',
-            title: 'Wage Theft Notice',
+            title: 'Wage Theft Prevention Notice',
             type: 'subject',
             lawRef: 'Labor Code § 2810.5(a)',
             description: 'Mandatory written notice of pay rates, allowances, payday schedule, and workers comp carrier.',
@@ -250,7 +250,7 @@ export const spokes3TierData: SpokeCategory[] = [
           },
           {
             id: 'onboarding-i9-compliance',
-            title: 'I-9 Verification',
+            title: 'Form I-9',
             type: 'subject',
             lawRef: '8 U.S.C. § 1324a / USCIS',
             description: 'Section 1 within Day 1, Section 2 within 3 business days of hire, and reverification SOPs.',
@@ -259,24 +259,24 @@ export const spokes3TierData: SpokeCategory[] = [
         ],
         service: {
           id: 'onboarding-flow-design',
-          title: 'Onboarding Flow Design',
+          title: 'Onboarding Flow Design & KYR Toolkit ($49)',
           type: 'service',
           lawRef: 'Labor Code § 2810.5 / SB 294',
-          description: 'Digital offer letter packets, wage theft notice automation, and statutory checklists.',
+          description: 'Digital offer letter packets, wage theft notice automation, and statutory KYR checklists ($49).',
           content: 'Complete onboarding package setup including automated Form 2810.5 generation, emergency disclosures, policy acknowledgments, and I-9 audit readiness.',
-          actionLabel: 'Get KYR Package',
+          actionLabel: 'Get KYR Toolkit ($49)',
           actionHref: '/tools/kyr'
         }
       },
       {
         id: 'terminations-lc201-203',
-        title: 'Terminations & Final Pay LC §201-203',
+        title: 'Terminations & Final Pay (LC 201-203)',
         lawRef: 'Labor Code §§ 201–203',
         badge: 'Immediate Penalty',
         subjects: [
           {
             id: 'terminations-immediate-pay',
-            title: 'Immediate Pay',
+            title: 'Immediate Final Pay',
             type: 'subject',
             lawRef: 'Labor Code § 201 / § 202',
             description: 'Final paycheck due immediately upon involuntary discharge, or within 72 hours for voluntary quit.',
@@ -293,7 +293,7 @@ export const spokes3TierData: SpokeCategory[] = [
         ],
         service: {
           id: 'manager-support-service',
-          title: 'Manager Support',
+          title: 'Manager Support & Separation Advisory',
           type: 'service',
           lawRef: 'Labor Code §§ 201-203',
           description: 'Direct HR guidance on high-risk terminations, severance agreements, and final pay checks.',

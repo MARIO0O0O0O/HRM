@@ -12,7 +12,7 @@ describe('3-Card Spokes Drawer Multi-Level Accordion Architecture', () => {
     // Check all 3 Card Headers
     expect(screen.getAllByText('Workplace Safety & Prevention')[0]).toBeDefined()
     expect(screen.getAllByText('Wage & Hour Defense')[0]).toBeDefined()
-    expect(screen.getAllByText('Employee Lifecycle & Relations')[0]).toBeDefined()
+    expect(screen.getAllByText('Lifecycle Admin')[0]).toBeDefined()
   })
 
   it('renders Level-2 Compliance Areas under Card 1 (Workplace Safety)', () => {

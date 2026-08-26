@@ -1,99 +1,64 @@
 'use client'
 
 import Link from 'next/link'
-import { Menu } from 'lucide-react'
-import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from '@/components/ui/sheet'
-import { Button } from '@/components/ui/button'
-
-const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/tools', label: 'Free Tools' },
-  { href: '/programs', label: 'Programs' },
-  { href: '/services', label: 'Services' },
-  { href: '/paga-calculator', label: 'PAGA Risk Check' },
-  { href: '/about', label: 'About' },
-  { href: '/blog', label: 'Blog' },
-  { href: '/contact', label: 'Contact' },
-  { href: '/portal', label: 'Client Portal' },
-]
+import { Phone, Sparkles } from 'lucide-react'
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-[#0a0a0a]/80 backdrop-blur-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+    <header className="sticky top-0 z-40 w-full border-b border-white/10 bg-[#0a0a0a]/90 backdrop-blur-md">
+      {/* Top Release Banner */}
+      <div className="w-full bg-gradient-to-r from-indigo-950 via-zinc-900 to-indigo-950 border-b border-indigo-500/20 px-3 py-1 text-center">
+        <p className="text-[11px] sm:text-xs font-semibold tracking-wide text-indigo-300 flex items-center justify-center gap-1.5 truncate">
+          <span>⚡ CalBizHR (Beta): Full Launch Jan 1, 2027</span>
+          <span className="hidden sm:inline text-zinc-500">•</span>
+          <span className="hidden sm:inline text-emerald-400">2026 California Labor Code Active</span>
+        </p>
+      </div>
+
+      {/* Main Header Bar */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between gap-4">
         {/* Logo Wordmark */}
-        <Link href="/" className="flex items-center gap-2">
-          <span className="text-xl font-black tracking-wider bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
+        <Link href="/" className="flex items-center gap-2 shrink-0">
+          <span className="text-lg sm:text-xl font-black tracking-wider bg-gradient-to-r from-indigo-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent">
             CalBizHR
           </span>
         </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-6">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-sm font-medium text-zinc-400 hover:text-zinc-100 transition-colors"
-            >
-              {link.label}
-            </Link>
-          ))}
+        {/* Center Header Tabs: [Bio] | [Blog] | [Book ($75)] */}
+        <nav className="flex items-center gap-1 sm:gap-2 bg-white/5 border border-white/10 p-1 rounded-xl">
+          <Link
+            href="/about"
+            className="px-2.5 py-1 text-xs font-bold text-zinc-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
+          >
+            Bio
+          </Link>
+          <Link
+            href="/blog"
+            className="px-2.5 py-1 text-xs font-bold text-zinc-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
+          >
+            Blog
+          </Link>
+          <Link
+            href="/book"
+            className="px-2.5 py-1 text-xs font-bold text-indigo-300 bg-indigo-500/20 border border-indigo-500/30 hover:bg-indigo-500/30 rounded-lg transition-colors flex items-center gap-1"
+          >
+            <Sparkles className="h-3 w-3 text-indigo-400" />
+            <span>Book ($75)</span>
+          </Link>
         </nav>
 
-        {/* Desktop CTA */}
-        <div className="hidden md:flex items-center gap-4">
-          <Link href="/book">
-            <Button className="bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 text-zinc-50 font-semibold tracking-wide cursor-pointer transition-all shadow-md shadow-indigo-600/10">
-              Book a Call
-            </Button>
-          </Link>
-        </div>
-
-        {/* Mobile Navigation (Sheet-based) */}
-        <div className="flex md:hidden items-center">
-          <Sheet>
-            <SheetTrigger
-              render={
-                <button
-                  className="p-2 -mr-2 text-zinc-400 hover:text-zinc-100 transition-colors focus:outline-none min-h-[44px] min-w-[44px] flex items-center justify-center cursor-pointer"
-                  aria-label="Toggle Menu"
-                >
-                  <Menu className="h-6 w-6" />
-                </button>
-              }
-            />
-            <SheetContent side="right" className="bg-[#0a0a0a] border-l border-white/10 text-zinc-100 p-6 flex flex-col justify-between">
-              <div>
-                <div className="mb-8">
-                  <SheetTitle className="text-xl font-black tracking-wider bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent text-left">
-                    CalBizHR
-                  </SheetTitle>
-                  <SheetDescription className="text-xs text-zinc-500 text-left mt-1">
-                    California Labor Law Compliance & HR Consulting
-                  </SheetDescription>
-                </div>
-                <nav className="flex flex-col gap-4">
-                  {navLinks.map((link) => (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      className="text-lg font-semibold text-zinc-300 hover:text-zinc-100 transition-colors py-2 text-left"
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
-                </nav>
-              </div>
-              <div className="flex flex-col gap-4 mt-8">
-                <Link href="/book" className="w-full">
-                  <Button className="w-full bg-indigo-600 hover:bg-indigo-500 text-zinc-50 font-semibold tracking-wide py-3">
-                    Book a Call
-                  </Button>
-                </Link>
-              </div>
-            </SheetContent>
-          </Sheet>
+        {/* Header Right: Phone & BETA Status */}
+        <div className="flex items-center gap-2 shrink-0">
+          <a
+            href="tel:6267082220"
+            className="text-xs font-bold text-zinc-300 hover:text-indigo-400 flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 transition-colors"
+          >
+            <Phone className="h-3 w-3 text-indigo-400 shrink-0" />
+            <span className="hidden sm:inline">626-708-2220</span>
+          </a>
+          <span className="text-[10px] font-bold uppercase tracking-wider text-amber-400 bg-amber-500/10 border border-amber-500/20 px-2.5 py-1 rounded-full whitespace-nowrap">
+            BETA • Launch Jan 1, 2027
+          </span>
         </div>
       </div>
     </header>

@@ -4,19 +4,14 @@ import { useState } from 'react'
 import {
   Scale,
   Sparkles,
-  BookOpen,
-  UserCheck,
-  Calendar,
+  ClipboardCheck,
   CreditCard,
-  ArrowRight,
-  Phone
+  ArrowRight
 } from 'lucide-react'
 import HubModal from '@/components/hub/HubModal'
 import PagaNestedPortalModal from '@/components/hub/PagaNestedPortalModal'
 import AiGovernanceNestedModal from '@/components/hub/AiGovernanceNestedModal'
 import LegalInsightsNestedModal from '@/components/hub/LegalInsightsNestedModal'
-import FounderBioNestedModal from '@/components/hub/FounderBioNestedModal'
-import AdvisoryBookingNestedModal from '@/components/hub/AdvisoryBookingNestedModal'
 import PaymentsFundNestedModal from '@/components/hub/PaymentsFundNestedModal'
 
 export interface HubTile {
@@ -24,9 +19,9 @@ export interface HubTile {
   title: string
   subtitle: string
   badge: string
+  imageSrc: string
   icon: typeof Scale
   accentColor: string
-  bgHover: string
   borderAccent: string
 }
 
@@ -34,62 +29,42 @@ const hubTiles: HubTile[] = [
   {
     id: 'paga-risk',
     title: 'PAGA Risk',
-    subtitle: 'AB 2288 Penalty Calculator & Cure Rules',
+    subtitle: 'Exposure Calculator',
     badge: 'LAW & RISK',
+    imageSrc: '/images/paga_banner.jpg',
     icon: Scale,
     accentColor: 'text-amber-400',
-    bgHover: 'hover:border-amber-500/30 hover:bg-amber-500/5',
-    borderAccent: 'border-amber-500/20'
+    borderAccent: 'border-amber-500/30'
   },
   {
-    id: 'ai-automation',
-    title: 'AI Lab',
-    subtitle: 'CRD Decision Rules & Policy Architect',
+    id: 'ai-governance',
+    title: 'AI Governance',
+    subtitle: 'CRD Rules',
     badge: 'CRD RULES',
+    imageSrc: '/images/ai_banner.jpg',
     icon: Sparkles,
     accentColor: 'text-cyan-400',
-    bgHover: 'hover:border-cyan-500/30 hover:bg-cyan-500/5',
-    borderAccent: 'border-cyan-500/20'
+    borderAccent: 'border-cyan-500/30'
   },
   {
-    id: 'legal-insights',
-    title: 'Briefings',
-    subtitle: 'California Labor Code Briefings',
-    badge: 'BRIEFINGS',
-    icon: BookOpen,
-    accentColor: 'text-indigo-400',
-    bgHover: 'hover:border-indigo-500/30 hover:bg-indigo-500/5',
-    borderAccent: 'border-indigo-500/20'
-  },
-  {
-    id: 'founder-bio',
-    title: 'Founder Bio',
-    subtitle: 'Mario Espindola, MPA Profile & Mission',
-    badge: 'LEADERSHIP',
-    icon: UserCheck,
-    accentColor: 'text-purple-400',
-    bgHover: 'hover:border-purple-500/30 hover:bg-purple-500/5',
-    borderAccent: 'border-purple-500/20'
-  },
-  {
-    id: 'advisory-intake',
-    title: 'Intake',
-    subtitle: 'Direct Consultation & Diagnostic Intake',
-    badge: 'CONSULTATION',
-    icon: Calendar,
+    id: 'audit-checklists',
+    title: 'Audit Checklists',
+    subtitle: 'Self Review',
+    badge: 'SELF REVIEW',
+    imageSrc: '/images/audit_banner.jpg',
+    icon: ClipboardCheck,
     accentColor: 'text-emerald-400',
-    bgHover: 'hover:border-emerald-500/30 hover:bg-emerald-500/5',
-    borderAccent: 'border-emerald-500/20'
+    borderAccent: 'border-emerald-500/30'
   },
   {
-    id: 'payments-fund',
-    title: 'Retainers',
-    subtitle: 'Client Retainers & Defense Campaign',
-    badge: 'PAY & SUPPORT',
+    id: 'fund-invest',
+    title: 'Fund & Invest',
+    subtitle: 'Defense Campaign',
+    badge: 'DEFENSE FUND',
+    imageSrc: '/images/invest_banner.jpg',
     icon: CreditCard,
-    accentColor: 'text-indigo-400',
-    bgHover: 'hover:border-indigo-500/30 hover:bg-indigo-500/5',
-    borderAccent: 'border-indigo-500/20'
+    accentColor: 'text-purple-400',
+    borderAccent: 'border-purple-500/30'
   }
 ]
 
@@ -99,37 +74,9 @@ export default function HubGrid() {
   const activeTile = hubTiles.find((t) => t.id === activeTileId)
 
   return (
-    <div className="h-[100dvh] max-h-[100dvh] w-full flex flex-col bg-[#0a0a0a] text-zinc-100 overflow-hidden select-none">
-      {/* Top Hub Bar */}
-      <header className="px-4 py-3 bg-[#111111] border-b border-white/10 flex items-center justify-between shrink-0 h-[56px]">
-        <div className="flex items-center gap-2.5">
-          <div className="h-7 w-7 rounded-lg bg-indigo-600/20 border border-indigo-500/30 flex items-center justify-center text-indigo-400 font-black text-xs">
-            HR
-          </div>
-          <div>
-            <h1 className="text-sm font-black tracking-tight text-zinc-100 leading-none">
-              CalBizHR <span className="text-xs font-normal text-zinc-400">| Compliance Hub</span>
-            </h1>
-          </div>
-        </div>
-
-        <div className="flex items-center gap-2">
-          <span className="hidden sm:inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 rounded-full">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            Live System
-          </span>
-          <a
-            href="tel:6267082220"
-            className="text-xs font-bold text-zinc-300 hover:text-indigo-400 flex items-center gap-1 px-2.5 py-1 rounded-md bg-white/5 border border-white/10 transition-colors"
-          >
-            <Phone className="h-3 w-3 text-indigo-400" />
-            <span className="hidden sm:inline">626-708-2220</span>
-          </a>
-        </div>
-      </header>
-
-      {/* Main 6-Tile Hub Grid (2x3 on Mobile, 3x2 on Desktop) */}
-      <main className="flex-1 p-3 sm:p-5 grid grid-cols-2 md:grid-cols-3 grid-rows-3 md:grid-rows-2 gap-3 sm:gap-4 overflow-hidden h-[calc(100dvh-56px)]">
+    <div className="h-[calc(100dvh-64px)] max-h-[calc(100dvh-64px)] w-full flex flex-col bg-[#0a0a0a] text-zinc-100 overflow-hidden select-none">
+      {/* 4-Tile Visual Hub Grid (2x2 Grid, Zero-Scroll 100dvh) */}
+      <main className="flex-1 p-3 sm:p-5 grid grid-cols-2 grid-rows-2 gap-3 sm:gap-4 overflow-hidden h-full">
         {hubTiles.map((tile) => {
           const TileIcon = tile.icon
 
@@ -138,32 +85,40 @@ export default function HubGrid() {
               key={tile.id}
               type="button"
               onClick={() => setActiveTileId(tile.id)}
-              className={`group relative flex flex-col justify-between p-4 sm:p-5 bg-[#111111] border border-white/10 rounded-2xl text-left transition-all duration-200 cursor-pointer overflow-hidden ${tile.bgHover} hover:scale-[1.01] hover:shadow-xl active:scale-[0.99]`}
+              className={`group relative flex flex-col justify-between p-4 sm:p-6 bg-[#111111] border border-white/10 rounded-2xl text-left transition-all duration-300 cursor-pointer overflow-hidden hover:border-white/20 hover:scale-[1.01] hover:shadow-2xl active:scale-[0.99]`}
             >
-              {/* Top Accent Pill */}
-              <div className="flex items-start justify-between gap-2 w-full">
-                <div className={`p-2.5 rounded-xl bg-white/5 border ${tile.borderAccent} ${tile.accentColor} group-hover:scale-110 transition-transform`}>
+              {/* Visual Image Banner Background with Dark Gradient Overlay */}
+              <div className="absolute inset-0 z-0 overflow-hidden">
+                <img
+                  src={tile.imageSrc}
+                  alt={tile.title}
+                  className="w-full h-full object-cover object-center opacity-30 group-hover:opacity-45 group-hover:scale-105 transition-all duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-[#0d0d0d]/80 to-transparent" />
+              </div>
+
+              {/* Top Row: Icon Pill & Badge */}
+              <div className="relative z-10 flex items-start justify-between gap-2 w-full">
+                <div className={`p-2.5 rounded-xl bg-black/60 backdrop-blur-md border ${tile.borderAccent} ${tile.accentColor} group-hover:scale-110 transition-transform`}>
                   <TileIcon className="h-5 w-5 sm:h-6 sm:w-6" />
                 </div>
-                <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-zinc-400 bg-zinc-800/80 border border-white/5 px-2 py-0.5 rounded-full truncate">
+                <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-wider text-zinc-300 bg-black/60 backdrop-blur-md border border-white/10 px-2.5 py-1 rounded-full truncate">
                   {tile.badge}
                 </span>
               </div>
 
-              {/* Center Content */}
-              <div className="mt-2 space-y-1">
-                <h3 className="text-sm sm:text-base font-bold text-zinc-100 tracking-tight group-hover:text-white transition-colors">
+              {/* Bottom Content */}
+              <div className="relative z-10 mt-auto space-y-1 pt-4">
+                <h3 className="text-base sm:text-xl font-black text-zinc-100 tracking-tight group-hover:text-white transition-colors">
                   {tile.title}
                 </h3>
-                <p className="text-xs text-zinc-400 line-clamp-2 leading-snug">
+                <p className="text-xs sm:text-sm font-semibold text-indigo-300 tracking-wide">
                   {tile.subtitle}
                 </p>
-              </div>
-
-              {/* Bottom Action Hint */}
-              <div className="mt-2 flex items-center justify-between text-[11px] font-semibold text-zinc-500 group-hover:text-indigo-400 transition-colors pt-2 border-t border-white/5 w-full">
-                <span>Launch Module</span>
-                <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
+                <div className="pt-2 flex items-center justify-between text-[11px] font-bold text-zinc-400 group-hover:text-indigo-300 transition-colors">
+                  <span>Launch Portal</span>
+                  <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
+                </div>
               </div>
             </button>
           )
@@ -179,35 +134,25 @@ export default function HubGrid() {
           isOpen={!!activeTileId}
           onClose={() => setActiveTileId(null)}
         >
-          {/* Tile 1: PAGA Risk Center Modal */}
+          {/* Tile 1: PAGA Risk Modal */}
           {activeTile.id === 'paga-risk' && (
             <PagaNestedPortalModal
-              onOpenBooking={() => setActiveTileId('advisory-intake')}
+              onOpenBooking={() => setActiveTileId('fund-invest')}
             />
           )}
 
-          {/* Tile 2: AI & Automation Governance Modal */}
-          {activeTile.id === 'ai-automation' && (
+          {/* Tile 2: AI Governance Modal */}
+          {activeTile.id === 'ai-governance' && (
             <AiGovernanceNestedModal />
           )}
 
-          {/* Tile 3: Legal Insights & Blog Modal */}
-          {activeTile.id === 'legal-insights' && (
+          {/* Tile 3: Audit Checklists Modal */}
+          {activeTile.id === 'audit-checklists' && (
             <LegalInsightsNestedModal />
           )}
 
-          {/* Tile 4: Founder Bio Modal */}
-          {activeTile.id === 'founder-bio' && (
-            <FounderBioNestedModal />
-          )}
-
-          {/* Tile 5: Advisory Intake & Booking Modal */}
-          {activeTile.id === 'advisory-intake' && (
-            <AdvisoryBookingNestedModal />
-          )}
-
-          {/* Tile 6: Payments & Defense Fund Modal */}
-          {activeTile.id === 'payments-fund' && (
+          {/* Tile 4: Fund & Invest Modal */}
+          {activeTile.id === 'fund-invest' && (
             <PaymentsFundNestedModal />
           )}
         </HubModal>

@@ -11,7 +11,6 @@ import {
   ChevronLeft,
   FileText,
   Layers,
-  PanelLeft,
   ExternalLink,
   Info
 } from 'lucide-react'
@@ -273,7 +272,7 @@ export const spokesCardsData: SpokeCard[] = [
   },
   {
     id: 'employee-lifecycle-relations',
-    title: 'Employee Lifecycle & Relations',
+    title: 'Lifecycle Admin',
     accentColor: 'purple',
     badge: '3 Compliance Areas',
     description: 'Onboarding LC §2810.5 notices, SB 616 Paid Sick Leave, CFRA/ADA, and LC §§201-203 terminations.',
@@ -421,20 +420,50 @@ export default function Sidebar() {
 
   return (
     <>
-      {/* Mobile Drawer Bar (Visible <1024px / <lg) */}
-      <div className="lg:hidden flex items-center justify-between px-4 py-3 bg-[#111111] border-b border-white/10 shrink-0">
+      {/* Always-Visible Screen Edge Pull Tab (Pinned to left border) */}
+      <Sheet>
+        <SheetTrigger className="fixed left-0 top-1/2 -translate-y-1/2 z-50 flex items-center gap-1.5 px-3 py-2 bg-indigo-600 hover:bg-indigo-500 text-white border border-indigo-400/40 rounded-r-xl shadow-2xl shadow-indigo-600/40 transition-all cursor-pointer hover:pl-4 group">
+          <Layers className="h-4 w-4 text-indigo-200 group-hover:scale-110 transition-transform" />
+          <span className="text-xs font-black uppercase tracking-wider">SPOKES ❯</span>
+        </SheetTrigger>
+        <SheetContent side="left" className="w-[90vw] sm:w-[420px] p-0 bg-[#0c0c0c] border-r border-white/10 flex flex-col text-zinc-100">
+          <div className="p-4 border-b border-white/10 bg-[#111111] flex items-center justify-between">
+            <div>
+              <SheetTitle className="text-sm font-bold text-zinc-100 flex items-center gap-2">
+                <Layers className="h-4 w-4 text-indigo-400" />
+                3 Spokes Compliance Directory
+              </SheetTitle>
+              <SheetDescription className="text-xs text-zinc-400 mt-1">
+                Safety & Prevention • Wage & Hour • Lifecycle Admin
+              </SheetDescription>
+            </div>
+          </div>
+          <div className="flex-1 overflow-y-auto p-3 space-y-3">
+            <SidebarContent
+              openCards={openCards}
+              openAreas={openAreas}
+              toggleCard={toggleCard}
+              toggleArea={toggleArea}
+              onSelectMandate={handleOpenMandate}
+            />
+          </div>
+        </SheetContent>
+      </Sheet>
+
+      {/* Mobile Bar View */}
+      <div className="lg:hidden flex items-center justify-between px-4 py-2.5 bg-[#111111] border-b border-white/10 shrink-0">
         <div className="flex items-center gap-2">
           <Layers className="h-4 w-4 text-indigo-400" />
           <span className="text-xs font-bold uppercase tracking-wider text-zinc-300">
-            Compliance Spokes Directory
+            Compliance Directory
           </span>
         </div>
         <Sheet>
-          <SheetTrigger className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold bg-indigo-600/20 text-indigo-300 border border-indigo-500/30 hover:bg-indigo-600/30 transition-colors cursor-pointer">
-            <PanelLeft className="h-4 w-4" />
-            <span>Spokes Drawer</span>
+          <SheetTrigger className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-black bg-indigo-600/30 text-indigo-200 border border-indigo-500/40 hover:bg-indigo-600/40 transition-colors cursor-pointer">
+            <Layers className="h-3.5 w-3.5" />
+            <span>SPOKES ❯</span>
           </SheetTrigger>
-          <SheetContent side="left" className="w-[88vw] sm:w-[400px] p-0 bg-[#0c0c0c] border-r border-white/10 flex flex-col text-zinc-100">
+          <SheetContent side="left" className="w-[90vw] sm:w-[420px] p-0 bg-[#0c0c0c] border-r border-white/10 flex flex-col text-zinc-100">
             <div className="p-4 border-b border-white/10 bg-[#111111]">
               <SheetTitle className="text-sm font-bold text-zinc-100 flex items-center gap-2">
                 <Layers className="h-4 w-4 text-indigo-400" />

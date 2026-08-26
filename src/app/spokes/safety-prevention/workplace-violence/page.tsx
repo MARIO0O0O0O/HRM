@@ -1,16 +1,47 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowLeft, Home, ShieldCheck } from 'lucide-react'
+import { ArrowLeft, Home, ShieldAlert, FileText, ClipboardList, GraduationCap, ArrowRight } from 'lucide-react'
+import ProgramSummaryCard from '@/components/programs/ProgramSummaryCard'
+import InventoryCard from '@/components/programs/InventoryCard'
+import ValidationLinks from '@/components/programs/ValidationLinks'
+import LegalDisclaimer from '@/components/layout/LegalDisclaimer'
+import KnowledgeQuiz from '@/components/tools/KnowledgeQuiz'
+import TrainingCycleCalculator from '@/components/tools/TrainingCycleCalculator'
+import { getProgram, getDocumentsByCategory } from '@/lib/airtable/server'
+import { programsSeed } from '@/data/airtable-seed'
+import { wvppKnowledgeQuiz } from '@/data/quiz-content'
+
+export const revalidate = 3600
 
 export const metadata: Metadata = {
   title: 'Workplace Violence Prevention (SB 553 / LC §6401.9) | CalBizHR',
-  description: 'California Workplace Violence Prevention Plan (WVPP) mandates, incident logging, and hazard assessment rules.',
+  description: 'California Workplace Violence Prevention Plan (WVPP) mandates, violent incident logging, annual training, and interactive compliance tools.',
 }
 
-export default function WorkplaceViolenceProgramPage() {
+export default async function WorkplaceViolenceProgramPage() {
+  const program = await getProgram('WVPP')
+  const documents = await getDocumentsByCategory('WVPP')
+
+  const activeProgram = program ?? programsSeed['WVPP']
+  const planDocs = documents.map((d) => d.name)
+  const incidentLogItems = [
+    'Mandatory Violent Incident Log (retained for 5 years)',
+    '4 Incident Type Classifications (Criminal Intent, Customer/Client, Worker-on-Worker, Personal Relationship)',
+    'Anonymized employee details to protect privacy',
+    'Post-incident investigation checklist & root-cause analysis',
+    'Cal/OSHA inspection readiness documentation',
+  ]
+  const trainingItems = [
+    'Annual interactive training required for all California employees',
+    'Specific hazards identified in the workplace location',
+    'Emergency response procedures and alarm systems',
+    'How to report violent incidents without fear of retaliation',
+    'Interactive Q&A component with designated plan administrator',
+  ]
+
   return (
     <div className="flex-grow bg-[#1A2D4D] text-zinc-100 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto space-y-8">
+      <div className="max-w-5xl mx-auto space-y-10">
         {/* Navigation Bar */}
         <div className="flex items-center justify-between border-b border-[#B5933C]/20 pb-4">
           <Link
@@ -30,38 +61,131 @@ export default function WorkplaceViolenceProgramPage() {
         </div>
 
         {/* Program Header */}
-        <div className="space-y-3">
+        <div className="space-y-4">
           <div className="flex items-center gap-2">
-            <ShieldCheck className="h-6 w-6 text-[#B5933C]" />
-            <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#B5933C] bg-[#B5933C]/10 border border-[#B5933C]/30 px-2.5 py-0.5 rounded-full">
-              Level 3 Program • Phase 3
+            <ShieldAlert className="h-6 w-6 text-[#B5933C]" />
+            <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#B5933C] bg-[#B5933C]/10 border border-[#B5933C]/30 px-3 py-1 rounded-full">
+              Compliance Program • LC § 6401.9 / SB 553
             </span>
           </div>
-          <h1 className="text-3xl sm:text-4xl font-serif font-bold text-white tracking-tight">
-            Workplace Violence Prevention (SB 553 / LC §6401.9)
+          <h1 className="text-3xl sm:text-5xl font-serif font-bold text-white tracking-tight">
+            {activeProgram.name} (SB 553)
           </h1>
-          <p className="text-base font-sans text-zinc-300 leading-relaxed">
-            Written WVPP requirements, violent incident log recordkeeping, annual training, and emergency protocols.
+          <p className="text-base font-sans text-zinc-300 max-w-3xl leading-relaxed">
+            Effective July 1, 2024, California requires nearly all employers to establish, implement, and maintain an effective written Workplace Violence Prevention Plan and deliver annual interactive training.
           </p>
         </div>
 
-        {/* Placeholder Content Box */}
-        <div className="p-8 bg-[#0f1c32] border border-[#B5933C]/30 rounded-2xl space-y-4 text-center">
-          <h2 className="text-lg font-serif font-bold text-[#B5933C]">
-            Program Details Coming in Phase 3
+        {/* 1. Summary Card */}
+        <div className="mb-8">
+          <ProgramSummaryCard program={activeProgram} />
+        </div>
+
+        {/* 2. What's In This Program - Inventory Cards */}
+        <div className="space-y-4">
+          <h2 className="text-xs font-mono font-bold uppercase tracking-wider text-[#B5933C]">
+            Program Components & Mandates
           </h2>
-          <p className="text-sm font-sans text-zinc-300 max-w-xl mx-auto leading-relaxed">
-            Full compliance content for Workplace Violence Prevention — including written plan templates, violent incident log forms, and hazard assessment checklists — will be integrated here in Phase 3.
-          </p>
-          <div className="pt-4 flex justify-center gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <InventoryCard
+              href="/tools/wvpp"
+              icon={FileText}
+              title="Written Plan Requirements"
+              description="Site-specific written plan designating responsible managers, active employee involvement, and hazard correction procedures."
+              items={planDocs.length > 0 ? planDocs : ['Site-Specific Written Plan', 'Hazard Identification Checklist', 'Employee Reporting Procedures']}
+            />
+            <InventoryCard
+              href="/tools/wvpp"
+              icon={ClipboardList}
+              title="Violent Incident Log & Recordkeeping"
+              description="Detailed log recording every incident, threat, or workplace violence hazard, retained for 5 years."
+              items={incidentLogItems}
+            />
+            <InventoryCard
+              href="/tools/wvpp"
+              icon={GraduationCap}
+              title="Training Requirements"
+              description="Annual interactive training covering plan basics, emergency measures, and how to seek assistance."
+              items={trainingItems}
+            />
+          </div>
+        </div>
+
+        {/* 3. Interactive Tools Zone */}
+        <div className="bg-[#0f1c32] border border-[#B5933C]/30 rounded-3xl p-6 sm:p-8 space-y-8">
+          <div>
+            <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#B5933C] bg-[#B5933C]/10 border border-[#B5933C]/30 px-3 py-1 rounded-full">
+              Interactive Compliance Tools
+            </span>
+            <h2 className="text-2xl font-serif font-bold text-white mt-4 mb-2">
+              WVPP Training Calculator & Knowledge Quick-Check
+            </h2>
+            <p className="text-sm font-sans text-zinc-300 max-w-xl leading-relaxed">
+              Calculate your annual training renewal deadlines and test your understanding of California SB 553 statutory mandates.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+            <div className="space-y-4">
+              <h3 className="text-base font-serif font-bold text-[#B5933C]">
+                Annual Training Deadline Calculator
+              </h3>
+              <TrainingCycleCalculator
+                programName="Workplace Violence Prevention"
+                thresholdEmployees={1}
+                cycleMonths={12}
+                cycleLabel="annual"
+                belowThresholdNote="SB 553 applies to nearly all California employers regardless of size, with narrow exemptions."
+              />
+            </div>
+            <div className="space-y-4">
+              <h3 className="text-base font-serif font-bold text-[#B5933C]">
+                SB 553 Knowledge Check
+              </h3>
+              <KnowledgeQuiz questions={wvppKnowledgeQuiz} />
+            </div>
+          </div>
+        </div>
+
+        {/* 4. Validation Links & Toolkit CTA */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 pt-4 border-t border-[#B5933C]/20">
+          <ValidationLinks
+            links={[
+              {
+                label: 'Cal. Lab. Code § 6401.9 — Statutory Text',
+                href: 'https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=6401.9',
+                source: 'California Legislative Information',
+              },
+              {
+                label: 'Cal/OSHA Workplace Violence Prevention Guidance',
+                href: 'https://www.dir.ca.gov/dosh/dosh_publications/wvpp.html',
+                source: 'California Department of Industrial Relations (DIR)',
+              },
+              {
+                label: 'Cal/OSHA Model WVPP Template & Fact Sheets',
+                href: 'https://www.dir.ca.gov/dosh/Workplace-Violence.html',
+                source: 'Cal/OSHA Publications',
+              },
+            ]}
+          />
+
+          <div className="bg-[#0f1c32] border border-[#B5933C]/30 rounded-2xl p-6 flex flex-col justify-between gap-4">
+            <div>
+              <h3 className="text-base font-serif font-bold text-white">Ready to Deploy SB 553 Compliance?</h3>
+              <p className="text-xs font-sans text-zinc-300 leading-relaxed mt-2">
+                Get our complete WVPP Toolkit — customized written plan template, violent incident log spreadsheet, hazard assessment checklist, and annual training presentation.
+              </p>
+            </div>
             <Link
               href="/tools/wvpp"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-sans font-bold text-[#1A2D4D] bg-[#B5933C] hover:bg-[#d4b45a] transition-colors"
+              className="flex items-center justify-center gap-2 bg-[#B5933C] hover:bg-[#d4b45a] text-[#1A2D4D] font-sans font-bold py-3 rounded-xl transition-colors text-sm"
             >
-              Access WVPP Tool
+              Access WVPP Toolkit <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
         </div>
+
+        <LegalDisclaimer />
       </div>
     </div>
   )

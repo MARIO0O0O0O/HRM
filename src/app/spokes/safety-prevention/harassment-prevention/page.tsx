@@ -1,16 +1,37 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowLeft, Home, ShieldCheck } from 'lucide-react'
+import { ArrowLeft, Home, FileText, GraduationCap, Shield, ArrowRight } from 'lucide-react'
+import ProgramSummaryCard from '@/components/programs/ProgramSummaryCard'
+import InventoryCard from '@/components/programs/InventoryCard'
+import ValidationLinks from '@/components/programs/ValidationLinks'
+import LegalDisclaimer from '@/components/layout/LegalDisclaimer'
+import { getProgram, getDocumentsByCategory } from '@/lib/airtable/server'
+import { programsSeed } from '@/data/airtable-seed'
+
+export const revalidate = 3600
 
 export const metadata: Metadata = {
   title: 'Harassment Prevention (SB 1343) | CalBizHR',
-  description: 'California mandatory harassment prevention training rules, complaint procedures, and statutory mandates.',
+  description: 'California mandatory harassment prevention training rules, written complaint procedures, and statutory mandates under SB 1343.',
 }
 
-export default function HarassmentPreventionProgramPage() {
+export default async function HarassmentPreventionProgramPage() {
+  const program = await getProgram('HPP')
+  const documents = await getDocumentsByCategory('HPP')
+
+  const activeProgram = program ?? programsSeed['HPP']
+  const policyDocs = documents.filter((d) => !d.name.toLowerCase().includes('checklist') && !d.name.toLowerCase().includes('guide'))
+  const trainingItems = [
+    `${activeProgram.nonSupervisoryHours ?? 1} hour training track for non-supervisory employees`,
+    `${activeProgram.supervisoryHours ?? 2} hour training track for supervisors`,
+    'Interactive "Wheel of Knowledge" module — satisfies statutory interactivity requirements',
+    `Retraining required every ${activeProgram.recurrence ? activeProgram.recurrence.toLowerCase() : '2 years'}`,
+    'PDF completion certificate and tracking roster for each employee',
+  ]
+
   return (
     <div className="flex-grow bg-[#1A2D4D] text-zinc-100 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto space-y-8">
+      <div className="max-w-5xl mx-auto space-y-10">
         {/* Navigation Bar */}
         <div className="flex items-center justify-between border-b border-[#B5933C]/20 pb-4">
           <Link
@@ -30,38 +51,88 @@ export default function HarassmentPreventionProgramPage() {
         </div>
 
         {/* Program Header */}
-        <div className="space-y-3">
+        <div className="space-y-4">
           <div className="flex items-center gap-2">
-            <ShieldCheck className="h-6 w-6 text-[#B5933C]" />
-            <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#B5933C] bg-[#B5933C]/10 border border-[#B5933C]/30 px-2.5 py-0.5 rounded-full">
-              Level 3 Program • Phase 3
+            <Shield className="h-6 w-6 text-[#B5933C]" />
+            <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#B5933C] bg-[#B5933C]/10 border border-[#B5933C]/30 px-3 py-1 rounded-full">
+              Compliance Program • SB 1343
             </span>
           </div>
-          <h1 className="text-3xl sm:text-4xl font-serif font-bold text-white tracking-tight">
-            Harassment Prevention (SB 1343)
+          <h1 className="text-3xl sm:text-5xl font-serif font-bold text-white tracking-tight">
+            {activeProgram.name} (SB 1343)
           </h1>
-          <p className="text-base font-sans text-zinc-300 leading-relaxed">
-            Mandatory training timelines, written complaint procedures, and statutory compliance workflows for California employers.
+          <p className="text-base font-sans text-zinc-300 max-w-3xl leading-relaxed">
+            California Government Code § 12950.1 mandates that all employers with 5 or more employees provide sexual harassment prevention training and maintain clear written complaint procedures.
           </p>
         </div>
 
-        {/* Placeholder Content Box */}
-        <div className="p-8 bg-[#0f1c32] border border-[#B5933C]/30 rounded-2xl space-y-4 text-center">
-          <h2 className="text-lg font-serif font-bold text-[#B5933C]">
-            Program Details Coming in Phase 3
+        {/* 1. Summary Card */}
+        <div className="mb-8">
+          <ProgramSummaryCard program={activeProgram} />
+        </div>
+
+        {/* 2. What's In This Program - Inventory Cards */}
+        <div className="space-y-4">
+          <h2 className="text-xs font-mono font-bold uppercase tracking-wider text-[#B5933C]">
+            Program Inventory & Requirements
           </h2>
-          <p className="text-sm font-sans text-zinc-300 max-w-xl mx-auto leading-relaxed">
-            Full compliance content for Harassment Prevention — including interactive training timelines, policy templates, and complaint investigation procedures — will be integrated here in Phase 3.
-          </p>
-          <div className="pt-4 flex justify-center gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <InventoryCard
+              href="/tools/hpp"
+              icon={FileText}
+              title="Policy & Forms"
+              description="Written anti-harassment policy, complaint forms, and investigation workflows."
+              items={policyDocs.length > 0 ? policyDocs.map((d) => d.name) : ['Written Anti-Harassment Policy', 'Employee Complaint Form', 'Investigation SOP & Roster']}
+            />
+            <InventoryCard
+              href="/tools/hpp"
+              icon={GraduationCap}
+              title="Training Requirements"
+              description="Exact training rules mandated by SB 1343 for supervisory and non-supervisory staff."
+              items={trainingItems}
+            />
+          </div>
+        </div>
+
+        {/* 3. Validation Links & Toolkit CTA */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 pt-4 border-t border-[#B5933C]/20">
+          <ValidationLinks
+            links={[
+              {
+                label: 'Gov. Code § 12950.1 — Statutory Text',
+                href: 'https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=GOV&sectionNum=12950.1',
+                source: 'California Legislative Information',
+              },
+              {
+                label: 'CRD Sexual Harassment Prevention Training FAQ',
+                href: 'https://calcivilrights.ca.gov/shpt/',
+                source: 'California Civil Rights Department',
+              },
+              {
+                label: '2 CCR § 11024 — Training Content Requirements',
+                href: 'https://govt.westlaw.com/calregs/Document/I0FE22530D40A11E5BAD9DDC301241E9C',
+                source: 'California Code of Regulations',
+              },
+            ]}
+          />
+
+          <div className="bg-[#0f1c32] border border-[#B5933C]/30 rounded-2xl p-6 flex flex-col justify-between gap-4">
+            <div>
+              <h3 className="text-base font-serif font-bold text-white">Ready to Implement This Program?</h3>
+              <p className="text-xs font-sans text-zinc-300 leading-relaxed mt-2">
+                This hub details the legal rules. The HPP Toolkit provides turnkey templates, complaint forms, and compliance rosters ready to deploy to your team.
+              </p>
+            </div>
             <Link
               href="/tools/hpp"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-sans font-bold text-[#1A2D4D] bg-[#B5933C] hover:bg-[#d4b45a] transition-colors"
+              className="flex items-center justify-center gap-2 bg-[#B5933C] hover:bg-[#d4b45a] text-[#1A2D4D] font-sans font-bold py-3 rounded-xl transition-colors text-sm"
             >
-              Access HPP Tool
+              Access HPP Toolkit <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
         </div>
+
+        <LegalDisclaimer />
       </div>
     </div>
   )

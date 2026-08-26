@@ -81,6 +81,31 @@ Verify at a narrow mobile width (375px) specifically — that's the tightest con
 
 ---
 
+## PART D — FULL-BLEED TILE IMAGERY
+
+Each of the 6 hub tiles gets a background image spanning the tile's full height, with the title text
+staying legible on top of it. Use one of these two patterns — pick whichever renders more cleanly,
+note which you used in your report:
+
+1. **Notched title:** a solid-color label area (matching the tile's existing accent color) sits over
+   part of the image — like a ribbon/badge — with the title text on that solid background, guaranteed
+   legible regardless of what's under it.
+2. **Contrast overlay:** a gradient overlay (dark, bottom-to-top or full-tile) sits between the image
+   and the text, sufficient for WCAG-AA contrast with the title text directly on the image.
+
+**Image sourcing:** check what's available in this environment before assuming you can generate or
+fetch new images — if there's no way to source real imagery here, it's fine to skip this and say so
+clearly in your report, same as the instruction would be for Phase 5's imagery checkpoint. Do not use
+placeholder/broken image paths. If you can source images: generic, royalty-free, workplace/legal/
+compliance-themed imagery matching each tile's topic (e.g., PAGA Risk Center → scales-of-justice or
+courthouse-adjacent imagery, AI Governance → tech/automation imagery) — no fabricated real people,
+logos, or anything implying a specific real business.
+
+Existing tile subtitle/badge text must remain visible and legible too, not just the title — apply the
+same notch/overlay treatment to those if needed.
+
+---
+
 ## OUT OF SCOPE — DO NOT TOUCH
 
 - The 6 hub tiles' actual content/modals (`HubModal.tsx`, `PagaNestedPortalModal.tsx`, etc.) — sizing
@@ -101,6 +126,8 @@ Verify at a narrow mobile width (375px) specifically — that's the tightest con
 - [ ] Every ad links to a real, working page — confirm none 404
 - [ ] Homepage (header + banner + hub grid) still fits a 375px mobile viewport without scrolling
 - [ ] No hub tile text below 12px
+- [ ] Each hub tile has a full-bleed background image (or clearly-reported skip if image sourcing
+      isn't feasible in this environment) with title/subtitle/badge legible via notch or contrast overlay
 - [ ] Nothing in "out of scope" touched
 
 ---

@@ -120,7 +120,9 @@ imagery where feasible, full click-through QA across all 12 pages. No content/ci
 
 **New scope (not in original 5-phase plan):** `project-docs/tasks/TASK-022-banner-carousel.md` —
 homepage banner carousel between header and hub tiles (10 placeholder ads, 5-sec auto-advance, dot
-pagination), hub tiles resized shorter to preserve zero-scroll. Can run parallel to or after Phase 5.
+pagination), hub tiles resized shorter to preserve zero-scroll, plus full-bleed background imagery
+on each of the 6 hub tiles (notch or contrast-overlay title treatment). Can run parallel to or after
+Phase 5 — no file overlap with Phase 5's scope.
 
 **Housekeeping note (not blocking):** this repo has two parallel task-numbering conventions —
 `0XX_descriptive_name.md` (pre-existing, covers hub tile content / bio / contact / payment fixes,

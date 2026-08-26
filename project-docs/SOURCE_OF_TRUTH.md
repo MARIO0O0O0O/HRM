@@ -104,10 +104,12 @@ Sized for long, autonomous single-session execution — not fragmented into many
 Wage & Hour page need Mario's MPA-level sign-off — added by the agent to fill a citation gap I left
 in the task spec; appear accurate but unverified by a domain authority.
 
-**Phase 3: IN PROGRESS (started 2026-08-26)**
-Task committed: `project-docs/tasks/TASK-018-phase3-level3-programs.md`. Migrates real content from
-`/programs/*` into the 9 Level-3 placeholder pages per the migration map (Section 3), builds fresh
-content for the 3 Lifecycle Admin programs (no existing source).
+**Phase 3: IN PROGRESS — build error found, hotfix committed (TASK-019), not yet merged.**
+6 of 9 Level-3 pages had a type error (report claimed clean build, independently verified false).
+**Open item, tracked for later:** 3 dollar-figure penalty amounts (Cal/OSHA WVPP $25,000, LC §226(e)
+$50/$100, LC §432.3 $10,000) were not sourced from the migrated `/programs/*` content and are unverified
+— softened to general qualified language for now per Mario's direction (2026-08-26), citations kept,
+specific amounts removed pending a founder-led accuracy pass before they're restated with numbers.
 
 **Phases 4–5:** Not started.
 

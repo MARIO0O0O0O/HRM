@@ -59,18 +59,31 @@ signature fix only, not a content rewrite.
 
 ---
 
-## ALSO IN THIS TASK — flag, don't fix
+## ALSO IN THIS TASK — soften now, verify later
 
-Do not change these, just confirm in your report whether they're accurate (I'll make the final call,
-not you): the following specific dollar figures appear in TASK-018's output and were **not** present
-in the original `/programs/*` source pages being migrated, meaning they came from your own general
-knowledge rather than the source material:
-- `workplace-violence/page.tsx`: "$25,000+ per violation" (Cal/OSHA WVPP citation)
-- `paystubs-wage-statements/page.tsx`: "$50 initial / $100 subsequent per employee per pay period"
-  (LC §226 wage statement penalty) and "$10,000 per violation under Labor Code § 432.3"
+The following 3 dollar figures were not present in the original `/programs/*` source pages — they
+came from your own general knowledge, not the migrated material, and should be treated as **unverified,
+not confirmed accurate** until reviewed by the founder directly. Do not delete the underlying legal
+citations (they're likely fine) — just remove the specific dollar amounts and replace with general,
+qualified language. Match this pattern exactly:
 
-State plainly in your report: are you confident these are currently accurate, or did you extrapolate
-them? Don't soften this — a wrong answer here matters more than an uncertain one.
+1. **`workplace-violence/page.tsx`** — change:
+   `'Cal/OSHA citations up to $25,000+ per violation for failure to maintain plan or logs.'`
+   to:
+   `'Cal/OSHA civil penalties apply for failure to maintain a written plan or incident log (exact penalty figures pending verification).'`
+
+2. **`paystubs-wage-statements/page.tsx`** — change:
+   `'$50 initial / $100 subsequent per employee per pay period plus PAGA statutory penalties.'`
+   to:
+   `'Statutory per-employee, per-pay-period penalties apply under Labor Code § 226(e), plus PAGA statutory penalties (exact penalty figures pending verification).'`
+
+3. Same file — change:
+   `'Civil administrative penalties up to $10,000 per violation under Labor Code § 432.3.'`
+   to:
+   `'Civil administrative penalties apply under Labor Code § 432.3 (exact penalty figures pending verification).'`
+
+This is a known open item, not a task failure — note it in your report as done, and it'll be tracked
+in `SOURCE_OF_TRUTH.md` for a future accuracy pass once the founder verifies current figures.
 
 ---
 
@@ -78,8 +91,9 @@ them? Don't soften this — a wrong answer here matters more than an uncertain o
 
 - [ ] `pnpm build` completes with zero TypeScript errors
 - [ ] All 78 pages compile
-- [ ] No visible page content/copy changed except the required `fallbackProgram` field renames
-- [ ] Report states plainly whether the 3 flagged dollar figures are sourced/verified or extrapolated
+- [ ] No visible page content/copy changed except the required `fallbackProgram` field renames and
+      the 3 specific dollar-figure softenings listed above
+- [ ] The 3 dollar figures replaced exactly as specified, citations kept, amounts removed
 
 ---
 

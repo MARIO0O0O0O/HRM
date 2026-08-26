@@ -4,20 +4,27 @@ import React from 'react'
 import Home from '../app/page'
 
 describe('Homepage Component', () => {
-  it('renders zero-scroll 4-tile visual hub grid with high contrast badges', () => {
+  it('renders zero-scroll 6-tile hub grid with high contrast badges', () => {
     render(<Home />)
 
-    // Check 4 visual hub cards
-    expect(screen.getByText('PAGA Risk')).toBeDefined()
-    expect(screen.getByText('AI Governance')).toBeDefined()
-    expect(screen.getByText('Audit Checklists')).toBeDefined()
-    expect(screen.getByText('Fund & Invest')).toBeDefined()
+    // Check main hub branding
+    expect(screen.getAllByText('CalBizHR')[0]).toBeDefined()
 
-    // Check badges
+    // Check all 6 persistent hub tiles
+    expect(screen.getByText('PAGA Risk Center')).toBeDefined()
+    expect(screen.getByText('AI & Automation Governance')).toBeDefined()
+    expect(screen.getByText('Legal Insights & Blog')).toBeDefined()
+    expect(screen.getByText('Founder Bio & Defense Mission')).toBeDefined()
+    expect(screen.getByText('Advisory Intake & Booking')).toBeDefined()
+    expect(screen.getByText('Payments & Defense Fund')).toBeDefined()
+
+    // Check high-contrast badges
     expect(screen.getByText('LAW & RISK')).toBeDefined()
     expect(screen.getByText('CRD RULES')).toBeDefined()
-    expect(screen.getByText('SELF REVIEW')).toBeDefined()
-    expect(screen.getByText('DEFENSE FUND')).toBeDefined()
+    expect(screen.getByText('BRIEFINGS')).toBeDefined()
+    expect(screen.getByText('LEADERSHIP')).toBeDefined()
+    expect(screen.getByText('CONSULTATION')).toBeDefined()
+    expect(screen.getByText('PAY & SUPPORT')).toBeDefined()
 
     cleanup()
   })

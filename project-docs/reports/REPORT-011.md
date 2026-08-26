@@ -1,29 +1,35 @@
-# Completion Report: TASK-011 (3-Card Spokes Drawer Architecture)
+# Completion Report: TASK-011 (Spokes Drawer Accordion Plumbing)
 
-**Task**: TASK-011 Refactor Sidebar into 3-Card Spokes Drawer Architecture  
+**Task**: TASK-011 Spokes Drawer Multi-Level Accordion Plumbing  
 **Working Branch**: `agent/spokes-drawer-011`  
 **Target Branch**: `phase-1-foundation`  
 **Date**: 2026-08-26  
 
 ---
 
-## 1. Summary of Changes
-- Refactored `src/components/layout/Sidebar.tsx` into a zero-scroll **3-Card Spokes Drawer Architecture**:
-  1. **Category Card 1: Safety & Workplace Prevention** (`ShieldCheck` icon, 3 Areas: WVPP SB 553, HPP SB 1343, IIPP §3203).
-  2. **Category Card 2: Wage & Hour Defense** (`DollarSign` icon, 3 Areas: Paystubs LC §226, Meal & Rest Breaks, Overtime & Classification).
-  3. **Category Card 3: Employee Lifecycle Admin** (`UserCheck` icon, 2 Areas: Onboarding LC §2810.5, Terminations LC §§201-203).
-- Added slide-over `Sheet` drawer panel triggered upon clicking any Category Card, rendering full 3-Tier Hierarchy (Category Header, Area Accordions, Subject Details, and Highlighted Toolkit Action Buttons).
-- Action buttons in drawer link directly to toolkits (`$199 WVPP Toolkit`, `$149 HPP Toolkit`, `$199 IIPP Toolkit`, `$49 KYR Toolkit`, `Book Exposure Audit`).
-- Authored unit test suite in `src/__tests__/SpokesDrawer.test.tsx`.
+## 1. Summary of Deliverables
+- **Responsive Drawer & Sidebar Behavior**:
+  - Desktop ($\ge$1024px / `lg` breakpoint): Docked persistent left sidebar with `100dvh` viewport locking and internal `overflow-y: auto`.
+  - Mobile (<1024px): Slide-in drawer sheet toggled via top bar "Spokes Drawer" trigger with overlay backdrop (`Sheet`).
+- **3 Modular Cards & Color Accents**:
+  1. **Workplace Safety & Prevention (Emerald Accent)**: Harassment Prevention (SB 1343 / FEHA), Workplace Violence Prevention (SB 553 / LC §6401.9), Cal/OSHA Safety (8 CCR §3203).
+  2. **Wage & Hour Defense (Cyan Accent)**: Paystubs & Wage Statements (LC §226), Meal & Rest Periods (LC §226.7 / §512), Timekeeping & Classification (IWC Orders).
+  3. **Employee Lifecycle & Relations (Purple Accent)**: Hiring & Onboarding (LC §2810.5), Protected Leaves & Accommodations (CFRA / ADA), Terminations & Final Pay (LC §§201–203).
+- **Multi-Level Accordion Plumbing**:
+  - Level 1: Card Container (Emerald, Cyan, Purple accents).
+  - Level 2: Compliance Area Headers with legal citations.
+  - Level 3: High-Level Mandate Items.
+- **Drill-Down Action**:
+  - Clicking any level-3 mandate item opens `HubModal` displaying statutory citations, operational guidance, and action links.
 
 ---
 
 ## 2. Verification Evidence
 1. **Vitest Unit Tests**:
    - Total test files: 19 passed (19)
-   - Total tests: 34 passed (34)
+   - Total tests: 37 passed (37)
    - Command: `node /data/data/com.termux/files/home/.HRM_internal/node_modules/vitest/vitest.mjs run`
-2. **Next.js Production Static Build**:
+2. **Next.js Production Build**:
    - Total static pages compiled: 66/66
    - Command: `node /data/data/com.termux/files/home/.HRM_internal/node_modules/next/dist/bin/next build`
    - Exit code: 0
@@ -31,6 +37,7 @@
 ---
 
 ## 3. Self-Check Verification Gate
-- [x] Literal match check in raw command outputs (0 failures, 34 passing tests, 66/66 static pages compiled).
-- [x] 3 persistent Category Cards rendering properly in sidebar drawer canvas.
-- [x] Slide-over Sheet panel opening on category click.
+- [x] Task file saved to `project-docs/tasks/TASK-011-spokes-drawer-plumbing.md`.
+- [x] Drawer toggles smoothly on mobile and stays pinned on desktop.
+- [x] All 3 cards expand/collapse cleanly to reveal compliance areas and high-level mandates.
+- [x] Report written to `project-docs/reports/REPORT-011.md` and `project-docs/BUILD_LOG.md` updated.

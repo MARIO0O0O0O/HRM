@@ -83,6 +83,14 @@ in your report — not a task failure, just a missing courtesy step.
   → global `~/.gemini/config/skills/<name>/SKILL.md` → built-in
   `~/.gemini/antigravity-cli/builtin/skills/<name>/SKILL.md` (lowest). Three project skills already
   exist at workspace level: `verify-nextjs-build`, `branch-and-report`, `self-check-before-pass`.
+- **Verification gap found 2026-08-26 — visual/layout changes need real rendering, not just HTML/build
+  checks.** TASK-021/022/023 each verified cleanly in isolation, but their combined result had a real
+  bug — a fixed-position element overlapping other content, and a zero-scroll violation — that was
+  invisible to HTML-string and build-output checks and only found by actually rendering the page. If
+  your task touches positioning, sizing, or how multiple elements sit together on screen, attempt a
+  real render/screenshot if you have the capability; if you don't, say so explicitly in your report
+  rather than asserting visual correctness you didn't actually verify. The planning instance will
+  independently screenshot-verify any layout/positioning task before merging regardless.
 
 ## Where to look first
 

@@ -9,13 +9,10 @@ import {
   UserCheck,
   Mail,
   Calendar,
-  CreditCard,
-  Shield,
   ArrowRight,
   CheckCircle2,
   Phone,
-  Send,
-  HeartHandshake
+  Send
 } from 'lucide-react'
 import HubModal from '@/components/hub/HubModal'
 import PagaNestedPortalModal from '@/components/hub/PagaNestedPortalModal'
@@ -75,7 +72,7 @@ const hubTiles: HubTile[] = [
   {
     id: 'advisory-intake',
     title: 'Advisory Intake',
-    subtitle: 'Direct Compliance Outreach Form',
+    subtitle: 'Direct Compliance Outreach & Retainers',
     badge: 'Fast Response',
     icon: Mail,
     accentColor: 'text-rose-400',
@@ -91,26 +88,6 @@ const hubTiles: HubTile[] = [
     accentColor: 'text-violet-400',
     bgHover: 'hover:border-violet-500/30 hover:bg-violet-500/5',
     borderAccent: 'border-violet-500/20'
-  },
-  {
-    id: 'payment-portal',
-    title: 'Payment Portal',
-    subtitle: 'Zelle, Venmo, Cash App & Stripe',
-    badge: 'Instant Retainer',
-    icon: CreditCard,
-    accentColor: 'text-blue-400',
-    bgHover: 'hover:border-blue-500/30 hover:bg-blue-500/5',
-    borderAccent: 'border-blue-500/20'
-  },
-  {
-    id: 'defense-campaign',
-    title: 'Defense Campaign',
-    subtitle: 'Small Business Legal Tool Funding',
-    badge: 'SGV Community',
-    icon: Shield,
-    accentColor: 'text-fuchsia-400',
-    bgHover: 'hover:border-fuchsia-500/30 hover:bg-fuchsia-500/5',
-    borderAccent: 'border-fuchsia-500/20'
   }
 ]
 
@@ -155,8 +132,8 @@ export default function HubGrid() {
         </div>
       </header>
 
-      {/* Main 8-Tile Hub Grid (2x4 on Mobile, 4x2 on Desktop) */}
-      <main className="flex-1 p-3 sm:p-5 grid grid-cols-2 md:grid-cols-4 grid-rows-4 md:grid-rows-2 gap-3 sm:gap-4 overflow-hidden h-[calc(100dvh-56px)]">
+      {/* Main 6-Tile Hub Grid (2x3 on Mobile, 3x2 on Desktop) */}
+      <main className="flex-1 p-3 sm:p-5 grid grid-cols-2 md:grid-cols-3 grid-rows-3 md:grid-rows-2 gap-3 sm:gap-4 overflow-hidden h-[calc(100dvh-56px)]">
         {hubTiles.map((tile) => {
           const TileIcon = tile.icon
 
@@ -357,8 +334,12 @@ export default function HubGrid() {
                     <textarea rows={3} placeholder="How do I ensure my paystubs and WVPP written plan are compliant?" className="w-full bg-zinc-900 border border-white/10 rounded-lg px-3 py-2 text-zinc-100 outline-none focus:border-rose-500" />
                   </div>
 
-                  <div className="pt-2 flex justify-end">
-                    <button type="submit" className="inline-flex items-center gap-2 bg-rose-600 hover:bg-rose-500 text-white font-bold px-5 py-2.5 rounded-lg text-xs transition-colors">
+                  <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-white/10">
+                    <div className="text-[11px] text-zinc-400">
+                      <span>Direct Retainer Handles: </span>
+                      <strong className="text-zinc-200">Zelle: info@mario00.com</strong> · <strong className="text-zinc-200">Venmo: @marioo00</strong> · <strong className="text-zinc-200">Cash App: 10mario01</strong>
+                    </div>
+                    <button type="submit" className="inline-flex items-center gap-2 bg-rose-600 hover:bg-rose-500 text-white font-bold px-5 py-2.5 rounded-lg text-xs transition-colors shrink-0">
                       Submit Intake Request <Send className="h-3.5 w-3.5" />
                     </button>
                   </div>
@@ -385,79 +366,26 @@ export default function HubGrid() {
                 <div className="text-[10px] text-zinc-500 font-mono">[PLACEHOLDER — Cal.com Widget Embed]</div>
               </div>
 
-              <div className="pt-2 flex justify-end">
+              <div className="bg-[#161616] p-4 rounded-xl border border-white/10 space-y-2">
+                <span className="text-[10px] font-bold text-violet-400 uppercase tracking-wider block">Retainer & Diagnostic Payment Options</span>
+                <p className="text-zinc-400 text-xs">
+                  Pay via Zelle (<span className="font-mono text-zinc-200">info@mario00.com</span>), Venmo (<span className="font-mono text-zinc-200">@marioo00</span>), Cash App (<span className="font-mono text-zinc-200">10mario01</span>), or card.
+                </p>
+              </div>
+
+              <div className="pt-2 flex justify-end gap-2">
+                <Link
+                  href="/pricing"
+                  className="inline-flex items-center gap-2 bg-zinc-800 text-zinc-200 border border-white/10 font-bold px-4 py-2 rounded-lg text-xs hover:bg-zinc-700 transition-colors"
+                >
+                  View Pricing Packages
+                </Link>
                 <Link
                   href="/book"
                   className="inline-flex items-center gap-2 bg-violet-600 text-white font-bold px-4 py-2 rounded-lg text-xs hover:bg-violet-500 transition-colors"
                 >
                   Open Booking Page <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
-              </div>
-            </div>
-          )}
-
-          {/* 7. Payment Portal Modal */}
-          {activeTile.id === 'payment-portal' && (
-            <div className="space-y-5 text-xs text-zinc-300">
-              <p className="text-zinc-400">Direct peer-to-peer payment handles and retainer payment methods.</p>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <div className="bg-[#161616] p-4 rounded-xl border border-white/10 space-y-1">
-                  <span className="text-[10px] font-bold text-blue-400 uppercase tracking-wider block">Zelle Handle</span>
-                  <p className="text-sm font-mono text-zinc-100 font-bold select-all">info@mario00.com</p>
-                </div>
-
-                <div className="bg-[#161616] p-4 rounded-xl border border-white/10 space-y-1">
-                  <span className="text-[10px] font-bold text-sky-400 uppercase tracking-wider block">Venmo Handle</span>
-                  <p className="text-sm font-mono text-zinc-100 font-bold select-all">@marioo00</p>
-                </div>
-
-                <div className="bg-[#161616] p-4 rounded-xl border border-white/10 space-y-1">
-                  <span className="text-[10px] font-bold text-emerald-400 uppercase tracking-wider block">Cash App Handle</span>
-                  <p className="text-sm font-mono text-zinc-100 font-bold select-all">10mario01</p>
-                </div>
-
-                <div className="bg-[#161616] p-4 rounded-xl border border-white/10 space-y-1">
-                  <span className="text-[10px] font-bold text-indigo-400 uppercase tracking-wider block">Stripe Card Retainer</span>
-                  <p className="text-xs text-zinc-400">Credit card retainer checkout via secure Stripe portal.</p>
-                </div>
-              </div>
-
-              <div className="pt-2 flex justify-end">
-                <Link
-                  href="/pricing"
-                  className="inline-flex items-center gap-2 bg-blue-600 text-white font-bold px-4 py-2 rounded-lg text-xs hover:bg-blue-500 transition-colors"
-                >
-                  View Pricing & Services <ArrowRight className="h-3.5 w-3.5" />
-                </Link>
-              </div>
-            </div>
-          )}
-
-          {/* 8. Defense Campaign Modal */}
-          {activeTile.id === 'defense-campaign' && (
-            <div className="space-y-5 text-xs text-zinc-300">
-              <div className="bg-fuchsia-500/10 border border-fuchsia-500/20 p-4 rounded-xl space-y-2">
-                <h4 className="font-bold text-fuchsia-300 text-sm">Small Business Compliance Defense Campaign</h4>
-                <p className="text-zinc-300 text-xs">Fund free California compliance toolkits and legal defense calculators for Los Angeles & SGV small business owners.</p>
-              </div>
-
-              <div className="bg-[#161616] p-4 rounded-xl border border-white/10 space-y-2">
-                <span className="text-[10px] font-bold uppercase tracking-wider text-fuchsia-400">Community Support</span>
-                <p className="text-zinc-400 text-xs">
-                  Your contributions directly sponsor free SB 553 WVPP templates, PAGA penalty calculators, and compliance checklists for local family-owned businesses.
-                </p>
-                <div className="text-[10px] text-zinc-500 font-mono pt-1">[PLACEHOLDER — Community Defense Donation Tracker]</div>
-              </div>
-
-              <div className="pt-2 flex justify-end">
-                <button
-                  type="button"
-                  onClick={() => setActiveTileId('payment-portal')}
-                  className="inline-flex items-center gap-2 bg-fuchsia-600 text-white font-bold px-4 py-2 rounded-lg text-xs hover:bg-fuchsia-500 transition-colors"
-                >
-                  Contribute via Portal <HeartHandshake className="h-3.5 w-3.5" />
-                </button>
               </div>
             </div>
           )}

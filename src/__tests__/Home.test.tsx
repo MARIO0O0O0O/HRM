@@ -4,22 +4,20 @@ import React from 'react'
 import Home from '../app/page'
 
 describe('Homepage Component', () => {
-  it('renders zero-scroll 8-tile hub and primary compliance modules', () => {
+  it('renders zero-scroll 6-tile hub and primary compliance modules', () => {
     render(<Home />)
-    
+
     // Check main hub branding
     expect(screen.getAllByText('CalBizHR')[0]).toBeDefined()
 
-    // Check all 8 persistent hub tiles
+    // Check all 6 persistent hub tiles
     expect(screen.getByText('PAGA Risk Center')).toBeDefined()
     expect(screen.getByText('AI & Automation Governance')).toBeDefined()
     expect(screen.getByText('Legal Insights & Blog')).toBeDefined()
     expect(screen.getByText('Founder Bio')).toBeDefined()
     expect(screen.getByText('Advisory Intake')).toBeDefined()
     expect(screen.getByText('Booking & Scheduling')).toBeDefined()
-    expect(screen.getByText('Payment Portal')).toBeDefined()
-    expect(screen.getByText('Defense Campaign')).toBeDefined()
-    
+
     cleanup()
   })
 })

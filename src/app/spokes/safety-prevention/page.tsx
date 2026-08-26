@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowLeft, Home, ShieldCheck, ArrowRight, Wrench } from 'lucide-react'
 
 export const metadata: Metadata = {
@@ -87,6 +88,17 @@ export default function SafetyPreventionHubPage() {
           </p>
         </div>
 
+        {/* Hero Banner Image */}
+        <div className="relative w-full aspect-video sm:aspect-[21/9] rounded-2xl overflow-hidden border border-[#B5933C]/30 shadow-2xl">
+          <Image
+            src="/images/safety_prevention_banner.jpg"
+            alt="California Workplace Safety & Harassment Prevention Compliance Banner"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
+
         {/* Category Law Overview (Authoritative Statutory Text) */}
         <div className="p-6 sm:p-8 bg-[#0f1c32] border border-[#B5933C]/30 rounded-2xl space-y-4 text-zinc-300 font-sans text-sm sm:text-base leading-relaxed">
           <h2 className="text-xl font-serif font-bold text-white mb-2">
@@ -116,7 +128,7 @@ export default function SafetyPreventionHubPage() {
                 className="group flex flex-col justify-between p-6 bg-[#0f1c32] border border-[#B5933C]/30 rounded-2xl text-left transition-all duration-200 hover:border-[#B5933C] hover:bg-[#1f365c] hover:shadow-xl"
               >
                 <div className="space-y-3">
-                  <span className="inline-block text-[10px] font-mono font-bold uppercase tracking-wider text-[#B5933C] bg-[#B5933C]/10 border border-[#B5933C]/30 px-2.5 py-0.5 rounded-full">
+                  <span className="inline-block text-xs font-mono font-bold uppercase tracking-wider text-[#B5933C] bg-[#B5933C]/10 border border-[#B5933C]/30 px-2.5 py-0.5 rounded-full">
                     {prog.citation}
                   </span>
                   <h3 className="text-lg font-serif font-bold text-white group-hover:text-[#B5933C] transition-colors">

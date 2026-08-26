@@ -86,7 +86,7 @@ export default function Sidebar() {
                   <div className="p-2.5 rounded-lg bg-[#0f1c32] border border-[#B5933C]/30 text-[#B5933C] group-hover:scale-105 transition-transform">
                     <CardIcon className="h-6 w-6" />
                   </div>
-                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#B5933C] bg-[#B5933C]/10 border border-[#B5933C]/30 px-2 py-0.5 rounded-full">
+                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#B5933C] bg-[#B5933C]/10 border border-[#B5933C]/30 px-2 py-0.5 rounded-full">
                     {card.badge}
                   </span>
                 </div>

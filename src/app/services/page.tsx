@@ -179,7 +179,7 @@ export default function ServicesPage() {
                       </h2>
                     </div>
                     {service.isPopular && (
-                      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#B5933C]/20 border border-[#B5933C]/40 text-[10px] font-mono font-bold text-[#B5933C] tracking-wide uppercase shrink-0">
+                      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#B5933C]/20 border border-[#B5933C]/40 text-xs font-mono font-bold text-[#B5933C] tracking-wide uppercase shrink-0">
                         Popular
                       </span>
                     )}

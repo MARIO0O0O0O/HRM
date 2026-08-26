@@ -104,12 +104,13 @@ Sized for long, autonomous single-session execution — not fragmented into many
 Wage & Hour page need Mario's MPA-level sign-off — added by the agent to fill a citation gap I left
 in the task spec; appear accurate but unverified by a domain authority.
 
-**Phase 3: IN PROGRESS — build error found, hotfix committed (TASK-019), not yet merged.**
-6 of 9 Level-3 pages had a type error (report claimed clean build, independently verified false).
-**Open item, tracked for later:** 3 dollar-figure penalty amounts (Cal/OSHA WVPP $25,000, LC §226(e)
-$50/$100, LC §432.3 $10,000) were not sourced from the migrated `/programs/*` content and are unverified
-— softened to general qualified language for now per Mario's direction (2026-08-26), citations kept,
-specific amounts removed pending a founder-led accuracy pass before they're restated with numbers.
+**Phase 3: ✅ COMPLETE — merged, verified 2026-08-26.** TASK-018 + TASK-019 hotfix.
+9 Level-3 pages live: Cards 1/2 migrated with working calculators/quizzes preserved, Card 3 fresh-built
+and marked pending compliance review. Build independently re-verified after hotfix (was broken on
+first pass — self-report said clean, wasn't). 3 unverified dollar figures softened, citations kept,
+tracked below for a real accuracy pass later.
+
+**Phase 4: Not started — next up.**
 
 **Phases 4–5:** Not started.
 

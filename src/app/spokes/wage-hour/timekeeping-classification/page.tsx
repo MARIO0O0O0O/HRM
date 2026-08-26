@@ -6,6 +6,7 @@ import InventoryCard from '@/components/programs/InventoryCard'
 import ValidationLinks from '@/components/programs/ValidationLinks'
 import LegalDisclaimer from '@/components/layout/LegalDisclaimer'
 import { getProgram, getDocumentsByCategory } from '@/lib/airtable/server'
+import { ProgramRecord } from '@/data/airtable-seed'
 
 export const revalidate = 3600
 
@@ -18,20 +19,20 @@ export default async function TimekeepingClassificationProgramPage() {
   const program = await getProgram('WAGE')
   const documents = await getDocumentsByCategory('WAGE')
 
-  const fallbackProgram = {
-    id: 'timekeeping-classification',
-    name: 'Timekeeping & Exemption Classification',
+  const fallbackProgram: ProgramRecord = {
     code: 'WAGE',
-    summary: 'California law enforces daily overtime (after 8 hours/day), weekly overtime (after 40 hours/week), and double time (after 12 hours/day). Exempt status requires meeting strict duties tests and earning a minimum monthly salary equivalent to 2x state minimum wage.',
-    statute: 'Labor Code §§ 510, 515 & 2775',
+    name: 'Timekeeping & Exemption Classification',
+    governingLaw: 'California Labor Code & IWC Wage Orders',
+    primaryStatute: 'Labor Code §§ 510, 515 & 2775',
     effectiveDate: '2000-01-01',
-    agency: 'Labor Commissioner (DLSE)',
-    targetAudience: 'All California employers',
-    nonSupervisoryHours: 0,
-    supervisoryHours: 0,
+    description: 'California law enforces daily overtime (after 8 hours/day), weekly overtime (after 40 hours/week), and double time (after 12 hours/day). Exempt status requires meeting strict duties tests and earning a minimum monthly salary equivalent to 2x state minimum wage.',
+    appliesTo: 'All California employers',
+    trainingRequired: false,
+    supervisoryHours: null,
+    nonSupervisoryHours: null,
     recurrence: 'Ongoing Wage Administration',
-    penaltySummary: 'Back overtime pay, interest, Waiting Time Penalties, and PAGA statutory penalties.',
-    lastUpdated: '2024-01-01',
+    keyDeliverables: 'ABC Classification Checklist, Overtime & Double Time Calculation Guide',
+    notes: 'Back overtime pay, interest, Waiting Time Penalties, and PAGA statutory penalties.',
   }
 
   const activeProgram = program || fallbackProgram

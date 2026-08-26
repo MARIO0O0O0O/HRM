@@ -8,6 +8,7 @@ import LegalDisclaimer from '@/components/layout/LegalDisclaimer'
 import KnowledgeQuiz from '@/components/tools/KnowledgeQuiz'
 import TrainingCycleCalculator from '@/components/tools/TrainingCycleCalculator'
 import { getProgram, getDocumentsByCategory } from '@/lib/airtable/server'
+import { programsSeed } from '@/data/airtable-seed'
 import { wvppKnowledgeQuiz } from '@/data/quiz-content'
 
 export const revalidate = 3600
@@ -21,23 +22,7 @@ export default async function WorkplaceViolenceProgramPage() {
   const program = await getProgram('WVPP')
   const documents = await getDocumentsByCategory('WVPP')
 
-  const fallbackProgram = {
-    id: 'wvpp',
-    name: 'Workplace Violence Prevention Program',
-    code: 'WVPP',
-    summary: 'Effective July 1, 2024, California Labor Code § 6401.9 (SB 553) requires nearly all California employers to establish, implement, and maintain a site-specific written Workplace Violence Prevention Plan, record violent incidents in a log (retained for 5 years), and provide annual interactive training.',
-    statute: 'Labor Code § 6401.9 / SB 553',
-    effectiveDate: '2024-07-01',
-    agency: 'Cal/OSHA (DOSH)',
-    targetAudience: 'Nearly all California employers',
-    nonSupervisoryHours: 1,
-    supervisoryHours: 1,
-    recurrence: 'Annual',
-    penaltySummary: 'Cal/OSHA citations up to $25,000+ per violation for failure to maintain plan or logs.',
-    lastUpdated: '2024-07-01',
-  }
-
-  const activeProgram = program || fallbackProgram
+  const activeProgram = program ?? programsSeed['WVPP']
   const planDocs = documents.map((d) => d.name)
   const incidentLogItems = [
     'Mandatory Violent Incident Log (retained for 5 years)',

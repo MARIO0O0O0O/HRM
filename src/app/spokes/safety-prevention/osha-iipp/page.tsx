@@ -9,6 +9,7 @@ import SelfAssessmentQuiz from '@/components/tools/SelfAssessmentQuiz'
 import ProgressChecklist from '@/components/tools/ProgressChecklist'
 import TrainingCycleCalculator from '@/components/tools/TrainingCycleCalculator'
 import { getProgram, getDocumentsByCategory } from '@/lib/airtable/server'
+import { programsSeed } from '@/data/airtable-seed'
 import { selfAssessmentPrograms, iippHazardCategories } from '@/data/quiz-content'
 
 export const revalidate = 3600
@@ -22,23 +23,7 @@ export default async function OshaIippProgramPage() {
   const program = await getProgram('IIPP')
   const documents = await getDocumentsByCategory('IIPP')
 
-  const fallbackProgram = {
-    id: 'iipp',
-    name: 'Injury & Illness Prevention Program',
-    code: 'IIPP',
-    summary: 'Title 8 CCR § 3203 mandates an effective written Injury & Illness Prevention Program (IIPP) for every California employer with 1 or more employees. Includes 8 required program elements and nested Heat Illness Prevention (8 CCR § 3395) protocols.',
-    statute: 'Title 8 CCR § 3203',
-    effectiveDate: '1991-07-01',
-    agency: 'Cal/OSHA (DOSH)',
-    targetAudience: 'Every California employer (1+ employees)',
-    nonSupervisoryHours: 1,
-    supervisoryHours: 1,
-    recurrence: 'Annual & Event-Driven',
-    penaltySummary: 'Cal/OSHA civil penalties for lack of written IIPP or failure to inspect/train.',
-    lastUpdated: '2024-01-01',
-  }
-
-  const activeProgram = program || fallbackProgram
+  const activeProgram = program ?? programsSeed['IIPP']
   const iippDocs = documents.map((d) => d.name)
 
   const elementsList = [

@@ -7,6 +7,7 @@ import ValidationLinks from '@/components/programs/ValidationLinks'
 import LegalDisclaimer from '@/components/layout/LegalDisclaimer'
 import PagaCalculatorComponent from '@/components/calculator/PagaCalculatorComponent'
 import { getProgram, getDocumentsByCategory } from '@/lib/airtable/server'
+import { ProgramRecord } from '@/data/airtable-seed'
 
 export const revalidate = 3600
 
@@ -19,20 +20,20 @@ export default async function MealRestBreaksProgramPage() {
   const program = await getProgram('WAGE')
   const documents = await getDocumentsByCategory('WAGE')
 
-  const fallbackProgram = {
-    id: 'meal-rest-breaks',
-    name: 'Meal & Rest Breaks Compliance',
+  const fallbackProgram: ProgramRecord = {
     code: 'WAGE',
-    summary: 'California law requires a 30-minute uninterrupted meal break before the end of the 5th hour of work (Labor Code § 512) and paid 10-minute rest periods per 4 hours worked. Any missed, late, or short break mandates 1 hour of premium pay.',
-    statute: 'Labor Code § 226.7 & § 512',
+    name: 'Meal & Rest Breaks Compliance',
+    governingLaw: 'California Labor Code & IWC Wage Orders',
+    primaryStatute: 'Labor Code § 226.7 & § 512',
     effectiveDate: '2001-01-01',
-    agency: 'Labor Commissioner (DLSE)',
-    targetAudience: 'All non-exempt employees in California',
-    nonSupervisoryHours: 0,
-    supervisoryHours: 0,
+    description: 'California law requires a 30-minute uninterrupted meal break before the end of the 5th hour of work (Labor Code § 512) and paid 10-minute rest periods per 4 hours worked. Any missed, late, or short break mandates 1 hour of premium pay.',
+    appliesTo: 'All non-exempt employees in California',
+    trainingRequired: false,
+    supervisoryHours: null,
+    nonSupervisoryHours: null,
     recurrence: 'Daily Work Shifts',
-    penaltySummary: '1 hour of premium pay per violation per workday plus PAGA penalty exposure.',
-    lastUpdated: '2024-01-01',
+    keyDeliverables: 'Meal & Rest Break Policy & Waiver Forms, Premium Pay Calculation Worksheet',
+    notes: '1 hour of premium pay per violation per workday plus PAGA penalty exposure.',
   }
 
   const activeProgram = program || fallbackProgram

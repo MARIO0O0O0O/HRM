@@ -6,6 +6,7 @@ import InventoryCard from '@/components/programs/InventoryCard'
 import ValidationLinks from '@/components/programs/ValidationLinks'
 import LegalDisclaimer from '@/components/layout/LegalDisclaimer'
 import { getProgram, getDocumentsByCategory } from '@/lib/airtable/server'
+import { programsSeed } from '@/data/airtable-seed'
 
 export const revalidate = 3600
 
@@ -18,23 +19,7 @@ export default async function HarassmentPreventionProgramPage() {
   const program = await getProgram('HPP')
   const documents = await getDocumentsByCategory('HPP')
 
-  const fallbackProgram = {
-    id: 'hpp',
-    name: 'Harassment Prevention Program',
-    code: 'HPP',
-    summary: 'California law (SB 1343 / Gov. Code § 12950.1) mandates sexual harassment prevention training for all employers with 5 or more employees. Non-supervisory employees must complete 1 hour of training, and supervisory employees must complete 2 hours, repeated every 2 years.',
-    statute: 'Gov. Code § 12950.1 / SB 1343',
-    effectiveDate: '2021-01-01',
-    agency: 'Civil Rights Department (CRD)',
-    targetAudience: 'Employers with 5+ employees',
-    nonSupervisoryHours: 1,
-    supervisoryHours: 2,
-    recurrence: 'Bi-annual (Every 2 Years)',
-    penaltySummary: 'CRD compliance orders, employee administrative complaints, and civil liability under FEHA.',
-    lastUpdated: '2024-01-01',
-  }
-
-  const activeProgram = program || fallbackProgram
+  const activeProgram = program ?? programsSeed['HPP']
   const policyDocs = documents.filter((d) => !d.name.toLowerCase().includes('checklist') && !d.name.toLowerCase().includes('guide'))
   const trainingItems = [
     `${activeProgram.nonSupervisoryHours ?? 1} hour training track for non-supervisory employees`,

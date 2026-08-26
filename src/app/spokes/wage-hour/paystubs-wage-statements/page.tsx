@@ -6,6 +6,7 @@ import InventoryCard from '@/components/programs/InventoryCard'
 import ValidationLinks from '@/components/programs/ValidationLinks'
 import LegalDisclaimer from '@/components/layout/LegalDisclaimer'
 import { getProgram, getDocumentsByCategory } from '@/lib/airtable/server'
+import { ProgramRecord } from '@/data/airtable-seed'
 
 export const revalidate = 3600
 
@@ -18,20 +19,20 @@ export default async function PaystubsWageStatementsProgramPage() {
   const program = await getProgram('WAGE')
   const documents = await getDocumentsByCategory('WAGE')
 
-  const fallbackProgram = {
-    id: 'paystubs-wage-statements',
-    name: 'Paystubs & Wage Statements (LC §226 / SB 1162)',
+  const fallbackProgram: ProgramRecord = {
     code: 'WAGE',
-    summary: 'California Labor Code § 226(a) mandates 9 specific itemized items on every employee wage statement. SB 1162 adds pay scale transparency requirements, mandating disclosures on job postings and current employee pay range requests.',
-    statute: 'Labor Code § 226 / SB 1162',
+    name: 'Paystubs & Wage Statements (LC §226 / SB 1162)',
+    governingLaw: 'California Labor Code & DLSE Guidelines',
+    primaryStatute: 'Labor Code § 226 / SB 1162',
     effectiveDate: '2023-01-01',
-    agency: 'Labor Commissioner (DLSE) / CRD',
-    targetAudience: 'All California employers',
-    nonSupervisoryHours: 0,
-    supervisoryHours: 0,
+    description: 'California Labor Code § 226(a) mandates 9 specific itemized items on every employee wage statement. SB 1162 adds pay scale transparency requirements, mandating disclosures on job postings and current employee pay range requests.',
+    appliesTo: 'All California employers',
+    trainingRequired: false,
+    supervisoryHours: null,
+    nonSupervisoryHours: null,
     recurrence: 'Ongoing Payroll Administration',
-    penaltySummary: '$50 initial / $100 subsequent per employee per pay period plus PAGA statutory penalties.',
-    lastUpdated: '2024-01-01',
+    keyDeliverables: 'Itemized Wage Statement Audit Checklist, Pay Scale Disclosure Templates',
+    notes: 'Statutory per-employee, per-pay-period penalties apply under Labor Code § 226(e), plus PAGA statutory penalties (exact penalty figures pending verification).',
   }
 
   const activeProgram = program || fallbackProgram
@@ -54,7 +55,7 @@ export default async function PaystubsWageStatementsProgramPage() {
     'Right of current employees to request pay scales for their positions',
     'Annual CRD Pay Data Reporting for employers with 100+ employees',
     'Job title and wage history record retention requirement (3 years minimum)',
-    'Civil administrative penalties up to $10,000 per violation under Labor Code § 432.3',
+    'Civil administrative penalties apply under Labor Code § 432.3 (exact penalty figures pending verification)',
   ]
 
   return (

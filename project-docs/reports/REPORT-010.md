@@ -1,48 +1,85 @@
 # Task 010 Completion Report: Streamline Hub to 6-Tile Zero-Scroll Grid
 
-**Task ID**: TASK-010-hub-6tile-grid  
+**Task ID**: TASK-010-streamline-hub  
 **Status**: PASS  
-**Branch**: `agent/hub-6tile-010`  
+**Branch**: `agent/hub-streamline-010`  
 **Date**: 2026-08-26  
 **Agent**: Antigravity  
 
 ---
 
 ## 1. Executive Summary
-Successfully streamlined the primary CalBizHR Hub interface into a zero-scroll 6-tile grid layout featuring:
-1. **PAGA Risk Center (`paga-risk`)** — AB 2288 Penalty Calculator & Cure Rules.
-2. **AI & Automation Governance (`ai-automation`)** — CRD Decision Rules & Policy Architect.
-3. **Legal Insights & Blog (`legal-insights`)** — California Labor Code Briefings.
-4. **Founder Bio (`founder-bio`)** — Mario Espindola, MPA Profile & Mission.
-5. **Advisory Intake (`advisory-intake`)** — Direct Compliance Outreach & Retainers.
-6. **Booking & Scheduling (`booking-scheduling`)** — 30-Min Diagnostic ($75 Credited) & Calendar Scheduling.
-
-Retainer payment handles (Zelle: `info@mario00.com`, Venmo: `@marioo00`, Cash App: `10mario01`) have been consolidated into Advisory Intake and Booking & Scheduling modals.
+Refactored the primary CalBizHR Hub dashboard canvas from an 8-tile grid into a streamlined, high-impact 6-tile grid layout (2×3 on mobile, 3×2 on desktop). Every tile features high-contrast badges, visual iconography, and two-tier nested sub-views with working back navigation (`← Back`). Document scrolling is locked to `100dvh` (`overflow: hidden`).
 
 ---
 
-## 2. Technical Implementation Details
+## 2. 6-Tile Specifications & Nested Sub-View Inventory
 
-- **`src/components/hub/HubGrid.tsx`**:
-  - Streamlined `hubTiles` array to 6 core tiles.
-  - Updated grid CSS to `grid-cols-2 md:grid-cols-3 grid-rows-3 md:grid-rows-2` locking height to `h-[calc(100dvh-56px)]` for a zero-scroll experience on all devices.
-  - Integrated peer-to-peer payment handles into Advisory Intake and Booking & Scheduling modal overlays.
-  - Removed dead modal code branches for retired standalone tiles (`payment-portal`, `defense-campaign`).
-- **`src/__tests__/Home.test.tsx`**: Updated unit assertions to verify 6 persistent hub tiles.
+1. **Tile 1: PAGA Risk Center (Amber — `Scale`)**
+   - **Badge**: `LAW & RISK`
+   - **Main View (Tier 1)**: PAGA statutory overview (LC §2698), penalty stacking ($100/$200 rates, 65/35 LWDA split), and reform cure caps (15% proactive / 30% 60-day).
+   - **Nested Sub-Views**:
+     - *Sub-View A (Calculator)*: Interactive PAGA penalty exposure calculator.
+     - *Sub-View B (Checklist)*: Universal CA compliance checklist.
+
+2. **Tile 2: AI & Automation Governance (Cyan — `Sparkles`)**
+   - **Badge**: `CRD RULES`
+   - **Main View (Tier 1)**: California Civil Rights Department Automated Decision System (ADS) mandates and joint vendor liability.
+   - **Nested Sub-Views**:
+     - *Sub-View A (AI Bias Assessment)*: Algorithmic tool screener for resume filters and employee surveillance.
+     - *Sub-View B (Vendor Indemnity Checklist)*: Mandatory contract clauses shielding employers from AI vendor liability.
+
+3. **Tile 3: Legal Insights & Blog (Indigo — `BookOpen`)**
+   - **Badge**: `BRIEFINGS`
+   - **Main View (Tier 1)**: California labor law updates and defense case studies.
+   - **Nested Sub-Views**:
+     - *Sub-View A (Articles)*: Labor code compliance briefings and case law summaries.
+     - *Sub-View B (Deadlines)*: Mandatory state compliance calendar (Pay Data, Cal/OSHA logs, CalSavers).
+
+4. **Tile 4: Founder Bio & Defense Mission (Purple — `UserCheck`)**
+   - **Badge**: `LEADERSHIP`
+   - **Main View (Tier 1)**: Mario Espindola, MPA — 10-year public-sector HR leader and AI automation specialist profile.
+   - **Nested Sub-Views**:
+     - *Sub-View A (Background & Credentials)*: Municipal HR operational experience.
+     - *Sub-View B (Defense Philosophy)*: Why proactive auditing shields California small businesses.
+
+5. **Tile 5: Advisory Intake & Booking (Emerald — `Calendar`)**
+   - **Badge**: `CONSULTATION`
+   - **Main View (Tier 1)**: Direct consultation overview and diagnostic intake options.
+   - **Nested Sub-Views**:
+     - *Sub-View A (Book Diagnostic Session)*: 30-minute review selector ($75 fee 100% credited toward services; includes Cal.com placeholder).
+     - *Sub-View B (Direct Message Intake)*: Intake form for active wage/audit issues + tap-to-call/email (`626-708-2220` | `info@mario00.com`).
+
+6. **Tile 6: Payments & Defense Fund (Indigo — `CreditCard`)**
+   - **Badge**: `PAY & SUPPORT`
+   - **Main View (Tier 1)**: Unified portal for client retainer payments and small business defense contributions.
+   - **Nested Sub-Views**:
+     - *Sub-View A (Client Payments & Retainers)*: P2P handles (Zelle: `info@mario00.com`, Venmo: `@marioo00`, Cash App: `10mario01`) and monthly retainers ($99 Starter / $249 Pro).
+     - *Sub-View B (Small Business Defense Campaign)*: Voluntary contribution buttons ($25, $50, $100) to support free California compliance tools.
 
 ---
 
-## 3. Empirical Verification Results
+## 3. Contact & Data Integrity Verification
+
+- **Phone**: `626-708-2220`
+- **Email / Zelle**: `info@mario00.com`
+- **Venmo**: `@marioo00`
+- **Cash App**: `10mario01`
+- **Zero-Scroll Viewport**: Viewport container locked to `100dvh` (`overflow: hidden` on viewport, no document scrolling on mobile).
+
+---
+
+## 4. Verification Results
 
 - **Vitest Test Suite**:
   ```text
-  Test Files  17 passed (17)
-       Tests  27 passed (27)
-    Duration  48.03s
+  Test Files  18 passed (18)
+       Tests  32 passed (32)
+    Duration  31.41s
   ```
 - **Next.js Production Build**:
   ```text
-  ✓ Compiled successfully in 33.0s
+  ✓ Compiled successfully in 34.0s
     Linting and checking validity of types     ✓ Linting and checking validity of types
     Collecting page data                       ✓ Collecting page data
   ✓ Generating static pages (66/66)
@@ -50,8 +87,8 @@ Retainer payment handles (Zelle: `info@mario00.com`, Venmo: `@marioo00`, Cash Ap
 
 ---
 
-## 4. Delivery Artifacts & Branch Tracking
-- Task document: `project-docs/tasks/TASK-010-hub-6tile-grid.md`
-- Completion report: `project-docs/reports/REPORT-010.md`
-- Build log entry: `project-docs/BUILD_LOG.md`
-- Branch: `agent/hub-6tile-010`
+## 5. Delivery Artifacts & Branch Tracking
+- Task Specification: `project-docs/tasks/TASK-010-streamline-hub.md`
+- Completion Report: `project-docs/reports/REPORT-010.md`
+- Build Log: `project-docs/BUILD_LOG.md`
+- Branch: `agent/hub-streamline-010`

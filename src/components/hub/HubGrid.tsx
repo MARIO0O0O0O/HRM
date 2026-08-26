@@ -12,13 +12,13 @@ import {
   CreditCard,
   Shield,
   ArrowRight,
-  Calculator,
   CheckCircle2,
   Phone,
   Send,
   HeartHandshake
 } from 'lucide-react'
 import HubModal from '@/components/hub/HubModal'
+import PagaNestedPortalModal from '@/components/hub/PagaNestedPortalModal'
 
 export interface HubTile {
   id: string
@@ -117,20 +117,10 @@ const hubTiles: HubTile[] = [
 export default function HubGrid() {
   const [activeTileId, setActiveTileId] = useState<string | null>(null)
 
-  // PAGA Calculator State
-  const [employees, setEmployees] = useState<number>(12)
-  const [payPeriods, setPayPeriods] = useState<number>(26)
-  const [violationsPerPeriod, setViolationsPerPeriod] = useState<number>(1)
-
   // Intake Form State
   const [intakeSubmitted, setIntakeSubmitted] = useState<boolean>(false)
 
   const activeTile = hubTiles.find((t) => t.id === activeTileId)
-
-  // PAGA Math
-  const initialPenaltyRate = 100 // $100 per initial violation
-  const maxExposure = employees * payPeriods * violationsPerPeriod * initialPenaltyRate
-  const reformedExposureAB2288 = Math.round(maxExposure * 0.15) // AB 2288 15% statutory reasonable-steps cap
 
   return (
     <div className="h-[100dvh] max-h-[100dvh] w-full flex flex-col bg-[#0a0a0a] text-zinc-100 overflow-hidden select-none">
@@ -156,11 +146,11 @@ export default function HubGrid() {
             Live System
           </span>
           <a
-            href="tel:6269996239"
+            href="tel:6267082220"
             className="text-xs font-bold text-zinc-300 hover:text-indigo-400 flex items-center gap-1 px-2.5 py-1 rounded-md bg-white/5 border border-white/10 transition-colors"
           >
             <Phone className="h-3 w-3 text-indigo-400" />
-            <span className="hidden sm:inline">626-999-6239</span>
+            <span className="hidden sm:inline">626-708-2220</span>
           </a>
         </div>
       </header>
@@ -218,101 +208,9 @@ export default function HubGrid() {
         >
           {/* 1. PAGA Risk Center Modal */}
           {activeTile.id === 'paga-risk' && (
-            <div className="space-y-6">
-              <div className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-4 text-xs text-amber-200 leading-relaxed">
-                <strong className="font-bold block text-amber-300 text-sm mb-1">AB 2288 PAGA Reform Active</strong>
-                Under AB 2288/SB 92, reasonable-steps caps are 15% (pre-notice reasonable steps) and 30% (post-notice cure) for California employers who maintain proactive compliance or cure technical paystub/break violations.
-              </div>
-
-              {/* Interactive Calculator */}
-              <div className="bg-[#161616] border border-white/10 rounded-xl p-4 sm:p-5 space-y-4">
-                <h4 className="text-xs font-bold text-zinc-200 uppercase tracking-wider flex items-center gap-2">
-                  <Calculator className="h-4 w-4 text-amber-400" />
-                  Statutory Penalty Estimator
-                </h4>
-
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
-                  <div>
-                    <label className="block text-zinc-400 font-semibold mb-1">Non-Exempt Employees</label>
-                    <input
-                      type="number"
-                      min={1}
-                      max={500}
-                      value={employees}
-                      onChange={(e) => setEmployees(Math.max(1, parseInt(e.target.value) || 0))}
-                      className="w-full bg-zinc-900 border border-white/10 rounded-lg px-3 py-2 text-zinc-100 font-bold focus:border-amber-500 outline-none"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-zinc-400 font-semibold mb-1">Pay Periods / Year</label>
-                    <input
-                      type="number"
-                      min={12}
-                      max={52}
-                      value={payPeriods}
-                      onChange={(e) => setPayPeriods(Math.max(1, parseInt(e.target.value) || 0))}
-                      className="w-full bg-zinc-900 border border-white/10 rounded-lg px-3 py-2 text-zinc-100 font-bold focus:border-amber-500 outline-none"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-zinc-400 font-semibold mb-1">Violations / Period</label>
-                    <input
-                      type="number"
-                      min={1}
-                      max={10}
-                      value={violationsPerPeriod}
-                      onChange={(e) => setViolationsPerPeriod(Math.max(1, parseInt(e.target.value) || 0))}
-                      className="w-full bg-zinc-900 border border-white/10 rounded-lg px-3 py-2 text-zinc-100 font-bold focus:border-amber-500 outline-none"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-3 border-t border-white/10">
-                  <div className="bg-zinc-900 p-3 rounded-lg border border-red-500/20">
-                    <span className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider block">Un-Cured Max Exposure</span>
-                    <span className="text-lg font-black text-red-400">${maxExposure.toLocaleString()}</span>
-                  </div>
-                  <div className="bg-zinc-900 p-3 rounded-lg border border-emerald-500/20">
-                    <span className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider block">Cured Capped Penalty (AB 2288)</span>
-                    <span className="text-lg font-black text-emerald-400">${reformedExposureAB2288.toLocaleString()}</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* 60-Day Cure Rules Checklist */}
-              <div className="space-y-3">
-                <h4 className="text-xs font-bold text-zinc-300 uppercase tracking-wider">Statutory 60-Day Cure Steps</h4>
-                <ul className="space-y-2 text-xs text-zinc-400">
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-amber-400 shrink-0 mt-0.5" />
-                    <span>Audit payroll records immediately upon LWDA notice receipt.</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-amber-400 shrink-0 mt-0.5" />
-                    <span>Provide corrected itemized paystubs for all affected current & former employees.</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-amber-400 shrink-0 mt-0.5" />
-                    <span>Submit official Cure Proposal to LWDA and employee counsel within 60 calendar days.</span>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="pt-2 flex flex-wrap gap-2 justify-end">
-                <Link
-                  href="/programs/paga-defense"
-                  className="inline-flex items-center gap-2 bg-zinc-800 text-zinc-200 border border-white/10 font-bold px-4 py-2 rounded-lg text-xs hover:bg-zinc-700 transition-colors"
-                >
-                  Explore PAGA Defense Portal <ArrowRight className="h-3.5 w-3.5" />
-                </Link>
-                <Link
-                  href="/paga-calculator"
-                  className="inline-flex items-center gap-2 bg-amber-500 text-zinc-950 font-bold px-4 py-2 rounded-lg text-xs hover:bg-amber-400 transition-colors"
-                >
-                  Full PAGA Exposure Calculator <ArrowRight className="h-3.5 w-3.5" />
-                </Link>
-              </div>
-            </div>
+            <PagaNestedPortalModal
+              onOpenBooking={() => setActiveTileId('booking-scheduling')}
+            />
           )}
 
           {/* 2. AI & Automation Governance Modal */}
@@ -446,11 +344,11 @@ export default function HubGrid() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
                       <label className="block text-zinc-400 font-semibold mb-1">Email</label>
-                      <input required type="email" defaultValue="mario_espindola@outlook.com" className="w-full bg-zinc-900 border border-white/10 rounded-lg px-3 py-2 text-zinc-100 outline-none focus:border-rose-500" />
+                      <input required type="email" defaultValue="info@mario00.com" className="w-full bg-zinc-900 border border-white/10 rounded-lg px-3 py-2 text-zinc-100 outline-none focus:border-rose-500" />
                     </div>
                     <div>
                       <label className="block text-zinc-400 font-semibold mb-1">Phone Number</label>
-                      <input required type="tel" defaultValue="626-999-6239" className="w-full bg-zinc-900 border border-white/10 rounded-lg px-3 py-2 text-zinc-100 outline-none focus:border-rose-500" />
+                      <input required type="tel" defaultValue="626-708-2220" className="w-full bg-zinc-900 border border-white/10 rounded-lg px-3 py-2 text-zinc-100 outline-none focus:border-rose-500" />
                     </div>
                   </div>
 
@@ -506,7 +404,7 @@ export default function HubGrid() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div className="bg-[#161616] p-4 rounded-xl border border-white/10 space-y-1">
                   <span className="text-[10px] font-bold text-blue-400 uppercase tracking-wider block">Zelle Handle</span>
-                  <p className="text-sm font-mono text-zinc-100 font-bold select-all">mario_espindola@outlook.com</p>
+                  <p className="text-sm font-mono text-zinc-100 font-bold select-all">info@mario00.com</p>
                 </div>
 
                 <div className="bg-[#161616] p-4 rounded-xl border border-white/10 space-y-1">

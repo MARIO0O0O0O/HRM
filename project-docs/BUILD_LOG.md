@@ -28,5 +28,7 @@ Format per entry: `[date] Task [number] — [PASS/FAIL] — [one-sentence summar
 2026-08-25 — Task 017 — PASS — Executed review, merge, and deployment audit; merged agent/antigravity-016 into phase-1-foundation; verified 15/15 test files (23/23 tests) and clean 64/64 static page build.
 2026-08-26 — TASK-007-hub-spokes — PASS — Built zero-scroll (100dvh) 8-tile Hub grid and 3-Tier Compliance Spokes directory with internal scroll modals; 15/15 test files passed and 64/64 static pages compiled clean.
 2026-08-26 — Task 008 — PASS — Built PAGA Defense Readiness & Cure Portal (/programs/paga-defense) with embedded calculator, AB 2288 15%/30% caps, 60-day cure SOPs, quiz, and validation links; 16/16 test files passed and 66/66 static pages compiled clean.
+2026-08-26 — TASK-008-paga-nested-portal — PASS — Refactored PAGA Risk Center modal into multi-tier nested portal (Tier 1 Educational Hub, Sub-View A Calculator, Sub-View B Compliance Checklist) with contact sweep; 17/17 test files passed and 66/66 static pages compiled clean.
+
 
 

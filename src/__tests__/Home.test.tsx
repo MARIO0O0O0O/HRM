@@ -11,12 +11,12 @@ describe('Homepage Component', () => {
     expect(screen.getAllByText('CalBizHR')[0]).toBeDefined()
 
     // Check all 6 persistent hub tiles
-    expect(screen.getByText('PAGA Risk Center')).toBeDefined()
-    expect(screen.getByText('AI & Automation Governance')).toBeDefined()
-    expect(screen.getByText('Legal Insights & Blog')).toBeDefined()
-    expect(screen.getByText('Founder Bio & Defense Mission')).toBeDefined()
-    expect(screen.getByText('Advisory Intake & Booking')).toBeDefined()
-    expect(screen.getByText('Payments & Defense Fund')).toBeDefined()
+    expect(screen.getByText('PAGA Risk')).toBeDefined()
+    expect(screen.getByText('AI Lab')).toBeDefined()
+    expect(screen.getByText('Briefings')).toBeDefined()
+    expect(screen.getByText('Founder Bio')).toBeDefined()
+    expect(screen.getByText('Intake')).toBeDefined()
+    expect(screen.getByText('Retainers')).toBeDefined()
 
     // Check high-contrast badges
     expect(screen.getByText('LAW & RISK')).toBeDefined()

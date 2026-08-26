@@ -1,83 +1,55 @@
-# Task 013 Report: Workplace Violence Prevention (WVPP) & Injury & Illness Prevention (IIPP) Program Hubs
+# TASK-013 Completion Report: Persistent Edge Drawer, Visual Cards & 1-2 Word Hub
 
-**Status**: PASS  
-**Date**: 2026-08-25  
-**Agent**: Antigravity (Solo Primary Build Agent)  
+**Task**: TASK-013 Persistent Edge Drawer, Visual Spoke Cards & 1-2 Word Hub  
+**Working Branch**: `agent/edge-drawer-013`  
+**Target Branch**: `phase-1-foundation`  
+**Date**: 2026-08-26  
 
 ---
 
 ## 1. Executive Summary
-
-Built out two full compliance program hubs using the exact pattern established in Task 008:
-1. **Workplace Violence Prevention Program (SB 553 / WVPP)**: Created `/programs/workplace-violence-prevention`, wired `PreviewPanel` to `programsSeed.WVPP`, and embedded free interactive tools (`KnowledgeQuiz`, `TrainingCycleCalculator`).
-2. **Injury & Illness Prevention Program (Cal/OSHA IIPP + Heat Illness Prevention)**: Created `/programs/injury-illness-prevention`, embedded Heat Illness Prevention (Title 8 CCR § 3395) as a nested subtopic, wired `PreviewPanel` to `programsSeed.IIPP`, and embedded free interactive tools (`SelfAssessmentQuiz`, `ProgressChecklist`, `TrainingCycleCalculator`).
-3. **Sidebar Updates**: Removed "coming soon" / placeholder styling for both WVPP and IIPP in [Sidebar.tsx](file:///data/data/com.termux/files/home/HRM/src/components/layout/Sidebar.tsx).
-4. **Main Programs Grid**: Enabled `live: true` for both programs on `/programs` ([src/app/programs/page.tsx](file:///data/data/com.termux/files/home/HRM/src/app/programs/page.tsx)).
+Task TASK-013 refactored the primary Hub grid titles to high-impact 1-2 word labels and updated the Spokes Drawer into a persistent edge-anchored collapsible drawer. All 3 visual spoke cards feature color-coded statutory accents, multi-level accordion plumbing, and statutory detail modal popups.
 
 ---
 
-## 2. Implementation Details
+## 2. Scope & Key Implementation Details
 
-### Part A: Workplace Violence Prevention (SB 553 / WVPP)
-- **Route**: `/programs/workplace-violence-prevention` ([src/app/programs/workplace-violence-prevention/page.tsx](file:///data/data/com.termux/files/home/HRM/src/app/programs/workplace-violence-prevention/page.tsx))
-- **Card Architecture**:
-  1. `<ProgramSummaryCard program={program} />`
-  2. Inventory Cards (3 Cards): Written Plan Requirements, Violent Incident Log & Recordkeeping, Training Requirements.
-  3. Free Tools & Compliance Checklist Zone: Embedded `KnowledgeQuiz` (wvppKnowledgeQuiz) and `TrainingCycleCalculator`.
-  4. Real Validation Links:
-     - Cal. Lab. Code § 6401.9 Full Statutory Text (`https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=6401.9`)
-     - Cal/OSHA WVPP General Industry Guidance (`https://www.dir.ca.gov/dosh/dosh_publications/wvpp.html`)
-     - Cal/OSHA Model WVPP Template & Fact Sheets (`https://www.dir.ca.gov/dosh/Workplace-Violence.html`)
-  5. Legal Disclaimer: Rendered `<LegalDisclaimer />`.
+1. **1-2 Word Hub Tile Labels (`HubGrid.tsx`)**:
+   - Refactored the zero-scroll 6-tile grid titles:
+     - Tile 1: **PAGA Risk** (`LAW & RISK` — AB 2288 penalty calculator & cure rules)
+     - Tile 2: **AI Lab** (`CRD RULES` — CRD automated decision rules & policy suite)
+     - Tile 3: **Briefings** (`BRIEFINGS` — California Labor Code briefings & blog)
+     - Tile 4: **Founder Bio** (`LEADERSHIP` — Mario Espindola, MPA mission & background)
+     - Tile 5: **Intake** (`CONSULTATION` — Direct 30-min consultation & diagnostic intake)
+     - Tile 6: **Retainers** (`PAY & SUPPORT` — Client retainers & P2P handles)
 
-### Part B: Injury & Illness Prevention (Cal/OSHA IIPP + Heat Illness Prevention)
-- **Route**: `/programs/injury-illness-prevention` ([src/app/programs/injury-illness-prevention/page.tsx](file:///data/data/com.termux/files/home/HRM/src/app/programs/injury-illness-prevention/page.tsx))
-- **Nested Heat Illness Subtopic**: Heat Illness Prevention (Title 8 CCR § 3395) integrated as a dedicated nested subtopic card covering water, shade (80°F), high-heat protocols (95°F), 15-min cool-down rest breaks, and acclimatization.
-- **Card Architecture**:
-  1. `<ProgramSummaryCard program={program} />`
-  2. Inventory Cards (4 Cards):
-     - The 8 Required IIPP Elements (8 CCR § 3203(a)(1)-(8))
-     - Hazard Identification & Correction Log
-     - Cal/OSHA Recordkeeping (Form 300 / 300A Log)
-     - Heat Illness Prevention (8 CCR § 3395)
-  3. Free Tools & Compliance Checklist Zone: Embedded `SelfAssessmentQuiz` (iipp), `ProgressChecklist` (iippHazardCategories), and `TrainingCycleCalculator`.
-  4. Real Validation Links:
-     - Title 8 CCR § 3203 IIPP Standard Text (`https://www.dir.ca.gov/title8/3203.html`)
-     - Title 8 CCR § 3395 Heat Illness Prevention Standard (`https://www.dir.ca.gov/title8/3395.html`)
-     - Cal. Lab. Code § 6401.7 IIPP Statutory Mandate (`https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=6401.7`)
-     - Cal/OSHA eTool: IIPP (`https://www.dir.ca.gov/dosh/etools/iiap/index.htm`)
-  5. Legal Disclaimer: Rendered `<LegalDisclaimer />`.
+2. **Persistent Edge Drawer (`Sidebar.tsx`)**:
+   - **Collapsible Edge Mode**: Edge drawer includes an expand/collapse toggle (`ChevronLeft` / `ChevronRight`). When collapsed (`w-16`), a vertical edge icon strip displays color-coded badges for all 3 cards (`ShieldCheck`, `DollarSign`, `UserCheck`). Clicking any icon expands to full drawer mode (`w-80 lg:w-84`).
+   - **Mobile Drawer**: Toggling the mobile bar opens a slide-over sheet drawer (`Sheet`).
+
+3. **Visual Spoke Cards & Statutory Accents**:
+   - **Card 1: Safety & Prevention (Emerald Accent)**: Harassment Prevention (SB 1343 / FEHA), Workplace Violence Prevention (SB 553 / LC §6401.9), Cal/OSHA Safety (Title 8 CCR §3203).
+   - **Card 2: Wage & Hour (Cyan Accent)**: Paystubs & Wage Statements (LC §226), Meal & Rest Periods (LC §226.7 / §512), Timekeeping & Classification (IWC Orders).
+   - **Card 3: Employee Lifecycle (Purple Accent)**: Hiring & Onboarding (LC §2810.5), Protected Leaves & Accommodations (CFRA / ADA), Terminations & Final Pay (LC §§201–203).
 
 ---
 
-## 3. Verification Data & Literal Quoted Output
+## 3. Verification Output
 
-### A. Sidebar Link Verification
-Verified [Sidebar.tsx](file:///data/data/com.termux/files/home/HRM/src/components/layout/Sidebar.tsx#L37-L40):
-```tsx
-      { label: 'Harassment Prevention', href: '/programs/harassment-prevention' },
-      { label: 'Workplace Violence Prevention', href: '/programs/workplace-violence-prevention' },
-      { label: 'Injury & Illness Prevention', href: '/programs/injury-illness-prevention' },
-```
-All three Safety & Prevention sidebar entries are active links wired to `handlePreviewProgram(code)` opening `PreviewPanel`.
+1. **Vitest Unit Test Suite**:
+   - Command: `node /data/data/com.termux/files/home/.HRM_internal/node_modules/vitest/vitest.mjs run`
+   - Result: **19/19 test files passed (38/38 tests)**.
+   - Verified `SpokesDrawer.test.tsx` (6 tests) and `Home.test.tsx` (1 test).
 
-### B. Production Build Output
-Quoted output from `node_modules/next/dist/bin/next build`:
-```text
- ✓ Compiled successfully in 25.0s
-   Linting and checking validity of types     ✓ Linting and checking validity of types 
-   Collecting page data                       ✓ Collecting page data 
- ✓ Generating static pages (59/59)
-   Collecting build traces                    ✓ Collecting build traces 
-   Finalizing page optimization               ✓ Finalizing page optimization 
-
-Route (app)                                                      Size  First Load JS
-├ ○ /programs/injury-illness-prevention                      10.4 kB         448 kB
-├ ○ /programs/workplace-violence-prevention                  9.82 kB         444 kB
-```
+2. **Next.js Production Build**:
+   - Command: `node /data/data/com.termux/files/home/.HRM_internal/node_modules/next/dist/bin/next build`
+   - Result: **66/66 static pages compiled clean**.
+   - Exit code: 0.
 
 ---
 
-## Conclusion
-
-Task 013 complete and verified with clean 59/59 static page build.
+## 4. Self-Check Verification Gate
+- [x] Dedicated branch `agent/edge-drawer-013` created off `phase-1-foundation`.
+- [x] Hub grid titles updated to 1-2 word labels (PAGA Risk, AI Lab, Briefings, Founder Bio, Intake, Retainers).
+- [x] Edge drawer collapse/expand toggle implemented on desktop and mobile sheet verified.
+- [x] Completion report written to `project-docs/reports/013_REPORT.md` and `project-docs/BUILD_LOG.md` updated.

@@ -8,6 +8,7 @@ import {
   UserCheck,
   ChevronDown,
   ChevronRight,
+  ChevronLeft,
   FileText,
   Layers,
   PanelLeft,
@@ -385,6 +386,7 @@ export const spokesCardsData: SpokeCard[] = [
 ]
 
 export default function Sidebar() {
+  const [isCollapsed, setIsCollapsed] = useState(false)
   const [openCards, setOpenCards] = useState<Record<string, boolean>>({
     'workplace-safety-prevention': true,
     'wage-hour-defense': true,
@@ -455,31 +457,77 @@ export default function Sidebar() {
         </Sheet>
       </div>
 
-      {/* Desktop Persistent Sidebar (Visible >=1024px / >=lg) */}
-      <aside className="hidden lg:flex flex-col w-80 lg:w-84 shrink-0 bg-[#0c0c0c] border-r border-white/10 h-[calc(100vh-65px)] sticky top-[65px] overflow-hidden select-none">
-        {/* Header */}
-        <div className="px-4 py-3 border-b border-white/10 bg-[#111111] flex items-center justify-between shrink-0 h-[48px]">
-          <div className="flex items-center gap-2">
-            <Layers className="h-4 w-4 text-indigo-400" />
-            <h2 className="text-xs font-bold uppercase tracking-wider text-zinc-200">
-              Compliance Spokes
-            </h2>
-          </div>
-          <span className="text-[10px] font-bold uppercase tracking-wider text-indigo-400 bg-indigo-500/10 border border-indigo-500/20 px-2 py-0.5 rounded-full">
-            3-Tier Accordion
-          </span>
+      {/* Desktop Persistent Edge Drawer (Visible >=1024px / >=lg) */}
+      <aside
+        className={cn(
+          'hidden lg:flex flex-col shrink-0 bg-[#0c0c0c] border-r border-white/10 h-[calc(100vh-65px)] sticky top-[65px] overflow-hidden select-none transition-all duration-300',
+          isCollapsed ? 'w-16' : 'w-80 lg:w-84'
+        )}
+      >
+        {/* Edge Header with Expand/Collapse Toggle */}
+        <div className="px-3 py-3 border-b border-white/10 bg-[#111111] flex items-center justify-between shrink-0 h-[48px]">
+          {!isCollapsed && (
+            <div className="flex items-center gap-2 min-w-0">
+              <Layers className="h-4 w-4 text-indigo-400 shrink-0" />
+              <h2 className="text-xs font-bold uppercase tracking-wider text-zinc-200 truncate">
+                Compliance Spokes
+              </h2>
+            </div>
+          )}
+          <button
+            type="button"
+            onClick={() => setIsCollapsed(!isCollapsed)}
+            className="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-zinc-400 hover:text-zinc-200 transition-colors mx-auto lg:mx-0 cursor-pointer"
+            title={isCollapsed ? 'Expand Edge Drawer' : 'Collapse Edge Drawer'}
+            aria-label={isCollapsed ? 'Expand Edge Drawer' : 'Collapse Edge Drawer'}
+          >
+            {isCollapsed ? (
+              <ChevronRight className="h-4 w-4 text-indigo-400" />
+            ) : (
+              <ChevronLeft className="h-4 w-4 text-zinc-400" />
+            )}
+          </button>
         </div>
 
-        {/* 3 Modular Cards Canvas */}
-        <div className="flex-1 overflow-y-auto p-3 space-y-3 scrollbar-thin scrollbar-thumb-zinc-800 scrollbar-track-transparent">
-          <SidebarContent
-            openCards={openCards}
-            openAreas={openAreas}
-            toggleCard={toggleCard}
-            toggleArea={toggleArea}
-            onSelectMandate={handleOpenMandate}
-          />
-        </div>
+        {/* Collapsed Edge Icon Strip */}
+        {isCollapsed ? (
+          <div className="flex-1 p-2 space-y-4 flex flex-col items-center pt-4 bg-[#0a0a0a]">
+            {spokesCardsData.map((card) => {
+              const CardIcon = card.icon
+              const accentColor = {
+                emerald: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20 hover:bg-emerald-500/20',
+                cyan: 'text-cyan-400 bg-cyan-500/10 border-cyan-500/20 hover:bg-cyan-500/20',
+                purple: 'text-purple-400 bg-purple-500/10 border-purple-500/20 hover:bg-purple-500/20',
+              }[card.accentColor]
+
+              return (
+                <button
+                  key={card.id}
+                  type="button"
+                  onClick={() => setIsCollapsed(false)}
+                  className={cn(
+                    'p-2.5 rounded-xl border transition-all cursor-pointer hover:scale-105',
+                    accentColor
+                  )}
+                  title={`Expand ${card.title}`}
+                >
+                  <CardIcon className="h-5 w-5" />
+                </button>
+              )
+            })}
+          </div>
+        ) : (
+          /* Expanded 3 Modular Cards Canvas */
+          <div className="flex-1 overflow-y-auto p-3 space-y-3 scrollbar-thin scrollbar-thumb-zinc-800 scrollbar-track-transparent">
+            <SidebarContent
+              openCards={openCards}
+              openAreas={openAreas}
+              toggleCard={toggleCard}
+              toggleArea={toggleArea}
+              onSelectMandate={handleOpenMandate}
+            />
+          </div>
+        )}
       </aside>
 
       {/* Mandate Detail Modal Sheet */}

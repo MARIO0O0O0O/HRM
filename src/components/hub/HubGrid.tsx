@@ -33,7 +33,7 @@ export interface HubTile {
 const hubTiles: HubTile[] = [
   {
     id: 'paga-risk',
-    title: 'PAGA Risk Center',
+    title: 'PAGA Risk',
     subtitle: 'AB 2288 Penalty Calculator & Cure Rules',
     badge: 'LAW & RISK',
     icon: Scale,
@@ -43,7 +43,7 @@ const hubTiles: HubTile[] = [
   },
   {
     id: 'ai-automation',
-    title: 'AI & Automation Governance',
+    title: 'AI Lab',
     subtitle: 'CRD Decision Rules & Policy Architect',
     badge: 'CRD RULES',
     icon: Sparkles,
@@ -53,7 +53,7 @@ const hubTiles: HubTile[] = [
   },
   {
     id: 'legal-insights',
-    title: 'Legal Insights & Blog',
+    title: 'Briefings',
     subtitle: 'California Labor Code Briefings',
     badge: 'BRIEFINGS',
     icon: BookOpen,
@@ -63,7 +63,7 @@ const hubTiles: HubTile[] = [
   },
   {
     id: 'founder-bio',
-    title: 'Founder Bio & Defense Mission',
+    title: 'Founder Bio',
     subtitle: 'Mario Espindola, MPA Profile & Mission',
     badge: 'LEADERSHIP',
     icon: UserCheck,
@@ -73,7 +73,7 @@ const hubTiles: HubTile[] = [
   },
   {
     id: 'advisory-intake',
-    title: 'Advisory Intake & Booking',
+    title: 'Intake',
     subtitle: 'Direct Consultation & Diagnostic Intake',
     badge: 'CONSULTATION',
     icon: Calendar,
@@ -83,7 +83,7 @@ const hubTiles: HubTile[] = [
   },
   {
     id: 'payments-fund',
-    title: 'Payments & Defense Fund',
+    title: 'Retainers',
     subtitle: 'Client Retainers & Defense Campaign',
     badge: 'PAY & SUPPORT',
     icon: CreditCard,

@@ -51,4 +51,19 @@ describe('3-Card Spokes Drawer Multi-Level Accordion Architecture', () => {
     // Check Wage & Hour Compliance Areas
     expect(screen.getAllByText('Paystubs & Wage Statements (LC §226)')[0]).toBeDefined()
   })
+
+  it('collapses and expands persistent edge drawer when toggle button is clicked', () => {
+    render(<Sidebar />)
+
+    const toggleBtn = screen.getAllByLabelText('Collapse Edge Drawer')[0]
+    expect(toggleBtn).toBeDefined()
+
+    // Collapse Edge Drawer
+    fireEvent.click(toggleBtn)
+    expect(screen.getAllByLabelText('Expand Edge Drawer')[0]).toBeDefined()
+
+    // Expand Edge Drawer
+    fireEvent.click(screen.getAllByLabelText('Expand Edge Drawer')[0])
+    expect(screen.getAllByLabelText('Collapse Edge Drawer')[0]).toBeDefined()
+  })
 })

@@ -124,6 +124,12 @@ pagination), hub tiles resized shorter to preserve zero-scroll, plus full-bleed 
 on each of the 6 hub tiles (notch or contrast-overlay title treatment). Can run parallel to or after
 Phase 5 — no file overlap with Phase 5's scope.
 
+**New scope (not in original 5-phase plan):** `project-docs/tasks/TASK-023-wooden-drawer.md` —
+SPOKES drawer redesign. Closed state becomes 3 stacked titled notches instead of 1 tab. Open state:
+drawer panel + 3 category cards restyled as ornate wooden boxes (gold hinges/latch, leather strap).
+**Explicitly scoped to the drawer only** — confirmed with founder this doesn't extend to the rest of
+the site's Navy/Gold brand system. No file overlap with Phase 5 or TASK-022.
+
 **Housekeeping note (not blocking):** this repo has two parallel task-numbering conventions —
 `0XX_descriptive_name.md` (pre-existing, covers hub tile content / bio / contact / payment fixes,
 unrelated to this rebuild) and `TASK-0XX-descriptive-name.md` (this rebuild's convention, used since

@@ -218,7 +218,7 @@ Date: ${date}
                   <span className="font-bold flex items-center gap-1.5">
                     <FileText className="h-3.5 w-3.5" /> {policies[type].title}
                   </span>
-                  <span className="text-[10px] text-zinc-500 line-clamp-1">{policies[type].lawRef}</span>
+                  <span className="text-xs text-zinc-500 line-clamp-2">{policies[type].lawRef}</span>
                 </button>
               ))}
             </div>

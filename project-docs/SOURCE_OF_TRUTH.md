@@ -114,9 +114,10 @@ tracked below for a real accuracy pass later.
 Killed `/programs/*` (with 301 redirects), retired old `/spokes/[slug]` service stubs (with redirects),
 fixed title tags & marquee duplication bugs, trimmed top nav to 7 items. 20/20 test files passed, 78/78 static pages compiled clean.
 
-**Phase 5: IN PROGRESS (started 2026-08-26)**
-Task committed: `project-docs/tasks/TASK-021-phase5-polish.md`. Final phase — readability fixes,
-imagery where feasible, full click-through QA across all 12 pages. No content/citation changes.
+**Phase 5: ✅ COMPLETE — merged/pushed 2026-08-26.** TASK-021.
+Bumped sub-12px badges/text to 12px min, removed forced single-line truncation in AI Policy Wizard, generated & integrated 3 custom hero banners for Level-2 category hubs, verified sitewide QA. 20/20 test files passed, 78/78 static pages compiled clean.
+
+**🎉 ALL 5 ROADMAP PHASES ARE 100% COMPLETE.**
 
 **Housekeeping note (not blocking):** this repo has two parallel task-numbering conventions —
 `0XX_descriptive_name.md` (pre-existing, covers hub tile content / bio / contact / payment fixes,

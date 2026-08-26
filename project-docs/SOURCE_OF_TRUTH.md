@@ -97,16 +97,21 @@ Sized for long, autonomous single-session execution — not fragmented into many
 
 ## 5. CURRENT STATUS
 
-**Phase 1: IN PROGRESS (restarted 2026-08-26)**
+**Phase 1: ✅ COMPLETE — merged, verified live 2026-08-26.**
+Brand system (Navy/Gold + Playfair/Source Sans/JetBrains Mono), persistent global shell, 3 real-Link
+drawer cards, 3 Level-2 placeholder routes. TASK-014.
 
-- First attempt (TASK-011, TASK-013) reverted — deviated from spec (see BUILD_LOG for detail). Root
-  cause: chat-pasted prompt was reinterpreted by the executor instead of being committed as a task
-  file first. Process fixed — see AGENTS.md.
-- Corrected task file: `project-docs/tasks/TASK-014-phase1-foundation.md`
-- Baseline restored to commit `89592fc` state (pre-TASK-011) for: `Sidebar.tsx`, `Header.tsx`,
-  `HubGrid.tsx`, related tests. Everything else (business plan docs, other app code) untouched.
+**Phase 2: IN PROGRESS (started 2026-08-26)**
+Task committed: `project-docs/tasks/TASK-017-phase2-level2-hubs.md`. Builds out the 3 Level-2 pages
+with real category-overview content + tools links, and creates 9 Level-3 placeholder routes.
 
-**Phases 2–5:** Not started.
+**Phases 3–5:** Not started.
+
+**Housekeeping note (not blocking):** this repo has two parallel task-numbering conventions —
+`0XX_descriptive_name.md` (pre-existing, covers hub tile content / bio / contact / payment fixes,
+unrelated to this rebuild) and `TASK-0XX-descriptive-name.md` (this rebuild's convention, used since
+TASK-007). Reconcile/consolidate at some point — not urgent, just don't let a planning agent confuse
+the two queues.
 
 ---
 

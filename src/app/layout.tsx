@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, DM_Sans, DM_Mono } from "next/font/google";
+import { Playfair_Display, Source_Sans_3, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Sidebar from "@/components/layout/Sidebar";
@@ -13,15 +13,14 @@ const playfair = Playfair_Display({
   subsets: ["latin"],
 });
 
-const dmSans = DM_Sans({
-  variable: "--font-dmsans",
+const sourceSans = Source_Sans_3({
+  variable: "--font-sourcesans",
   subsets: ["latin"],
 });
 
-const dmMono = DM_Mono({
-  variable: "--font-dmmono",
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrainsmono",
   subsets: ["latin"],
-  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
@@ -86,9 +85,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${playfair.variable} ${dmSans.variable} ${dmMono.variable} h-full antialiased dark`}
+      className={`${playfair.variable} ${sourceSans.variable} ${jetbrainsMono.variable} h-full antialiased dark`}
     >
-      <body className="min-h-full flex flex-col bg-[#0a0a0a] text-zinc-50">
+      <body className="min-h-full flex flex-col bg-[#1A2D4D] text-zinc-100 font-sans">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}

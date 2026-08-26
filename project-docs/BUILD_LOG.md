@@ -50,3 +50,6 @@ Format per entry: `[date] Task [number] — [PASS/FAIL] — [one-sentence summar
   or Gemini as planning instance).
 - Corrected task committed: `project-docs/tasks/TASK-014-phase1-foundation.md`. Ready for
   Antigravity to execute directly from the repo — no chat-paste step this time.
+
+2026-08-26 — TASK-014-phase1-foundation — PASS — Rebuilt global shell and brand system (Navy #1A2D4D + Gold #B5933C, Playfair Display/Source Sans 3/JetBrains Mono typography); implemented persistent SPOKES drawer pinned edge tab with 3 category cards as real navigable Links; created 3 placeholder hub routes (/spokes/safety-prevention, /spokes/wage-hour, /spokes/lifecycle-admin); 19/19 test files passed (34/34 tests) and 69/69 static pages compiled clean.
+

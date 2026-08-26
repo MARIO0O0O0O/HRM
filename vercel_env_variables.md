@@ -1,0 +1,3 @@
+NEXT_PUBLIC_SUPABASE_URL=https://ljxachdmbaidqkocgnpt.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=sb_publishable_ynl0O9USuqRpz47JlbYnRQ_HxG_qlqG
+SUPABASE_SERVICE_ROLE_KEY=<paste your service_role key here>

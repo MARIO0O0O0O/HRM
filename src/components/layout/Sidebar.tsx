@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import {
-  PanelLeft,
   ShieldCheck,
   DollarSign,
   UserCheck,
@@ -11,9 +10,11 @@ import {
   ChevronRight,
   FileText,
   Layers,
-  Wrench
+  Wrench,
+  ArrowRight,
+  ExternalLink
 } from 'lucide-react'
-import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from '@/components/ui/sheet'
+import { Sheet, SheetContent, SheetTitle, SheetDescription } from '@/components/ui/sheet'
 import { cn } from '@/lib/utils'
 import HubModal from '@/components/hub/HubModal'
 
@@ -40,6 +41,8 @@ export interface ComplianceArea {
 export interface SpokeCategory {
   id: string
   title: string
+  badge: string
+  description: string
   icon: typeof ShieldCheck
   areas: ComplianceArea[]
 }
@@ -48,6 +51,8 @@ export const spokes3TierData: SpokeCategory[] = [
   {
     id: 'safety-prevention',
     title: 'Safety & Workplace Prevention',
+    badge: '3 Compliance Areas',
+    description: 'Cal/OSHA IIPP, SB 553 Workplace Violence, and SB 1343 Harassment Prevention Toolkits.',
     icon: ShieldCheck,
     areas: [
       {
@@ -157,6 +162,8 @@ export const spokes3TierData: SpokeCategory[] = [
   {
     id: 'wage-hour-defense',
     title: 'Wage & Hour Defense',
+    badge: '3 Compliance Areas',
+    description: 'Paystub LC §226 itemizations, PAGA 60-day cure SOPs, and Meal & Rest break workflows.',
     icon: DollarSign,
     areas: [
       {
@@ -232,6 +239,8 @@ export const spokes3TierData: SpokeCategory[] = [
   {
     id: 'employee-lifecycle-admin',
     title: 'Employee Lifecycle Admin',
+    badge: '2 Compliance Areas',
+    description: 'Onboarding LC §2810.5 notices, Form I-9, final pay LC §§201-203, and KYR toolkits.',
     icon: UserCheck,
     areas: [
       {
@@ -307,20 +316,15 @@ export const spokes3TierData: SpokeCategory[] = [
 ]
 
 export default function Sidebar() {
-  const [openCategories, setOpenCategories] = useState<Record<string, boolean>>({
-    'safety-prevention': true,
-    'wage-hour-defense': true,
-    'employee-lifecycle-admin': true,
-  })
+  const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(null)
   const [openAreas, setOpenAreas] = useState<Record<string, boolean>>({
     'sb553-wvpp': true,
     'paystubs-lc226': true,
+    'onboarding-lc28105': true,
   })
   const [activeModalItem, setActiveModalItem] = useState<SpokeDetailItem | null>(null)
 
-  const toggleCategory = (id: string) => {
-    setOpenCategories((prev) => ({ ...prev, [id]: !prev[id] }))
-  }
+  const selectedCategory = spokes3TierData.find((c) => c.id === selectedCategoryId)
 
   const toggleArea = (id: string) => {
     setOpenAreas((prev) => ({ ...prev, [id]: !prev[id] }))
@@ -332,72 +336,173 @@ export default function Sidebar() {
 
   return (
     <>
-      {/* Mobile Drawer Trigger Bar */}
-      <div className="md:hidden flex items-center justify-between px-4 py-3 bg-[#111111] border-b border-white/10 shrink-0">
-        <div className="flex items-center gap-2">
-          <Layers className="h-4 w-4 text-indigo-400" />
-          <span className="text-xs font-bold uppercase tracking-wider text-zinc-300">
-            3-Tier Spokes Directory
-          </span>
-        </div>
-        <Sheet>
-          <SheetTrigger className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600/20 text-indigo-400 border border-indigo-500/30 hover:bg-indigo-600/30 transition-colors cursor-pointer">
-            <PanelLeft className="h-3.5 w-3.5" />
-            <span>Explore Spokes</span>
-          </SheetTrigger>
-          <SheetContent side="left" className="w-[85vw] sm:w-[380px] p-0 bg-[#0c0c0c] border-r border-white/10 flex flex-col">
-            <div className="p-4 border-b border-white/10 bg-[#111111]">
-              <SheetTitle className="text-base font-bold text-zinc-100 flex items-center gap-2">
-                <ShieldCheck className="h-5 w-5 text-indigo-400" />
-                Compliance Spokes
-              </SheetTitle>
-              <SheetDescription className="text-xs text-zinc-400 mt-1">
-                3-Tier Hierarchy: Category → Area → Subjects & Services
-              </SheetDescription>
-            </div>
-            <div className="flex-1 overflow-y-auto p-4">
-              <SidebarNavContent
-                openCategories={openCategories}
-                openAreas={openAreas}
-                toggleCategory={toggleCategory}
-                toggleArea={toggleArea}
-                onSelectItem={handleOpenDetail}
-              />
-            </div>
-          </SheetContent>
-        </Sheet>
-      </div>
-
-      {/* Desktop Persistent Sidebar */}
-      <aside className="hidden md:flex flex-col w-72 lg:w-80 shrink-0 bg-[#0c0c0c] border-r border-white/10 h-[calc(100vh-65px)] sticky top-[65px] overflow-hidden">
-        <div className="px-4 py-3.5 border-b border-white/10 bg-[#111111] flex items-center justify-between">
+      {/* 3-Card Spokes Canvas Container */}
+      <aside className="w-full md:w-72 lg:w-80 shrink-0 bg-[#0c0c0c] border-r border-white/10 flex flex-col h-full overflow-hidden select-none">
+        {/* Header */}
+        <div className="px-4 py-3 border-b border-white/10 bg-[#111111] flex items-center justify-between shrink-0 h-[48px]">
           <div className="flex items-center gap-2">
             <Layers className="h-4 w-4 text-indigo-400" />
             <h2 className="text-xs font-bold uppercase tracking-wider text-zinc-200">
-              Spokes Directory
+              Compliance Spokes
             </h2>
           </div>
-          <span className="text-[10px] font-bold uppercase tracking-widest text-indigo-400 bg-indigo-500/10 border border-indigo-500/20 px-2 py-0.5 rounded-full">
-            3-Tier
+          <span className="text-[10px] font-bold uppercase tracking-wider text-indigo-400 bg-indigo-500/10 border border-indigo-500/20 px-2 py-0.5 rounded-full">
+            3-Card Drawer
           </span>
         </div>
 
-        <div className="flex-1 overflow-y-auto p-4 scrollbar-thin scrollbar-thumb-zinc-800 scrollbar-track-transparent">
-          <SidebarNavContent
-            openCategories={openCategories}
-            openAreas={openAreas}
-            toggleCategory={toggleCategory}
-            toggleArea={toggleArea}
-            onSelectItem={handleOpenDetail}
-          />
+        {/* 3 Persistent Category Cards */}
+        <div className="flex-1 p-3 space-y-3 overflow-y-auto">
+          {spokes3TierData.map((category) => {
+            const CategoryIcon = category.icon
+
+            return (
+              <div
+                key={category.id}
+                className="group relative bg-[#141414] hover:bg-[#181818] border border-white/10 hover:border-indigo-500/30 rounded-xl p-3.5 transition-all duration-200 cursor-pointer flex flex-col justify-between"
+                onClick={() => setSelectedCategoryId(category.id)}
+              >
+                <div className="space-y-1.5">
+                  <div className="flex items-center justify-between">
+                    <div className="p-2 rounded-lg bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 group-hover:scale-105 transition-transform">
+                      <CategoryIcon className="h-4 w-4" />
+                    </div>
+                    <span className="text-[9px] font-bold uppercase tracking-wider text-indigo-400 bg-indigo-500/10 border border-indigo-500/20 px-2 py-0.5 rounded-full">
+                      {category.badge}
+                    </span>
+                  </div>
+
+                  <h3 className="text-xs font-bold text-zinc-100 group-hover:text-indigo-300 transition-colors">
+                    {category.title}
+                  </h3>
+                  <p className="text-[11px] text-zinc-400 line-clamp-2 leading-snug">
+                    {category.description}
+                  </p>
+                </div>
+
+                <div className="mt-3 pt-2 border-t border-white/5 flex items-center justify-between text-[10px] font-bold text-zinc-400 group-hover:text-indigo-400 transition-colors">
+                  <span>Explore Spokes ({category.areas.length} Areas)</span>
+                  <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </div>
+            )
+          })}
         </div>
       </aside>
+
+      {/* Slide-Over Drawer Sheet */}
+      {selectedCategory && (
+        <Sheet open={!!selectedCategoryId} onOpenChange={(open) => !open && setSelectedCategoryId(null)}>
+          <SheetContent side="right" className="w-[90vw] sm:w-[480px] p-0 bg-[#0d0d0d] border-l border-white/10 flex flex-col text-zinc-100">
+            {/* Sheet Header */}
+            <div className="p-4 sm:p-5 border-b border-white/10 bg-[#141414] space-y-1">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <selectedCategory.icon className="h-5 w-5 text-indigo-400" />
+                  <SheetTitle className="text-sm font-bold text-zinc-100">
+                    {selectedCategory.title}
+                  </SheetTitle>
+                </div>
+                <span className="text-[10px] font-bold uppercase tracking-wider text-indigo-400 bg-indigo-500/10 px-2.5 py-0.5 rounded-full border border-indigo-500/20">
+                  {selectedCategory.badge}
+                </span>
+              </div>
+              <SheetDescription className="text-xs text-zinc-400">
+                {selectedCategory.description}
+              </SheetDescription>
+            </div>
+
+            {/* Sheet Content: 3-Tier Hierarchy */}
+            <div className="flex-1 overflow-y-auto p-4 space-y-4">
+              {selectedCategory.areas.map((area) => {
+                const isAreaOpen = openAreas[area.id] !== false
+
+                return (
+                  <div key={area.id} className="bg-[#141414] border border-white/10 rounded-xl overflow-hidden">
+                    {/* Area Accordion Header */}
+                    <button
+                      type="button"
+                      onClick={() => toggleArea(area.id)}
+                      className="w-full p-3.5 flex items-center justify-between text-left hover:bg-white/5 transition-colors"
+                    >
+                      <div className="space-y-0.5 min-w-0 pr-2">
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs font-bold text-zinc-100 truncate">{area.title}</span>
+                          <span className="text-[9px] font-bold text-indigo-400 bg-indigo-500/10 px-1.5 py-0.5 rounded border border-indigo-500/20 shrink-0">
+                            {area.badge}
+                          </span>
+                        </div>
+                        <p className="text-[10px] font-mono text-zinc-400">{area.lawRef}</p>
+                      </div>
+                      {isAreaOpen ? (
+                        <ChevronDown className="h-4 w-4 text-indigo-400 shrink-0" />
+                      ) : (
+                        <ChevronRight className="h-4 w-4 text-zinc-500 shrink-0" />
+                      )}
+                    </button>
+
+                    {/* Area Subjects & Service */}
+                    {isAreaOpen && (
+                      <div className="p-3.5 pt-0 border-t border-white/5 space-y-3 bg-[#101010]">
+                        {/* Subjects List */}
+                        <div className="space-y-1.5 pt-2">
+                          <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-400 block">
+                            Compliance Subjects ({area.subjects.length})
+                          </span>
+                          {area.subjects.map((sub) => (
+                            <button
+                              key={sub.id}
+                              type="button"
+                              onClick={() => handleOpenDetail(sub)}
+                              className="w-full p-2.5 rounded-lg bg-[#161616] hover:bg-[#1c1c1c] border border-white/5 hover:border-white/10 text-left transition-colors flex items-start justify-between gap-2"
+                            >
+                              <div className="space-y-0.5 min-w-0">
+                                <span className="text-xs font-bold text-zinc-200 block truncate">{sub.title}</span>
+                                <p className="text-[11px] text-zinc-400 line-clamp-1">{sub.description}</p>
+                              </div>
+                              <FileText className="h-3.5 w-3.5 text-zinc-500 shrink-0 mt-0.5" />
+                            </button>
+                          ))}
+                        </div>
+
+                        {/* Highlighted Service Card */}
+                        <div className="p-3 rounded-lg bg-indigo-500/10 border border-indigo-500/20 space-y-2">
+                          <div className="flex items-center justify-between">
+                            <span className="text-[10px] font-bold uppercase tracking-wider text-indigo-300 flex items-center gap-1">
+                              <Wrench className="h-3 w-3 text-indigo-400" /> Toolkit & Implementation Service
+                            </span>
+                            <span className="text-[10px] font-mono text-indigo-400 font-bold">{area.service.lawRef}</span>
+                          </div>
+                          <h4 className="text-xs font-bold text-zinc-100">{area.service.title}</h4>
+                          <p className="text-[11px] text-zinc-300 leading-snug">{area.service.description}</p>
+                          {area.service.actionHref && (
+                            <div className="pt-1 flex justify-end">
+                              <Link
+                                href={area.service.actionHref}
+                                className="inline-flex items-center gap-1.5 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-[11px] px-3 py-1.5 rounded-md transition-colors"
+                              >
+                                <span>{area.service.actionLabel || 'Access Resource'}</span>
+                                <ExternalLink className="h-3 w-3" />
+                              </Link>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )
+              })}
+            </div>
+          </SheetContent>
+        </Sheet>
+      )}
 
       {/* Detail Modal Overlay */}
       {activeModalItem && (
         <HubModal
           title={activeModalItem.title}
           subtitle={activeModalItem.lawRef ? `Legal Citation: ${activeModalItem.lawRef}` : undefined}
+          badge={activeModalItem.type === 'service' ? 'SERVICE' : 'SUBJECT'}
           isOpen={!!activeModalItem}
           onClose={() => setActiveModalItem(null)}
         >
@@ -436,108 +541,5 @@ export default function Sidebar() {
         </HubModal>
       )}
     </>
-  )
-}
-
-function SidebarNavContent({
-  openCategories,
-  openAreas,
-  toggleCategory,
-  toggleArea,
-  onSelectItem,
-}: {
-  openCategories: Record<string, boolean>
-  openAreas: Record<string, boolean>
-  toggleCategory: (id: string) => void
-  toggleArea: (id: string) => void
-  onSelectItem: (item: SpokeDetailItem) => void
-}) {
-  return (
-    <div className="flex flex-col gap-5">
-      {spokes3TierData.map((category) => {
-        const isCatOpen = openCategories[category.id] !== false
-        const CategoryIcon = category.icon
-
-        return (
-          <div key={category.id} className="flex flex-col gap-2">
-            {/* Tier 1: Category */}
-            <button
-              type="button"
-              onClick={() => toggleCategory(category.id)}
-              className="flex items-center justify-between w-full px-2.5 py-1.5 rounded-lg text-left text-xs font-bold uppercase tracking-wider text-zinc-400 hover:text-zinc-100 hover:bg-white/5 transition-colors group"
-            >
-              <div className="flex items-center gap-2">
-                <CategoryIcon className="h-4 w-4 text-indigo-400 group-hover:scale-110 transition-transform" />
-                <span className="truncate">{category.title}</span>
-              </div>
-              {isCatOpen ? (
-                <ChevronDown className="h-3.5 w-3.5 text-zinc-500 shrink-0" />
-              ) : (
-                <ChevronRight className="h-3.5 w-3.5 text-zinc-500 shrink-0" />
-              )}
-            </button>
-
-            {/* Tier 2: Compliance Areas */}
-            {isCatOpen && (
-              <div className="pl-3 flex flex-col gap-2 border-l border-white/10 ml-2">
-                {category.areas.map((area) => {
-                  const isAreaOpen = openAreas[area.id] !== false
-
-                  return (
-                    <div key={area.id} className="flex flex-col gap-1">
-                      <button
-                        type="button"
-                        onClick={() => toggleArea(area.id)}
-                        className="flex items-center justify-between w-full px-2 py-1 rounded-md text-left text-xs font-semibold text-zinc-300 hover:text-white hover:bg-white/5 transition-colors"
-                      >
-                        <div className="flex items-center gap-1.5 min-w-0">
-                          {isAreaOpen ? (
-                            <ChevronDown className="h-3 w-3 text-indigo-400 shrink-0" />
-                          ) : (
-                            <ChevronRight className="h-3 w-3 text-zinc-500 shrink-0" />
-                          )}
-                          <span className="truncate">{area.title}</span>
-                        </div>
-                        <span className="text-[9px] font-bold text-indigo-400 bg-indigo-500/10 px-1.5 py-0.2 rounded border border-indigo-500/20 shrink-0 ml-1">
-                          {area.badge}
-                        </span>
-                      </button>
-
-                      {/* Tier 3: Subjects & Services */}
-                      {isAreaOpen && (
-                        <div className="pl-4 flex flex-col gap-1 my-0.5">
-                          {/* Subjects */}
-                          {area.subjects.map((sub) => (
-                            <button
-                              key={sub.id}
-                              type="button"
-                              onClick={() => onSelectItem(sub)}
-                              className="flex items-center gap-1.5 w-full text-left px-2 py-1 rounded text-[11px] font-medium text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/60 transition-colors"
-                            >
-                              <FileText className="h-3 w-3 text-zinc-500 shrink-0" />
-                              <span className="truncate">{sub.title}</span>
-                            </button>
-                          ))}
-
-                          {/* Service */}
-                          <button
-                            type="button"
-                            onClick={() => onSelectItem(area.service)}
-                            className="flex items-center gap-1.5 w-full text-left px-2 py-1 rounded text-[11px] font-semibold text-indigo-300 hover:text-indigo-200 hover:bg-indigo-500/10 transition-colors mt-0.5"
-                          >
-                            <Wrench className="h-3 w-3 text-indigo-400 shrink-0" />
-                            <span className="truncate">Service: {area.service.title}</span>
-                          </button>
-                        </div>
-                      )}
-                    </div>
-                  )
-                })}
-              </div>
-            )}
-          </div>
-        )
-      })}
-    </div>
   )
 }

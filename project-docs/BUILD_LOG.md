@@ -38,3 +38,15 @@ Format per entry: `[date] Task [number] — [PASS/FAIL] — [one-sentence summar
 
 
 
+
+## 2026-08-26 — Phase 1 restart (Claude, planning instance)
+- Reverted TASK-011/013 (unreviewed drawer/hub changes: brand never applied, cards remained
+  non-navigable buttons, per-category accent colors reintroduced, unplanned content shipped
+  including BETA banner and payment handles). Surgical file-level revert to 89592fc baseline —
+  business plan docs and other unrelated files untouched.
+- Root cause: chat-pasted prompt was reinterpreted by executor instead of being committed as a
+  task file first. Fixed in AGENTS.md — executor must now refuse to act on a bare chat prompt.
+- Added `project-docs/SOURCE_OF_TRUTH.md` as the canonical, agent-agnostic spec (usable by Claude
+  or Gemini as planning instance).
+- Corrected task committed: `project-docs/tasks/TASK-014-phase1-foundation.md`. Ready for
+  Antigravity to execute directly from the repo — no chat-paste step this time.

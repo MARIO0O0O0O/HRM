@@ -12,6 +12,20 @@ execute a specific, already-written task file exactly as specified, you don't de
 If something is ambiguous or conflicts with the actual code you find, stop and note it in your report
 rather than guessing.
 
+**If you are ever given a prompt directly in chat, rather than pointed to an existing file in
+`project-docs/tasks/`, STOP. Do not reformat it into your own task file, do not blend it with other
+task files sitting in that folder, and do not begin executing it from chat.** Reply that you're
+waiting for it to be committed as a task file first. The planning instance (Claude) is responsible
+for committing every task file before it's handed to you — if one hasn't arrived yet, that's a
+process error to flag, not something to solve by improvising your own version of it. This rule
+exists because it failed once already (TASK-011/013, reverted 2026-08-26): a chat-pasted prompt got
+reinterpreted during "formalization" and picked up unrelated scope from neighboring task files.
+
+**Source of truth:** `project-docs/SOURCE_OF_TRUTH.md` is the canonical, always-current spec for site
+architecture, the phase roadmap, and current build status. If anything in a task file seems to
+conflict with it, `SOURCE_OF_TRUTH.md` wins — stop and flag the conflict rather than guessing which
+is right. This file is written to be usable by any planning agent (Claude or Gemini), not just one.
+
 ## Standing rules (every task, every time)
 
 1. **Branch, don't push directly.** Create `agent/antigravity-[task-number]` off `phase-1-foundation`,

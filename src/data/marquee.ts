@@ -18,17 +18,17 @@ export const marqueeCards: MarqueeCard[] = [
   { label: 'Mandatory Postings Checklist', href: '/tools/mandatory-postings', kind: 'Free Tool' },
   { label: 'AI Lab: Audit + Policy Drafter', href: '/ai-lab', kind: 'Free Tool' },
 
-  // Services / spokes
-  { label: 'HPP Compliance Hub (SB 1343)', href: '/programs/harassment-prevention', kind: 'Service' },
-  { label: 'HR Compliance Audit', href: '/spokes/compliance-audit', kind: 'Service' },
-  { label: 'Wage-and-Hour Cleanup', href: '/spokes/labor-law', kind: 'Service' },
-  { label: 'Handbooks & Policies', href: '/spokes/handbook', kind: 'Service' },
-  { label: 'AI-Powered HR Consulting', href: '/spokes/ai-services', kind: 'Service' },
-  { label: 'Manager Support', href: '/spokes/manager-support', kind: 'Service' },
-  { label: 'Harassment Prevention', href: '/spokes/harassment-prevention', kind: 'Service' },
-  { label: 'Workplace Violence Prevention', href: '/spokes/workplace-violence', kind: 'Service' },
-  { label: 'Onboarding Systems', href: '/spokes/onboarding', kind: 'Service' },
-  { label: 'Ongoing HR Support', href: '/spokes/hr-support', kind: 'Service' },
+  // Services / Spokes
+  { label: 'Harassment Prevention (SB 1343)', href: '/spokes/safety-prevention/harassment-prevention', kind: 'Service' },
+  { label: 'Workplace Violence (SB 553)', href: '/spokes/safety-prevention/workplace-violence', kind: 'Service' },
+  { label: 'Cal/OSHA IIPP Safety', href: '/spokes/safety-prevention/osha-iipp', kind: 'Service' },
+  { label: 'Paystubs & Wage Statements', href: '/spokes/wage-hour/paystubs-wage-statements', kind: 'Service' },
+  { label: 'Meal & Rest Breaks', href: '/spokes/wage-hour/meal-rest-breaks', kind: 'Service' },
+  { label: 'Timekeeping & Classification', href: '/spokes/wage-hour/timekeeping-classification', kind: 'Service' },
+  { label: 'Hiring & Onboarding', href: '/spokes/lifecycle-admin/onboarding', kind: 'Service' },
+  { label: 'Protected Leaves (CFRA/ADA)', href: '/spokes/lifecycle-admin/leaves', kind: 'Service' },
+  { label: 'Terminations & Final Pay', href: '/spokes/lifecycle-admin/terminations', kind: 'Service' },
+  { label: 'Solutions Catalog', href: '/services', kind: 'Service' },
 
   // Done-for-you toolkits
   { label: 'HPP Toolkit (SB 1343)', href: '/tools/hpp', kind: 'Toolkit' },

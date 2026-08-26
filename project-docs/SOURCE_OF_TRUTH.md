@@ -110,14 +110,11 @@ and marked pending compliance review. Build independently re-verified after hotf
 first pass — self-report said clean, wasn't). 3 unverified dollar figures softened, citations kept,
 tracked below for a real accuracy pass later.
 
-**Phase 4: IN PROGRESS (started 2026-08-26)**
-Task committed: `project-docs/tasks/TASK-020-phase4-cleanup.md`. Kills `/programs/*` (with redirects),
-retires the 9 old `/spokes/[slug]` service stubs (with redirects, 2 map directly to new Level-3
-pages, rest fold into `/services`), fixes title-tag/ticker-duplication bugs, trims top nav to 7 items.
+**Phase 4: ✅ COMPLETE — merged/pushed 2026-08-26.** TASK-020.
+Killed `/programs/*` (with 301 redirects), retired old `/spokes/[slug]` service stubs (with redirects),
+fixed title tags & marquee duplication bugs, trimmed top nav to 7 items. 20/20 test files passed, 78/78 static pages compiled clean.
 
-**Phase 5:** Not started.
-
-**Phases 4–5:** Not started.
+**Phase 5: Polish — NOT STARTED.** Awaiting task file commit for Phase 5.
 
 **Housekeeping note (not blocking):** this repo has two parallel task-numbering conventions —
 `0XX_descriptive_name.md` (pre-existing, covers hub tile content / bio / contact / payment fixes,

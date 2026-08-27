@@ -74,3 +74,11 @@ overlap recurring across TASK-024/025/026). Measured exact values via Playwright
 Verified zero overlap + zero-scroll via screenshot before merging. Known tradeoff: tiles are narrower now
 since the wider padding applies to all 3 rows uniformly, not just row 1 -- functional, not broken, flagged
 as a possible fast-follow if the founder wants full-width rows 2-3 back.
+
+## 2026-08-26 — Vertical notches + larger video-ready banner (Claude, direct fix)
+Founder correction: notches reverted from horizontal (TASK-026) back to vertical rotated-text tabs,
+stacked top-to-bottom. Banner grown to 260/320px min-height (from ~110/135px) specifically to support
+future video content -- added mediaType/videoUrl to the BannerAd data model and wired conditional
+image/video rendering into BannerCarousel (no visible change for today's text-only placeholder ads).
+Notch position measured directly via Playwright at both viewport breakpoints rather than estimated --
+368px mobile, 434px sm:. Verified zero overlap + zero-scroll before merge.

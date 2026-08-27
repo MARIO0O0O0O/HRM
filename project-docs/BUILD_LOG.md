@@ -100,3 +100,15 @@ desktop, separate trigger button on mobile), distinct from the permanent utility
 Blog, Fee Schedule, Contact, Client Portal) which stay always directly visible, never hidden. Legal
 stays its own separate grouped dropdown. Verified via screenshot: desktop dropdown open, mobile with
 both triggers visible and the Spokes sheet opened, before merging.
+
+## 2026-08-26 — Real PayPal donation flow live (Claude, direct implementation)
+Replaced the fake "select amount → Confirm → manually go Venmo/Zelle it" flow in the
+Defense Fund campaign sub-view (Payments & Defense Fund hub tile) with founder's real
+PayPal Hosted Button (ID 8K8H5FDQJ444U). Donors now get an actual working PayPal/Venmo/
+card checkout, plus a "Scan to Donate" QR code. P2P handles kept as a collapsed alternate
+for those who prefer them. Verified via Playwright (iframe render check, zero console
+errors) at 412px and 1440px before merging.
+
+Flagged, not addressed: the surrounding modal still uses pre-rebrand indigo/fuchsia
+colors (see earlier "Defense Fund language" flag) — separate cleanup task, not in scope
+for this change.

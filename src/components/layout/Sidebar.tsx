@@ -54,7 +54,7 @@ export default function Sidebar() {
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
       {/* Closed state: 3 Thin Horizontal Wooden Notches pinned to left screen edge below header */}
-      <div className="fixed left-0 top-[calc(var(--header-height,64px)+8px)] z-50 flex flex-col gap-1.5 select-none pointer-events-auto max-w-[130px] sm:max-w-[150px]">
+      <div className="fixed left-0 top-[268px] sm:top-[300px] z-50 flex flex-col gap-1.5 select-none pointer-events-auto max-w-[130px] sm:max-w-[150px]">
         {spokeCategoryCards.map((card) => {
           const NotchIcon = card.icon
           return (

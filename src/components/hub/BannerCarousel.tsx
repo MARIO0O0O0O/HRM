@@ -63,7 +63,7 @@ export default function BannerCarousel() {
       onFocus={() => setIsPaused(true)}
       onBlur={() => setIsPaused(false)}
     >
-      <div className="max-w-7xl mx-auto pl-12 pr-3.5 sm:pl-16 sm:pr-6 py-2.5 sm:py-3.5 flex flex-col justify-between min-h-[110px] sm:min-h-[135px]">
+      <div className="max-w-7xl mx-auto pl-[136px] pr-3.5 sm:pl-[156px] sm:pr-6 py-2.5 sm:py-3.5 flex flex-col justify-between min-h-[110px] sm:min-h-[135px]">
         {/* Banner Content Container */}
         <Link
           href={currentAd.href}

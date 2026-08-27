@@ -53,19 +53,19 @@ export default function Sidebar() {
 
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
-      {/* Closed state: 3 Stacked Titled Notches pinned to left screen edge */}
-      <div className="fixed left-0 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-1.5 select-none pointer-events-auto">
+      {/* Closed state: 3 Thin Horizontal Wooden Notches pinned to left screen edge below header */}
+      <div className="fixed left-0 top-[268px] sm:top-[300px] z-50 flex flex-col gap-1.5 select-none pointer-events-auto max-w-[130px] sm:max-w-[150px]">
         {spokeCategoryCards.map((card) => {
           const NotchIcon = card.icon
           return (
             <SheetTrigger
               key={`trigger-${card.id}`}
-              className="group flex items-center gap-2 px-3 py-2 bg-gradient-to-r from-[#3b2416] via-[#2c1a0e] to-[#1e1008] text-amber-100 border-y border-r border-[#8c5a36] hover:border-[#b8860b] rounded-r-xl shadow-2xl transition-all duration-200 cursor-pointer hover:pl-4 text-left"
+              className="group flex items-center gap-1.5 px-2.5 py-1.5 bg-gradient-to-r from-[#3b2416] via-[#2c1a0e] to-[#1e1008] text-amber-100 border-y border-r border-[#8c5a36] hover:border-[#b8860b] rounded-r-lg shadow-xl transition-all duration-200 cursor-pointer hover:pl-3.5 text-left"
             >
-              {/* Gold Accent Strip */}
-              <div className="w-1 h-5 rounded-full bg-gradient-to-b from-[#d4af37] via-[#b8860b] to-[#8b6508] shrink-0" />
+              {/* Left Gold Brass Accent Strip */}
+              <div className="w-1 h-3.5 rounded-full bg-gradient-to-b from-[#d4af37] via-[#b8860b] to-[#8b6508] shrink-0" />
               <NotchIcon className="h-3.5 w-3.5 text-[#b8860b] group-hover:scale-110 transition-transform shrink-0" />
-              <span className="text-xs font-mono font-bold tracking-tight text-amber-100 truncate max-w-[130px] sm:max-w-none">
+              <span className="text-[11px] sm:text-xs font-mono font-bold tracking-tight text-amber-100 truncate">
                 {card.title}
               </span>
             </SheetTrigger>

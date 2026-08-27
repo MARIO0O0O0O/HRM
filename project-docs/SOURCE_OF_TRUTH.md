@@ -12,6 +12,11 @@ See "Planning Agent Protocol" at the bottom.
 
 ## 1. CONFIRMED SITE ARCHITECTURE
 
+**⚠️ SUPERSEDED 2026-08-26 — the drawer/notch system described below was removed entirely.**
+Founder decision: spokes and every other major destination now live as direct tabs in the global
+header instead. See Section 1A for the current architecture. Section 1's original 3-level drawer
+spec is kept below for historical context only — do not build against it.
+
 **Global shell — on every page, always:**
 - Header (always visible)
 - Footer (always visible)
@@ -39,6 +44,40 @@ See "Planning Agent Protocol" at the bottom.
 **Known open item (not blocking current roadmap):** Know Your Rights (SB 294) doesn't fit the
 3-card/9-program structure. Decision deferred — do not build it into any of the 9 slots without a
 new explicit decision recorded here first.
+
+---
+
+## 1A. CURRENT ARCHITECTURE — header-based navigation (2026-08-26 onward)
+
+**No drawer. No notches. Everything is a direct header tab.**
+
+The 9 Level-3 program pages and 3 Level-2 category pages built under the old drawer plan **still
+exist at the same URLs** (`/spokes/safety-prevention`, `/spokes/safety-prevention/harassment-prevention`,
+etc.) — only the *entry point* changed, not the page structure or content. Level-2 pages still show
+their 3 nested Level-3 program cards; Level-3 pages are still single comprehensive pages. That part
+of the original spec (Section 1's table) is still accurate for page structure — just ignore every
+reference to a drawer/notch as the way to reach them.
+
+**Header nav (`src/components/layout/Header.tsx`), desktop (`lg:` and up) and mobile (hamburger,
+below `lg:`) — same list, shared data source:**
+- Home
+- Safety & Prevention → `/spokes/safety-prevention` (direct link, not a dropdown — one click to the
+  category page, which itself lists the 3 nested programs)
+- Wage & Hour → `/spokes/wage-hour`
+- Lifecycle Admin → `/spokes/lifecycle-admin`
+- About (bio) → `/about`
+- Blog → `/blog`
+- Fee Schedule → `/pricing`
+- Contact → `/contact`
+- Client Portal → `/portal`
+- Legal (grouped dropdown on desktop, labeled section in mobile menu, not 3 flat tabs) → Privacy
+  Policy, Terms of Service, Accessibility
+- Book a Call → `/book` — kept as its own prominent CTA button, not a plain nav link
+
+**Known gap, not yet fixed:** `/privacy` and `/terms` still use the old pre-rebrand dark-indigo theme,
+not the Navy/Gold brand system. `/accessibility` (newly created to fix a previously-broken footer
+link) uses the correct current branding. Fixing `/privacy` and `/terms` to match is a reasonable
+future task, not done as part of this header change.
 
 ---
 

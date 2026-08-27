@@ -82,3 +82,14 @@ future video content -- added mediaType/videoUrl to the BannerAd data model and 
 image/video rendering into BannerCarousel (no visible change for today's text-only placeholder ads).
 Notch position measured directly via Playwright at both viewport breakpoints rather than estimated --
 368px mobile, 434px sm:. Verified zero overlap + zero-scroll before merge.
+
+## 2026-08-26 — Header nav overhaul, drawer removed entirely (Claude, direct implementation)
+Founder decision: replace the wooden drawer/notch system with direct header tabs. Header.tsx rebuilt
+with 9 nav items (Home, 3 spokes, About, Blog, Fee Schedule, Contact, Client Portal) + grouped Legal
+dropdown (Privacy/Terms/Accessibility) + Book a Call CTA button. Sidebar.tsx deleted, layout.tsx
+simplified. Fixed a pre-existing broken link: /accessibility was referenced in the footer but never
+existed as a route -- created it with correct Navy/Gold branding. Tile grid and banner padding
+reverted to normal now that no notch column needs space reserved. SOURCE_OF_TRUTH.md updated:
+Section 1 (old drawer spec) marked superseded, Section 1A added as the current architecture.
+Verified via screenshot at 1440px desktop and 412px mobile (hamburger menu opened and confirmed)
+before merging.

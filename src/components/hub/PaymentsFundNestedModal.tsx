@@ -1,19 +1,70 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import Image from 'next/image'
 import {
   CreditCard,
   HeartHandshake,
   ArrowLeft,
   ArrowRight,
-  CheckCircle2
+  QrCode
 } from 'lucide-react'
 import Link from 'next/link'
 
+// PayPal Hosted Buttons SDK — declared here since window.paypal has no built-in type
+declare global {
+  interface Window {
+    paypal?: {
+      HostedButtons: (config: { hostedButtonId: string }) => { render: (containerSelector: string) => void }
+    }
+  }
+}
+
+const PAYPAL_CLIENT_ID =
+  'BAAppu76hfAXUs56BPzvSG1Z0j-DWFecgjp4mBvYyLdNcQeFGhPPZoceDMPCru2fHjh2kaEjW3dkDdN_mI'
+const PAYPAL_HOSTED_BUTTON_ID = '8K8H5FDQJ444U'
+const PAYPAL_CONTAINER_ID = 'paypal-container-8K8H5FDQJ444U'
+const PAYPAL_SDK_SCRIPT_ID = 'paypal-hosted-buttons-sdk'
+
 export default function PaymentsFundNestedModal() {
   const [subView, setSubView] = useState<'tier1' | 'retainers' | 'campaign'>('tier1')
-  const [selectedContribution, setSelectedContribution] = useState<number | null>(null)
-  const [contributionSubmitted, setContributionSubmitted] = useState<boolean>(false)
+
+  // Load the PayPal SDK (once, cached across re-opens) and render the real Donate
+  // button whenever the Defense Fund sub-view becomes active. Manual DOM injection
+  // (rather than next/script) because this container mounts/unmounts every time the
+  // visitor navigates in and out of this modal sub-view, and we need the button to
+  // re-render each time — not just on first-ever page load.
+  useEffect(() => {
+    if (subView !== 'campaign') return
+
+    const container = document.getElementById(PAYPAL_CONTAINER_ID)
+    if (!container) return
+    container.innerHTML = '' // clear so PayPal doesn't stack duplicate buttons on re-open
+
+    function renderButton() {
+      window.paypal?.HostedButtons({ hostedButtonId: PAYPAL_HOSTED_BUTTON_ID }).render(
+        `#${PAYPAL_CONTAINER_ID}`
+      )
+    }
+
+    if (window.paypal) {
+      renderButton()
+      return
+    }
+
+    const existing = document.getElementById(PAYPAL_SDK_SCRIPT_ID)
+    if (existing) {
+      existing.addEventListener('load', renderButton, { once: true })
+      return
+    }
+
+    const script = document.createElement('script')
+    script.id = PAYPAL_SDK_SCRIPT_ID
+    script.src = `https://www.paypal.com/sdk/js?client-id=${PAYPAL_CLIENT_ID}&components=hosted-buttons&enable-funding=venmo&currency=USD`
+    script.async = true
+    script.onload = renderButton
+    document.body.appendChild(script)
+  }, [subView])
 
   return (
     <div className="space-y-6 text-zinc-100">
@@ -167,54 +218,63 @@ export default function PaymentsFundNestedModal() {
           <div className="space-y-4 text-xs text-zinc-300">
             <div className="bg-fuchsia-500/10 border border-fuchsia-500/20 p-4 rounded-xl space-y-2">
               <h4 className="font-bold text-fuchsia-300 text-sm">Small Business Compliance Defense Campaign</h4>
-              <p className="text-zinc-300 text-xs">Fund free California compliance toolkits and legal defense calculators for local small business owners.</p>
+              <p className="text-zinc-300 text-xs">Fund free California compliance toolkits and legal defense calculators for local small business owners. Typical contributions range $25&ndash;$100 &mdash; every amount helps.</p>
             </div>
 
-            {/* Contribution Buttons */}
-            <div className="space-y-2">
-              <label className="block text-zinc-400 font-semibold">Select Voluntary Contribution Amount</label>
-              <div className="grid grid-cols-3 gap-3">
-                {[25, 50, 100].map((amt) => (
-                  <button
-                    key={amt}
-                    type="button"
-                    onClick={() => setSelectedContribution(amt)}
-                    className={`py-3 rounded-xl font-black text-sm border transition-colors ${
-                      selectedContribution === amt
-                        ? 'bg-fuchsia-600/30 border-fuchsia-500 text-fuchsia-300'
-                        : 'bg-[#161616] border-white/10 text-zinc-300 hover:bg-zinc-800'
-                    }`}
-                  >
-                    ${amt}
-                  </button>
-                ))}
-              </div>
-            </div>
+            {/* Real PayPal Donate flow */}
+            <div className="bg-[#161616] border border-[#B5933C]/30 rounded-xl p-4 sm:p-5">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-5 sm:gap-6">
+                <div className="flex-1 min-w-0 w-full space-y-3 text-center sm:text-left">
+                  <div className="flex items-center gap-2 justify-center sm:justify-start text-[#B5933C] font-bold text-sm">
+                    <HeartHandshake className="h-4 w-4 shrink-0" />
+                    <span>Donate Securely via PayPal</span>
+                  </div>
+                  <p className="text-zinc-400 text-[11px] leading-relaxed">
+                    Choose your own amount at checkout. Card or PayPal balance accepted &mdash; processed directly by PayPal, no account required.
+                  </p>
+                  {/* PayPal renders its real "Donate Now" button into this container */}
+                  <div id={PAYPAL_CONTAINER_ID} className="w-full min-h-[42px]" />
+                </div>
 
-            {selectedContribution && !contributionSubmitted && (
-              <div className="bg-[#161616] p-4 rounded-xl border border-white/10 space-y-3">
-                <p className="text-zinc-300 font-medium">
-                  Sponsoring <strong>${selectedContribution}</strong> toward free California small business compliance tools.
-                </p>
-                <div className="flex gap-2">
-                  <button
-                    type="button"
-                    onClick={() => setContributionSubmitted(true)}
-                    className="flex-1 bg-fuchsia-600 hover:bg-fuchsia-500 text-white font-bold py-2.5 rounded-lg transition-colors text-xs"
-                  >
-                    Confirm & Send via Zelle / Venmo
-                  </button>
+                <div className="sm:shrink-0 flex flex-col items-center gap-1.5">
+                  <div className="bg-white rounded-lg p-2 border border-[#B5933C]/30">
+                    <Image
+                      src="/images/paypal-donate-qr.webp"
+                      alt="Scan to donate via PayPal"
+                      width={110}
+                      height={110}
+                      className="rounded"
+                    />
+                  </div>
+                  <span className="flex items-center gap-1 text-[10px] font-mono uppercase tracking-wider text-zinc-500">
+                    <QrCode className="h-3 w-3" /> Scan to Donate
+                  </span>
                 </div>
               </div>
-            )}
+            </div>
 
-            {contributionSubmitted && (
-              <div className="bg-emerald-500/10 border border-emerald-500/20 p-4 rounded-xl text-center space-y-2">
-                <CheckCircle2 className="h-6 w-6 text-emerald-400 mx-auto" />
-                <h4 className="font-bold text-emerald-300 text-sm">Thank You for Supporting Local Small Businesses!</h4>
-                <p className="text-zinc-300 text-xs">Send your ${selectedContribution} contribution to Zelle (<span className="font-mono text-zinc-100">info@mario00.com</span>) or Venmo (<span className="font-mono text-zinc-100">@marioo00</span>).</p>
+            {/* P2P handles retained as an alternate for donors who prefer them */}
+            <details className="group bg-[#161616] rounded-xl border border-white/10 overflow-hidden">
+              <summary className="cursor-pointer px-4 py-3 text-zinc-300 font-semibold text-xs flex items-center justify-between">
+                Prefer to send directly?
+                <span className="text-zinc-500 text-[10px] group-open:hidden">Show handles</span>
+                <span className="text-zinc-500 text-[10px] hidden group-open:inline">Hide handles</span>
+              </summary>
+              <div className="px-4 pb-4 grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div className="bg-[#0f0f0f] p-3 rounded-lg border border-white/10 space-y-1">
+                  <span className="text-[10px] font-bold text-blue-400 uppercase tracking-wider block">Zelle Handle</span>
+                  <p className="text-sm font-mono text-zinc-100 font-bold select-all">info@mario00.com</p>
+                </div>
+                <div className="bg-[#0f0f0f] p-3 rounded-lg border border-white/10 space-y-1">
+                  <span className="text-[10px] font-bold text-sky-400 uppercase tracking-wider block">Venmo Handle</span>
+                  <p className="text-sm font-mono text-zinc-100 font-bold select-all">@marioo00</p>
+                </div>
+                <div className="bg-[#0f0f0f] p-3 rounded-lg border border-white/10 space-y-1">
+                  <span className="text-[10px] font-bold text-emerald-400 uppercase tracking-wider block">Cash App Handle</span>
+                  <p className="text-sm font-mono text-zinc-100 font-bold select-all">10mario01</p>
+                </div>
               </div>
-            )}
+            </details>
           </div>
         </div>
       )}

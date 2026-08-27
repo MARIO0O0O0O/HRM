@@ -53,19 +53,23 @@ export default function Sidebar() {
 
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
-      {/* Closed state: 3 Stacked Titled Notches pinned to left screen edge */}
-      <div className="fixed left-0 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-1.5 select-none pointer-events-auto">
+      {/* Closed state: Tall 3-Segment Wooden Drawer Fronts pinned below header */}
+      <div className="fixed left-0 top-[calc(var(--header-height,64px)+8px)] z-50 flex flex-col justify-between h-[52vh] max-h-[440px] min-h-[300px] w-9 sm:w-10 select-none pointer-events-auto gap-2">
         {spokeCategoryCards.map((card) => {
           const NotchIcon = card.icon
           return (
             <SheetTrigger
               key={`trigger-${card.id}`}
-              className="group flex items-center gap-2 px-3 py-2 bg-gradient-to-r from-[#3b2416] via-[#2c1a0e] to-[#1e1008] text-amber-100 border-y border-r border-[#8c5a36] hover:border-[#b8860b] rounded-r-xl shadow-2xl transition-all duration-200 cursor-pointer hover:pl-4 text-left"
+              className="flex-1 w-full group relative flex flex-col items-center justify-center p-1.5 bg-gradient-to-r from-[#3b2416] via-[#2c1a0e] to-[#1e1008] text-amber-100 border-y border-r border-[#8c5a36] hover:border-[#b8860b] rounded-r-xl shadow-2xl transition-all duration-200 cursor-pointer text-center overflow-hidden hover:w-36 hover:z-50"
             >
-              {/* Gold Accent Strip */}
-              <div className="w-1 h-5 rounded-full bg-gradient-to-b from-[#d4af37] via-[#b8860b] to-[#8b6508] shrink-0" />
-              <NotchIcon className="h-3.5 w-3.5 text-[#b8860b] group-hover:scale-110 transition-transform shrink-0" />
-              <span className="text-xs font-mono font-bold tracking-tight text-amber-100 truncate max-w-[130px] sm:max-w-none">
+              {/* Left Metallic Gold Brass Accent Trim */}
+              <div className="absolute left-0 inset-y-1 w-1 rounded-r bg-gradient-to-b from-[#d4af37] via-[#b8860b] to-[#8b6508] shrink-0" />
+              
+              {/* Category Icon */}
+              <NotchIcon className="h-4 w-4 text-[#b8860b] group-hover:scale-110 transition-transform shrink-0 my-1" />
+              
+              {/* Vertical Title Label */}
+              <span className="writing-vertical text-[10px] sm:text-[11px] font-mono font-bold tracking-wider uppercase text-amber-100/90 group-hover:text-white truncate max-h-[80px]">
                 {card.title}
               </span>
             </SheetTrigger>

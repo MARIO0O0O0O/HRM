@@ -9,6 +9,7 @@
   --gold: #B5933C;
   --gold-dark: #8e722c;
   --gold-light: #d4b45a;
+  --header-height: 64px;
 }
 
 @theme {

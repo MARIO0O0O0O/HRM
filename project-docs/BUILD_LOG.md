@@ -93,3 +93,10 @@ reverted to normal now that no notch column needs space reserved. SOURCE_OF_TRUT
 Section 1 (old drawer spec) marked superseded, Section 1A added as the current architecture.
 Verified via screenshot at 1440px desktop and 412px mobile (hamburger menu opened and confirmed)
 before merging.
+
+## 2026-08-26 — Spokes split into dedicated menu (Claude, direct implementation)
+Founder refinement on the header nav: Spokes now live in their own dedicated menu (gold dropdown on
+desktop, separate trigger button on mobile), distinct from the permanent utility tabs (Home, About,
+Blog, Fee Schedule, Contact, Client Portal) which stay always directly visible, never hidden. Legal
+stays its own separate grouped dropdown. Verified via screenshot: desktop dropdown open, mobile with
+both triggers visible and the Spokes sheet opened, before merging.

@@ -58,21 +58,23 @@ their 3 nested Level-3 program cards; Level-3 pages are still single comprehensi
 of the original spec (Section 1's table) is still accurate for page structure — just ignore every
 reference to a drawer/notch as the way to reach them.
 
-**Header nav (`src/components/layout/Header.tsx`), desktop (`lg:` and up) and mobile (hamburger,
-below `lg:`) — same list, shared data source:**
-- Home
-- Safety & Prevention → `/spokes/safety-prevention` (direct link, not a dropdown — one click to the
-  category page, which itself lists the 3 nested programs)
-- Wage & Hour → `/spokes/wage-hour`
-- Lifecycle Admin → `/spokes/lifecycle-admin`
-- About (bio) → `/about`
-- Blog → `/blog`
-- Fee Schedule → `/pricing`
-- Contact → `/contact`
-- Client Portal → `/portal`
-- Legal (grouped dropdown on desktop, labeled section in mobile menu, not 3 flat tabs) → Privacy
-  Policy, Terms of Service, Accessibility
-- Book a Call → `/book` — kept as its own prominent CTA button, not a plain nav link
+**Header nav (`src/components/layout/Header.tsx`) — Spokes get their own dedicated menu, separate
+from the permanent utility tabs:**
+
+- **Spokes** — dedicated dropdown/sheet (gold-colored, icon-marked, first item in the desktop row /
+  its own trigger button on mobile), contains only: Safety & Prevention → `/spokes/safety-prevention`,
+  Wage & Hour → `/spokes/wage-hour`, Lifecycle Admin → `/spokes/lifecycle-admin`. Direct links, not a
+  further nested dropdown — one click to the category page, which lists the 3 nested programs.
+- **Permanent tabs** (always directly visible, desktop row or mobile's general hamburger — never
+  hidden behind the Spokes menu): Home, About, Blog, Fee Schedule (`/pricing`), Contact, Client Portal
+- **Legal** — grouped dropdown/section (Privacy Policy, Terms of Service, Accessibility), separate
+  from both Spokes and the permanent tabs
+- **Book a Call** — its own prominent CTA button, not a plain nav link
+
+**Mobile specifically:** two separate trigger buttons sit side by side in the header — a gold "Spokes"
+button (opens a dedicated sheet with just the 3 spoke links) and the general hamburger (opens a sheet
+with the permanent tabs + Legal + Book a Call). Do not merge these back into one menu — the whole
+point of this structure is keeping Spokes visually and functionally separate.
 
 **Known gap, not yet fixed:** `/privacy` and `/terms` still use the old pre-rebrand dark-indigo theme,
 not the Navy/Gold brand system. `/accessibility` (newly created to fix a previously-broken footer

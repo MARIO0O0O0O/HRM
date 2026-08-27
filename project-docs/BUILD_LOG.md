@@ -63,3 +63,14 @@ Format per entry: `[date] Task [number] — [PASS/FAIL] — [one-sentence summar
 2026-08-27 — TASK-025-rootcause-layout-fix — PASS — Fixed root-cause layout scroll by setting --header-height: 64px and calc(100dvh-64px) on HubGrid; built tall 3-segment wooden drawer front column below header with reserved left margin gutter (pl-12/pl-16) on HubGrid guaranteeing zero notch/tile overlap; 21/21 test files passed (45/45 tests) and 78/78 static pages compiled clean.
 2026-08-27 — TASK-026-banner-card-proportions — PASS — Rebuilt closed-state notches as 3 thin horizontal strips with non-rotated text; added reserved left margin gutter to BannerCarousel (pl-12/pl-16); scaled banner height to ~1 tile row and reduced tile card heights by half, preserving all 5 tile elements at zero-scroll 100dvh fit; 21/21 test files passed (45/45 tests) and 78/78 static pages compiled clean.
 
+
+## 2026-08-26 — Direct fix (Claude, took over per founder request)
+Founder reported no visible change after TASK-026; investigated and found the work was complete but
+unmerged (normal review gap, not a bug). Screenshotted TASK-026's branch directly and found the
+horizontal-notch and banner/card-ratio work was correct, but positioning still overlapped header/banner
+(broken --header-height CSS variable, referenced but never defined, silent 64px fallback) and tile row 1
+(notch's real width 130/150px exceeded the reserved grid padding of 48/64px -- true root cause of the
+overlap recurring across TASK-024/025/026). Measured exact values via Playwright and fixed both directly.
+Verified zero overlap + zero-scroll via screenshot before merging. Known tradeoff: tiles are narrower now
+since the wider padding applies to all 3 rows uniformly, not just row 1 -- functional, not broken, flagged
+as a possible fast-follow if the founder wants full-width rows 2-3 back.

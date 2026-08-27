@@ -141,7 +141,7 @@ export default function HubGrid() {
       <BannerCarousel />
 
       {/* Main 6-Tile Hub Grid (Compact ~half height per row, 2x3 on Mobile, 3x2 on Desktop, Zero-Scroll 100dvh) */}
-      <main className="flex-1 pl-[136px] pr-2.5 sm:pl-[156px] sm:pr-4 py-2 sm:py-3 grid grid-cols-2 md:grid-cols-3 grid-rows-3 md:grid-rows-2 gap-2 sm:gap-3 overflow-hidden">
+      <main className="flex-1 pl-10 pr-2.5 sm:pl-11 sm:pr-4 py-2 sm:py-3 grid grid-cols-2 md:grid-cols-3 grid-rows-3 md:grid-rows-2 gap-2 sm:gap-3 overflow-hidden">
         {hubTiles.map((tile) => {
           const TileIcon = tile.icon
 

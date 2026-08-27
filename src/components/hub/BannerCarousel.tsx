@@ -63,7 +63,30 @@ export default function BannerCarousel() {
       onFocus={() => setIsPaused(true)}
       onBlur={() => setIsPaused(false)}
     >
-      <div className="max-w-7xl mx-auto pl-[136px] pr-3.5 sm:pl-[156px] sm:pr-6 py-2.5 sm:py-3.5 flex flex-col justify-between min-h-[110px] sm:min-h-[135px]">
+      <div className="max-w-7xl mx-auto pl-4 pr-3.5 sm:pl-6 sm:pr-6 py-2.5 sm:py-3.5 flex flex-col justify-between gap-2 min-h-[260px] sm:min-h-[320px]">
+        {/* Media area: image or video, only renders when the current ad has one set. Text-only ads (all current placeholders) skip this entirely, preserving today's layout. */}
+        {(currentAd.videoUrl || currentAd.imageUrl) && (
+          <div className="relative w-full flex-1 min-h-[140px] sm:min-h-[190px] rounded-lg overflow-hidden bg-[#0f1c32] border border-[#B5933C]/20">
+            {currentAd.videoUrl ? (
+              <video
+                key={currentAd.id}
+                src={currentAd.videoUrl}
+                className="absolute inset-0 h-full w-full object-cover"
+                autoPlay
+                muted
+                loop
+                playsInline
+                aria-hidden="true"
+              />
+            ) : (
+              <img
+                src={currentAd.imageUrl!}
+                alt={currentAd.title}
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+            )}
+          </div>
+        )}
         {/* Banner Content Container */}
         <Link
           href={currentAd.href}

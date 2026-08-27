@@ -53,19 +53,19 @@ export default function Sidebar() {
 
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
-      {/* Closed state: 3 Thin Horizontal Wooden Notches pinned to left screen edge below header */}
-      <div className="fixed left-0 top-[268px] sm:top-[300px] z-50 flex flex-col gap-1.5 select-none pointer-events-auto max-w-[130px] sm:max-w-[150px]">
+      {/* Closed state: 3 Narrow Vertical Wooden Notches, stacked top-to-bottom, rotated title text, pinned to left screen edge */}
+      <div className="fixed left-0 top-[368px] sm:top-[434px] z-50 flex flex-col gap-1 select-none pointer-events-auto">
         {spokeCategoryCards.map((card) => {
           const NotchIcon = card.icon
           return (
             <SheetTrigger
               key={`trigger-${card.id}`}
-              className="group flex items-center gap-1.5 px-2.5 py-1.5 bg-gradient-to-r from-[#3b2416] via-[#2c1a0e] to-[#1e1008] text-amber-100 border-y border-r border-[#8c5a36] hover:border-[#b8860b] rounded-r-lg shadow-xl transition-all duration-200 cursor-pointer hover:pl-3.5 text-left"
+              className="group flex flex-col items-center justify-start gap-1.5 pt-2 pb-2.5 px-1 w-[30px] sm:w-[34px] bg-gradient-to-b from-[#3b2416] via-[#2c1a0e] to-[#1e1008] text-amber-100 border-y border-r border-[#8c5a36] hover:border-[#b8860b] rounded-r-lg shadow-xl transition-all duration-200 cursor-pointer hover:pr-1.5"
             >
-              {/* Left Gold Brass Accent Strip */}
-              <div className="w-1 h-3.5 rounded-full bg-gradient-to-b from-[#d4af37] via-[#b8860b] to-[#8b6508] shrink-0" />
+              {/* Top Gold Brass Accent Strip */}
+              <div className="h-1 w-3.5 rounded-full bg-gradient-to-r from-[#d4af37] via-[#b8860b] to-[#8b6508] shrink-0" />
               <NotchIcon className="h-3.5 w-3.5 text-[#b8860b] group-hover:scale-110 transition-transform shrink-0" />
-              <span className="text-[11px] sm:text-xs font-mono font-bold tracking-tight text-amber-100 truncate">
+              <span className="text-[10px] sm:text-[11px] font-mono font-bold tracking-tight text-amber-100 [writing-mode:vertical-rl] rotate-180 whitespace-nowrap py-0.5">
                 {card.title}
               </span>
             </SheetTrigger>

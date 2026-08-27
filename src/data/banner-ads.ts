@@ -5,6 +5,10 @@ export interface BannerAd {
   href: string
   badge: string
   imageUrl?: string | null
+  /** Media type for this slide. Defaults to 'image' when videoUrl is not set. */
+  mediaType?: 'image' | 'video'
+  /** Video source URL (mp4/webm). When set, mediaType should be 'video'. Rendered muted + looped, same as any autoplaying carousel media — no audio autoplay. */
+  videoUrl?: string | null
 }
 
 export const bannerAds: BannerAd[] = [

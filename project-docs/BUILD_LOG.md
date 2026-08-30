@@ -159,3 +159,18 @@ after that failed merge looked clean but was actually just building the unmerged
 checking `git log`/`git status` before trusting the build output, not by the build itself. Re-ran
 merge against the correct local branch name and independently reconfirmed both the merge commit and
 the resulting build before pushing.
+
+## 2026-08-30 -- TASK-029 merged: Fee schedule framework
+`/pricing` fully replaced -- old $99/$249/$599 subscription-tier content is gone. New structure:
+1 hourly service (General HR consulting) + 6 flat-fee trainings (the 3 founder-named categories --
+non-supervisor, supervisor, WVPP -- plus 3 sensible additions: IIPP/Cal-OSHA safety, wage and hour,
+onboarding/KYR). Every price reads from `src/data/fee-schedule.ts`, all `amount: null`, rendering as
+"Rate TBD" -- zero dollar figures anywhere, verified by independent grep, not just Antigravity's own
+test. Public footnote states the 20%-below-market launch framing without exposing the internal
+25%-premium/SQL-database strategy. Antigravity added its own dollar-figure regex test
+(`FeeSchedule.test.tsx`) as an extra safety net -- good instinct, matches project discipline.
+
+No task-file drift, clean report, correct STOP POINT deferral. Used the correct local branch
+reference for the merge this time (learned from TASK-028's silent no-op) -- confirmed merge commit
+in git log and rebuilt against the actual merged tree before pushing, not just trusting green build
+output.

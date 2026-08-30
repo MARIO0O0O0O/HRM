@@ -138,3 +138,22 @@ during the same pass.
 Known pre-existing issue, not caused by this task: /portal returns 500. Confirmed by checking out
 the pre-TASK-027 commit and reproducing the same 500 there. Route is now unlinked from all nav, so
 lower urgency, but still a real broken page if anyone hits it directly.
+
+## 2026-08-30 -- TASK-028 merged: Landing page compliance area cards
+All 8 compliance area cards now live on the homepage body, replacing the primary hub-tile grid's
+role. Harassment Prevention (teal) and Onboarding/KYR (coral) are ready with full copy, tags, and
+real links; the other 6 render as muted, non-clickable "coming soon" cards. Secondary hub-tile row
+("More from CalBizHR") relocated below the cards, trimmed from 6 to 4 tiles -- PAGA Risk Center and
+AI & Automation Governance removed as redundant with the new PAGA and AI Automation cards.
+
+No task-file drift this time (branch matched committed spec exactly -- contrast with TASK-027's
+GoFundMe gap). Antigravity included its own test updates and a completion report, correctly
+deferred final sign-off to the STOP POINT rather than claiming full completion.
+
+Process note for future sessions: first merge attempt silently no-op'd because it referenced a
+local git branch name that was never created (used `checkout -b antigravity-028-review origin/...`
+instead of a bare-name checkout, so `git merge agent/antigravity-028` had nothing to merge). Build
+after that failed merge looked clean but was actually just building the unmerged tree -- caught by
+checking `git log`/`git status` before trusting the build output, not by the build itself. Re-ran
+merge against the correct local branch name and independently reconfirmed both the merge commit and
+the resulting build before pushing.

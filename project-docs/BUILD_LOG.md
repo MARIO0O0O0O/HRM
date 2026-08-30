@@ -115,3 +115,24 @@ for this change.
 
 2026-08-30 — TASK-027 — PASS — Overhauled global shell: 2-bar Header with unified hamburger (7 main + 3 legal links), Support page (/support) with working PayPal donate flow & investment inquiry section, Free Resources Library placeholder (/library), and 4-column Footer grid; 20/20 test files passed (43/43 tests) and 57/57 static pages compiled clean.
 
+
+## 2026-08-30 -- TASK-027 merged: Global shell overhaul
+Header restructured to 2-bar layout (logo/tagline/hamburger, then phone/email/donate/book-a-call
+utility strip). Spokes dropdown deleted; its 3 category links preserved in the new Footer Explore
+column. Hamburger unified across breakpoints (desktop dropdown, mobile sheet), 7 items + Legal
+group, all with icons, Client Portal removed. Footer restructured to 4-col desktop / 2-col mobile
+grid; disclaimer block unchanged. New /support page built with two tracks: Community Support (real
+PayPal flow relocated from PaymentsFundNestedModal, plus GoFundMe as a second option) and Invest &
+Fund Platform Operations (vision statement, no payment mechanism -- email/contact CTAs only). New
+/library placeholder route.
+
+Gap caught during verification, not by trusting "task complete": Antigravity's branch was cut before
+the GoFundMe spec update landed on phase-1-foundation, so the actual code was missing it even though
+Antigravity had been told about it. Found via task-file diff (3-line gap) before checking the code,
+confirmed via grep on the real component, added directly, re-verified, then merged. Also fixed a
+minor aria-label capitalization inconsistency between the desktop and mobile menu triggers found
+during the same pass.
+
+Known pre-existing issue, not caused by this task: /portal returns 500. Confirmed by checking out
+the pre-TASK-027 commit and reproducing the same 500 there. Route is now unlinked from all nav, so
+lower urgency, but still a real broken page if anyone hits it directly.

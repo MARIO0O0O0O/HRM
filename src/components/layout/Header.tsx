@@ -133,7 +133,7 @@ export default function Header() {
                 render={
                   <button
                     className="p-2 text-zinc-300 hover:text-[#B5933C] transition-colors focus:outline-none min-h-[44px] min-w-[44px] flex items-center justify-center cursor-pointer"
-                    aria-label="Toggle Navigation Menu"
+                    aria-label="Toggle navigation menu"
                   >
                     <Menu className="h-6 w-6" />
                   </button>

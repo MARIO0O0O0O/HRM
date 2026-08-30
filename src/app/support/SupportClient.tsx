@@ -138,6 +138,25 @@ export default function SupportClient() {
             </div>
           </div>
 
+          {/* GoFundMe Campaign -- second giving option, visually distinct from PayPal */}
+          <a
+            href="https://gofund.me/8a0a7a7ca"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-between gap-3 bg-[#0d2818] border border-emerald-500/30 rounded-xl px-5 py-4 hover:border-emerald-500/50 hover:bg-[#0f3320] transition-colors group"
+          >
+            <div className="flex items-center gap-3">
+              <HeartHandshake className="h-5 w-5 text-emerald-400 shrink-0" />
+              <div>
+                <p className="text-emerald-300 font-bold text-sm">Or support our GoFundMe campaign</p>
+                <p className="text-zinc-400 text-xs mt-0.5">Another way to give &mdash; same mission</p>
+              </div>
+            </div>
+            <span className="text-emerald-400 text-xs font-mono shrink-0 group-hover:translate-x-0.5 transition-transform">
+              gofund.me/8a0a7a7ca &rarr;
+            </span>
+          </a>
+
           {/* Direct Handles Collapsible */}
           <details className="group bg-[#161616] rounded-xl border border-white/10 overflow-hidden">
             <summary className="cursor-pointer px-4 py-3 text-zinc-300 font-semibold text-xs flex items-center justify-between hover:bg-white/5 transition-colors">

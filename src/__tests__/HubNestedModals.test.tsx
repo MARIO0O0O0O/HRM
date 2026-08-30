@@ -88,8 +88,9 @@ describe('Hub Nested Modals Suite', () => {
     fireEvent.click(screen.getByText('Back to Payments & Fund'))
     expect(screen.getByText('Payments, Retainers & Defense Fund')).toBeDefined()
 
-    // Click Small Business Defense Fund
-    fireEvent.click(screen.getByRole('button', { name: /Small Business Defense Fund/i }))
-    expect(screen.getByText('Small Business Compliance Defense Campaign')).toBeDefined()
+    // Small Business Defense Fund link to /support
+    const defenseLink = screen.getByRole('link', { name: /Small Business Defense Fund/i })
+    expect(defenseLink).toBeDefined()
+    expect(defenseLink.getAttribute('href')).toBe('/support')
   })
 })

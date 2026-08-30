@@ -115,14 +115,13 @@ export default function PaymentsFundNestedModal() {
               <span>Client Payments & Retainers</span>
             </button>
 
-            <button
-              type="button"
-              onClick={() => setSubView('campaign')}
+            <Link
+              href="/support"
               className="flex items-center justify-center gap-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-100 border border-white/10 font-bold px-4 py-3 rounded-xl text-xs transition-colors"
             >
               <HeartHandshake className="h-4 w-4 text-fuchsia-400" />
               <span>Small Business Defense Fund</span>
-            </button>
+            </Link>
           </div>
         </div>
       )}

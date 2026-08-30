@@ -112,3 +112,6 @@ errors) at 412px and 1440px before merging.
 Flagged, not addressed: the surrounding modal still uses pre-rebrand indigo/fuchsia
 colors (see earlier "Defense Fund language" flag) — separate cleanup task, not in scope
 for this change.
+
+2026-08-30 — TASK-027 — PASS — Overhauled global shell: 2-bar Header with unified hamburger (7 main + 3 legal links), Support page (/support) with working PayPal donate flow & investment inquiry section, Free Resources Library placeholder (/library), and 4-column Footer grid; 20/20 test files passed (43/43 tests) and 57/57 static pages compiled clean.
+

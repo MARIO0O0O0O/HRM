@@ -15,40 +15,88 @@ export default function Footer() {
         <ToolMarquee />
       </div>
 
-      {/* Main footer row */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex flex-col sm:flex-row justify-between items-start gap-8">
+      {/* Main footer row -- 4-column grid (2-col mobile, 4-col desktop) */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 grid grid-cols-2 lg:grid-cols-4 gap-8">
 
-        {/* Brand */}
-        <div>
+        {/* Column 1 -- Brand */}
+        <div className="col-span-2 sm:col-span-1 space-y-2">
           <p className="text-base font-serif font-bold tracking-tight text-white">
             Cal<span className="text-[#B5933C]">BizHR</span>
           </p>
-          <p className="text-xs font-sans text-zinc-400 mt-1">
+          <p className="text-xs font-sans text-zinc-400">
             California HR Compliance &amp; AI-Powered HR Consulting
           </p>
-          <p className="text-xs font-sans text-zinc-500 mt-1">
+          <p className="text-xs font-sans text-zinc-500">
             Los Angeles &amp; San Gabriel Valley, CA
           </p>
+          <a
+            href="tel:6267082220"
+            className="text-xs font-sans text-zinc-400 hover:text-[#B5933C] transition-colors block pt-1"
+          >
+            626-708-2220
+          </a>
         </div>
 
-        {/* Navigation */}
-        <div className="flex flex-wrap gap-x-6 gap-y-2 text-xs font-sans font-medium">
-          <Link href="/services" className="hover:text-[#B5933C] transition-colors">Services</Link>
-          <Link href="/tools" className="hover:text-[#B5933C] transition-colors">Toolkits</Link>
-          <Link href="/pricing" className="hover:text-[#B5933C] transition-colors">Pricing</Link>
-          <Link href="/paga-calculator" className="hover:text-[#B5933C] transition-colors">PAGA Calculator</Link>
-          <Link href="/blog" className="hover:text-[#B5933C] transition-colors">Blog</Link>
-          <Link href="/about" className="hover:text-[#B5933C] transition-colors">About</Link>
-          <Link href="/contact" className="hover:text-[#B5933C] transition-colors">Contact</Link>
-          <Link href="/portal" className="hover:text-[#B5933C] transition-colors">Client Portal</Link>
+        {/* Column 2 -- Explore */}
+        <div>
+          <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-[#B5933C] mb-3">
+            Explore
+          </h4>
+          <div className="flex flex-col gap-2 text-xs font-sans font-medium text-zinc-400">
+            <Link href="/spokes/safety-prevention" className="hover:text-[#B5933C] transition-colors">
+              Safety &amp; Prevention
+            </Link>
+            <Link href="/spokes/wage-hour" className="hover:text-[#B5933C] transition-colors">
+              Wage &amp; Hour
+            </Link>
+            <Link href="/spokes/lifecycle-admin" className="hover:text-[#B5933C] transition-colors">
+              Lifecycle Admin
+            </Link>
+            <Link href="/library" className="hover:text-[#B5933C] transition-colors">
+              Free Resources Library
+            </Link>
+            <Link href="/blog" className="hover:text-[#B5933C] transition-colors">
+              Blog
+            </Link>
+          </div>
         </div>
 
-        {/* Legal links */}
-        <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs font-sans font-medium">
-          <Link href="/privacy" className="hover:text-[#B5933C] transition-colors">Privacy Policy</Link>
-          <Link href="/terms" className="hover:text-[#B5933C] transition-colors">Terms of Service</Link>
-          <Link href="/accessibility" className="hover:text-[#B5933C] transition-colors">Accessibility</Link>
+        {/* Column 3 -- Company */}
+        <div>
+          <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-[#B5933C] mb-3">
+            Company
+          </h4>
+          <div className="flex flex-col gap-2 text-xs font-sans font-medium text-zinc-400">
+            <Link href="/about" className="hover:text-[#B5933C] transition-colors">
+              About
+            </Link>
+            <Link href="/contact" className="hover:text-[#B5933C] transition-colors">
+              Contact
+            </Link>
+          </div>
         </div>
+
+        {/* Column 4 -- Legal & Support */}
+        <div>
+          <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-[#B5933C] mb-3">
+            Legal &amp; Support
+          </h4>
+          <div className="flex flex-col gap-2 text-xs font-sans font-medium text-zinc-400">
+            <Link href="/privacy" className="hover:text-[#B5933C] transition-colors">
+              Privacy Policy
+            </Link>
+            <Link href="/terms" className="hover:text-[#B5933C] transition-colors">
+              Terms of Service
+            </Link>
+            <Link href="/accessibility" className="hover:text-[#B5933C] transition-colors">
+              Accessibility
+            </Link>
+            <Link href="/support" className="hover:text-[#B5933C] transition-colors">
+              Donate
+            </Link>
+          </div>
+        </div>
+
       </div>
 
       {/* Legal disclaimer bar */}

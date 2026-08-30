@@ -57,6 +57,8 @@ Founder is looking for two different things from this page, not one — build bo
 **Section A: Community Support**
 Move the existing real, working PayPal donation flow here from `PaymentsFundNestedModal.tsx` (the `campaign` subview — the real Hosted Button integration, QR code, P2P handles `<details>` block). Reuse that exact working code; do not rebuild the PayPal integration from scratch. Framing: small businesses / community members supporting free compliance tools for other small businesses. $25-100 suggested range, open-amount PayPal Donate button (already built, just relocate).
 
+Directly beside or below the PayPal button, add a second giving option: **GoFundMe campaign**, `https://gofund.me/8a0a7a7ca`. Render as a clearly labeled external link/button (opens `target="_blank" rel="noopener noreferrer"`, since it leaves the site), visually distinct from the PayPal button so it reads as "another way to give," not a duplicate of the same action — e.g. GoFundMe's green brand tone vs. PayPal's yellow. Short label like "Or support our GoFundMe campaign" is enough; do not fabricate campaign copy, goal amounts, or a story — link out to the real campaign page for that.
+
 **Section B: Invest & Fund Operations**
 New section, distinct visual treatment from Section A (different framing — this is not a donate button). Content:
 - Short vision statement: CalBizHR is building a structured compliance database (SQL) to deliver services at the speed of large HR teams with the precision of law firms
@@ -94,6 +96,7 @@ Simple "coming soon" placeholder — this becomes the real Free Resources Librar
 - [ ] Header utility strip shows phone (tel: link), email in mono font with visible dotted zero, Donate link, Book a Call — on both breakpoints
 - [ ] Hamburger has exactly 7 items + Legal group (3 items), each with an icon, no Client Portal
 - [ ] `/support` page renders both sections, PayPal button in Section A actually renders (check for real iframe count like the earlier PayPal verification, not just an empty container)
+- [ ] GoFundMe link in Section A points to `https://gofund.me/8a0a7a7ca`, opens in a new tab, visually distinct from the PayPal button
 - [ ] `/library` placeholder renders, no 404
 - [ ] Footer renders as 2-col grid on mobile (412px), 4-col on desktop (1440px)
 - [ ] Footer disclaimer block text is byte-for-byte unchanged from before this task

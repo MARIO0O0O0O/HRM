@@ -1,0 +1,66 @@
+DISPATCH: CalBizHR Repository Audit (11 Repos)
+===============================================
+
+OBJECTIVE
+---------
+Audit all 11 CalBizHR-related GitHub repos in MARIO0O0O0O account.
+Classify by status, identify compliance content, flag migration candidates,
+produce structured reports for human decision-making.
+
+REPOS
+-----
+1. calbizhr_intel         (research & law staging)
+2. HRM                    (production live site)
+3. calbizhr_registry      (promotion gate)
+4. HRBIZ.ORG_Consultancy  (likely archive)
+5. smbhr                  (unknown)
+6. CrownAct               (compliance area?)
+7. HarassmentPreventionTraining (training content)
+8. bizhr_reorg            (old version?)
+9. hrbiz.org              (stale branding)
+10. Compliance-Toolkit    (template collection?)
+11. regagent-ca-package   (agent/script?)
+
+TASK FILES
+----------
+Read these in order:
+
+1. project-docs/tasks/TASK-031-repo-audit-phase1.md
+   → Generate manifest of all 11 repos
+   → Status classification, branding scan, decision points
+   → Output: project-docs/reports/repo-audit-phase1-manifest.md
+
+2. project-docs/tasks/TASK-032-repo-audit-phases2-4.md
+   → Deep-dive on key repos (calbizhr_intel, HRM, registry)
+   → Batch assessment of 8 old/learning repos
+   → Strategic analysis of high-value content
+   → Consolidated decision report
+   → Outputs: phase2a, phase2b, phase2c, phase2d, phase3, final
+
+EXECUTION
+---------
+Phase 1 (TASK-031): 30-45 min — Run first, report back
+Phase 2 (TASK-032): 2-3 hours total — After Phase 1, run parts A/B/C/D in order
+Phase 3 (TASK-032): 30-45 min per repo — Key repos only
+Phase 4 (TASK-032): 30 min — Final synthesis
+
+START
+-----
+Execute TASK-031 now.
+When Phase 1 output is in project-docs/reports/repo-audit-phase1-manifest.md,
+proceed to TASK-032 Phase 2A.
+
+SUCCESS CRITERIA
+----------------
+✓ All 11 repos classified (ACTIVE/DORMANT/ABANDONED/ARCHIVED)
+✓ Compliance content inventoried (by area: HPP, WVPP, KYR, etc.)
+✓ Migration candidates identified
+✓ Stale branding flagged
+✓ Final report ready for Mario's decisions
+
+REFERENCE DOCS
+--------------
+See AGENTS.md and SOURCE_OF_TRUTH.md for agent operational context.
+All outputs go to project-docs/reports/ directory.
+
+GO
